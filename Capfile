@@ -16,13 +16,22 @@ require 'capistrano/deploy'
 #   https://github.com/capistrano/rails/tree/master/migrations
 #
 # require 'capistrano/rvm'
+<<<<<<< HEAD
  require 'capistrano/rbenv'
 # require 'capistrano/chruby'
  require 'capistrano/bundler'
  require "sidekiq/capistrano"
+=======
+# require 'capistrano/rbenv'
+# require 'capistrano/chruby'
+# require 'capistrano/bundler'
+>>>>>>> 71c1601... rails_apps_composer: add README files
 # require 'capistrano/rails/assets'
 # require 'capistrano/rails/migrations'
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
 Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
+<<<<<<< HEAD
 Dir.glob('lib/capistrano/**/*.rb').each { |r| import r }
+=======
+>>>>>>> 71c1601... rails_apps_composer: add README files
