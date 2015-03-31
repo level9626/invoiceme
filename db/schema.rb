@@ -11,10 +11,77 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330201418) do
+ActiveRecord::Schema.define(version: 20150331223416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+
+  create_table "invoices", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invoices", ["title"], name: "index_invoices_on_title", using: :btree
+
+  create_table "iv_content_labels", force: true do |t|
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "iv_content_logos", force: true do |t|
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "iv_content_tables", force: true do |t|
+    t.hstore   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "iv_content_texts", force: true do |t|
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "iv_element_contents", force: true do |t|
+    t.integer  "invoice_id"
+    t.integer  "iv_template_element_id"
+    t.string   "iv_content_type"
+    t.integer  "iv_content_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "iv_template_element_types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "iv_template_element_types", ["name"], name: "index_iv_template_element_types_on_name", unique: true, using: :btree
+
+  create_table "iv_template_elements", force: true do |t|
+    t.integer  "iv_template_id"
+    t.hstore   "position"
+    t.integer  "iv_template_element_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "iv_template_elements", ["iv_template_id"], name: "index_iv_template_elements_on_iv_template_id", using: :btree
+
+  create_table "iv_templates", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

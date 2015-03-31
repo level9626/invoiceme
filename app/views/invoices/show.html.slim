@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @invoice.title
+p
+  strong User:
+  = @invoice.user_id
+
+= link_to 'Edit', edit_invoice_path(@invoice)
+'|
+= link_to 'Back', invoices_path
