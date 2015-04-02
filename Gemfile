@@ -1,17 +1,16 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
-gem 'rails', '4.1.6'
-gem 'sass-rails', '~> 4.0.3'
-gem 'uglifier', '>= 1.3.0'
+ruby '2.2.1'
+
+gem 'rails',        '4.1.6'
+gem 'sass-rails',   '~> 4.0.3'
+gem 'uglifier',     '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
+gem 'jbuilder',     '~> 2.0'
 gem 'bootstrap-sass'
 gem 'devise'
-gem 'figaro', '>= 1.0.0.rc1'
+gem 'figaro',       '>= 1.0.0.rc1'
 gem 'high_voltage'
 gem 'pg'
 gem 'puma'
@@ -20,6 +19,7 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'upmin-admin'
 group :development do
+  gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
   gem 'capistrano', '~> 3.0.1'
@@ -50,4 +50,7 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+end
+group :doc do
+  gem 'sdoc', '~> 0.4.0'
 end
