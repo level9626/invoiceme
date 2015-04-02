@@ -1774,3 +1774,58 @@ Processing by Upmin::ModelsController#search as HTML
   Rendered /Users/1/.rvm/gems/ruby-2.2.1/gems/upmin-admin-0.1.01/app/views/upmin/models/search.html.haml within layouts/upmin/application (34.1ms)
   Rendered layouts/upmin/_navbar.html.haml (21.4ms)
 Completed 200 OK in 126ms (Views: 120.6ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-04-03 01:28:58 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by VisitorsController#index as HTML
+  Rendered visitors/index.html.erb within layouts/application (2.0ms)
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered layouts/_navigation_links.html.erb (35.1ms)
+  Rendered layouts/_navigation.html.slim (42.0ms)
+  Rendered layouts/_messages.html.slim (3.9ms)
+Completed 200 OK in 427ms (Views: 406.8ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-04-03 01:29:01 +0300
+Processing by VisitorsController#index as HTML
+  Rendered visitors/index.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered layouts/_navigation_links.html.erb (2.9ms)
+  Rendered layouts/_navigation.html.slim (11.5ms)
+  Rendered layouts/_messages.html.slim (4.0ms)
+Completed 200 OK in 139ms (Views: 137.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-04-03 01:29:04 +0300
+Processing by Upmin::ModelsController#dashboard as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered /Users/1/.rvm/gems/ruby-2.2.1/gems/upmin-admin-0.1.01/app/views/upmin/models/dashboard.html.haml within layouts/upmin/application (1.7ms)
+  Rendered layouts/upmin/_navbar.html.haml (47.4ms)
+Completed 200 OK in 261ms (Views: 214.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/admin/m/User" for 127.0.0.1 at 2015-04-03 01:29:06 +0300
+Processing by Upmin::ModelsController#search as HTML
+  Parameters: {"klass"=>"User"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  SELECT DISTINCT COUNT(DISTINCT "users"."id") FROM "users"
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT  DISTINCT "users".* FROM "users"  LIMIT 30 OFFSET 0[0m
+  Rendered /Users/1/.rvm/gems/ruby-2.2.1/gems/upmin-admin-0.1.01/app/views/upmin/partials/search_results/_results.html.haml (13.1ms)
+  Rendered /Users/1/.rvm/gems/ruby-2.2.1/gems/upmin-admin-0.1.01/app/views/upmin/partials/search_boxes/_ransack_search_box.html.haml (23.8ms)
+  Rendered /Users/1/.rvm/gems/ruby-2.2.1/gems/upmin-admin-0.1.01/app/views/upmin/models/search.html.haml within layouts/upmin/application (134.5ms)
+  Rendered layouts/upmin/_navbar.html.haml (37.9ms)
+Completed 200 OK in 295ms (Views: 288.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/admin/m/Invoice" for 127.0.0.1 at 2015-04-03 01:29:07 +0300
+Processing by Upmin::ModelsController#search as HTML
+  Parameters: {"klass"=>"Invoice"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (39.2ms)[0m  [1mSELECT DISTINCT COUNT(DISTINCT "invoices"."id") FROM "invoices"[0m
+  [1m[35mInvoice Load (0.4ms)[0m  SELECT  DISTINCT "invoices".* FROM "invoices"  LIMIT 30 OFFSET 0
+  Rendered /Users/1/.rvm/gems/ruby-2.2.1/gems/upmin-admin-0.1.01/app/views/upmin/partials/search_results/_results.html.haml (0.8ms)
+  Rendered /Users/1/.rvm/gems/ruby-2.2.1/gems/upmin-admin-0.1.01/app/views/upmin/partials/search_boxes/_ransack_search_box.html.haml (2.6ms)
+  Rendered /Users/1/.rvm/gems/ruby-2.2.1/gems/upmin-admin-0.1.01/app/views/upmin/models/search.html.haml within layouts/upmin/application (72.3ms)
+  Rendered layouts/upmin/_navbar.html.haml (17.4ms)
+Completed 200 OK in 166ms (Views: 117.6ms | ActiveRecord: 43.0ms)
