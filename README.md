@@ -65,10 +65,3 @@ Invoice DB(scaffold)
 
 User, Profiles, Roles DB
 ===============
-
-
-
-
-
-
-
