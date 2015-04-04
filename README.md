@@ -1,14 +1,13 @@
 Admin Panel
 ===============
 
+
 Is implemented using https://github.com/upmin/upmin-admin-ruby
 
 ### Login
 
 - Email: __user@example.com__
 - Password: __changeme__
-
-
 
 Invoice Template DB
 ===============
