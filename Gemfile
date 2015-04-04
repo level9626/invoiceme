@@ -18,6 +18,7 @@ gem 'pundit'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'upmin-admin'
+
 group :development do
   gem 'spring'
   gem 'better_errors'

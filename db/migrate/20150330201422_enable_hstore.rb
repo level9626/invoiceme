@@ -1,8 +1,8 @@
 class EnableHstore < ActiveRecord::Migration
   def self.up
-    enable_extension "hstore" if
+    enable_extension "hstore"
   end
   def self.down
-    disable_extension "hstore" if
+    disable_extension "hstore"
   end
 end
