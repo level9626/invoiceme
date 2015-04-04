@@ -1829,3 +1829,85 @@ Processing by Upmin::ModelsController#search as HTML
   Rendered /Users/1/.rvm/gems/ruby-2.2.1/gems/upmin-admin-0.1.01/app/views/upmin/models/search.html.haml within layouts/upmin/application (72.3ms)
   Rendered layouts/upmin/_navbar.html.haml (17.4ms)
 Completed 200 OK in 166ms (Views: 117.6ms | ActiveRecord: 43.0ms)
+  [1m[36m (42.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (26.1ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20150330201405)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (21.2ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150330201405"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to AddNameToUsers (20150330201409)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mALTER TABLE "users" ADD COLUMN "name" character varying(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150330201409"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to AddConfirmableToUsers (20150330201412)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "users" ADD COLUMN "confirmation_token" character varying(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD COLUMN "confirmed_at" timestamp
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD COLUMN "confirmation_sent_at" timestamp[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD COLUMN "unconfirmed_email" character varying(255)
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150330201412"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+Migrating to AddRoleToUsers (20150330201418)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD COLUMN "role" integer
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150330201418"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Migrating to EnableHstore (20150330201422)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (102.8ms)[0m  CREATE EXTENSION IF NOT EXISTS "hstore"
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150330201422"]]
+  [1m[35m (2.8ms)[0m  COMMIT
+Migrating to CreateInvoices (20150331203815)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (2.2ms)[0m  CREATE TABLE "invoices" ("id" serial primary key, "title" character varying(255), "user_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX  "index_invoices_on_title" ON "invoices"  ("title")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150331203815"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateIvTemplates (20150331205704)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "iv_templates" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150331205704"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateIvTemplateElements (20150331205821)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "iv_template_elements" ("id" serial primary key, "iv_template_id" integer, "position" hstore, "iv_template_element_type_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX  "index_iv_template_elements_on_iv_template_id" ON "iv_template_elements"  ("iv_template_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150331205821"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Migrating to CreateIvTemplateElementTypes (20150331205912)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (2.2ms)[0m  CREATE TABLE "iv_template_element_types" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_iv_template_element_types_on_name" ON "iv_template_element_types"  ("name")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150331205912"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateIvElementContents (20150331223052)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (2.3ms)[0m  [1mCREATE TABLE "iv_element_contents" ("id" serial primary key, "invoice_id" integer, "iv_template_element_id" integer, "iv_content_type" character varying(255), "iv_content_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150331223052"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateIvContentLogos (20150331223320)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (2.4ms)[0m  [1mCREATE TABLE "iv_content_logos" ("id" serial primary key, "content" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150331223320"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateIvContentTables (20150331223326)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "iv_content_tables" ("id" serial primary key, "content" hstore, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150331223326"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateIvContentTexts (20150331223345)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "iv_content_texts" ("id" serial primary key, "content" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150331223345"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateIvContentLabels (20150331223416)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "iv_content_labels" ("id" serial primary key, "content" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150331223416"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
