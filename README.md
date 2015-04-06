@@ -61,6 +61,7 @@ Invoice DB(scaffold)
 - __id__:integer
 - __title__:string
 - __user_id__:integer
+- __iv_template_id__:integer
 
 User, Profiles, Roles DB
 ===============

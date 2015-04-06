@@ -18,6 +18,7 @@ gem 'pundit'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'upmin-admin'
+gem 'binding_of_caller'
 
 group :development do
   gem 'spring'

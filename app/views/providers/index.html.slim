@@ -1,0 +1,31 @@
+h1 Listing providers
+
+table
+  thead
+    tr
+      th Logo
+      th Name
+      th Intermediary bank
+      th Account with institution
+      th Beneficiary account
+      th Beneficiary
+      th
+      th
+      th
+
+  tbody
+    - @providers.each do |provider|
+      tr
+        td = provider.logo
+        td = provider.name
+        td = provider.intermediary_bank
+        td = provider.account_with_institution
+        td = provider.beneficiary_account
+        td = provider.beneficiary
+        td = link_to 'Show', provider
+        td = link_to 'Edit', edit_provider_path(provider)
+        td = link_to 'Destroy', provider, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Provider', new_provider_path

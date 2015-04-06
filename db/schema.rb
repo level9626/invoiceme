@@ -11,20 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331223416) do
+ActiveRecord::Schema.define(version: 20150406075043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
   create_table "invoices", force: true do |t|
-    t.string   "title"
+    t.string   "invoice_number"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "iv_template_id", null: false
   end
 
-  add_index "invoices", ["title"], name: "index_invoices_on_title", using: :btree
+  add_index "invoices", ["invoice_number"], name: "index_invoices_on_invoice_number", using: :btree
 
   create_table "iv_content_labels", force: true do |t|
     t.string   "content"

@@ -1,9 +1,33 @@
-= simple_form_for(@invoice) do |f|
-  = f.error_notification
+section
+  = simple_form_for(@invoice) do |f|
+    #polygon.col-md-6.col-md-offset-3
+      #header
+        .row
+          #logo.col-md-6
+            = render 'shared/input_stub', label: 'Logo'
+          #company_name.col-md-6
+            = render 'shared/input_stub', label: 'Company Name'
+          #invoice_number.col-md-6
+            = f.input :invoice_number
+          #date.col-md-6
+            = render 'shared/input_stub', label: 'Date'
+        .row
+          #providers
+          #contractors
 
-  .form-inputs
-    = f.input :title
-    = f.input :user_id
+      section#body
+        #incoice
+          table
+            thead
+              tr
+                th DESCRIPTION
+                th HOURS
+                th RATE
+                th AMOUNT
 
-  .form-actions
-    = f.button :submit
+            tbody
+      section#footer
+        .col-md-6
+          p.text-left Thank You For Your Business!
+        .col-md-6
+          p.text-right Make all checks payable to: Company name

@@ -1,3 +1,24 @@
 // Place all the styles related to the Invoices controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$border: grey;
+
+//Form
+#polygon {
+  padding: 5px;
+  border: 1px solid $border;
+  border-radius: 5px;
+
+  section {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  #body {
+    border-top: 1px solid $border;
+  }
+  #footer {
+    background: #DEE2F1;
+  }
+}

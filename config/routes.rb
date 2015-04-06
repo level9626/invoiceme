@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :providers
+
   resources :iv_templates
 
   resources :invoices

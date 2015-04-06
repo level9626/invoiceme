@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong Logo:
+  = @provider.logo
+p
+  strong Name:
+  = @provider.name
+p
+  strong Intermediary bank:
+  = @provider.intermediary_bank
+p
+  strong Account with institution:
+  = @provider.account_with_institution
+p
+  strong Beneficiary account:
+  = @provider.beneficiary_account
+p
+  strong Beneficiary:
+  = @provider.beneficiary
+
+= link_to 'Edit', edit_provider_path(@provider)
+'|
+= link_to 'Back', providers_path
