@@ -16,7 +16,7 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :keep_releases, 5
 
 # files we want symlinking to specific entries in shared
-set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml puma.rb}
 set(:linked_dirs,  %w{
   bin
   log
@@ -52,16 +52,8 @@ set(:symlinks, [
 ])
 
 # puma settings
-set :puma_threads,    [4, 16]
-set :puma_workers,    0
-set :puma_bind,       "unix://#{fetch(:shared_path)}/tmp/sockets/#{fetch(:full_app_name)}_puma.sock"
-set :puma_state,      "#{fetch(:shared_path)}/tmp/pids/puma.state"
-set :puma_pid,        "#{fetch(:shared_path)}/tmp/pids/puma.pid"
-set :puma_access_log, "#{fetch(:release_path)}/log/puma.error.log"
-set :puma_error_log,  "#{fetch(:release_path)}/log/puma.access.log"
-set :puma_preload_app, true
-set :puma_worker_timeout, nil
-set :puma_init_active_record, false  # Change to true if using ActiveRecord
+set :puma_init_active_record, true
+
 
 # Don't change these unless you know what you're doing
 set :pty,             true

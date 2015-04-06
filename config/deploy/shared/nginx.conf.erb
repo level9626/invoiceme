@@ -1,5 +1,5 @@
 upstream puma {
-  server unix://<%=fetch(:shared_path)%>/tmp/sockets/<%=fetch(:full_app_name)%>_puma.sock;
+  server unix://<%=fetch(:deploy_to)%>/shared/tmp/sockets/puma.sock;
 }
 
 server {

@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20150406131108) do
+=======
 ActiveRecord::Schema.define(version: 20150406075043) do
+>>>>>>> 278941a... Provider
+=======
+ActiveRecord::Schema.define(version: 20150406131108) do
+>>>>>>> cfab802... M
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +88,17 @@ ActiveRecord::Schema.define(version: 20150406075043) do
 
   create_table "iv_templates", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "providers", force: true do |t|
+    t.string   "logo"
+    t.string   "name"
+    t.string   "intermediary_bank"
+    t.string   "account_with_institution"
+    t.string   "beneficiary_account"
+    t.string   "beneficiary"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

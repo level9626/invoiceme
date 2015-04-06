@@ -1911,6 +1911,7 @@ Migrating to CreateIvContentLabels (20150331223416)
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150331223416"]]
   [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+<<<<<<< HEAD
 
 
 Started GET "/questions/new" for 127.0.0.1 at 2015-04-04 17:34:22 +0300
@@ -6413,4 +6414,351 @@ Processing by Devise::RegistrationsController#edit as HTML
   Rendered layouts/_navigation_links.html.erb (0.2ms)
   Rendered layouts/_navigation.html.slim (1.1ms)
   Rendered layouts/_messages.html.slim (0.1ms)
+<<<<<<< HEAD
 Completed 200 OK in 164ms (Views: 157.9ms | ActiveRecord: 1.3ms)
+=======
+Completed 200 OK in 132ms (Views: 129.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-04-06 17:45:00 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError - 
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+:
+  activerecord (4.1.6) lib/active_record/migration.rb:389:in `check_pending!'
+  activerecord (4.1.6) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  puma (2.11.1) lib/puma/server.rb:507:in `handle_request'
+  puma (2.11.1) lib/puma/server.rb:375:in `process_client'
+  puma (2.11.1) lib/puma/server.rb:262:in `block in run'
+  puma (2.11.1) lib/puma/thread_pool.rb:104:in `call'
+  puma (2.11.1) lib/puma/thread_pool.rb:104:in `block in spawn_thread'
+
+
+
+Started POST "/__better_errors/d52773312f25c25f/variables" for 127.0.0.1 at 2015-04-06 17:45:01 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateProviders (20150406131108)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateProviders (20150406131108)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (158.5ms)[0m  [1mCREATE TABLE "providers" ("id" serial primary key, "logo" character varying(255), "name" character varying(255), "intermediary_bank" character varying(255), "account_with_institution" character varying(255), "beneficiary_account" character varying(255), "beneficiary" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150406131108"]]
+  [1m[36m (50.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2015-04-06 17:49:20 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by VisitorsController#index as HTML
+  Rendered visitors/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_navigation_links.html.erb (4.4ms)
+  Rendered layouts/_navigation.html.slim (18.3ms)
+  Rendered layouts/_messages.html.slim (3.7ms)
+Completed 200 OK in 3793ms (Views: 3770.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-04-06 17:49:26 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (514.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.slim (2.1ms)
+  Rendered layouts/_messages.html.slim (0.1ms)
+Completed 200 OK in 693ms (Views: 675.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-04-06 17:50:50 +0300
+Processing by VisitorsController#index as HTML
+  Rendered visitors/index.html.erb within layouts/application (0.1ms)
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered layouts/_navigation_links.html.erb (25.0ms)
+  Rendered layouts/_navigation.html.slim (26.3ms)
+  Rendered layouts/_messages.html.slim (0.1ms)
+Completed 200 OK in 147ms (Views: 145.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-04-06 17:51:05 +0300
+Processing by Upmin::ModelsController#dashboard as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered /Users/1/.rvm/gems/ruby-2.2.1/gems/upmin-admin-0.1.01/app/views/upmin/models/dashboard.html.haml within layouts/upmin/application (2.7ms)
+  Rendered layouts/upmin/_navbar.html.haml (115.1ms)
+Completed 200 OK in 508ms (Views: 505.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-04-06 17:51:06 +0300
+Processing by Upmin::ModelsController#dashboard as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered /Users/1/.rvm/gems/ruby-2.2.1/gems/upmin-admin-0.1.01/app/views/upmin/models/dashboard.html.haml within layouts/upmin/application (0.1ms)
+  Rendered layouts/upmin/_navbar.html.haml (30.3ms)
+Completed 200 OK in 101ms (Views: 98.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-04-06 17:51:24 +0300
+Processing by VisitorsController#index as HTML
+  Rendered visitors/index.html.erb within layouts/application (0.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered layouts/_navigation_links.html.erb (1.7ms)
+  Rendered layouts/_navigation.html.slim (3.1ms)
+  Rendered layouts/_messages.html.slim (0.1ms)
+Completed 200 OK in 134ms (Views: 132.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2015-04-06 17:51:25 +0300
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered devise/registrations/edit.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_navigation_links.html.erb (1.2ms)
+  Rendered layouts/_navigation.html.slim (34.7ms)
+  Rendered layouts/_messages.html.slim (4.3ms)
+Completed 200 OK in 201ms (Views: 198.8ms | ActiveRecord: 0.5ms)
+>>>>>>> cfab802... M
+=======
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mUser Load (29.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'user@example.com' LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "users" ("confirmed_at", "created_at", "email", "encrypted_password", "role", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["confirmed_at", "2015-04-04 10:19:10.486147"], ["created_at", "2015-04-04 10:19:10.486941"], ["email", "user@example.com"], ["encrypted_password", "$2a$10$5QI1EWosqLnQS335mqIRzOPaglzv49i9E4yEoTZ.8QiN1zyh3Aliq"], ["role", 0], ["updated_at", "2015-04-04 10:19:10.486941"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "role" = $1, "updated_at" = $2 WHERE "users"."id" = 1[0m  [["role", 2], ["updated_at", "2015-04-04 10:19:10.522097"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36mIvTemplateElementType Load (20.2ms)[0m  [1mSELECT  "iv_template_element_types".* FROM "iv_template_element_types"  WHERE "iv_template_element_types"."name" = 'logo'  ORDER BY "iv_template_element_types"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "iv_template_element_types" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2015-04-04 10:19:10.572359"], ["name", "logo"], ["updated_at", "2015-04-04 10:19:10.572359"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mIvTemplateElementType Load (0.4ms)[0m  [1mSELECT  "iv_template_element_types".* FROM "iv_template_element_types"  WHERE "iv_template_element_types"."name" = 'table'  ORDER BY "iv_template_element_types"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "iv_template_element_types" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2015-04-04 10:19:10.575991"], ["name", "table"], ["updated_at", "2015-04-04 10:19:10.575991"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mIvTemplateElementType Load (0.4ms)[0m  [1mSELECT  "iv_template_element_types".* FROM "iv_template_element_types"  WHERE "iv_template_element_types"."name" = 'styled_text'  ORDER BY "iv_template_element_types"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "iv_template_element_types" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2015-04-04 10:19:10.578642"], ["name", "styled_text"], ["updated_at", "2015-04-04 10:19:10.578642"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mIvTemplateElementType Load (0.6ms)[0m  [1mSELECT  "iv_template_element_types".* FROM "iv_template_element_types"  WHERE "iv_template_element_types"."name" = 'label'  ORDER BY "iv_template_element_types"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "iv_template_element_types" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2015-04-04 10:19:10.582509"], ["name", "label"], ["updated_at", "2015-04-04 10:19:10.582509"]]
+  [1m[35m (2.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  INSERT INTO "iv_templates" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2015-04-04 10:19:10.591298"], ["name", "Test Name"], ["updated_at", "2015-04-04 10:19:10.591298"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mIvTemplateElementType Load (0.4ms)[0m  SELECT  "iv_template_element_types".* FROM "iv_template_element_types"  WHERE "iv_template_element_types"."name" = 'logo' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (37.3ms)[0m  INSERT INTO "iv_template_elements" ("created_at", "iv_template_id", "position", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2015-04-04 10:19:10.602524"], ["iv_template_id", 1], ["position", "\"cube\"=>\"[{:x=>10, :y=>10}, {:x=>100, :y=>10}, {:x=>10, :y=>100}, {:x=>100, :y=>100}]\""], ["updated_at", "2015-04-04 10:19:10.602524"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mIvTemplateElementType Load (0.4ms)[0m  SELECT  "iv_template_element_types".* FROM "iv_template_element_types"  WHERE "iv_template_element_types"."name" = 'table' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "iv_template_elements" ("created_at", "iv_template_id", "position", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2015-04-04 10:19:10.643470"], ["iv_template_id", 1], ["position", "\"cube\"=>\"[{:x=>10, :y=>10}, {:x=>100, :y=>10}, {:x=>10, :y=>100}, {:x=>100, :y=>100}]\""], ["updated_at", "2015-04-04 10:19:10.643470"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mIvTemplateElementType Load (0.3ms)[0m  SELECT  "iv_template_element_types".* FROM "iv_template_element_types"  WHERE "iv_template_element_types"."name" = 'styled_text' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "iv_template_elements" ("created_at", "iv_template_id", "position", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2015-04-04 10:19:10.646108"], ["iv_template_id", 1], ["position", "\"cube\"=>\"[{:x=>10, :y=>10}, {:x=>100, :y=>10}, {:x=>10, :y=>100}, {:x=>100, :y=>100}]\""], ["updated_at", "2015-04-04 10:19:10.646108"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mIvTemplateElementType Load (0.4ms)[0m  SELECT  "iv_template_element_types".* FROM "iv_template_element_types"  WHERE "iv_template_element_types"."name" = 'label' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "iv_template_elements" ("created_at", "iv_template_id", "position", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", "2015-04-04 10:19:10.648699"], ["iv_template_id", 1], ["position", "\"cube\"=>\"[{:x=>10, :y=>10}, {:x=>100, :y=>10}, {:x=>10, :y=>100}, {:x=>100, :y=>100}]\""], ["updated_at", "2015-04-04 10:19:10.648699"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/" for 127.0.0.1 at 2015-04-04 13:19:23 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by VisitorsController#index as HTML
+  Rendered visitors/index.html.erb within layouts/application (1.9ms)
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered layouts/_navigation_links.html.erb (23.5ms)
+  Rendered layouts/_navigation.html.slim (31.9ms)
+  Rendered layouts/_messages.html.slim (3.5ms)
+Completed 200 OK in 655ms (Views: 615.5ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-04-04 13:19:26 +0300
+Processing by VisitorsController#index as HTML
+  Rendered visitors/index.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.7ms)
+  Rendered layouts/_navigation.html.slim (6.7ms)
+  Rendered layouts/_messages.html.slim (3.3ms)
+Completed 200 OK in 135ms (Views: 134.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-04-04 13:19:27 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (558.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.slim (1.8ms)
+  Rendered layouts/_messages.html.slim (0.1ms)
+Completed 200 OK in 713ms (Views: 710.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-04-04 13:19:29 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.slim (1.7ms)
+  Rendered layouts/_messages.html.slim (0.1ms)
+<<<<<<< HEAD
+Completed 200 OK in 134ms (Views: 132.8ms | ActiveRecord: 0.0ms)
+>>>>>>> 8b2869c... puma server deploy fix
+=======
+Completed 200 OK in 132ms (Views: 129.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-04-06 17:45:00 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError - 
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+:
+  activerecord (4.1.6) lib/active_record/migration.rb:389:in `check_pending!'
+  activerecord (4.1.6) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  puma (2.11.1) lib/puma/server.rb:507:in `handle_request'
+  puma (2.11.1) lib/puma/server.rb:375:in `process_client'
+  puma (2.11.1) lib/puma/server.rb:262:in `block in run'
+  puma (2.11.1) lib/puma/thread_pool.rb:104:in `call'
+  puma (2.11.1) lib/puma/thread_pool.rb:104:in `block in spawn_thread'
+
+
+
+Started POST "/__better_errors/d52773312f25c25f/variables" for 127.0.0.1 at 2015-04-06 17:45:01 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateProviders (20150406131108)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateProviders (20150406131108)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (158.5ms)[0m  [1mCREATE TABLE "providers" ("id" serial primary key, "logo" character varying(255), "name" character varying(255), "intermediary_bank" character varying(255), "account_with_institution" character varying(255), "beneficiary_account" character varying(255), "beneficiary" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150406131108"]]
+  [1m[36m (50.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2015-04-06 17:49:20 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by VisitorsController#index as HTML
+  Rendered visitors/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_navigation_links.html.erb (4.4ms)
+  Rendered layouts/_navigation.html.slim (18.3ms)
+  Rendered layouts/_messages.html.slim (3.7ms)
+Completed 200 OK in 3793ms (Views: 3770.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-04-06 17:49:26 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (514.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.slim (2.1ms)
+  Rendered layouts/_messages.html.slim (0.1ms)
+Completed 200 OK in 693ms (Views: 675.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-04-06 17:50:50 +0300
+Processing by VisitorsController#index as HTML
+  Rendered visitors/index.html.erb within layouts/application (0.1ms)
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered layouts/_navigation_links.html.erb (25.0ms)
+  Rendered layouts/_navigation.html.slim (26.3ms)
+  Rendered layouts/_messages.html.slim (0.1ms)
+Completed 200 OK in 147ms (Views: 145.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-04-06 17:51:05 +0300
+Processing by Upmin::ModelsController#dashboard as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered /Users/1/.rvm/gems/ruby-2.2.1/gems/upmin-admin-0.1.01/app/views/upmin/models/dashboard.html.haml within layouts/upmin/application (2.7ms)
+  Rendered layouts/upmin/_navbar.html.haml (115.1ms)
+Completed 200 OK in 508ms (Views: 505.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-04-06 17:51:06 +0300
+Processing by Upmin::ModelsController#dashboard as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered /Users/1/.rvm/gems/ruby-2.2.1/gems/upmin-admin-0.1.01/app/views/upmin/models/dashboard.html.haml within layouts/upmin/application (0.1ms)
+  Rendered layouts/upmin/_navbar.html.haml (30.3ms)
+Completed 200 OK in 101ms (Views: 98.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-04-06 17:51:24 +0300
+Processing by VisitorsController#index as HTML
+  Rendered visitors/index.html.erb within layouts/application (0.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered layouts/_navigation_links.html.erb (1.7ms)
+  Rendered layouts/_navigation.html.slim (3.1ms)
+  Rendered layouts/_messages.html.slim (0.1ms)
+Completed 200 OK in 134ms (Views: 132.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2015-04-06 17:51:25 +0300
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered devise/registrations/edit.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_navigation_links.html.erb (1.2ms)
+  Rendered layouts/_navigation.html.slim (34.7ms)
+  Rendered layouts/_messages.html.slim (4.3ms)
+Completed 200 OK in 201ms (Views: 198.8ms | ActiveRecord: 0.5ms)
+>>>>>>> cfab802... M
