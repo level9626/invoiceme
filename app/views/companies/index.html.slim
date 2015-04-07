@@ -1,27 +1,31 @@
-h1 Listing companies
+.container
 
-table
-  thead
-    tr
-      th Logo
-      th Name
-      th Address
-      th User
-      th
-      th
-      th
+  = render 'profiles/profile_nav'
 
-  tbody
-    - @companies.each do |company|
+  h1 Listing companies
+
+  table
+    thead
       tr
-        td = company.logo
-        td = company.name
-        td = company.address
-        td = company.user_id
-        td = link_to 'Show', company
-        td = link_to 'Edit', edit_company_path(company)
-        td = link_to 'Destroy', company, data: {:confirm => 'Are you sure?'}, :method => :delete
+        th Logo
+        th Name
+        th Address
+        th User
+        th
+        th
+        th
 
-br
+    tbody
+      - @companies.each do |company|
+        tr
+          td = company.logo
+          td = company.name
+          td = company.address
+          td = company.user_id
+          td = link_to 'Show', company
+          td = link_to 'Edit', edit_company_path(company)
+          td = link_to 'Destroy', company, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-= link_to 'New Company', new_company_path
+  br
+
+  = link_to 'New Company', new_company_path

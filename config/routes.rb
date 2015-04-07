@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
+  mount Upmin::Engine => '/admin'
+
   resources :clients
 
   resources :companies
 
   resources :invoices
 
-  mount Upmin::Engine => '/admin'
-  root to: 'visitors#index'
   devise_for :users
+
+  authenticated :user do
+    devise_scope :user do
+      root to: "profiles#profile", :as => "profile"
+    end
+  end
+
+  root to: 'visitors#index'
 end

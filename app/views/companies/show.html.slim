@@ -1,18 +1,19 @@
-p#notice = notice
+.container
+  p#notice = notice
 
-p
-  strong Logo:
-  = @company.logo
-p
-  strong Name:
-  = @company.name
-p
-  strong Address:
-  = @company.address
-p
-  strong User:
-  = @company.user_id
+  p
+    strong Logo:
+    = @company.logo
+  p
+    strong Name:
+    = @company.name
+  p
+    strong Address:
+    = @company.address
+  p
+    strong User:
+    = @company.user_id
 
-= link_to 'Edit', edit_company_path(@company)
-'|
-= link_to 'Back', companies_path
+  = link_to 'Edit', edit_company_path(@company)
+  '|
+  = link_to 'Back', companies_path

@@ -1,0 +1,7 @@
+ul.nav.nav-tabs
+  li class=(current_page?(root_path) && 'active')
+    = link_to 'Profile', root_path
+  li class=(current_page?(edit_user_registration_path) && 'active')
+    = link_to 'Account settings', edit_user_registration_path
+  li class=(current_page?(companies_path) && 'active')
+    = link_to 'My Companies', companies_path

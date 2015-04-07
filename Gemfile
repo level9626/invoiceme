@@ -18,9 +18,9 @@ gem 'pundit'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'upmin-admin'
-gem 'binding_of_caller'
 
 group :development do
+  gem 'annotate'
   gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
