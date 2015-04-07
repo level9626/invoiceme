@@ -43,6 +43,11 @@ class InvoicesController < ApplicationController
     end
 
     def invoice_params
-      params.require(:invoice).permit(:invoice_number, :user_id)
+      params.require(:invoice).permit([
+        :invoice_number,
+        :invoice_date,
+        :currency,
+        :comment
+      ])
     end
 end
