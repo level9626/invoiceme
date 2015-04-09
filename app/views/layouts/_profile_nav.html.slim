@@ -5,3 +5,5 @@ ul.nav.nav-tabs
     = link_to 'Account settings', edit_user_registration_path
   li class=(current_page?(companies_path) && 'active')
     = link_to 'My Companies', companies_path
+  li class=(current_page?(clients_path) && 'active')
+    = link_to 'My Clients', clients_path

@@ -10,5 +10,7 @@
 #
 
 class Client < ActiveRecord::Base
-  has_and_belongs_to_many :users
+  has_many :clients_users
+  has_many :users, through: :clients_users
+  accepts_nested_attributes_for :users
 end

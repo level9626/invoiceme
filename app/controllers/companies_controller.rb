@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
   respond_to :html
 
   def index
-    @companies = Company.all
+    @companies = current_user.companies.all
     respond_with(@companies)
   end
 
@@ -22,7 +22,7 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @company = Company.new(company_params)
+    @company = Company.new(company_params.merge(user_id: current_user.id))
     @company.save
     respond_with(@company)
   end
@@ -39,7 +39,7 @@ class CompaniesController < ApplicationController
 
   private
     def set_company
-      @company = Company.find(params[:id])
+      @company = current_user.companies.find(params[:id])
     end
 
     def company_params

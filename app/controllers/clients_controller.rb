@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
   respond_to :html
 
   def index
-    @clients = Client.all
+    @clients = current_user.clients
     respond_with(@clients)
   end
 
@@ -13,7 +13,7 @@ class ClientsController < ApplicationController
   end
 
   def new
-    @client = Client.new
+    @client = Client.new()
     respond_with(@client)
   end
 
@@ -22,6 +22,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
+    @client.clients_users.build(user_id: current_user.id)
     @client.save
     respond_with(@client)
   end
@@ -38,7 +39,7 @@ class ClientsController < ApplicationController
 
   private
     def set_client
-      @client = Client.find(params[:id])
+      @client = current_user.clients.find(params[:id])
     end
 
     def client_params
