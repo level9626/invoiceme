@@ -7,10 +7,30 @@ html
     meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Invoice Tracker'}"
     == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => true
     == javascript_include_tag 'application', 'data-turbolinks-track' => true
+    link href="assets/css/bootstrap.css" rel="stylesheet" /
+    /! external css
+    link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" /
+    /! Custom styles for this template
+    link href="assets/css/style.css" rel="stylesheet" /
+    link href="assets/css/style-responsive.css" rel="stylesheet" /
     == csrf_meta_tags
   body
-    header
-      == render 'layouts/navigation'
-    main[role="main"]
-      == render 'layouts/messages'
-      == yield
+    == render 'layouts/navigation'
+    .container
+      main[role="main"]
+        == render 'layouts/messages'
+        == yield
+    == render 'layouts/main_content'
+    == render 'layouts/footer'
+
+script.include src="assets/js/jquery.dcjqaccordion.2.7.js" type="text/javascript"
+script src="assets/js/jquery.scrollTo.min.js"
+script src="assets/js/jquery.nicescroll.js" type="text/javascript"
+script src="assets/js/jquery.sparkline.js"
+/! common script for all pages
+script src="assets/js/common-scripts.js"
+script src="assets/js/gritter/js/jquery.gritter.js" type="text/javascript"
+script src="assets/js/gritter-conf.js" type="text/javascript"
+/! script for this page
+script src="assets/js/sparkline-chart.js"
+script src="assets/js/zabuto_calendar.js"

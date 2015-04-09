@@ -1,13 +1,126 @@
-/ navigation styled for Bootstrap 3.0
-nav.navbar.navbar-inverse.navbar-fixed-top
-  .container
-    .navbar-header
-      button.navbar-toggle[type="button" data-toggle="collapse" data-target=".navbar-collapse"]
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      = link_to 'Home', root_path, class: 'navbar-brand'
-    .collapse.navbar-collapse.navbar-right
-      ul.nav.navbar-nav
-        == render 'layouts/navigation_links'
+section#container
+  /!
+    | **********************************************************************************************************************************************************
+    | TOP BAR CONTENT &amp; NOTIFICATIONS
+    | ***********************************************************************************************************************************************************
+  /! header start
+  header.header.black-bg
+    .sidebar-toggle-box
+      .fa.fa-bars.tooltips data-original-title=("Toggle Navigation") data-placement="right"
+    /! logo start
+    a.logo href="/"
+      b DASHGUM FREE
+    /! logo end
+    #top_menu.nav.notify-row
+      /! notification start
+      ul.nav.top-menu
+        .btn-group
+          button.btn.btn-theme type="button"
+            = link_to ' Home', root_path
+        /! settings start
+    /! settings end
+    /! inbox dropdown start
+
+    /! inbox dropdown end
+    /! notification end
+    .top-menu
+      ul.nav.pull-right.top-menu
+        li
+          .btn-group
+            button.btn.btn-theme.dropdown-toggle data-toggle="dropdown" type="button"
+              i.fa.fa-cog
+            ul.dropdown-menu role="menu"
+              li
+                == render 'layouts/navigation_links'
+
+  /! header end
+  /!
+    | **********************************************************************************************************************************************************
+    | MAIN SIDEBAR MENU
+    | ***********************************************************************************************************************************************************
+  /! sidebar start
+  aside
+    #sidebar.nav-collapse
+      /! sidebar menu start
+      ul#nav-accordion.sidebar-menu
+        p.centered
+          a href="profile.html"
+            img.img-circle src="assets/img/ui-sam.jpg" width="60" /
+        h5.centered Marcel Newman
+        li.mt
+          a href="index.html"
+            i.fa.fa-dashboard
+            span Dashboard
+        li.sub-menu
+          a href="javascript:;"
+            i.fa.fa-desktop
+            span UI Elements
+          ul.sub
+            li
+              a href="general.html"  General
+            li
+              a href="buttons.html"  Buttons
+            li
+              a href="panels.html"  Panels
+        li.sub-menu
+          a href="javascript:;"
+            i.fa.fa-cogs
+            span Components
+          ul.sub
+            li
+              a href="calendar.html"  Calendar
+            li
+              a href="gallery.html"  Gallery
+            li
+              a href="todo_list.html"  Todo List
+        li.sub-menu
+          a href="javascript:;"
+            i.fa.fa-book
+            span Extra Pages
+          ul.sub
+            li
+              a href="blank.html"  Blank Page
+            li
+              a href="login.html"  Login
+            li
+              a href="lock_screen.html"  Lock Screen
+        li.sub-menu
+          a href="javascript:;"
+            i.fa.fa-tasks
+            span Forms
+          ul.sub
+            li
+              a href="form_component.html"  Form Components
+        li.sub-menu
+          a href="javascript:;"
+            i.fa.fa-th
+            span Data Tables
+          ul.sub
+            li
+              a href="basic_table.html"  Basic Table
+            li
+              a href="responsive_table.html"  Responsive Table
+        li.sub-menu
+          a href="javascript:;"
+            i.fa.fa-bar-chart-o
+            span Charts
+          ul.sub
+            li
+              a href="morris.html"  Morris
+            li
+              a href="chartjs.html"  Chartjs
+  /! sidebar menu end
+  /! sidebar end
+  /!
+    | **********************************************************************************************************************************************************
+    | MAIN CONTENT
+    | ***********************************************************************************************************************************************************
+  /! main content start
+
+  /! /MAIN CONTENT
+  /! main content end
+  /! footer start
+
+
+/! footer end
+/! js placed at the end of the document so th  script src="assets/js/jquery.js"
