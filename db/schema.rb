@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 20150407175425) do
     t.datetime "updated_at"
   end
 
+  create_table "clients_users", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "client_id"
+  end
+
+  add_index "clients_users", ["user_id", "client_id"], name: "index_clients_users_on_user_id_and_client_id", unique: true, using: :btree
+
   create_table "companies", force: true do |t|
     t.string   "logo"
     t.string   "name",       null: false
@@ -70,12 +77,5 @@ ActiveRecord::Schema.define(version: 20150407175425) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "users_clients", id: false, force: true do |t|
-    t.integer "user_id"
-    t.integer "client_id"
-  end
-
-  add_index "users_clients", ["user_id", "client_id"], name: "index_users_clients_on_user_id_and_client_id", unique: true, using: :btree
 
 end

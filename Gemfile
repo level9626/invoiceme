@@ -2,33 +2,50 @@ source 'https://rubygems.org'
 ruby '2.2.1'
 
 gem 'rails',        '4.1.6'
+
+# Assets
 gem 'sass-rails',   '~> 4.0.3'
 gem 'uglifier',     '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'turbolinks'
-gem 'jbuilder',     '~> 2.0'
 gem 'bootstrap-sass'
+
+# db
+gem 'pg'
+gem 'composite_primary_keys'
+gem 'slim-rails'
+gem 'bootstrap-wysihtml5-rails'
+
+# Authentication, autorization
 gem 'devise'
+gem 'pundit'
+gem 'upmin-admin'
+
+# Json builder
+gem 'jbuilder',     '~> 2.0'
+
+# Server
+gem 'puma'
+
+# Form builder
+gem 'simple_form'
+gem 'carrierwave'
+gem 'mini_magick'
+
 gem 'figaro',       '>= 1.0.0.rc1'
 gem 'high_voltage'
-gem 'pg'
-gem 'puma'
-gem 'pundit'
-gem 'simple_form'
-gem 'slim-rails'
-gem 'upmin-admin'
 
 group :development do
   gem 'annotate'
   gem 'spring'
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_21]
+  gem 'binding_of_caller'
   gem 'capistrano', '~> 3.3.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rails-console'
-  # gem 'capistrano-rvm',     '~> 0.1.1'
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano3-puma',   require: false
   gem 'guard-bundler'

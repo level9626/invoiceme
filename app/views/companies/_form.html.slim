@@ -2,10 +2,9 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :logo
+    = f.input :logo, as: :file
     = f.input :name
-    = f.input :address
-    = f.input :user_id
+    = f.input :address, input_html: { class: 'wysihtml5' }
 
   .form-actions
     = f.button :submit

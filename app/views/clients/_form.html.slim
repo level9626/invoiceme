@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :company_name
-    = f.input :address
+    = f.input :address, input_html: { class: 'wysihtml5' }
 
   .form-actions
     = f.button :submit

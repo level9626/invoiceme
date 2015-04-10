@@ -28,9 +28,12 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
 
 
-  has_and_belongs_to_many :clients
+  has_many :clients_users
+  has_many :clients, through: :clients_users
   has_many :invoices
-  has_one :company
+  has_many :companies
+
+  accepts_nested_attributes_for :clients_users, :invoices, :companies
 
   def set_default_role
     self.role ||= :user
