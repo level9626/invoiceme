@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407175425) do
+ActiveRecord::Schema.define(version: 20150411091102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150407175425) do
     t.text     "comment",        default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.hstore   "invoice_items",  default: {}, null: false
   end
 
   add_index "invoices", ["invoice_number"], name: "index_invoices_on_invoice_number", using: :btree

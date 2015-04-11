@@ -10,6 +10,7 @@
 #  comment        :text             default(""), not null
 #  created_at     :datetime
 #  updated_at     :datetime
+#  invoice_items  :hstore           default({}), not null
 #
 
 require 'rails_helper'

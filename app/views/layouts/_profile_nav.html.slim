@@ -7,3 +7,5 @@ ul.nav.nav-tabs
     = link_to 'My Companies', companies_path
   li class=(current_page?(clients_path) && 'active')
     = link_to 'My Clients', clients_path
+  li class=(current_page?(invoices_path) && 'active')
+    = link_to 'My Invoices', invoices_path

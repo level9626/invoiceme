@@ -1,3 +1,11 @@
+# == Schema Information
+#
+# Table name: clients_users
+#
+#  user_id   :integer          primary key
+#  client_id :integer          primary key
+#
+
 class ClientsUser < ActiveRecord::Base
   self.primary_key = :user_id, :client_id
   belongs_to :user

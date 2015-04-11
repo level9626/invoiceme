@@ -5,7 +5,7 @@ class InvoicesController < ApplicationController
   respond_to :html
 
   def index
-    @invoices = Invoice.all
+    @invoices = current_user.invoices.all
     respond_with(@invoices)
   end
 
@@ -14,7 +14,7 @@ class InvoicesController < ApplicationController
   end
 
   def new
-    @invoice = Invoice.new
+    @invoice = current_user.invoices.new
     respond_with(@invoice)
   end
 
@@ -22,7 +22,7 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    @invoice = Invoice.new(invoice_params)
+    @invoice = current_user.invoices.new(invoice_params)
     @invoice.save
     respond_with(@invoice)
   end
@@ -39,7 +39,7 @@ class InvoicesController < ApplicationController
 
   private
     def set_invoice
-      @invoice = Invoice.find(params[:id])
+      @invoice = current_user.invoices.find(params[:id])
     end
 
     def invoice_params
@@ -47,7 +47,8 @@ class InvoicesController < ApplicationController
         :invoice_number,
         :invoice_date,
         :currency,
-        :comment
+        :comment,
+        :invoice_items
       ])
     end
 end
