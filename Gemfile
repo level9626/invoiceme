@@ -14,7 +14,6 @@ gem 'bootstrap-sass'
 gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'cocoon'
-gem 'image-picker-rails'
 
 # db
 gem 'pg'

@@ -1,14 +1,6 @@
 section.col-md-12
   .col-md-6
-    h1 Logo
-    h1 Name
-    h1 Last Name
+    p= image_tag current_user.logo_url, size: '60x60', class: 'img-left'
+    p= current_user.name
+    p= current_user.email
   .col-md-6
-    .col-md-12
-      h1 Company Name 1
-    .col-md-12
-      h1 Company Name 2
-    .col-md-12
-      h1 Company Name 3
-    .col-md-12
-      h1 Company Name 4

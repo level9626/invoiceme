@@ -43,4 +43,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def logo_url
+    companies.try(:last).try(:logo_url) || "fallback/default_logo.png"
+  end
 end

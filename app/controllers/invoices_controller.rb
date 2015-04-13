@@ -1,5 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :verify_company!, only: [:new]
   before_filter :authenticate_user!
 
   respond_to :html
@@ -41,6 +42,13 @@ class InvoicesController < ApplicationController
   private
     def set_invoice
       @invoice = current_user.invoices.find(params[:id])
+    end
+
+    def verify_company!
+      if current_user.companies.empty?
+        flash[:notice] = "You'll need to create a company first!"
+        redirect_to new_company_path
+      end
     end
 
     def invoice_params
