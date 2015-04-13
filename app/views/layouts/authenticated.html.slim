@@ -10,5 +10,9 @@ html
     main[role="main"]
       .container
         == render 'layouts/messages'
-        == render 'layouts/footer'
-        == yield
+        section#main-content
+          section.wrapper.site-min-height
+            .row.mt
+              .col-lg-12
+                == yield
+      //== render 'layouts/footer'
