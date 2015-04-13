@@ -10,6 +10,7 @@ $orange-dark: #fcb322;
 
 $blue-light: #64c3c2;
 $blue-lightest: #68dff0;
+$blue-light-green: #48bcb4;
 
 $violet-light: #ac92ec;
 $violet-dark: #967adc;
@@ -197,9 +198,9 @@ a, a:hover, a:focus {
 }
 
 .btn-clear-g {
-  color: #48bcb4;
+  color: $blue-light-green;
   background: transparent;
-  border-color: #48bcb4;
+  border-color: $blue-light-green;
 }
 
 .btn-clear-g:hover {
