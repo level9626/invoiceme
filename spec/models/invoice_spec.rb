@@ -8,8 +8,8 @@
 #  user_id          :integer          not null
 #  currency         :string(255)      not null
 #  comment          :text             default(""), not null
-#  company_id       :integer
-#  client_id        :integer
+#  company_id       :integer          not null
+#  client_id        :integer          not null
 #  created_at       :datetime
 #  updated_at       :datetime
 #  company_row_text :text             not null

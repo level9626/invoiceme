@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @companies = current_user.companies.all

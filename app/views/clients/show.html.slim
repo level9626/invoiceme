@@ -2,7 +2,7 @@ p#notice = notice
 
 p
   strong Company name:
-  = @client.company_name
+  = @client.name
 p
   strong Address:
   = @client.address.try(:html_safe)

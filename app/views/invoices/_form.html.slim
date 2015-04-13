@@ -1,29 +1,56 @@
 = simple_form_for(@invoice) do |f|
-  .col-md-10.col-md-offset-1#invoice
+  .col-md-10.col-md-offset-1.borderise#client-company
+    blockquote
+      p To create the invoice, select one of your companies, and the client.
+    section
+      .row
+        .col-md-6
+          = f.input :company_id, collection: current_user.companies, \
+                    input_html: { data: { :'relation-name' => 'companies' }}
+        .col-md-6
+          = f.input :client_id,  collection: current_user.clients,\
+                    input_html: { data: { :'relation-name' => 'clients' }}
+
+  .col-md-10.col-md-offset-1.hidden#invoice
     section#header
       .row
         .col-md-6#logo
-          = image_tag current_user.companies.last.logo_url, size: '50x50'
+          / Will be appended dynamically
+          /= image_tag current_user.companies.last.logo_url, size: '50x50'
         .col-md-6.text-right INVOICE
 
     section#invoice_number-invoice-date
       .row
         .col-md-6#invoice_number
-          = f.input :invoice_number
+          = f.input :invoice_number, \
+                    input_html: { value: ['#', current_user.invoices.count + 1].join}
         .col-md-6#invoice-date
           = f.input :invoice_date, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') }
 
     section#company-client
       .row
-        .col-md-6 From
-        .col-md-6 To
+        .col-md-6
+          | From
+          strong#companies_name
+        .col-md-6
+          | To
+          strong#clients_name
       hr
       .row
         .col-md-6
-          = f.input :company_row_text, label: false, input_html: { class: 'wysihtml5' }
+          = f.input :company_row_text, label: false, \
+                    input_html: { \
+                      class: 'wysihtml5', \
+                      id: 'companies_address'\
+                    }
         .col-md-6
-          = f.input :client_row_text, label: false, input_html: { class: 'wysihtml5' }
+          = f.input :client_row_text, label: false, \
+                    input_html: { \
+                      class: 'wysihtml5', \
+                      id: 'clients_address'\
+                    }
 
+    hr
     section
       table class="table"
         thead
@@ -37,17 +64,44 @@
           = f.simple_fields_for :invoice_items do |invoice_item|
             = render 'invoices/invoice_item_fields', :f => invoice_item
 
-      p= link_to_add_association "Add a Item", f, :invoice_items, \
-             class: "btn btn-primary", \
-             'data-association-insertion-node'  => '#invoice_items_container',\
-             'data-association-insertion-method'=> 'append'
-
+      .row
+        .col-md-6
+          p= link_to_add_association "Add a Item", f, :invoice_items, \
+               class: "btn btn-primary", \
+               'data-association-insertion-node' => '#invoice_items_container',\
+               'data-association-insertion-method' => 'append'
+        .col-md-6
+          table class="table"
+            tbody
+              tr
+                td
+                  strong SUBTOTAL:
+                td#subtotal
+              tr
+                td
+                  strong VAT RATE:
+                td#vat-rate
+              tr
+                td
+                  strong VAT:
+                td#vat
+              tr
+                td
+                  strong DISCOUNT:
+                td#discount
+    hr
     section
-      .col-md-4
-        = f.input :currency
+      .row
+        .col-md-4
+          = f.input :currency, collection: ['EUR', 'USD', 'UAH', 'RUB']
 
+    hr
     section#coment
-      = f.input :comment, input_html: { class: 'wysihtml5' }
+      .row
+        .col-md-12
+          = f.input :comment, input_html: { class: 'wysihtml5' }
+
+    hr
     section#footer
       .col-md-6
         p.text-left Thank You For Your Business!

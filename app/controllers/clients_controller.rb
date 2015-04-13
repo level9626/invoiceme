@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @clients = current_user.clients
@@ -43,6 +43,6 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:company_name, :address)
+      params.require(:client).permit(:name, :address)
     end
 end

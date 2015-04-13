@@ -2,11 +2,11 @@
 #
 # Table name: clients
 #
-#  id           :integer          not null, primary key
-#  company_name :string(255)
-#  address      :text
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  address    :text
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 require 'rails_helper'

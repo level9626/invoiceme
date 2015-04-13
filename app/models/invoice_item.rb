@@ -12,6 +12,7 @@
 #
 
 class InvoiceItem < ActiveRecord::Base
-  validates_presence_of :hours_or_tasks, :rate, :invoice_id
   belongs_to :invoice
+  validates_presence_of :hours_or_tasks, :rate, :invoice_id
+  validates :rate, :hours_or_tasks, numericality: true
 end

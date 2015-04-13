@@ -8,12 +8,15 @@ $border: grey;
   margin: 5px;
 }
 
-//Form
-#invoice {
+.borderise {
   padding: 10px;
   border: 1px solid $border;
   border-radius: 5px;
+}
 
+//Form
+#invoice {
+  @extend .borderise;
   #logo {
     img {
       @extend .img-left;
@@ -23,6 +26,12 @@ $border: grey;
   section {
     margin-right: 0;
     margin-left: 0;
+  }
+
+  #company-client {
+    strong {
+      margin-left: 10px;
+    }
   }
 
   #footer {
