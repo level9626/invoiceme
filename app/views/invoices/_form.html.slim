@@ -1,33 +1,61 @@
-section
-  = simple_form_for(@invoice) do |f|
-    #polygon.col-md-6.col-md-offset-3
-      #header
-        .row
-          #logo.col-md-6
-            = render 'shared/input_stub', label: 'Logo'
-          #company_name.col-md-6
-            = render 'shared/input_stub', label: 'Company Name'
-          #invoice_number.col-md-6
-            = f.input :invoice_number
-          #date.col-md-6
-            = render 'shared/input_stub', label: 'Date'
-        .row
-          #providers
-          #contractors
+= simple_form_for(@invoice) do |f|
+  .col-md-10.col-md-offset-1#invoice
+    section#header
+      .row
+        .col-md-6#logo
+          = image_tag current_user.companies.last.logo_url, size: '50x50'
+        .col-md-6.text-right INVOICE
 
-      section#body
-        #incoice
-          table
-            thead
-              tr
-                th DESCRIPTION
-                th HOURS
-                th RATE
-                th AMOUNT
+    section#invoice_number-invoice-date
+      .row
+        .col-md-6#invoice_number
+          = f.input :invoice_number
+        .col-md-6#invoice-date
+          = f.input :invoice_date, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') }
 
-            tbody
-      section#footer
+    section#company-client
+      .row
+        .col-md-6 From
+        .col-md-6 To
+      hr
+      .row
         .col-md-6
-          p.text-left Thank You For Your Business!
+          = f.input :company_row_text, label: false, input_html: { class: 'wysihtml5' }
         .col-md-6
-          p.text-right Make all checks payable to: Company name
+          = f.input :client_row_text, label: false, input_html: { class: 'wysihtml5' }
+
+    section
+      table class="table"
+        thead
+          tr
+            th DESCRIPTION
+            th HOURS/TASKS
+            th RATE
+            th AMOUNT
+            th #
+        tbody#invoice_items_container
+          = f.simple_fields_for :invoice_items do |invoice_item|
+            = render 'invoices/invoice_item_fields', :f => invoice_item
+
+      p= link_to_add_association "Add a Item", f, :invoice_items, \
+             class: "btn btn-primary", \
+             'data-association-insertion-node'  => '#invoice_items_container',\
+             'data-association-insertion-method'=> 'append'
+
+    section
+      .col-md-4
+        = f.input :currency
+
+    section#coment
+      = f.input :comment, input_html: { class: 'wysihtml5' }
+    section#footer
+      .col-md-6
+        p.text-left Thank You For Your Business!
+      .col-md-6
+        p.text-right Make all checks payable to: Company name
+
+    br
+    hr
+    .section
+      .form-actions
+        = f.button :submit

@@ -4,9 +4,7 @@ table
   thead
     tr
       th Logo
-      th Name
       th Address
-      th User
       th
       th
       th
@@ -14,10 +12,10 @@ table
   tbody
     - @companies.each do |company|
       tr
-        td = image_tag company.logo
-        td = company.name
-        td = company.address
-        td = company.user_id
+        td
+          p= image_tag company.logo
+          p= company.name
+        td = company.address.try(:html_safe)
         td = link_to 'Show', company
         td = link_to 'Edit', edit_company_path(company)
         td = link_to 'Destroy', company, data: {:confirm => 'Are you sure?'}, :method => :delete

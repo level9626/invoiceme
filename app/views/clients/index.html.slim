@@ -13,7 +13,7 @@ table
     - @clients.each do |client|
       tr
         td = client.company_name
-        td = client.address
+        td = client.address.try(:html_safe)
         td = link_to 'Show', client
         td = link_to 'Edit', edit_client_path(client)
         td = link_to 'Destroy', client, data: {:confirm => 'Are you sure?'}, :method => :delete

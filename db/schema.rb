@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411091102) do
+ActiveRecord::Schema.define(version: 20150413084642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
 
   create_table "clients", force: true do |t|
     t.string   "company_name"
@@ -42,17 +41,32 @@ ActiveRecord::Schema.define(version: 20150411091102) do
 
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
 
-  create_table "invoices", force: true do |t|
-    t.string   "invoice_number",              null: false
-    t.datetime "invoice_date",                null: false
-    t.integer  "user_id",                     null: false
-    t.string   "currency",                    null: false
-    t.text     "comment",        default: "", null: false
+  create_table "invoice_items", force: true do |t|
+    t.string   "description",    default: "", null: false
+    t.float    "hours_or_tasks",              null: false
+    t.float    "rate",                        null: false
+    t.integer  "invoice_id",                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.hstore   "invoice_items",  default: {}, null: false
   end
 
+  add_index "invoice_items", ["invoice_id"], name: "index_invoice_items_on_invoice_id", using: :btree
+
+  create_table "invoices", force: true do |t|
+    t.string   "invoice_number",                null: false
+    t.datetime "invoice_date",                  null: false
+    t.integer  "user_id",                       null: false
+    t.string   "currency",                      null: false
+    t.text     "comment",          default: "", null: false
+    t.integer  "company_id",                    null: false
+    t.integer  "client_id",                     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "company_row_text",              null: false
+    t.text     "client_row_text",               null: false
+  end
+
+  add_index "invoices", ["invoice_number", "client_id", "company_id"], name: "index_invoices_on_invoice_number_and_client_id_and_company_id", unique: true, using: :btree
   add_index "invoices", ["invoice_number"], name: "index_invoices_on_invoice_number", using: :btree
 
   create_table "users", force: true do |t|

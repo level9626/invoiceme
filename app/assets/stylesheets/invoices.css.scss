@@ -5,19 +5,22 @@
 $border: grey;
 
 //Form
-#polygon {
-  padding: 5px;
+#invoice {
+  padding: 10px;
   border: 1px solid $border;
   border-radius: 5px;
+
+  #logo {
+    img {
+      margin: 5px;
+    }
+  }
 
   section {
     margin-right: 0;
     margin-left: 0;
   }
 
-  #body {
-    border-top: 1px solid $border;
-  }
   #footer {
     background: #DEE2F1;
   }

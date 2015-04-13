@@ -13,6 +13,7 @@
 
 class Company < ActiveRecord::Base
   belongs_to :user
+  has_many :invoices
 
   mount_uploader :logo, LogoUploader
 end

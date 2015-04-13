@@ -1,12 +1,52 @@
-p#notice = notice
+section
+  .col-md-10.col-md-offset-1#invoice
+    section#header
+      .row
+        .col-md-6#logo
+          = image_tag current_user.companies.last.logo_url, size: '50x50'
+        .col-md-6.text-right INVOICE
 
-p
-  strong Title:
-  = @invoice.title
-p
-  strong User:
-  = @invoice.user_id
+    section#invoice_number-invoice-date
+      .row
+        .col-md-6#invoice_number
+          = @invoice.invoice_number
+        .col-md-6#invoice-date
+          = @invoice.invoice_date
 
-= link_to 'Edit', edit_invoice_path(@invoice)
-'|
-= link_to 'Back', invoices_path
+    section#company-client
+      .row
+        .col-md-6 From
+        .col-md-6 To
+      hr
+      .row
+        .col-md-6
+          = @invoice.company_row_text.html_safe
+        .col-md-6
+          = @invoice.client_row_text.html_safe
+
+    section
+      table class="table"
+        thead
+          tr
+            th DESCRIPTION
+            th HOURS/TASKS
+            th RATE
+            th AMOUNT
+        tbody#invoice_items_container
+         - @invoice.invoice_items.each do |invoice_item|
+            tr
+              td= invoice_item.description
+              td= invoice_item.hours_or_tasks
+              td= invoice_item.rate
+
+    section
+      .col-md-4
+        = @invoice.currency
+
+    section#coment
+      = @invoice.comment.html_safe
+    section#footer
+      .col-md-6
+        p.text-left Thank You For Your Business!
+      .col-md-6
+        p.text-right Make all checks payable to: Company name

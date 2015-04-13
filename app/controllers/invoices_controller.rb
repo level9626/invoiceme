@@ -5,7 +5,7 @@ class InvoicesController < ApplicationController
   respond_to :html
 
   def index
-    @invoices = current_user.invoices.all
+    @invoices = Invoice.where(user: current_user)
     respond_with(@invoices)
   end
 
@@ -15,6 +15,7 @@ class InvoicesController < ApplicationController
 
   def new
     @invoice = current_user.invoices.new
+    @invoice.invoice_items.build
     respond_with(@invoice)
   end
 
@@ -48,7 +49,11 @@ class InvoicesController < ApplicationController
         :invoice_date,
         :currency,
         :comment,
-        :invoice_items
+        :company_row_text,
+        :client_row_text,
+        :company_id,
+        :client_id,
+        invoice_items_attributes: [:description, :hours_or_tasks, :rate]
       ])
     end
 end
