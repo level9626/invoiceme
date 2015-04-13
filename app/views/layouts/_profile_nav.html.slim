@@ -1,9 +1,19 @@
-ul.nav.nav-tabs
-  li class=(current_page?(root_path) && 'active')
-    = link_to 'Profile', root_path
-  li class=(current_page?(edit_user_registration_path) && 'active')
-    = link_to 'Account settings', edit_user_registration_path
-  li class=(current_page?(companies_path) && 'active')
-    = link_to 'My Companies', companies_path
-  li class=(current_page?(clients_path) && 'active')
-    = link_to 'My Clients', clients_path
+aside
+  #sidebar.nav-collapse
+    ul#nav-accordion.sidebar-menu
+      p.centered
+        a href="profile.html"
+        img.img-circle src="../assets/img/ui-sam.jpg" width="60" /
+        h5.centered Marcel Newman
+      li
+        = link_to root_path, class: current_page?(root_path) && 'active'
+          i.fa.fa-user Profile
+      li
+        = link_to edit_user_registration_path, class: current_page?(edit_user_registration_path) && 'active'
+          i.fa.fa-gears Account settings
+      li
+        = link_to companies_path, class: current_page?(companies_path) && 'active'
+          i.fa.fa-briefcase My Companies
+      li
+        = link_to clients_path, class: current_page?(clients_path) && 'active'
+          i.fa.fa-users My Clients

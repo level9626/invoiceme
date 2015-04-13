@@ -3,10 +3,12 @@ html
   head
     == render 'layouts/head'
   body
+
     header
       == render 'layouts/navigation'
+      == render 'layouts/profile_nav'
     main[role="main"]
       .container
         == render 'layouts/messages'
-        == render 'layouts/profile_nav'
         == yield
+      == render 'layouts/footer'

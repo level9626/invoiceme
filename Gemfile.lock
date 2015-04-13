@@ -148,7 +148,7 @@ GEM
     hitimes (1.2.2)
     i18n (0.7.0)
     interception (0.5)
-    jbuilder (2.2.12)
+    jbuilder (2.2.13)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (3.1.2)
@@ -371,7 +371,7 @@ DEPENDENCIES
   high_voltage
   jbuilder (~> 2.0)
   jquery-rails
-  jquery-turbolinks
+  jquery-turbolinks (~> 2.1.0)
   launchy
   mini_magick
   pg
