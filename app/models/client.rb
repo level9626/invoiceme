@@ -12,5 +12,6 @@
 class Client < ActiveRecord::Base
   has_many :clients_users
   has_many :users, through: :clients_users
+  has_many :invoices
   accepts_nested_attributes_for :users
 end

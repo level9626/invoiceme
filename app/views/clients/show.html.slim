@@ -5,7 +5,7 @@ p
   = @client.company_name
 p
   strong Address:
-  = @client.address
+  = @client.address.try(:html_safe)
 
 = link_to 'Edit', edit_client_path(@client)
 '|

@@ -1,18 +1,17 @@
 h1 Listing invoices
 
-table
+table.table
   thead
     tr
-      th Title
-      th User
-      th
+      th Invoice Number
+      th Invoice Date
       th
       th
 
   tbody
     - @invoices.each do |invoice|
       tr
-        td = invoice.title
+        td = invoice.invoice_number
         td = invoice.user_id
         td = link_to 'Show', invoice
         td = link_to 'Edit', edit_invoice_path(invoice)
