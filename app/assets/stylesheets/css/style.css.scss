@@ -3,10 +3,32 @@
 /* Import fonts */
 @import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
 
+/* COLOR VARIABLES */
+
+$orange-main: #ffd777;
+$orange-dark: #fcb322;
+
+$blue-light: #64c3c2;
+$blue-lightest: #68dff0;
+
+$violet-light: #ac92ec;
+$violet-dark: #967adc;
+
+$red-lightest: #ed5565;
+$red-dark: #da4453;
+
+$green-lightest: #48cfad;
+$green-dark: #37bc9b;
+
+$grey-light: #797979;
+
+$black-light: #1a1a1a;
+
+
 /* BASIC THEME CONFIGURATION */
 
 i.fa::before {
-  color: #ffd777;
+  color: $orange-main;
   padding-right: 5px;
 }
 i.fa.fa-cog::before {
@@ -16,15 +38,16 @@ i.fa.fa-cog::before {
 }
 
 .btn.btn-theme.dropdown-toggle {
-  color: #f2f2f2;
+  color: white;
   font-size: 12px;
   border-radius: 4px;
   -webkit-border-radius: 4px;
-  border: 1px solid #64c3c2 !important;
+  border: 1px solid $blue-light !important;
   padding: 5px 10px;
-  margin-right: 110px;
-  background: #68dff0;
+  margin-right: 200px;
+  background: $blue-lightest;
   margin-top: 15px;
+
 }
 .btn.btn-theme {
   margin-top: -3px;
@@ -34,8 +57,8 @@ i.fa.fa-cog::before {
 }
 
 body {
-  color: #797979;
-  background: #f2f2f2;
+  color: $grey-light;
+  background: white;
   font-family: 'Ruda', sans-serif;
   padding: 0px !important;
   margin: 0px !important;
@@ -52,12 +75,12 @@ a, a:hover, a:focus {
 }
 ::selection {
 
-  background: #68dff0;
-  color: #fff;
+  background: $blue-lightest;
+  color: white;
 }
 ::-moz-selection {
-  background: #68dff0;
-  color: #fff;
+  background: $blue-lightest;
+  color: white;
 }
 
 #container {
@@ -67,7 +90,7 @@ a, a:hover, a:focus {
 
 /* Bootstrap Modifications */
 .modal-header {
-  background: #68dff0;
+  background: $blue-lightest;
 }
 
 .modal-title {
@@ -82,12 +105,12 @@ a, a:hover, a:focus {
 .accordion-heading .accordion-toggle {
   display: block;
   cursor: pointer;
-  border-top: 1px solid #F5F5F5;
+  border-top: 1px solid white;
   padding: 5px 0px;
   line-height: 28.75px;
   text-transform: uppercase;
-  color: #1a1a1a;
-  background-color: #ffffff;
+  color: $black-light;
+  background-color: white;
   outline: none !important;
   text-decoration: none;
 }
@@ -97,26 +120,26 @@ a, a:hover, a:focus {
 /*Theme Backgrounds*/
 
 .bg-theme {
-  background-color: #68dff0;
+  background-color: $blue-lightest;
 }
 
 .bg-theme02 {
-  background-color: #ac92ec;
+  background-color: $violet-light;
 }
 
 .bg-theme03 {
-  background-color: #48cfad;
+  background-color: $green-lightest;
 }
 
 .bg-theme04 {
-  background-color: #ed5565;
+  background-color: $red-lightest;
 }
 /*Theme Buttons*/
 
 .btn-theme {
-  color: #fff;
-  background-color: #68dff0;
-  border-color: #48bcb4;
+  color: white;
+  background-color: $blue-lightest;
+  border-color: $blue-light-green;
 }
 .btn-theme:hover,
 .btn-theme:focus,
@@ -124,44 +147,44 @@ a, a:hover, a:focus {
 .btn-theme.active,
 .open .dropdown-toggle.btn-theme {
   color: #fff;
-  background-color: #48bcb4;
-  border-color: #48bcb4;
+  background-color: $blue-light-green;
+  border-color: $blue-light-green;
 }
 
 .btn-theme02 {
   color: #fff;
-  background-color: #ac92ec;
-  border-color: #967adc;
+  background-color: $violet-light;
+  border-color: $violet-dark;
 }
 .btn-theme02:hover,
 .btn-theme02:focus,
 .btn-theme02:active,
 .btn-theme02.active,
 .open .dropdown-toggle.btn-theme02 {
-  color: #fff;
-  background-color: #967adc;
-  border-color: #967adc;
+  color: white;
+  background-color: $violet-light;
+  border-color: $violet-dark;
 }
 
 .btn-theme03 {
-  color: #fff;
-  background-color: #48cfad;
-  border-color: #37bc9b;
+  color: white;
+  background-color: $green-lightest;
+  border-color: $green-dark;
 }
 .btn-theme03:hover,
 .btn-theme03:focus,
 .btn-theme03:active,
 .btn-theme03.active,
 .open .dropdown-toggle.btn-theme03 {
-  color: #fff;
-  background-color: #37bc9b;
-  border-color: #37bc9b;
+  color: white;
+  background-color: $green-dark;
+  border-color: $green-dark;
 }
 
 .btn-theme04 {
-  color: #fff;
-  background-color: #ed5565;
-  border-color: #da4453;
+  color: white;
+  background-color: $red-lightest;
+  border-color: $red-dark;
 }
 .btn-theme04:hover,
 .btn-theme04:focus,
@@ -169,8 +192,8 @@ a, a:hover, a:focus {
 .btn-theme04.active,
 .open .dropdown-toggle.btn-theme04 {
   color: #fff;
-  background-color: #da4453;
-  border-color: #da4453;
+  background-color: $red-dark;
+  border-color: $red-dark;
 }
 
 .btn-clear-g {
@@ -187,7 +210,7 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #797979;
+  border-top: 1px solid $grey-light;
 }
 
 
@@ -229,11 +252,11 @@ hr {
 /*Exclusive Theme Colors Configuration*/
 
 .label-theme {
-  background-color: #68dff0;
+  background-color: $blue-lightest;
 }
 
 .bg-theme {
-  background-color: #68dff0;
+  background-color: $blue-lightest;
 }
 
 ul.top-menu > li > .logout {
@@ -241,10 +264,10 @@ ul.top-menu > li > .logout {
   font-size: 12px;
   border-radius: 4px;
   -webkit-border-radius: 4px;
-  border: 1px solid #64c3c2 !important;
+  border: 1px solid $blue-light !important;
   padding: 5px 15px;
   margin-right: 15px;
-  background: #68dff0;
+  background: $blue-lightest;
   margin-top: 15px;
 }
 
@@ -348,7 +371,7 @@ ul.sidebar-menu li ul.sub li a:hover {
 }
 
 ul.sidebar-menu li ul.sub li.active a {
-  color: #68dff0;
+  color: $blue-lightest;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -387,8 +410,8 @@ ul.sidebar-menu li a{
 }
 
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
-  background: #68dff0;
-  color: #fff;
+  background: $blue-lightest;
+  color: white;
   display: block;
 
   -webkit-transition: all 0.3s ease;
@@ -437,7 +460,7 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-  background: #ffd777;
+  background: $orange-main;
   border-bottom: 1px solid #c9aa5f;
 }
 
@@ -469,7 +492,7 @@ a.logo:hover, a.logo:focus {
 }
 
 a.logo span {
-  color: #68dff0;
+  color: $blue-lightest;
 }
 
 
@@ -547,13 +570,13 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .dropdown-menu.extended li p.green {
-  background-color: #68dff0;
-  color: #fff;
+  background-color: $blue-lightest;
+  color: white;
 }
 
 .dropdown-menu.extended li p.yellow {
-  background-color: #fcb322;
-  color: #fff;
+  background-color: $orange-dark;
+  color: white;
 }
 
 .dropdown-menu.extended li a {
@@ -746,14 +769,14 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .notify-arrow-yellow {
-  border-color: transparent transparent #FCB322;
-  border-bottom-color: #FCB322 !important;
-  border-top-color: #FCB322 !important;
+  border-color: transparent transparent $orange-dark;
+  border-bottom-color: $orange-dark !important;
+  border-top-color: $orange-dark !important;
 }
 .notify-arrow-green {
-  border-color: transparent transparent #68dff0;
-  border-bottom-color: #68dff0 !important;
-  border-top-color: #68dff0 !important;
+  border-color: transparent transparent $blue-lightest;
+  border-bottom-color: $blue-lightest !important;
+  border-top-color: $blue-lightest !important;
 }
 
 
@@ -849,7 +872,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .ds a {
-  color: #68dff0;
+  color: $blue-lightest;
 }
 
 /* LINE ICONS CONFIGURATION */
@@ -945,7 +968,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
   position: absolute;
   bottom: 0;
   background: #ff865c;
-  color: #68dff0;
+  color: $blue-lightest;
   width: 100%;
   -webkit-border-radius: 5px 5px 0 0;
   -moz-border-radius: 5px 5px 0 0;
@@ -1079,7 +1102,7 @@ PANELS CONFIGURATIONS
 /*Green Panel*/
 .green-panel {
   text-align: center;
-  background: #68dff0;
+  background: $blue-lightest;
 }
 .green-panel .green-header {
   background: #43b1a9;
@@ -1123,7 +1146,7 @@ PANELS CONFIGURATIONS
 }
 
 .white-panel i {
-  color: #68dff0;
+  color: $blue-lightest;
   padding-right: 4px;
   font-size: 14px;
 }
@@ -1329,12 +1352,12 @@ PANELS CONFIGURATIONS
   left: 35px;
 }
 .badge-hot {
-  background: #ed5565;
+  background: $red-lightest;
   width: 70px;
   height: 70px;
   line-height: 70px;
   font-size: 18px;
-  color: #fff;
+  color: white;
   text-align: center;
   border-radius: 100%;
 }
@@ -1538,7 +1561,7 @@ PANELS CONFIGURATIONS
   font-weight: 900;
 }
 .profile-01 {
-  background: #68dff0;
+  background: $blue-lightest;
   height: 50px;
 }
 .profile-01:hover {
@@ -1586,7 +1609,7 @@ PANELS CONFIGURATIONS
   color: #cdcdcd;
 }
 .pr2-social a:hover {
-  color: #68dff0;
+  color: $blue-lightest;
 }
 .pr2-social i {
   margin-top: 15px;
@@ -1631,18 +1654,18 @@ PANELS CONFIGURATIONS
 }
 .panel.terques-chart {
   background: transparent;
-  color: #797979;
+  color: $grey-light;
 }
 .panel.terques-chart .chart-tittle .value {
   float: right;
-  color: #fff;
+  color: white;
 }
 .panel.terques-chart .chart-tittle .value a {
   color: #2f2f2f;
   font-size: 12px;
 }
 .panel.terques-chart .chart-tittle .value a:hover, .panel.terques-chart .chart-tittle .value a.active {
-  color: #68dff0;
+  color: $blue-lightest;
   font-size: 12px;
 }
 .panel.terques-chart .chart-tittle {
@@ -1697,7 +1720,7 @@ PANELS CONFIGURATIONS
   display: block;
   position: relative;
   overflow: hidden;
-  background-color: #68dff0;
+  background-color: $blue-lightest;
   -webkit-transition: background-color 0.4s;
   -moz-transition: background-color 0.4s;
   -o-transition: background-color 0.4s;
@@ -1717,7 +1740,7 @@ PANELS CONFIGURATIONS
 }
 
 .project:hover .photo-wrapper {
-  background-color: #68dff0;
+  background-color: $blue-lightest;
   background-image:url(../img/zoom.png);
   background-repeat:no-repeat;
   background-position:center;
@@ -1788,7 +1811,7 @@ label {
 }
 
 #focusedInput {
-  border: 1px solid #ed5565;
+  border: 1px solid $red-lightest;
   box-shadow: none;
 }
 
@@ -1951,7 +1974,7 @@ label {
 .form-login {
   max-width: 330px;
   margin: 100px auto 0;
-  background: #fff;
+  background: white;
   border-radius: 5px;
   -webkit-border-radius: 5px;
 }
@@ -1960,10 +1983,10 @@ label {
   margin: 0;
   padding: 25px 20px;
   text-align: center;
-  background: #68dff0;
+  background: $blue-lightest;
   border-radius: 5px 5px 0 0;
   -webkit-border-radius: 5px 5px 0 0;
-  color: #fff;
+  color: white;
   font-size: 20px;
   text-transform: uppercase;
   font-weight: 300;
@@ -2002,7 +2025,7 @@ label {
 }
 
 .lock-screen a:hover {
-  color: #48cfad
+  color: $green-lightest;
 }
 
 .lock-screen i {
@@ -2060,7 +2083,7 @@ label {
 }
 
 .badge.bg-warning {
-  background: #FCB322;
+  background: $orange-dark;
 }
 
 .badge.bg-important {
@@ -2159,7 +2182,7 @@ label {
   padding: 14px 15px;
   text-align: center;
   border-right: 1px solid #d5d8df;
-  color: #797979;
+  color: $grey-light;
 }
 
 .panel-footer.revenue-foot ul li a:hover, .panel-footer.revenue-foot ul li.active a {
@@ -2245,8 +2268,8 @@ label {
   width: 100%;
   height: 40px;
 
-  background: #68dff0;
-  color: #fff;
+  background: $blue-lightest;
+  color: white;
   padding: 10px 0;
 }
 
