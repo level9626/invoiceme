@@ -4,6 +4,10 @@
 
 $border: grey;
 
+.img-left{
+  margin: 5px;
+}
+
 //Form
 #invoice {
   padding: 10px;
@@ -12,7 +16,7 @@ $border: grey;
 
   #logo {
     img {
-      margin: 5px;
+      @extend .img-left;
     }
   }
 

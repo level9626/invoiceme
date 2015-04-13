@@ -150,8 +150,6 @@ GEM
     hike (1.2.3)
     hitimes (1.2.2)
     i18n (0.7.0)
-    image-picker-rails (0.2.4)
-      railties (>= 3.0)
     interception (0.5)
     jbuilder (2.2.13)
       activesupport (>= 3.0.0, < 5)
@@ -376,7 +374,6 @@ DEPENDENCIES
   guard-rails
   guard-rspec
   high_voltage
-  image-picker-rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks (~> 2.1.0)

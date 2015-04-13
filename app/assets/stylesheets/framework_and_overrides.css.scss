@@ -31,18 +31,6 @@ img {
   @extend .btn-primary;
   @extend .btn-lg;
   }
-// apply styles to HTML elements
-// to make views framework-neutral
-main {
-  //padding-bottom: 80px;
-  width: auto;
-  //margin-top: 51px; // accommodate the navbar
-  padding-top: 80px;
-  }
-section {
-  //@extend .row;
-  //margin-top: -25px;
-  }
 
 // Styles for form views
 // using Bootstrap
