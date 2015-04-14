@@ -8,15 +8,19 @@ section#container
     #top_menu.nav.notify-row
       /! notification start
       ul.nav.top-menu
-        .btn-group
-          button.btn.btn-theme type="button"
-            = link_to 'Home', root_path
-    .top-menu
-      ul.nav.pull-right.top-menu
         li
           .btn-group
-            button.btn.btn-theme.dropdown-toggle data-toggle="dropdown" type="button"
-              i.fa.fa-cog.fa-spin
-            ul.dropdown-menu role="menu"
-              li
-                == render 'layouts/navigation_links'
+            button.btn.btn-theme type="button"
+              = link_to 'Home', root_path
+    .top-menu
+      ul.nav.pull-right.top-menu
+
+
+        li.dropdown
+          button.btn.btn-theme.dropdown-toggle data-toggle="dropdown" type="button"
+            i.fa.fa-cog.fa-spin
+          ul.dropdown-menu.extended.tasks-bar
+            .notify-arrow.notify-arrow-green
+            li
+              p.green Choose
+              == render 'layouts/navigation_links'

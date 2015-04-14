@@ -12,6 +12,10 @@
 #
 
 class Company < ActiveRecord::Base
+  validates :logo, presence: true
+  validates :name, presence: true, length: { maximum: 150 }
+  validates :address, presence: true, length: { maximum: 300 }
+
   belongs_to :user
   has_many :invoices
 
