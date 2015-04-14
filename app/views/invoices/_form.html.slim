@@ -1,22 +1,11 @@
 = simple_form_for(@invoice) do |f|
-  .col-md-10.col-md-offset-1.borderise#client-company
-    blockquote
-      p To create the invoice, select one of your companies, and the client.
-    section
-      .row
-        .col-md-6
-          = f.input :company_id, collection: current_user.companies, \
-                    input_html: { data: { :'relation-name' => 'companies' }}
-        .col-md-6
-          = f.input :client_id,  collection: current_user.clients,\
-                    input_html: { data: { :'relation-name' => 'clients' }}
-
-  .col-md-10.col-md-offset-1.hidden#invoice
+  .col-md-10.col-md-offset-1#invoice
     section#header
       .row
         .col-md-6#logo
           / Will be appended dynamically
-          /= image_tag current_user.companies.last.logo_url, size: '50x50'
+          - if @invoice.try(:company).try(:logo_url)
+            = image_tag @invoice.company.logo_url, size: '50x50'
         .col-md-6.text-right INVOICE
 
     section#invoice_number-invoice-date
@@ -30,11 +19,13 @@
     section#company-client
       .row
         .col-md-6
-          | From
-          strong#companies_name
+          = f.input :company_id, boolean_style: :inline, label: 'From', \
+                    collection: current_user.companies, \
+                    input_html: {data: {:'relation-name' => 'companies'}}
         .col-md-6
-          | To
-          strong#clients_name
+          = f.input :client_id, boolean_style: :inline, label: 'To', \
+                    collection: current_user.clients,\
+                    input_html: {data: {:'relation-name' => 'clients'}}
       hr
       .row
         .col-md-6
@@ -77,6 +68,8 @@
                 td
                   strong SUBTOTAL:
                 td#subtotal
+                  span= @invoice.subtotal
+                  .hidden= f.input :subtotal
               tr
                 td
                   strong VAT RATE:

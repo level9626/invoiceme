@@ -61,7 +61,17 @@ class InvoicesController < ApplicationController
         :client_row_text,
         :company_id,
         :client_id,
-        invoice_items_attributes: [:description, :hours_or_tasks, :rate]
+        :subtotal,
+        :vat_rate,
+        :vat,
+        :discount,
+        invoice_items_attributes: [
+            :description,
+            :hours_or_tasks,
+            :rate,
+            :_destroy,
+            :amount
+        ]
       ])
     end
 end

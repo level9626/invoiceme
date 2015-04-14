@@ -1,52 +1,81 @@
-section
-  .col-md-10.col-md-offset-1#invoice
-    section#header
-      .row
-        .col-md-6#logo
-          = image_tag current_user.companies.last.logo_url, size: '50x50'
-        .col-md-6.text-right INVOICE
+.col-md-10.col-md-offset-1#invoice
+  section#header
+    .row
+      .col-md-6#logo= image_tag @invoice.company.logo_url, size: '50x50'
+      .col-md-6.text-right INVOICE
 
-    section#invoice_number-invoice-date
-      .row
-        .col-md-6#invoice_number
-          = @invoice.invoice_number
-        .col-md-6#invoice-date
-          = @invoice.invoice_date
+  section#invoice_number-invoice-date
+    .row
+      .col-md-6#invoice_number
+        | Invoice Number:
+        span= @invoice.invoice_number
+      .col-md-6#invoice-date.text-right
+        | Invoice Date:
+        span=t @invoice.invoice_date
 
-    section#company-client
-      .row
-        .col-md-6 From
-        .col-md-6 To
-      hr
-      .row
-        .col-md-6
-          = @invoice.company_row_text.html_safe
-        .col-md-6
-          = @invoice.client_row_text.html_safe
+  hr
+  section#company-client
+    .row
+      .col-md-6
+        | From:
+        span=  @invoice.company.name
+      .col-md-6
+        | To:
+        span= @invoice.client.name
+    hr
+    .row
+      .col-md-6= @invoice.company_row_text.html_safe
+      .col-md-6= @invoice.client_row_text.html_safe
 
-    section
-      table class="table"
-        thead
+  hr
+  section
+    table class="table"
+      thead
+        tr
+          th DESCRIPTION
+          th HOURS/TASKS
+          th RATE
+          th AMOUNT
+      tbody#invoice_items_container
+        - @invoice.invoice_items.each do |invoice_item|
           tr
-            th DESCRIPTION
-            th HOURS/TASKS
-            th RATE
-            th AMOUNT
-        tbody#invoice_items_container
-         - @invoice.invoice_items.each do |invoice_item|
+            td= invoice_item.description
+            td= invoice_item.hours_or_tasks
+            td= invoice_item.rate
+            td= invoice_item.amount
+
+  hr
+  section
+    .row
+      .col-md-6
+        = @invoice.comment.html_safe
+      .col-md-6
+        table class="table"
+          tbody
             tr
-              td= invoice_item.description
-              td= invoice_item.hours_or_tasks
-              td= invoice_item.rate
+              td
+                strong SUBTOTAL:
+              td#subtotal= @invoice.subtotal
+            tr
+              td
+                strong VAT RATE:
+              td#vat-rate= @invoice.vat_rate
+            tr
+              td
+                strong VAT:
+              td#vat= @invoice.vat
+            tr
+              td
+                strong DISCOUNT:
+              td#discount= @invoice.discount
+        hr
+        h4
+          | Currency:
+          = @invoice.currency
 
-    section
-      .col-md-4
-        = @invoice.currency
-
-    section#coment
-      = @invoice.comment.html_safe
-    section#footer
-      .col-md-6
-        p.text-left Thank You For Your Business!
-      .col-md-6
-        p.text-right Make all checks payable to: Company name
+  hr
+  section#footer
+    .col-md-6
+      p.text-left Thank You For Your Business!
+    .col-md-6
+      p.text-right Make all checks payable to: Company name

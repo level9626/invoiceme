@@ -1,16 +1,8 @@
 var invoiceMe = invoiceMe || {};
 invoiceMe.invoice = invoiceMe.invoice || {};
 
-invoiceMe.invoice.showInvoiceForm = function () {
-    if ( $('#invoice_company_id').val() && $('#invoice_client_id').val() ) {
-        $('#client-company').addClass('hidden');
-        $('#invoice').removeClass('hidden');
-    }
-};
-
 $(document).ready( function() {
     // Invoice Logo, client and company CTRL
-    invoiceMe.invoice.showInvoiceForm();
     $('#invoice_company_id, #invoice_client_id').change(function (){
 
         var changed_id      = $(this).val(),
@@ -27,7 +19,7 @@ $(document).ready( function() {
             $('#'+relation_name+'_name').text(data.name);
             $('#'+relation_name+'_address').data("wysihtml5").editor.setValue(data.address);
         }, 'json');
-
-        invoiceMe.invoice.showInvoiceForm();
     });
+
+    $('#invoice_company_id, #invoice_client_id').trigger('change');
 });

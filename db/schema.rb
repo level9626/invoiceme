@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413084642) do
+ActiveRecord::Schema.define(version: 20150414202317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20150413084642) do
     t.integer  "invoice_id",                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "amount",                      null: false
   end
 
   add_index "invoice_items", ["invoice_id"], name: "index_invoice_items_on_invoice_id", using: :btree
@@ -64,6 +65,10 @@ ActiveRecord::Schema.define(version: 20150413084642) do
     t.datetime "updated_at"
     t.text     "company_row_text",              null: false
     t.text     "client_row_text",               null: false
+    t.float    "subtotal",                      null: false
+    t.float    "vat_rate"
+    t.float    "vat"
+    t.float    "discount"
   end
 
   add_index "invoices", ["invoice_number", "client_id", "company_id"], name: "index_invoices_on_invoice_number_and_client_id_and_company_id", unique: true, using: :btree
