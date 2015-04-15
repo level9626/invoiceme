@@ -21,7 +21,6 @@ module InvoiceTracker
     end
 
     config.assets.precompile += %w( upmin/upmin.css )
-    config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
