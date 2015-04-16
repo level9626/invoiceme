@@ -1,0 +1,2 @@
+      invoke  active_record
+      remove    db/migrate/20150416151633_add_status_to_invoices.rb
