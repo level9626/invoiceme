@@ -31,7 +31,7 @@ $(document).ready(function(){
 
     // Date and timepicker
     $('.datepicker').datepicker({
-        format: 'mm/dd/yyyy',
+        format: 'dd/mm/yyyy',
         startDate: '+1d',
         autoclose: true
     });

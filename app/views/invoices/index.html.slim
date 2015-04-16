@@ -1,22 +1,40 @@
-h1 Listing invoices
+h3
+  i.fa.fa-angle-right
+  | Your invoices
 
-table.table
-  thead
-    tr
-      th Invoice Number
-      th Invoice Date
-      th
-      th
 
-  tbody
-    - @invoices.each do |invoice|
-      tr
-        td = invoice.invoice_number
-        td = invoice.user_id
-        td = link_to 'Show', invoice
-        td = link_to 'Edit', edit_invoice_path(invoice)
-        td = link_to 'Destroy', invoice, data: {:confirm => 'Are you sure?'}, :method => :delete
 
+.row.mt
+  .col-md-12
+    section.task-panel.tasks-widget
+      .panel-body
+        .task-content
+          table.table
+            thead
+              tr
+                th = sort_link @search, :invoice_number, "Invoice Number"
+                th = sort_link @search, :preferences_client_name , "Client"
+                th = sort_link @search, :currency , "Currency"
+                th = sort_link @search, :invoice_number , "Status"
+                th = sort_link @search, :invoice_date , "Invoice Date"
+                th
+                th
+
+            tbody
+              - @invoices.each do |invoice|
+                tr
+                  td = invoice.invoice_number
+                  td = invoice.client.name
+                  td = invoice.currency
+                  td =
+                  td = invoice.invoice_date
+                  td = link_to invoice, :method => :get, class: "btn btn-success btn-xs"
+                    i.fa.fa-eye
+                  td = link_to edit_invoice_path(invoice), :method => :get, class: "btn btn-primary btn-xs"
+                    i.fa.fa-pencil
+                  td = link_to invoice, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger btn-xs"
+                    i.fa.fa-trash-o
 br
 
-= link_to 'New Invoice', new_invoice_path
+= button_to 'Add New Invoice', new_invoice_path, :method => :get, class: "btn btn-success btn-sm"
+= will_paginate @invoices

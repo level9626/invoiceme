@@ -2,7 +2,6 @@
 @import "bootstrap";
 /* Import fonts */
 @import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
-
 /* COLOR VARIABLES */
 
 $orange-main: #ffd777;
@@ -22,20 +21,40 @@ $green-lightest: #48cfad;
 $green-dark: #37bc9b;
 
 $grey-light: #797979;
+$grey-light-lightest: #F2F2F2;
 
 $black-light: #1a1a1a;
 
 
 /* BASIC THEME CONFIGURATION */
 
-i.fa::before {
-  color: $orange-main;
-  padding-right: 5px;
-}
-i.fa.fa-cog::before {
-  padding: 0px;
-  color: white;
-  font-size: large;
+i {
+  &.fa::before {
+    color: $orange-main;
+    padding-right: 5px;
+  }
+  &.fa {
+    &.fa-cog::before {
+      padding: 0;
+      color: white;
+      font-size: large;
+    }
+    &.fa-trash-o::before {
+      color: white;
+      padding: 0;
+    }
+    &.fa-pencil::before {
+      color: white;
+      padding: 0;
+    }
+    &.fa-eye::before {
+      color: white;
+      padding: 0;
+    }
+    &.fa-angle-right::before {
+      color: $gray-light;
+    }
+  }
 }
 
 .btn.btn-theme.dropdown-toggle {
@@ -147,7 +166,7 @@ a, a:hover, a:focus {
 .btn-theme:active,
 .btn-theme.active,
 .open .dropdown-toggle.btn-theme {
-  color: #fff;
+  color: white;
   background-color: $blue-light-green;
   border-color: $blue-light-green;
 }
@@ -442,10 +461,40 @@ ul.sidebar-menu li a.active i {
   font-size: 11px;
 }
 
+
 /* MAIN CONTENT CONFIGURATION */
+
+#main-content > section > div > div > div.pagination {
+  float: right;
+  margin-top: -25px;
+}
+
+#main-content > section > div > div > div > div > section > div > div > table > tbody > tr:nth-child(1) > td {
+  &:nth-child(6) {
+    width: 20px;
+  }
+  &:nth-child(7) {
+    width: 20px;
+  }
+  &:nth-child(8) {
+    width: 20px;
+  }
+}
+
 #main-content {
+  background-color: $grey-light-lightest;
   padding-top: 50px;
   margin-left: 210px;
+  > section > div > div > {
+    h3 {
+      color: $grey-light;
+      font-family: FontAwesome;
+      font-size: 24px;
+    }
+    div > div > section > div > div > table > tbody > tr:hover {
+      background-color: $gray-lighter;
+    }
+  }
 }
 
 .header, .footer {
@@ -1126,8 +1175,9 @@ PANELS CONFIGURATIONS
 /*White Panel */
 .white-panel {
   text-align: center;
-  background: #ffffff;
-  color: #ccd1d9;
+  background: white;
+  color: $grey-light;
+  height: auto;
 }
 
 .white-panel p {
