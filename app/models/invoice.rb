@@ -39,4 +39,14 @@ class Invoice < ActiveRecord::Base
   validates :company_row_text, :client_row_text, length: {in: 1..300}
   validates :subtotal, presence: true, numericality: true
   validates :vat_rate, :vat, :discount, numericality: true, allow_blank: true
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |invoice|
+        csv << invoice.attributes.values_at(*column_names)
+      end
+    end
+  end
+
 end

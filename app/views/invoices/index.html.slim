@@ -33,7 +33,10 @@ h3
                   td = link_to invoice, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger btn-xs"
                     i.fa.fa-trash-o
     br
-    = button_to 'Add New Invoice', new_invoice_path, :method => :get, class: "btn btn-success btn-sm"
+      .col-md-2
+        = button_to 'Add New Invoice', new_invoice_path, :method => :get, class: "btn btn-primary btn-sm"
+      .col-md-4
+        = button_to 'Download to CSV', invoices_path(format: "csv"), :method => :get, class: "btn btn-success btn-sm"
     = will_paginate @invoices
   .col-md-2
     = render 'invoices/filter'
