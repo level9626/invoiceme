@@ -1,7 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 /* Import fonts */
 @import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
+
+
 /* COLOR VARIABLES */
 
 $orange-main: #ffd777;
@@ -27,36 +30,61 @@ $black-light: #1a1a1a;
 
 
 /* BASIC THEME CONFIGURATION */
-
+.fa {
+  &.fa-tag::before {
+    color: $grey-light;
+    padding-right: 5px;
+  }
+  &.fa-check::before {
+    color: $grey-light;
+    padding-right: 5px;
+  }
+  &.fa-usd::before {
+    color: $grey-light;
+    padding-right: 5px;
+  }
+  &.fa-calendar::before {
+    color: $grey-light;
+    padding-right: 5px;
+  }
+}
 i {
   &.fa::before {
-    color: $orange-main;
-    padding-right: 5px;
+    padding: 0;
+    color: white;
   }
   &.fa {
     &.fa-cog::before {
-      padding: 0;
-      color: white;
       font-size: large;
     }
-    &.fa-trash-o::before {
-      color: white;
-      padding: 0;
+    &.fa-user::before {
+      color: $orange-main;
+      padding-right: 5px;
     }
-    &.fa-pencil::before {
-      color: white;
-      padding: 0;
+    &.fa-gears::before {
+      color: $orange-main;
+      padding-right: 5px;
     }
-    &.fa-eye::before {
-      color: white;
-      padding: 0;
+    &.fa-briefcase::before {
+      color: $orange-main;
+      padding-right: 5px;
+    }
+    &.fa-users::before {
+      color: $orange-main;
+      padding-right: 5px;
+    }
+    &.fa-folder::before {
+      color: $orange-main;
+      padding-right: 5px;
     }
     &.fa-angle-right::before {
       color: $gray-light;
     }
+    &.fa-check::before {
+      padding-right: 5px;
+    }
   }
 }
-
 .btn.btn-theme.dropdown-toggle {
   color: white;
   font-size: 12px;
@@ -464,7 +492,8 @@ ul.sidebar-menu li a.active i {
 
 /* MAIN CONTENT CONFIGURATION */
 
-#main-content > section > div > div > div.pagination {
+
+#main-content > section > div > div > div > div.col-md-10 > div.pagination {
   float: right;
   margin-top: -25px;
 }
@@ -496,6 +525,21 @@ ul.sidebar-menu li a.active i {
     }
   }
 }
+
+.panel-heading span {
+  margin-top: -20px;
+  font-size: 15px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+#main-content > section > div > div > div.col-md-2 {
+  margin-top: -40px;
+  float: right;
+}
+
 
 .header, .footer {
   min-height: 60px;
@@ -1264,7 +1308,7 @@ PANELS CONFIGURATIONS
 
 /* Weather 1 */
 .weather {
-  background: url(../img/weather.jpg) no-repeat center top;
+  background: url(img/weather.jpg) no-repeat center top;
   text-align: center;
   background-position: center center;
 }
@@ -1371,7 +1415,7 @@ PANELS CONFIGURATIONS
 
 /* Instagram Panel*/
 .instagram-panel {
-  background: url(../img/instagram.jpg) no-repeat center top;
+  background: url(img/instagram.jpg) no-repeat center top;
   text-align: center;
   background-position: center center;
 }
@@ -1415,7 +1459,7 @@ PANELS CONFIGURATIONS
 
 /* Soptify Panel */
 #spotify {
-  background: url(../img/lorde.jpg) no-repeat center top;
+  background: url(img/lorde.jpg) no-repeat center top;
   margin-top: -15px;
   background-attachment: relative;
   background-position: center center;
@@ -1459,7 +1503,7 @@ PANELS CONFIGURATIONS
 
 /* BLOG PANEL */
 #blog-bg {
-  background: url(../img/blog-bg.jpg) no-repeat center top;
+  background: url(img/blog-bg.jpg) no-repeat center top;
   margin-top: -15px;
   background-attachment: relative;
   background-position: center center;
@@ -1584,7 +1628,7 @@ PANELS CONFIGURATIONS
 /* PROFILE PANELS */
 /* Profile 01*/
 #profile-01 {
-  background: url(../img/profile-01.jpg) no-repeat center top;
+  background: url(img/profile-01.jpg) no-repeat center top;
   margin-top: -15px;
   background-attachment: relative;
   background-position: center center;
@@ -1632,7 +1676,7 @@ PANELS CONFIGURATIONS
 
 /* Profile 02*/
 #profile-02 {
-  background: url(../img/profile-02.jpg) no-repeat center top;
+  background: url(img/profile-02.jpg) no-repeat center top;
   margin-top: -15px;
   background-attachment: relative;
   background-position: center center;
@@ -1792,7 +1836,7 @@ PANELS CONFIGURATIONS
 
 .project:hover .photo-wrapper {
   background-color: $blue-lightest;
-  background-image:url(../img/zoom.png);
+  background-image:url(img/zoom.png);
   background-repeat:no-repeat;
   background-position:center;
   top: 0;
@@ -1888,8 +1932,8 @@ label {
   position: relative;
   text-align: left;
   width: 80px;
-  -webkit-mask: url('../img/mask.png') 0 0 no-repeat;
-  mask: url('../img/mask.png') 0 0 no-repeat;
+  -webkit-mask: url('img/mask.png') 0 0 no-repeat;
+  mask: url('img/mask.png') 0 0 no-repeat;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1995,8 +2039,8 @@ label {
 .switch-square {
   border-radius: 6px;
   -webkit-border-radius: 6px;
-  -webkit-mask: url('../img/mask.png') 0 0 no-repeat;
-  mask: url('../img/mask.png') 0 0 no-repeat;
+  -webkit-mask: url('img/mask.png') 0 0 no-repeat;
+  mask: url('img/mask.png') 0 0 no-repeat;
 }
 .switch-square > div.switch-off label {
   border-color: #7f8c9a;

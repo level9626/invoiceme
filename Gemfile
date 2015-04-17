@@ -15,6 +15,7 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'cocoon'
 gem 'will_paginate'
+gem 'font-awesome-rails'
 
 # db
 gem 'pg'

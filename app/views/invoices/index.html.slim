@@ -2,10 +2,8 @@ h3
   i.fa.fa-angle-right
   | Your invoices
 
-
-
 .row.mt
-  .col-md-12
+  .col-md-10
     section.task-panel.tasks-widget
       .panel-body
         .task-content
@@ -13,7 +11,7 @@ h3
             thead
               tr
                 th = sort_link @search, :invoice_number, "Invoice Number"
-                th = sort_link @search, :preferences_client_name , "Client"
+                th = sort_link @search, :client_name , "Client"
                 th = sort_link @search, :currency , "Currency"
                 th = sort_link @search, :invoice_status , "Status"
                 th = sort_link @search, :invoice_date , "Invoice Date"
@@ -34,7 +32,10 @@ h3
                     i.fa.fa-pencil
                   td = link_to invoice, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger btn-xs"
                     i.fa.fa-trash-o
-br
+    br
+    = button_to 'Add New Invoice', new_invoice_path, :method => :get, class: "btn btn-success btn-sm"
+    = will_paginate @invoices
+  .col-md-2
+    = render 'invoices/filter'
 
-= button_to 'Add New Invoice', new_invoice_path, :method => :get, class: "btn btn-success btn-sm"
-= will_paginate @invoices
+br

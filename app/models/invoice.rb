@@ -18,6 +18,7 @@
 
 class Invoice < ActiveRecord::Base
   CURS = ['EUR','USD','UAH','RUB']
+  STATUS = ['open', 'closed', 'overdue']
   belongs_to :company
   belongs_to :client
   belongs_to :user
@@ -29,6 +30,10 @@ class Invoice < ActiveRecord::Base
                         in: CURS,
                         message: "is not included in the list #{CURS.join(',')}"
                        }
+  validates :status, inclusion: {
+                        in: STATUS,
+                        message: "is not included in the list #{STATUS.join(',')}"
+                   }
   validates :invoice_number, :invoice_date, presence: true
   validates :user_id, :company_id, :client_id, presence: true
   validates :company_row_text, :client_row_text, length: {in: 1..300}

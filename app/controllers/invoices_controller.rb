@@ -6,9 +6,9 @@ class InvoicesController < ApplicationController
   respond_to :html
 
   def index
-    @search = Invoice.search(params[:q])
-    @invoices = @search.result.paginate(:per_page => 5, :page => params[:page])
-    @search.build_sort if @search.sorts.empty?
+    @search = Invoice.where(user: current_user).includes(:client).search(params[:q])
+    @invoices = @search.result.paginate(:per_page => 10, :page => params[:page])
+
     #@invoices = Invoice.where(user: current_user)
     #respond_with(@invoices)
   end
