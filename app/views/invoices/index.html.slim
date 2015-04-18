@@ -34,9 +34,13 @@ h3
                     i.fa.fa-trash-o
     br
       .col-md-2
-        = button_to 'Add New Invoice', new_invoice_path, :method => :get, class: "btn btn-primary btn-sm"
+        = button_to new_invoice_path, :method => :get, class: "btn btn-primary btn-sm" do
+          .fa.fa-plus
+            | Add New Invoice
       .col-md-4
-        = button_to 'Download to CSV', invoices_path(format: "csv"), :method => :get, class: "btn btn-success btn-sm"
+        = link_to invoices_path(params.merge(format: 'csv')), class: "btn btn-success btn-sm"
+          .fa.fa-download
+          | Download to CSV
     = will_paginate @invoices
   .col-md-2
     = render 'invoices/filter'
