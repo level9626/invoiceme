@@ -17,6 +17,10 @@ gem 'cocoon'
 gem 'will_paginate'
 gem 'font-awesome-rails'
 
+# PDF
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 # db
 gem 'pg'
 gem 'composite_primary_keys'

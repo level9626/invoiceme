@@ -44,5 +44,12 @@ h3
     = will_paginate @invoices
   .col-md-2
     = render 'invoices/filter'
-
-br
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title Tags
+      .panel-body
+        /= render 'invoices/tags'
+        = search_form_for @search do |f|
+          = link_to "Currency", @search_invoice_path
+          br
+          = @search.currency_cont.blank?

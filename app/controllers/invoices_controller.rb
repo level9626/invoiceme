@@ -17,7 +17,14 @@ class InvoicesController < ApplicationController
   end
 
   def show
-    respond_with(@invoice)
+    #respond_with(@invoice)
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render  :pdf => "file", :template => 'invoices/show.html.slim'
+      end
+    end
   end
 
   def new
