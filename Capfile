@@ -3,6 +3,8 @@
 require 'capistrano/setup'
 require 'capistrano/deploy'
 require 'capistrano/rails'
+# Includes asset handling
+require 'capistrano/rails/assets'
 require 'capistrano/puma'
 
 
