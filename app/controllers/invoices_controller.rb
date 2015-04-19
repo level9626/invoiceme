@@ -22,7 +22,7 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render  :pdf => "file", :template => 'invoices/show.html.slim'
+        render  :pdf => "file", :template => 'invoices/_show_content.html.slim', :zoom => 0.9, :layout => 'pdf_layout'
       end
     end
   end

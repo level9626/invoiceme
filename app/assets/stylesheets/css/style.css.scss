@@ -4,11 +4,15 @@
 /* Import fonts */
 @import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
 
+h3 {
+  font-family: 'Ruda', sans-serif !important;
+}
 
 /* COLOR VARIABLES */
 
 $orange-main: #ffd777;
 $orange-dark: #fcb322;
+$orange-saturated: #ff865c;
 
 $blue-light: #64c3c2;
 $blue-lightest: #68dff0;
@@ -510,14 +514,22 @@ ul.sidebar-menu li a.active i {
   }
 }
 
+#invoice_comment {
+  font-family: FontAwesome;
+}
+
 #main-content {
+  span {
+    margin-left: 5px;
+  }
   background-color: $grey-light-lightest;
   padding-top: 50px;
   margin-left: 210px;
+  font-family: 'Ruda', sans-serif !important;
   > section > div > div > {
     h3 {
       color: $grey-light;
-      font-family: FontAwesome;
+      font-family: 'Ruda', sans-serif;
       font-size: 24px;
     }
     div > div > section > div > div > table > tbody > tr:hover {
@@ -526,8 +538,10 @@ ul.sidebar-menu li a.active i {
   }
 }
 
+
 .panel-heading span {
   margin-top: -20px;
+  margin-left: 5px;
   font-size: 15px;
 }
 
@@ -922,7 +936,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
   line-height: 60px;
   height: 60px;
   margin: 0;
-  background: #ff865c;
+  background: $orange-saturated;
   text-align: center;
 }
 
@@ -1003,7 +1017,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .box0:hover p {
-  color: #ff865c;
+  color: $orange-saturated;
 }
 
 .box0:hover {
@@ -1061,7 +1075,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .custom-bar-chart .bar .value {
   position: absolute;
   bottom: 0;
-  background: #ff865c;
+  background: $orange-saturated;
   color: $blue-lightest;
   width: 100%;
   -webkit-border-radius: 5px 5px 0 0;

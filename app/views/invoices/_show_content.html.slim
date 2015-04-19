@@ -1,0 +1,96 @@
+section.task-panel.tasks-widget
+  .panel-body
+    .task-content
+
+      section#invoice_number-invoice-date
+        .row
+          .col-md-6
+            .pull-left#logo= image_tag @invoice.company.logo_url, size: '50x50'
+          .col-md-6#invoice-date.text-right
+            h3
+              .fa.fa-calendar
+              span=t @invoice.invoice_date
+      hr
+      section#company-client
+        .col-md-6
+          .panel.panel-default
+            .panel-heading
+              h3.panel-title
+                | From:
+                span= @invoice.company.name
+            .panel-body
+              .row
+                .col-md-6= @invoice.company_row_text.html_safe
+        .col-md-6
+          .panel.panel-default
+            .panel-heading
+              h3.panel-title
+                | To:
+                span= @invoice.client.name
+            .panel-body
+              .row
+                .col-md-6= @invoice.client_row_text.html_safe
+      hr
+      .col-md-12
+        .panel.panel-default
+          .panel-body
+            table class="table"
+              thead
+                tr
+                  th
+                    .fa.fa-pencil
+                      | DESCRIPTION
+                  th
+                    .fa.fa-clock-o
+                      | HOURS/TASKS
+                  th
+                    .fa.fa-star
+                      | RATE
+                  th
+                    .fa.fa-money
+                      | AMOUNT
+
+                .row
+                  tbody#invoice_items_container
+                    - @invoice.invoice_items.each do |invoice_item|
+                      tr
+                        td= invoice_item.description
+                        td= invoice_item.hours_or_tasks
+                        td= invoice_item.rate
+                        td= invoice_item.amount
+      hr
+      section
+        .row
+          .col-md-12
+            .col-md-6#invoice_comment
+              = @invoice.comment.html_safe
+            .col-md-6
+              table class="table"
+                tbody
+                  tr
+                    td
+                      strong SUBTOTAL:
+                    td#subtotal= @invoice.subtotal
+                  tr
+                    td
+                      strong VAT RATE:
+                    td#vat-rate= @invoice.vat_rate
+                  tr
+                    td
+                      strong VAT:
+                    td#vat= @invoice.vat
+                  tr
+                    td
+                      strong DISCOUNT:
+                    td#discount= @invoice.discount
+              hr
+              h4
+                | Currency:
+                span
+                = @invoice.currency
+      hr
+      section#footer
+        .col-md-6
+          p.text-left Thank You For Your Business!
+        .col-md-6
+          p.text-right Make all checks payable to: Company name
