@@ -18,8 +18,14 @@
 
 FactoryGirl.define do
   factory :invoice do
-    title "MyString"
-user_id 1
+    invoice_number 1
+    invoice_date Time.now
+    user_id 1
+    currency 'USD'
+    comment Faker::Lorem.sentence
+    company_id 1
+    client_id 1
+    company_row_text Faker::Lorem.sentence
+    client_row_text Faker::Lorem.sentence
   end
-
 end

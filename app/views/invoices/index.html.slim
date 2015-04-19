@@ -3,6 +3,7 @@ h3
   | Your invoices
 
 .row.mt
+  = render 'tags'
   .col-md-10
     section.task-panel.tasks-widget
       .panel-body
@@ -43,8 +44,4 @@ h3
           | Download to CSV
     = will_paginate @invoices
   .col-md-2
-    = render 'invoices/filter'
-    .panel.panel-default
-      .panel-heading
-        h3.panel-title Tags
-      .panel-body
+    = render 'filter'

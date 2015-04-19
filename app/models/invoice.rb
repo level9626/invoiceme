@@ -17,8 +17,9 @@
 #
 
 class Invoice < ActiveRecord::Base
-  CURS = ['EUR','USD','UAH','RUB']
-  STATUS = ['open', 'closed', 'overdue']
+  CURRENCY = ['EUR','USD','UAH','RUB']
+  STATUS   = ['open', 'closed', 'overdue']
+
   belongs_to :company
   belongs_to :client
   belongs_to :user
@@ -26,14 +27,15 @@ class Invoice < ActiveRecord::Base
 
   accepts_nested_attributes_for :invoice_items
 
-  validates :currency, inclusion: {
-                        in: CURS,
-                        message: "is not included in the list #{CURS.join(',')}"
+  # Iterates through constants, and dynamically creates validations
+  [:CURRENCY, :STATUS].each do |param|
+    inclusion = eval(param.to_s)
+    validates param.downcase, inclusion: {
+                           in: inclusion,
+                           message: "is not included in the list #{inclusion.join(',')}"
                        }
-  validates :status, inclusion: {
-                        in: STATUS,
-                        message: "is not included in the list #{STATUS.join(',')}"
-                   }
+  end
+
   validates :invoice_number, :invoice_date, presence: true
   validates :user_id, :company_id, :client_id, presence: true
   validates :company_row_text, :client_row_text, length: {in: 1..300}

@@ -48,6 +48,10 @@ gem 'ransack'
 gem 'figaro',       '>= 1.0.0.rc1'
 gem 'high_voltage'
 
+group :production do
+  gem 'therubyracer', :platforms => :ruby
+end
+
 group :development do
   gem 'annotate'
   gem 'spring'
