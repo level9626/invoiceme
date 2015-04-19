@@ -1,7 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 /* Import fonts */
 @import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
+
 
 /* COLOR VARIABLES */
 
@@ -22,22 +24,68 @@ $green-lightest: #48cfad;
 $green-dark: #37bc9b;
 
 $grey-light: #797979;
+$grey-light-lightest: #F2F2F2;
 
 $black-light: #1a1a1a;
 
 
 /* BASIC THEME CONFIGURATION */
-
-i.fa::before {
-  color: $orange-main;
-  padding-right: 5px;
+.fa {
+  &.fa-tag::before {
+    color: $grey-light;
+    padding-right: 5px;
+  }
+  &.fa-check::before {
+    color: $grey-light;
+    padding-right: 5px;
+  }
+  &.fa-usd::before {
+    color: $grey-light;
+    padding-right: 5px;
+  }
+  &.fa-calendar::before {
+    color: $grey-light;
+    padding-right: 5px;
+  }
 }
-i.fa.fa-cog::before {
-  padding: 0px;
-  color: white;
-  font-size: large;
-}
+i {
+  &.fa::before {
+    padding: 0;
+    color: white;
+  }
+  &.fa {
+    &.fa-cog::before {
+      font-size: large;
+    }
+    &.fa-user::before {
+      color: $orange-main;
+      padding-right: 5px;
+    }
+    &.fa-gears::before {
+      color: $orange-main;
+      padding-right: 5px;
+    }
+    &.fa-briefcase::before {
+      color: $orange-main;
+      padding-right: 5px;
+    }
+    &.fa-users::before {
+      color: $orange-main;
+      padding-right: 5px;
+    }
+    &.fa-folder::before {
+      color: $orange-main;
+      padding-right: 5px;
+    }
+    &.fa-angle-right::before {
+      color: $gray-light;
+    }
+    &.fa-check::before {
+      padding-right: 5px;
+    }
 
+  }
+}
 .btn.btn-theme.dropdown-toggle {
   color: white;
   font-size: 12px;
@@ -147,7 +195,7 @@ a, a:hover, a:focus {
 .btn-theme:active,
 .btn-theme.active,
 .open .dropdown-toggle.btn-theme {
-  color: #fff;
+  color: white;
   background-color: $blue-light-green;
   border-color: $blue-light-green;
 }
@@ -442,11 +490,56 @@ ul.sidebar-menu li a.active i {
   font-size: 11px;
 }
 
+
 /* MAIN CONTENT CONFIGURATION */
+
+#main-content > section > div > div > div > div.col-md-10 > div.pagination {
+  float: right;
+  margin-top: -15px;
+}
+
+#main-content > section > div > div > div > div > section > div > div > table > tbody > tr:nth-child(1) > td {
+  &:nth-child(6) {
+    width: 20px;
+  }
+  &:nth-child(7) {
+    width: 20px;
+  }
+  &:nth-child(8) {
+    width: 20px;
+  }
+}
+
 #main-content {
+  background-color: $grey-light-lightest;
   padding-top: 50px;
   margin-left: 210px;
+  > section > div > div > {
+    h3 {
+      color: $grey-light;
+      font-family: FontAwesome;
+      font-size: 24px;
+    }
+    div > div > section > div > div > table > tbody > tr:hover {
+      background-color: $gray-lighter;
+    }
+  }
 }
+
+.panel-heading span {
+  margin-top: -20px;
+  font-size: 15px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+#main-content > section > div > div > div.col-md-2 {
+  margin-top: -40px;
+  float: right;
+}
+
 
 .header, .footer {
   min-height: 60px;
@@ -1032,6 +1125,7 @@ PANELS CONFIGURATIONS
 
 /*Panel Size*/
 
+
 .pn {
   height: 250px;
   box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
@@ -1126,8 +1220,9 @@ PANELS CONFIGURATIONS
 /*White Panel */
 .white-panel {
   text-align: center;
-  background: #ffffff;
-  color: #ccd1d9;
+  background: white;
+  color: $grey-light;
+  height: auto;
 }
 
 .white-panel p {
@@ -1214,7 +1309,7 @@ PANELS CONFIGURATIONS
 
 /* Weather 1 */
 .weather {
-  background: url(../img/weather.jpg) no-repeat center top;
+  background: url(img/weather.jpg) no-repeat center top;
   text-align: center;
   background-position: center center;
 }
@@ -1321,7 +1416,7 @@ PANELS CONFIGURATIONS
 
 /* Instagram Panel*/
 .instagram-panel {
-  background: url(../img/instagram.jpg) no-repeat center top;
+  background: url(img/instagram.jpg) no-repeat center top;
   text-align: center;
   background-position: center center;
 }
@@ -1365,7 +1460,7 @@ PANELS CONFIGURATIONS
 
 /* Soptify Panel */
 #spotify {
-  background: url(../img/lorde.jpg) no-repeat center top;
+  background: url(img/lorde.jpg) no-repeat center top;
   margin-top: -15px;
   background-attachment: relative;
   background-position: center center;
@@ -1409,7 +1504,7 @@ PANELS CONFIGURATIONS
 
 /* BLOG PANEL */
 #blog-bg {
-  background: url(../img/blog-bg.jpg) no-repeat center top;
+  background: url(img/blog-bg.jpg) no-repeat center top;
   margin-top: -15px;
   background-attachment: relative;
   background-position: center center;
@@ -1534,7 +1629,7 @@ PANELS CONFIGURATIONS
 /* PROFILE PANELS */
 /* Profile 01*/
 #profile-01 {
-  background: url(../img/profile-01.jpg) no-repeat center top;
+  background: url(img/profile-01.jpg) no-repeat center top;
   margin-top: -15px;
   background-attachment: relative;
   background-position: center center;
@@ -1582,7 +1677,7 @@ PANELS CONFIGURATIONS
 
 /* Profile 02*/
 #profile-02 {
-  background: url(../img/profile-02.jpg) no-repeat center top;
+  background: url(img/profile-02.jpg) no-repeat center top;
   margin-top: -15px;
   background-attachment: relative;
   background-position: center center;
@@ -1742,7 +1837,7 @@ PANELS CONFIGURATIONS
 
 .project:hover .photo-wrapper {
   background-color: $blue-lightest;
-  background-image:url(../img/zoom.png);
+  background-image:url(img/zoom.png);
   background-repeat:no-repeat;
   background-position:center;
   top: 0;
@@ -1838,8 +1933,8 @@ label {
   position: relative;
   text-align: left;
   width: 80px;
-  -webkit-mask: url('../img/mask.png') 0 0 no-repeat;
-  mask: url('../img/mask.png') 0 0 no-repeat;
+  -webkit-mask: url('img/mask.png') 0 0 no-repeat;
+  mask: url('img/mask.png') 0 0 no-repeat;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1945,8 +2040,8 @@ label {
 .switch-square {
   border-radius: 6px;
   -webkit-border-radius: 6px;
-  -webkit-mask: url('../img/mask.png') 0 0 no-repeat;
-  mask: url('../img/mask.png') 0 0 no-repeat;
+  -webkit-mask: url('img/mask.png') 0 0 no-repeat;
+  mask: url('img/mask.png') 0 0 no-repeat;
 }
 .switch-square > div.switch-off label {
   border-color: #7f8c9a;

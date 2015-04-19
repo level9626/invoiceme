@@ -14,13 +14,19 @@ gem 'bootstrap-sass'
 gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'cocoon'
+gem 'will_paginate'
+gem 'font-awesome-rails'
+
+# PDF
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 # db
 gem 'pg'
 gem 'composite_primary_keys'
 gem 'slim-rails'
 
-# Authentication, autorization
+# Authentication, authorization
 gem 'devise'
 gem 'pundit'
 gem 'upmin-admin'
@@ -35,6 +41,9 @@ gem 'puma'
 gem 'simple_form'
 gem 'carrierwave'
 gem 'mini_magick'
+
+#Search
+gem 'ransack'
 
 gem 'figaro',       '>= 1.0.0.rc1'
 gem 'high_voltage'

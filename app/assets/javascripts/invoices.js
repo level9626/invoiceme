@@ -1,10 +1,15 @@
+//Vars namespace for invoiceMe
 var invoiceMe = invoiceMe || {};
 invoiceMe.invoice = invoiceMe.invoice || {};
 
+/*
+ * Invoice Logo, client and company CTRL
+ */
 $(document).ready( function() {
-    // Invoice Logo, client and company CTRL
+    // On Client or company field change, call API to receive address texts
     $('#invoice_company_id, #invoice_client_id').change(function (){
 
+        //Relation name is stored in relation-name data attr
         var changed_id      = $(this).val(),
             relation_name   = $(this).data('relation-name'),
             url             = relation_name+'/'+changed_id+'.json';
@@ -16,10 +21,32 @@ $(document).ready( function() {
                 $('#logo').html(logo);
             }
 
+            //Fill the fields
             $('#'+relation_name+'_name').text(data.name);
             $('#'+relation_name+'_address').data("wysihtml5").editor.setValue(data.address);
         }, 'json');
     });
 
+    //Initialize CTRL for edit page
     $('#invoice_company_id, #invoice_client_id').trigger('change');
 });
+
+
+/*
+ * Invoice search tags CTRL
+ */
+$(document).ready( function() {
+    // Handler for filter clearing
+    $('#tags .btn').click(function (){
+
+        //Relation name is stored in relation-name data attr
+        var predicate = $(this).attr('id'),
+            filter_field = $('#q_' + predicate);
+
+        //Clear field data
+        filter_field.val('');
+        //Submit search form
+        filter_field.closest('form').submit();
+    });
+});
+
