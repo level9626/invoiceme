@@ -25,6 +25,7 @@ set(:linked_dirs,  %w{
   tmp/sockets
   vendor/bundle
   public/system
+  public/uploads
 })
 
 set(:config_files, %w(

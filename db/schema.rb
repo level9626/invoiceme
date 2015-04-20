@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416151826) do
+ActiveRecord::Schema.define(version: 20150419130324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,11 +32,12 @@ ActiveRecord::Schema.define(version: 20150416151826) do
 
   create_table "companies", force: true do |t|
     t.string   "logo"
-    t.string   "name",       null: false
-    t.text     "address",    null: false
-    t.integer  "user_id",    null: false
+    t.string   "name",                       null: false
+    t.text     "address",                    null: false
+    t.integer  "user_id",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "default",    default: false, null: false
   end
 
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
@@ -74,6 +75,15 @@ ActiveRecord::Schema.define(version: 20150416151826) do
 
   add_index "invoices", ["invoice_number", "client_id", "company_id"], name: "index_invoices_on_invoice_number_and_client_id_and_company_id", unique: true, using: :btree
   add_index "invoices", ["invoice_number"], name: "index_invoices_on_invoice_number", using: :btree
+
+  create_table "payments", force: true do |t|
+    t.integer  "invoice_id", null: false
+    t.float    "amount",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "payments", ["invoice_id"], name: "index_payments_on_invoice_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

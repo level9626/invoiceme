@@ -2,6 +2,13 @@
  *= require bootstrap-wysihtml5
  *= require bootstrap-datepicker3
  *= require font-awesome
- *= require_tree .
+ *= require_tree ./css
+ *= require_tree ./img
+ *= require_tree ./upmin
+ *= require clients
+ *= require companies
+ *= require framework_and_overrides
+ *= require invoices
+ *= require payments
  *= require_self
  */

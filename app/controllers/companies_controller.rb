@@ -1,6 +1,5 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
 
   respond_to :html, :json
 
@@ -43,6 +42,6 @@ class CompaniesController < ApplicationController
     end
 
     def company_params
-      params.require(:company).permit(:logo, :name, :address)
+      params.require(:company).permit(:logo, :name, :address, :default)
     end
 end

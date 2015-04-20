@@ -1,23 +1,32 @@
-h1 Listing clients
+h3
+  i.fa.fa-angle-right
+  | Listing Client
 
-table
-  thead
-    tr
-      th Company name
-      th Address
-      th
-      th
-      th
+.row.mt
+  - @clients.each_with_index do |client, i|
+    - if i%3==0
+      .col-md-12
+    .col-md-4.col-sm-4.mb
+      .white-panel.pn.donut-chart
+        .white-header
+          h5= client.name
+        .row
+          .col-sm-6.col-xs-6.goleft
+            p
+              i.fa.fa-database 70%
+          .col-sm-12.col-sx-12
+            = client.address.try(:html_safe)
+        hr
+        footer.clearfix
+          = button_to 'Show', client, method: :get, \
+                       class: 'btn btn-default pull-left'
+          = button_to 'Edit', edit_client_path(client), method: :get, \
+                      class: 'btn btn-default pull-left'
+          = button_to 'Destroy', client, data: {:confirm => 'Are you sure?'}, \
+                      :method => :delete, class: 'btn btn-danger pull-right'
 
-  tbody
-    - @clients.each do |client|
-      tr
-        td = client.name
-        td = client.address.try(:html_safe)
-        td = link_to 'Show', client
-        td = link_to 'Edit', edit_client_path(client)
-        td = link_to 'Destroy', client, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-br
-
-= link_to 'New Client', new_client_path
+  .col-md-12
+    = button_to new_client_path, method: :get, class: 'btn btn-primary btn-sm' do
+      .fa.fa-plus
+        | Add New Client
