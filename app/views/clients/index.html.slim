@@ -1,23 +1,37 @@
-h1 Listing clients
+h3
+  i.fa.fa-angle-right
+  | Listing Clients
 
-table
-  thead
-    tr
-      th Company name
-      th Address
-      th
-      th
-      th
+.row.mt
+  .col-md-12
+    section.task-panel.tasks-widget
+      .panel-body
+        .task-content
+          table.table
+            thead
+              tr
+                th Company name
+                th Address
+                th
+                th
+                th
 
-  tbody
-    - @clients.each do |client|
-      tr
-        td = client.name
-        td = client.address.try(:html_safe)
-        td = link_to 'Show', client
-        td = link_to 'Edit', edit_client_path(client)
-        td = link_to 'Destroy', client, data: {:confirm => 'Are you sure?'}, :method => :delete
+            tbody
+              - @clients.each do |client|
+                tr
+                  td = client.name
+                  td = client.address.try(:html_safe)
 
-br
+                  td = link_to client, :method => :get, class: "btn btn-success btn-xs"
+                    i.fa.fa-eye
+                  td = link_to edit_client_path(client), :method => :get, class: "btn btn-primary btn-xs"
+                    i.fa.fa-pencil
+                  td = link_to client, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger btn-xs"
+                    i.fa.fa-trash-o
 
-= link_to 'New Client', new_client_path
+    br
+      .col-md-2
+        = button_to new_client_path, :method => :get, class: "btn btn-primary btn-sm" do
+          .fa.fa-plus
+            | New Client
+

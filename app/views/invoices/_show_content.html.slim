@@ -94,4 +94,6 @@ section.task-panel.tasks-widget
         .col-md-6
           p.text-left Thank You For Your Business!
         .col-md-6
-          p.text-right Make all checks payable to: Company name
+          p.text-right
+            | Make all checks payable to:
+            span= @invoice.company.name

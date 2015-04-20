@@ -87,7 +87,6 @@ i {
     &.fa-check::before {
       padding-right: 5px;
     }
-
   }
 }
 .btn.btn-theme.dropdown-toggle {
@@ -514,6 +513,7 @@ ul.sidebar-menu li a.active i {
   }
 }
 
+
 #invoice_comment {
   font-family: FontAwesome;
 }
@@ -538,6 +538,11 @@ ul.sidebar-menu li a.active i {
   }
 }
 
+#footer {
+  span {
+    margin-left: 5p;
+  }
+}
 
 .panel-heading span {
   margin-top: -20px;
