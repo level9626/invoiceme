@@ -5,9 +5,9 @@ html
   body
     header
       == render 'layouts/navigation'
-    main[role="main"]
-      .container
-        == render 'layouts/messages'
-        == yield
-      //== render 'layouts/footer'
-
+    section#main-content
+      section.wrapper.site-min-height
+        .row.mt
+          .col-lg-12
+            == render 'layouts/messages'
+            == yield
