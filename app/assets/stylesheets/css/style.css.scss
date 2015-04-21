@@ -2156,7 +2156,7 @@ label {
   background-color: #44ccfe;
   border-color: #2bb4e8;
 }
-.btn-twitter:hover,
+
 .btn-twitter:focus,
 .btn-twitter:active,
 .btn-twitter.active,
@@ -2385,4 +2385,51 @@ label {
 .site-min-height {
   min-height: 900px;
 }
+.btn.btn-twitter {
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+}
 
+/* SIGN IN CONFIGURATION */
+#login-page {
+  font-family: 'Ruda', sans-serif;
+  > div > form > div > span {
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    &> a {
+      text-decoration: none;
+      outline: none;
+    }
+  }
+  > div > form > div > div.registration > a {
+    text-decoration: none;
+    outline: none;
+  }
+  > div > form > div > button {
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+  }
+}
+/* SIGN UP CONFIGURATION */
+#new_user {
+  font-family: 'Ruda', sans-serif;
+  > div.modal-dialog > div > div.modal-footer > a {
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+  }
+  > div.modal-dialog > div > div.modal-footer > input {
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+  }
+  > input {
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+  }
+}

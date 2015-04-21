@@ -1,23 +1,29 @@
-<div class="authform">
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
-    <h3>Sign up</h3>
-    <%= devise_error_messages! %>
-    <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
+<div id="login-page">
+  <div class="container">
+
+    <div class="form-login">
+      <h2 class="form-login-heading">sign up now</h2>
+      <div class="login-wrap">
+
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f| %>
+          <%= devise_error_messages! %>
+          <div class="form-group">
+            <%= f.text_field :name, :autofocus => true, class: 'form-control', placeholder: 'Name' %>
+          </div>
+          <div class="form-group">
+            <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password Confirmation' %>
+          </div>
+          <%= f.submit 'Sign up', class: "btn btn-theme btn-block" %>
+        <% end %>
+
+
+      </div>
     </div>
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-    </div>
-     <%= f.submit 'Sign up', :class => 'button right' %>
-  <% end %>
+  </div>
 </div>
