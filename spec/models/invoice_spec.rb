@@ -14,6 +14,11 @@
 #  updated_at       :datetime
 #  company_row_text :text             not null
 #  client_row_text  :text             not null
+#  subtotal         :float            not null
+#  vat_rate         :float
+#  vat              :float
+#  discount         :float
+#  status           :string(255)      default("open"), not null
 #
 
 require 'rails_helper'

@@ -25,26 +25,34 @@
 
 class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
-  after_initialize :set_default_role, :if => :new_record?
 
-
+  ## Relations
   has_many :clients_users
   has_many :clients, through: :clients_users
   has_many :invoices
   has_many :companies
+  has_many :payments, through: :invoices
 
+  ## Nested Forms
   accepts_nested_attributes_for :clients_users, :invoices, :companies
 
-  def set_default_role
-    self.role ||= :user
-  end
+  ## Callbacks
+  after_initialize :set_default_role, :if => :new_record?
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  ## Instance Methods
   def logo_url
-    companies.try(:last).try(:logo_url) || "fallback/default_logo.png"
+    companies.default.try(:logo_url) || "fallback/default_logo.png"
   end
+
+  private
+  ## Callbacks Handlers
+  def set_default_role
+    self.role ||= :user
+  end
+
 end

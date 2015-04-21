@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :payments
+
   mount Upmin::Engine => '/admin'
 
   resources :clients

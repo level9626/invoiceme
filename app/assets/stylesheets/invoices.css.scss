@@ -41,3 +41,14 @@ $border: grey;
 #tags .glyphicon {
   padding-left: 5px;
 }
+
+.white-panel {
+  footer {
+    padding-right: 10px;
+    padding-bottom: 10px;
+
+    .btn {
+      margin-left: 10px;
+    }
+  }
+}

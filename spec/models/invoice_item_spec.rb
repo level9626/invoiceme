@@ -9,6 +9,7 @@
 #  invoice_id     :integer          not null
 #  created_at     :datetime
 #  updated_at     :datetime
+#  amount         :float            not null
 #
 
 require 'rails_helper'
