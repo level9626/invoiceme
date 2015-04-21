@@ -1,6 +1,19 @@
-section.col-md-12
-  .col-md-6
-    p= image_tag current_user.logo_url, size: '60x60', class: 'img-left'
-    p= current_user.name
-    p= current_user.email
-  .col-md-6
+h3
+  i.fa.fa-angle-right
+  | Listing companies
+
+.row.mt
+  .col-md-4.col-sm-4.mb
+    .white-panel.pn.donut-chart
+      .white-header
+        h5 Default Company
+    - if @company
+      = render 'companies/company', company: @company
+
+  .col-lg-6
+    .content-panel
+      h4
+        i.fa.fa-angle-right
+        | Invoices
+      .panel-body
+        #pipe-chart

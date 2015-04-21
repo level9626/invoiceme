@@ -7,6 +7,8 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require bootstrap-wysihtml5
+//= require raphael
+//= require morris
 //= require_tree .
 
 $(document).ready(function(){

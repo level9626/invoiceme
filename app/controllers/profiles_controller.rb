@@ -1,3 +1,5 @@
 class ProfilesController < ApplicationController
-  def profile ;end
+  def profile
+    @company = current_user.companies.default
+  end
 end

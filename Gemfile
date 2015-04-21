@@ -16,6 +16,8 @@ gem 'bootstrap-datepicker-rails'
 gem 'cocoon'
 gem 'will_paginate'
 gem 'font-awesome-rails'
+gem 'morrisjs-rails'
+gem 'raphael-rails'
 
 # PDF
 gem 'wicked_pdf'

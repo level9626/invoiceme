@@ -7,25 +7,7 @@ h3
     - if i%3==0
       .col-md-12
     .col-md-4.col-sm-4.mb
-      .white-panel.pn.donut-chart
-        .white-header
-          h5= company.name
-        .row
-          .col-sm-6.col-xs-6.goleft
-            p
-              i.fa.fa-database 70%
-          .col-sm-12.col-sx-12
-            = image_tag company.logo
-          .col-sm-12.col-sx-12
-            = company.address.try(:html_safe)
-        hr
-        footer.clearfix
-          = button_to 'Show', company, method: :get, \
-                      class: 'btn btn-default pull-left'
-          = button_to 'Edit', edit_company_path(company), method: :get, \
-                      class: 'btn btn-default pull-left'
-          = button_to 'Destroy', company, data: {:confirm => 'Are you sure?'}, \
-                      :method => :delete, class: 'btn btn-danger pull-right'
+      = render 'company', company: company
 
 
   .col-md-12
