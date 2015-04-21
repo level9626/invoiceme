@@ -5,23 +5,23 @@ class InvoicesController < ApplicationController
   respond_to :html
 
   def index
-    @search = Invoice.where(user: current_user).includes(:client).search(params[:q])
-    @invoices = @search.result.paginate(:per_page => 10, :page => params[:page])
+    @search = Invoice.where(user: current_user)
+                     .includes(:client)
+                     .search(params[:q])
+    @invoices = @search.result
+                       .paginate(:per_page => 10, :page => params[:page])
 
     respond_to do |format|
       format.html
       format.csv { send_data @invoices.to_csv }
     end
-    #respond_with(@invoices)
   end
 
   def show
-    #respond_with(@invoice)
-
     respond_to do |format|
       format.html
       format.pdf do
-        render  :pdf => "file", :template => 'invoices/show.html.slim'
+        render  :pdf => "file", :template => 'invoices/_show_content.html.slim', :zoom => 0.9, :layout => 'pdf_layout'
       end
     end
   end

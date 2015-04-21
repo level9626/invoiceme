@@ -1,8 +1,11 @@
 h1 Editing client
 
 == render 'form'
-
-= link_to 'Show', @client
+br
+td = link_to @client, :method => :get, class: "btn btn-info btn-xs"
+  .fa.fa-eye
+    | Show
 '|
-= link_to 'Back', clients_path
-
+= link_to clients_path, :method => :get, class: "btn btn-info btn-xs"
+  .fa.fa-reply
+    | Back
