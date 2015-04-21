@@ -4,10 +4,14 @@ html
     == render 'layouts/head'
   body
     header
-      == render 'layouts/navigation'
-    section#main-content-not-authenticated
-      section.wrapper.site-min-height
-        .row.mt
-          .col-lg-12
-            == render 'layouts/messages'
-            == yield
+
+    main[role="main"]
+      .container
+        == render 'layouts/messages'
+        == yield
+      //== render 'layouts/footer'
+
+/ You can use an image of whatever size. This script will stretch to
+/ fit in any screen size.
+script src="assets/js/jquery.backstretch.min.js" type="text/javascript"
+javascript: $.backstretch("assets/img/login-bg.jpg", {speed: 500});
