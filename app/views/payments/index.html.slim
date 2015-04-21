@@ -1,17 +1,20 @@
 h3
   i.fa.fa-angle-right
-  | Payments
+  | My Payments
 
 .row.mt
-  .col-md-10
+  = render 'shared/tags'
+  .col-md-9
     section.task-panel.tasks-widget
       .panel-body
         .task-content
           table.table
             thead
               tr
-                th Invoice
-                th Amount
+                th=sort_link @search, :invoice_invoice_number, 'Invoice'
+                th=sort_link @search, :amount, 'Amount'
+                th=sort_link @search, :client_name, 'Client'
+                th=sort_link @search, :company_name, 'Company'
                 th
                 th
                 th
@@ -19,9 +22,11 @@ h3
             tbody
               - @payments.each do |payment|
                 tr
-                  td = payment.invoice_id
-                  td = payment.amount
-                  td = link_to payment, :method => :get, class: "btn btn-success btn-xs"
+                  td= payment.invoice.invoice_number
+                  td= payment.amount
+                  td= payment.client.name
+                  td= payment.company.name
+                  td= link_to payment, :method => :get, class: "btn btn-success btn-xs"
                     i.fa.fa-eye
                   td = link_to edit_payment_path(payment), :method => :get, class: "btn btn-primary btn-xs"
                     i.fa.fa-pencil
@@ -36,10 +41,5 @@ h3
         = link_to payments_path(params.merge(format: 'csv')), class: "btn btn-success btn-sm"
           .fa.fa-download
           | Download to CSV
-  .col-md-2
-    .panel.panel-default
-      .panel-heading
-        h3.panel-title Filters
-        span.pull-right.clickable
-          i.glyphicon.glyphicon-chevron-up
-      .panel-body
+  .col-md-3
+    = render 'filter'

@@ -3,8 +3,8 @@ h3
   | Your invoices
 
 .row.mt
-  = render 'tags'
-  .col-md-10
+  = render 'shared/tags'
+  .col-md-9
     section.task-panel.tasks-widget
       .panel-body
         .task-content
@@ -16,6 +16,7 @@ h3
                 th = sort_link @search, :currency , "Currency"
                 th = sort_link @search, :invoice_status , "Status"
                 th = sort_link @search, :invoice_date , "Invoice Date"
+                th
                 th
                 th
 
@@ -43,5 +44,5 @@ h3
           .fa.fa-download
           | Download to CSV
     = will_paginate @invoices
-  .col-md-2
+  .col-md-3
     = render 'filter'

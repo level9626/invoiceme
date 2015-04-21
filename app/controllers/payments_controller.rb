@@ -4,8 +4,15 @@ class PaymentsController < ApplicationController
   respond_to :html
 
   def index
-    @payments = current_user.payments
-    respond_with(@payments)
+    @search   = current_user.payments
+                            .includes(:client, :invoice, :company)
+                            .search(params[:q])
+    @payments = @search.result.paginate(per_page: 10, page: params[:page])
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @payments.to_csv }
+    end
   end
 
   def show
