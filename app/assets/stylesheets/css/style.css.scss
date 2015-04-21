@@ -9,7 +9,10 @@ h3 {
 }
 
 /* COLOR VARIABLES */
+
+
 @import "../colors";
+
 
 
 /* BASIC THEME CONFIGURATION */
@@ -515,6 +518,11 @@ ul.sidebar-menu li a.active i {
       background-color: $gray-lighter;
     }
   }
+}
+
+#main-content-not-authenticated {
+  @extend #main-content;
+  margin-left: 0px !important;
 }
 
 #footer {
