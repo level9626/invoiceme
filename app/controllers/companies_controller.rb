@@ -37,11 +37,12 @@ class CompaniesController < ApplicationController
   end
 
   private
-    def set_company
-      @company = current_user.companies.find(params[:id])
-    end
 
-    def company_params
-      params.require(:company).permit(:logo, :name, :address, :default)
-    end
+  def set_company
+    @company = current_user.companies.find(params[:id])
+  end
+
+  def company_params
+    params.require(:company).permit(:logo, :name, :address, :default)
+  end
 end

@@ -11,15 +11,13 @@
 #  updated_at     :datetime
 #  amount         :float            not null
 #
-
 class InvoiceItem < ActiveRecord::Base
   ## Relations
   belongs_to :invoice
 
   ## Validations
-  validates_presence_of :hours_or_tasks, :rate, :amount
+  validates :hours_or_tasks, :rate, :amount, presence: true
   validates :rate, :hours_or_tasks, :amount, numericality: true
-
 
   ## Instance methods
   def sum

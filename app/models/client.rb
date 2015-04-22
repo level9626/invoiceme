@@ -8,7 +8,6 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
-
 class Client < ActiveRecord::Base
   ## Relations
   has_many :clients_users

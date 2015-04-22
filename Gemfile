@@ -44,14 +44,16 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'mini_magick'
 
-#Search
+# Search
 gem 'ransack'
 
+# Other
 gem 'figaro',       '>= 1.0.0.rc1'
 gem 'high_voltage'
+gem 'rubocop', require: false
 
 group :production do
-  gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', platforms: :ruby
 end
 
 group :development do
@@ -70,9 +72,9 @@ group :development do
   gem 'guard-rspec'
   gem 'quiet_assets'
   gem 'rails_layout'
-  gem 'rb-fchange', :require=>false
-  gem 'rb-fsevent', :require=>false
-  gem 'rb-inotify', :require=>false
+  gem 'rb-fchange', require: false
+  gem 'rb-fsevent', require: false
+  gem 'rb-inotify', require: false
   gem 'spring-commands-rspec'
 end
 group :development, :test do

@@ -18,7 +18,7 @@ class Payment < ActiveRecord::Base
 
   ## Validations
   validates :invoice_id, :amount, presence: true
-  validates :amount, :numericality => { :greater_than_or_equal_to => 0.1 }
+  validates :amount, numericality: { greater_than_or_equal_to: 0.1 }
 
   ## Callbacks
   after_save :update_invoice!
