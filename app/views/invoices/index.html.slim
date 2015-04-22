@@ -14,7 +14,7 @@ h3
                 th = sort_link @search, :invoice_number, "Invoice Number"
                 th = sort_link @search, :client_name , "Client"
                 th = sort_link @search, :currency , "Currency"
-                th = sort_link @search, :invoice_status , "Status"
+                th = sort_link @search, :invoice_state , "State"
                 th = sort_link @search, :invoice_date , "Invoice Date"
                 th
                 th
@@ -26,7 +26,7 @@ h3
                   td = invoice.invoice_number
                   td = invoice.client.name
                   td = invoice.currency
-                  td = invoice.status
+                  td = invoice.state
                   td = invoice.invoice_date
                   td = link_to invoice, :method => :get, class: "btn btn-success btn-xs"
                     i.fa.fa-eye

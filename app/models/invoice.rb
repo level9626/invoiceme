@@ -22,8 +22,10 @@
 #
 
 class Invoice < ActiveRecord::Base
+  # include StateMachines::InvoiceMachine
+  extend InvoiceMachine
   CURRENCY = %w(EUR USD UAH RUB)
-  STATUS = %w(open closed overdue bad_deet)
+  STATE = %w(new open closed overdue bad_dept)
 
   ## Relations
   belongs_to :company
@@ -37,7 +39,7 @@ class Invoice < ActiveRecord::Base
 
   ## Validations
   # Iterates through constants, and dynamically creates validations
-  [:CURRENCY, :STATUS].each do |param|
+  [:CURRENCY, :STATE].each do |param|
     # rubocop:disable all
     inclusion = eval param.to_s
     # rubocop:enable all
@@ -57,10 +59,10 @@ class Invoice < ActiveRecord::Base
   end
 
   def close!
-    update_attribute(status: 'closed')
+    update_attribute(:state, 'closed')
   end
 
   def overdue!
-    update_attribute(status: 'overdue')
+    update_attribute(:state, 'overdue')
   end
 end

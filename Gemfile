@@ -23,10 +23,11 @@ gem 'raphael-rails'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
-# db
+# db and data modeling
 gem 'pg'
 gem 'composite_primary_keys'
 gem 'slim-rails'
+gem 'state_machines-activerecord'
 
 # Authentication, authorization
 gem 'devise'
@@ -50,7 +51,6 @@ gem 'ransack'
 # Other
 gem 'figaro',       '>= 1.0.0.rc1'
 gem 'high_voltage'
-gem 'rubocop', require: false
 
 group :production do
   gem 'therubyracer', platforms: :ruby

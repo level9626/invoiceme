@@ -19,6 +19,7 @@ module InvoiceTracker
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
 
-    config.assets.precompile += %w( upmin/upmin.css number_pages pdf.css)
+    config.assets.precompile += %w(upmin/upmin.css number_pages pdf.css)
+    config.eager_load_paths += %W(#{config.root}/app/state_machines)
   end
 end
