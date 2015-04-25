@@ -26,6 +26,9 @@
 class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
 
+  ## Comments
+  acts_as_commontator
+
   ## Relations
   has_many :clients_users
   has_many :clients, through: :clients_users

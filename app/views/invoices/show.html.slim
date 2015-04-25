@@ -5,18 +5,29 @@ h3
 
 
 .row.mt
-  .col-md-10
+  .col-md-9
     = render 'show_content'
-  .col-md-2
+  .col-md-3
     .panel.panel-default
       .panel-heading
         h3.panel-title Actions
         span.pull-right.clickable
           i.glyphicon.glyphicon-chevron-up
       .panel-body
-        = link_to "Download PDF", { :action => "show", :format => :pdf }, class: "btn btn-success", target: '_blank'
+
+        = link_to "Download PDF", invoice_path(@invoice, :format => 'pdf'), class: "btn btn-success", target: '_blank'
         br
         br
         = link_to edit_invoice_path(@invoice), :method => :get, class: "btn btn-primary"
           .fa.fa-pencil
             | Edit
+        br
+        br
+        a.btn.btn-primary data-toggle="modal" href="#myModal" Launch Payment
+        br
+        br
+        a.btn.fa.fa-chevron-left.back-to-top style="display: inline;" data-toggle="modal" href="#myModal1"
+
+== render 'modal'
+== render 'comment'
+

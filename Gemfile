@@ -17,6 +17,9 @@ gem 'cocoon'
 gem 'will_paginate'
 gem 'font-awesome-rails'
 
+# Comments
+gem 'commontator'
+
 # PDF
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'

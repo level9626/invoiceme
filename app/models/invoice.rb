@@ -25,6 +25,9 @@ class Invoice < ActiveRecord::Base
   CURRENCY = ['EUR','USD','UAH','RUB']
   STATUS   = ['open', 'closed', 'overdue']
 
+  ## Comments
+  acts_as_commontable
+
   ## Relations
   belongs_to :company
   belongs_to :client
@@ -57,11 +60,11 @@ class Invoice < ActiveRecord::Base
   end
 
   def close!
-    update_attribute(status: 'closed')
+    update_attribute(:status, 'closed')
   end
 
   def overdue!
-    update_attribute(status: 'overdue')
+    update_attribute(:status, 'overdue')
   end
 
 end
