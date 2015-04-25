@@ -5,8 +5,7 @@ module InvoiceMachine
   # Apparently, modules doesn't have all state machine goodness added.
   # This is a small workaround to store state machine in separate file
   # Hack to add state_machine to parent class
-  # rubocop:disable all
-  def self.extended(klass) # rubocop:disable MethodLength
+  def self.included(klass) # rubocop:disable MethodLength
     klass.send :state_machine, initial: :new do
       # Defining main states
       state :new, value: 'new'
@@ -35,6 +34,11 @@ module InvoiceMachine
 
       event :bad_dept do
         transition open: :bad_dept
+      end
+
+      # Generic transition callback *after* the transition is performed
+      after_transition do |transition|
+        Audit.log(self, transition) # self is the record
       end
     end
   end

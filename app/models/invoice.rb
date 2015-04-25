@@ -23,7 +23,7 @@
 
 class Invoice < ActiveRecord::Base
   # include StateMachines::InvoiceMachine
-  extend InvoiceMachine
+  include InvoiceMachine
   CURRENCY = %w(EUR USD UAH RUB)
   STATE = %w(new open closed overdue bad_dept)
 
