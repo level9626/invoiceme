@@ -86,7 +86,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
-  gem 'rubocop'
 end
 group :test do
   gem 'capybara'
