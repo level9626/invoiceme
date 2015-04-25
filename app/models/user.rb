@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :clients_users, :invoices, :companies
 
   ## Callbacks
-  after_initialize :set_default_role, :if => :new_record?
+  after_initialize :set_default_role, if: :new_record?
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -49,13 +49,13 @@ class User < ActiveRecord::Base
 
   ## Instance Methods
   def logo_url
-    companies.default.try(:logo_url) || "fallback/default_logo.png"
+    companies.default.try(:logo_url) || 'fallback/default_logo.png'
   end
 
   private
+
   ## Callbacks Handlers
   def set_default_role
     self.role ||= :user
   end
-
 end

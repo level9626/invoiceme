@@ -14,8 +14,12 @@ h3
         span.pull-right.clickable
           i.glyphicon.glyphicon-chevron-up
       .panel-body
+<<<<<<< HEAD
 
         = link_to "Download PDF", invoice_path(@invoice, :format => 'pdf'), class: "btn btn-success", target: '_blank'
+=======
+        = link_to "Download PDF", @invoice, format: :pdf, class: "btn btn-success", target: '_blank'
+>>>>>>> 1c6cd279c23039d4fe54711fb0273aa19b06c04c
         br
         br
         = link_to edit_invoice_path(@invoice), :method => :get, class: "btn btn-primary"

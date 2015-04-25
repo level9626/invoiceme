@@ -22,8 +22,10 @@
 #
 
 class Invoice < ActiveRecord::Base
-  CURRENCY = ['EUR','USD','UAH','RUB']
-  STATUS   = ['open', 'closed', 'overdue']
+  # include StateMachines::InvoiceMachine
+  include InvoiceMachine
+  CURRENCY = %w(EUR USD UAH RUB)
+  STATE = %w(new open closed overdue bad_dept)
 
   ## Comments
   acts_as_commontable
@@ -32,25 +34,25 @@ class Invoice < ActiveRecord::Base
   belongs_to :company
   belongs_to :client
   belongs_to :user
-  has_many   :invoice_items
-  has_many   :payments
+  has_many :invoice_items
+  has_many :payments
 
   ## Nested forms
   accepts_nested_attributes_for :invoice_items
 
   ## Validations
   # Iterates through constants, and dynamically creates validations
-  [:CURRENCY, :STATUS].each do |param|
-    inclusion = eval(param.to_s)
-    validates param.downcase, inclusion: {
-                           in: inclusion,
-                           message: "is not included in the list #{inclusion.join(',')}"
-                       }
+  [:CURRENCY, :STATE].each do |param|
+    # rubocop:disable all
+    inclusion = eval param.to_s
+    # rubocop:enable all
+    message = "is not included in the list #{inclusion.join(',')}"
+    validates param.downcase, inclusion: { in: inclusion, message: message }
   end
 
   validates :invoice_number, :invoice_date, presence: true
   validates :user_id, :company_id, :client_id, presence: true
-  validates :company_row_text, :client_row_text, length: {in: 1..300}
+  validates :company_row_text, :client_row_text, length: { in: 1..300 }
   validates :subtotal, presence: true, numericality: true
   validates :vat_rate, :vat, :discount, numericality: true, allow_blank: true
 
@@ -60,11 +62,10 @@ class Invoice < ActiveRecord::Base
   end
 
   def close!
-    update_attribute(:status, 'closed')
+    update_attribute(:state, 'closed')
   end
 
   def overdue!
-    update_attribute(:status, 'overdue')
+    update_attribute(:state, 'overdue')
   end
-
 end

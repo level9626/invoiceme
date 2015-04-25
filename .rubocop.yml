@@ -8,3 +8,11 @@ AllCops:
    - 'db/seeds.rb'
    - 'db/schema.rb'
    - 'vendor/bundle/**/*'
+   - 'config/initializers/*'
+   - 'config/environments/*'
+   - 'db/**/**'
+Documentation:
+  Enabled: false
+#Style/MultilineOperationIndentation:
+#  EnforcedStyle: indented
+

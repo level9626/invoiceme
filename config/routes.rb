@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   authenticated :user do
     devise_scope :user do
-      root to: "profiles#profile", :as => "profile"
+      root to: 'profiles#profile', as: 'profile'
     end
   end
 

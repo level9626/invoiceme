@@ -9,7 +9,10 @@ h3 {
 }
 
 /* COLOR VARIABLES */
+
+
 @import "../colors";
+
 
 
 /* BASIC THEME CONFIGURATION */
@@ -516,6 +519,11 @@ div.panel-body {
       background-color: $gray-lighter;
     }
   }
+}
+
+#main-content-not-authenticated {
+  @extend #main-content;
+  margin-left: 0px !important;
 }
 
 #footer {

@@ -12,7 +12,6 @@
 FactoryGirl.define do
   factory :payment do
     invoice_id 1
-amount 1.5
+    amount 1.5
   end
-
 end

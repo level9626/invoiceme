@@ -1,12 +1,11 @@
 class PaymentsController < ApplicationController
-  before_action :set_payment, only: [:show, :edit, :update, :destroy]
+  before_action :_set_payment, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
   def index
-    @search   = current_user.payments
-                            .includes(:client, :invoice, :company)
-                            .search(params[:q])
+    @search = _search
+
     @payments = @search.result.paginate(per_page: 10, page: params[:page])
 
     respond_to do |format|
@@ -44,11 +43,18 @@ class PaymentsController < ApplicationController
   end
 
   private
-    def set_payment
-      @payment = Payment.find(params[:id])
-    end
 
-    def payment_params
-      params.require(:payment).permit(:invoice_id, :amount)
-    end
+  def _search
+    current_user.payments
+      .includes(:client, :invoice, :company)
+      .search(params[:q])
+  end
+
+  def _set_payment
+    @payment = Payment.find(params[:id])
+  end
+
+  def payment_params
+    params.require(:payment).permit(:invoice_id, :amount)
+  end
 end

@@ -4,12 +4,14 @@ html
     == render 'layouts/head'
   body
     header
+
     main[role="main"]
       .container
         == render 'layouts/messages'
         == yield
       //== render 'layouts/footer'
 
-//You can use an image of whatever size. This script will stretch to fit in any screen size.
+/ You can use an image of whatever size. This script will stretch to
+/ fit in any screen size.
 script src="assets/js/jquery.backstretch.min.js" type="text/javascript"
-javascript: $.backstretch("assets/img/login-bg.jpg", {speed: 500});
+javascript: $.backstretch("#{asset_path('img/login-bg.jpg')}", {speed: 500});

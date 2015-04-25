@@ -1,17 +1,18 @@
 set :stage, :production
-set :branch, "master"
+set :branch, 'master'
 
 # This is used in the Nginx VirtualHost to specify which domains
 # the app should appear on. If you don't yet have DNS setup, you'll
 # need to create entries in your local Hosts file for testing.
-set :server_name, "www.example.com example.com"
+set :server_name, 'www.example.com example.com'
 
 # used in case we're deploying multiple versions of the same
 # app side by side. Also provides quick sanity checks when looking
 # at filepaths
 set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
 
-server '188.166.8.53', user: fetch(:deploy_user), roles: %w{web app db}, primary: true
+server '188.166.8.53', user: fetch(:deploy_user),
+                       roles: %w(web app db), primary: true
 
 set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
 

@@ -13,8 +13,7 @@ class ClientsUser < ActiveRecord::Base
   belongs_to :client
 
   ## Validations
-  validates_presence_of :user
-  validates_presence_of :client
+  validates :user, :client, presence: true
 
   ## Nested Forms
   accepts_nested_attributes_for :client

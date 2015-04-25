@@ -13,7 +13,7 @@ class ClientsController < ApplicationController
   end
 
   def new
-    @client = Client.new()
+    @client = Client.new
     respond_with(@client)
   end
 
@@ -38,11 +38,12 @@ class ClientsController < ApplicationController
   end
 
   private
-    def set_client
-      @client = current_user.clients.find(params[:id])
-    end
 
-    def client_params
-      params.require(:client).permit(:name, :address)
-    end
+  def set_client
+    @client = current_user.clients.find(params[:id])
+  end
+
+  def client_params
+    params.require(:client).permit(:name, :address)
+  end
 end

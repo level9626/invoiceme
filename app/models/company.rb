@@ -28,9 +28,10 @@ class Company < ActiveRecord::Base
   validates :address, presence: true, length: { maximum: 300 }
 
   ## Callbacks
-  before_save :change_default!, if: Proc.new { |model| model.default }
+  before_save :change_default!, if: proc { |model| model.default }
 
   private
+
   ## Callbacks Handlers
   def change_default!
     Company.where(user_id: user_id).update_all(default: false)

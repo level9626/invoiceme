@@ -24,7 +24,7 @@
 FactoryGirl.define do
   factory :invoice do
     invoice_number 1
-    invoice_date Time.now
+    invoice_date Time.zone.now
     user_id 1
     currency 'USD'
     comment Faker::Lorem.sentence
