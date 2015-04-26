@@ -19,6 +19,9 @@ gem 'font-awesome-rails'
 gem 'morrisjs-rails'
 gem 'raphael-rails'
 
+# Comments
+gem 'commontator'
+
 # PDF
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
@@ -83,7 +86,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
-  gem 'rubocop'
 end
 group :test do
   gem 'capybara'

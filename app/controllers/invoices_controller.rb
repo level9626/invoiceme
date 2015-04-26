@@ -16,6 +16,7 @@ class InvoicesController < ApplicationController
   end
 
   def show
+    commontator_thread_show(@invoice)
     respond_to do |format|
       format.html
       format.pdf do

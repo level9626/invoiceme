@@ -27,6 +27,9 @@ class Invoice < ActiveRecord::Base
   CURRENCY = %w(EUR USD UAH RUB)
   STATE = state_machines[:state].states.map(&:name)
 
+  ## Comments
+  acts_as_commontable
+
   ## Relations
   belongs_to :company
   belongs_to :client

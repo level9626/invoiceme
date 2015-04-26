@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   mount Upmin::Engine => '/admin'
 
+  mount Commontator::Engine => '/commontator'
+
   resources :clients
 
   resources :companies

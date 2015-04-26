@@ -14,7 +14,8 @@ h3
         span.pull-right.clickable
           i.glyphicon.glyphicon-chevron-up
       .panel-body
-        = link_to "Download PDF", @invoice, format: :pdf, class: "btn btn-success", target: '_blank'
+
+        = link_to "Download PDF", invoice_path(@invoice, :format => 'pdf'), class: "btn btn-success", target: '_blank'
         br
         br
         = link_to edit_invoice_path(@invoice), :method => :get, class: "btn btn-primary"
@@ -23,3 +24,14 @@ h3
 
         = render 'state_controls'
         = render 'journals'
+
+        br
+        br
+        a.btn.btn-primary data-toggle="modal" href="#myModal" Launch Payment
+        br
+        br
+        a.btn.fa.fa-chevron-left.back-to-top style="display: inline;" data-toggle="modal" href="#myModal1"
+
+== render 'modal'
+== render 'comment'
+

@@ -23,20 +23,16 @@ h3
             tbody
               - @invoices.each do |invoice|
                 tr
-                  td = invoice.invoice_number
-                  td = invoice.client.name
-                  td = invoice.currency
-                  td = invoice.state
-                  td = invoice.invoice_date
-                  td = link_to invoice, :method => :get, class: "btn btn-success btn-xs"
-                    i.fa.fa-eye
-                  td = link_to edit_invoice_path(invoice), :method => :get, class: "btn btn-primary btn-xs"
-                    i.fa.fa-pencil
-                  td = link_to invoice, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger btn-xs"
-                    i.fa.fa-trash-o
+                  td= invoice.invoice_number
+                  td= invoice.client.name
+                  td= invoice.currency
+                  td= invoice.state
+                  td= invoice.invoice_date
+                  td= render 'actions', :'@invoice' => invoice
+                == render 'modal', :'@invoice' => invoice
     br
       .col-md-2
-        = button_to new_invoice_path, :method => :get, class: "btn btn-primary btn-sm" do
+        = button_to new_invoice_path, method: :get, class: "btn btn-primary btn-sm" do
           .fa.fa-plus
             | Add New Invoice
       .col-md-4
@@ -45,4 +41,5 @@ h3
           | Download to CSV
     = will_paginate @invoices
   .col-md-3
-    = render 'filter'
+    == render 'filter'
+

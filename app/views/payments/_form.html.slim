@@ -3,8 +3,8 @@
 
   .form-inputs
     = f.input :invoice_id, \
-              collection: Invoice.all.map{ |el| [el.invoice_number, el.id] }
+              collection: Invoice.all.map{ |el| [el.invoice_number, el.id] }, disabled: true
     = f.input :amount
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: "btn btn-primary"

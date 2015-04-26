@@ -1,0 +1,10 @@
+= link_to @invoice, :method => :get, class: "btn btn-info btn-xs tab"
+  i.fa.fa-eye
+a.btn.btn-success.btn-xs.fa.fa-euro.tab data-toggle="modal" href="#myModal"
+
+= link_to edit_invoice_path(@invoice), :method => :get, class: "btn btn-primary btn-xs tab"
+  i.fa.fa-pencil
+= link_to invoice_path(@invoice, :format => 'pdf'), class: "btn btn-warning btn-xs tab", target: '_blank'
+  i.fa.fa-download
+= link_to @invoice, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger btn-xs tab"
+  i.fa.fa-trash-o
