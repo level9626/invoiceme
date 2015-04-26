@@ -5,9 +5,9 @@ h3
 
 
 .row.mt
-  .col-md-10
+  .col-md-9
     = render 'show_content'
-  .col-md-2
+  .col-md-3
     .panel.panel-default
       .panel-heading
         h3.panel-title Actions
@@ -20,3 +20,6 @@ h3
         = link_to edit_invoice_path(@invoice), :method => :get, class: "btn btn-primary"
           .fa.fa-pencil
             | Edit
+
+        = render 'state_controls'
+        = render 'journals'

@@ -1,5 +1,6 @@
 class InvoicesController < ApplicationController
-  before_action :_set_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :_set_invoice, only: [:show, :edit, :update, :destroy] + \
+    Invoice.state_machines[:state].events.map(&:name)
   before_action :_verify_company!, only: [:new]
 
   respond_to :html
@@ -51,6 +52,18 @@ class InvoicesController < ApplicationController
     respond_with(@invoice)
   end
 
+  ## Custom member actions
+
+  # States
+  Invoice.state_machines[:state].events.map(&:name).each do |event|
+    define_method event do
+      @invoice.send(event)
+      redirect_to :back
+    end
+  end
+
+  ## Private Scope
+
   private
 
   def _search
@@ -60,7 +73,9 @@ class InvoicesController < ApplicationController
   end
 
   def _set_invoice
-    @invoice = current_user.invoices.find(params[:id])
+    @invoice = current_user.invoices
+               .includes(:journals)
+               .find(params[:id])
   end
 
   def _verify_company!

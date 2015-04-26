@@ -25,14 +25,15 @@ class Invoice < ActiveRecord::Base
   # include StateMachines::InvoiceMachine
   include InvoiceMachine
   CURRENCY = %w(EUR USD UAH RUB)
-  STATE = %w(new open closed overdue bad_dept)
+  STATE = state_machines[:state].states.map(&:name)
 
   ## Relations
   belongs_to :company
   belongs_to :client
   belongs_to :user
-  has_many :invoice_items
-  has_many :payments
+  has_many :invoice_items, dependent: :destroy
+  has_many :payments, dependent: :destroy
+  has_many :journals, dependent: :destroy
 
   ## Nested forms
   accepts_nested_attributes_for :invoice_items

@@ -19,7 +19,7 @@ class Company < ActiveRecord::Base
 
   ## Relations
   belongs_to :user
-  has_many :invoices
+  has_many :invoices, dependent: :destroy
   has_many :payments, through: :invoices
 
   ## Validations

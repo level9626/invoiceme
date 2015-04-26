@@ -1,7 +1,3 @@
-// Place all the styles related to the Invoices controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 $border: grey;
 
 .img-left{
@@ -50,5 +46,22 @@ $border: grey;
     .btn {
       margin-left: 10px;
     }
+  }
+}
+
+
+.cd-panel {
+  position: fixed;
+  top: 65px;
+  right: -5px;
+  padding-right: 10px;
+  width: 65%;
+  bottom: 5px;
+  visibility: hidden;
+  overflow: scroll;
+  margin-bottom: 0;
+
+  &.is-visible {
+    visibility: visible;
   }
 }

@@ -7,7 +7,13 @@ Rails.application.routes.draw do
 
   resources :companies
 
-  resources :invoices
+  resources :invoices do
+    member do
+      Invoice.state_machines[:state].events.map(&:name).each do |event|
+        get event
+      end
+    end
+  end
 
   devise_for :users
 

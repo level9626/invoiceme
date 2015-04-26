@@ -50,3 +50,23 @@ $(document).ready( function() {
     });
 });
 
+
+/*
+ * Sidebar toggle animation
+ */
+
+$(document).ready(function($){
+    //open the lateral panel
+    $('.cd-btn').on('click', function(event){
+        event.preventDefault();
+        var id = '#'+$(this).data('cd');
+        $(id).addClass('is-visible');
+    });
+    //clode the lateral panel
+    $('.cd-panel-close').on('click', function(event){
+        $('.cd-panel').removeClass('is-visible');
+        event.preventDefault();
+        return false
+    });
+});
+
