@@ -1,7 +1,7 @@
-section.task-panel.tasks-widget
-  .panel-body
-    .task-content= simple_form_for(@invoice) do |f|
-      .col-md-12#invoice
+.task-content= simple_form_for(@invoice) do |f|
+  .col-md-9#invoice
+    section.task-panel.tasks-widget
+      .panel-body
         section#header
           .row
             .col-md-6#logo
@@ -108,3 +108,10 @@ section.task-panel.tasks-widget
         .section
           .form-actions
             = f.button :submit, class: 'btn-success pull-right'
+  .col-md-3#invoice
+    section.task-panel.tasks-widget
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title Title
+        .panel-body
+          h3 hello my friend

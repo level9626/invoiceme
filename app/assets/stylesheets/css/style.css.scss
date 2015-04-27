@@ -528,7 +528,7 @@ div.panel-body {
 
 #footer {
   span {
-    margin-left: 5p;
+    margin-left: 5px;
   }
 }
 
@@ -2458,6 +2458,7 @@ label {
 .tab2 {
   width: 50px;
 }
+
 #main-content > section > div > div > div > div.col-md-9 > section > div > div > table > thead > tr > th:nth-child(6) {
   width: 200px;
 }
@@ -2465,39 +2466,30 @@ label {
   display: none;
 }
 
-.modal.fade:not(.in) .modal-dialog {
-  -webkit-transform: translate3d(125%, 0, 0);
-  transform: translate3d(125%, 0, 0);
-}
+//.modal.fade:not(.in) .modal-dialog {
+//  -webkit-transform: translate3d(125%, 0, 0);
+//  transform: translate3d(125%, 0, 0);
+//}
 
 /************* MODAL POP UP WINDOW FROM LEFT FOR COMMENT *****************/
-.back-to-top {
-  background: none;
-  margin: 0;
-  position: fixed;
-  bottom: 50%;
-  right: 0;
-  z-index: 100;
-  display: none;
-  text-decoration: none;
-  color: $gray-dark;
-  background-color: $grey-light;
-  border-bottom-right-radius: 0px !important;
-  border-top-right-radius: 0px !important;
-}
-/* button for modal pop up */
-a.btn.fa.fa-chevron-left.back-to-top {
-  padding-left: 0px;
-  height: auto;
-  font-size: large;
-  color: $orange-main;
-}
-input[type="text"]:disabled {
-
-}
-#payment_invoice_id.select.required.form-control:disabled {
-  background-color: $grey-light-lightest;
-}
-select.required.form-control:disabled {
-
-}
+//.back-to-top {
+//  background: none;
+//  margin: 0;
+//  position: fixed;
+//  bottom: 50%;
+//  right: 0;
+//  z-index: 100;
+//  display: none;
+//  text-decoration: none;
+//  color: $gray-dark;
+//  background-color: $grey-light;
+//  border-bottom-right-radius: 0px !important;
+//  border-top-right-radius: 0px !important;
+//}
+///* button for modal pop up */
+//a.btn.fa.fa-chevron-left.back-to-top {
+//  padding-left: 0px;
+//  height: auto;
+//  font-size: large;
+//  color: $orange-main;
+//}

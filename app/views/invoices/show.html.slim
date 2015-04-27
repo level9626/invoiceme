@@ -18,20 +18,17 @@ h3
         = link_to "Download PDF", invoice_path(@invoice, :format => 'pdf'), class: "btn btn-success", target: '_blank'
         br
         br
-        = link_to edit_invoice_path(@invoice), :method => :get, class: "btn btn-primary"
-          .fa.fa-pencil
-            | Edit
+        = link_to "Edit", edit_invoice_path(@invoice), :method => :get, class: "btn btn-primary"
 
         = render 'state_controls'
         = render 'journals'
-
+        = render 'invoices/comment'
         br
         br
         a.btn.btn-primary data-toggle="modal" href="#myModal" Launch Payment
         br
         br
-        a.btn.fa.fa-chevron-left.back-to-top style="display: inline;" data-toggle="modal" href="#myModal1"
+        /a.btn.fa.fa-chevron-left.back-to-top style="display: inline;" data-toggle="modal" href="#myModal1"
 
 == render 'modal'
-== render 'comment'
 
