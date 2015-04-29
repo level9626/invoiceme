@@ -18,7 +18,7 @@
 #  vat_rate         :float
 #  vat              :float
 #  discount         :float
-#  status           :string(255)      default("open"), not null
+#  state            :string(20)       default(:new), not null
 #
 
 class Invoice < ActiveRecord::Base
@@ -43,6 +43,7 @@ class Invoice < ActiveRecord::Base
 
   ## Validations
   # Iterates through constants, and dynamically creates validations
+  # TODO: need to be tested
   [:CURRENCY, :STATE].each do |param|
     # rubocop:disable all
     inclusion = eval param.to_s
@@ -58,14 +59,17 @@ class Invoice < ActiveRecord::Base
   validates :vat_rate, :vat, :discount, numericality: true, allow_blank: true
 
   ## Instance methods
+  # TODO: need to be tested
   def amount
     invoice_items.map(&:sum).reduce(:+)
   end
 
+  # TODO: need to be removed, implemented via state machine
   def close!
     update_attribute(:state, 'closed')
   end
 
+  # TODO: need to be removed, implemented via state machine
   def overdue!
     update_attribute(:state, 'overdue')
   end

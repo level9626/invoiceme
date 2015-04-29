@@ -35,12 +35,14 @@ class User < ActiveRecord::Base
   has_many :invoices
   has_many :companies
   has_many :payments, through: :invoices
+  has_many :invoice_email_templates, foreign_key: :owner_id
 
   ## Nested Forms
   accepts_nested_attributes_for :clients_users, :invoices, :companies
 
   ## Callbacks
-  after_initialize :set_default_role, if: :new_record?
+  after_initialize :_set_default_role, if: :new_record?
+  after_create :_import_primary_invoice_templates
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -55,7 +57,21 @@ class User < ActiveRecord::Base
   private
 
   ## Callbacks Handlers
-  def set_default_role
+  # TODO: need to be tested
+  def _set_default_role
     self.role ||= :user
+  end
+
+  # Imports all admin primary templates for a given user.
+  # User can have a separate template, based on default one.
+  # Any updates in user templates should not cause issues for
+  # primary admin templates.
+  # TODO: need to be tested
+  def _import_primary_invoice_templates
+    return unless user?
+
+    InvoiceEmailTemplate.primary.each do |invoice_template|
+      invoice_email_templates << invoice_template.dup
+    end
   end
 end

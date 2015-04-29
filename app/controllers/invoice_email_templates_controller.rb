@@ -1,0 +1,2 @@
+class InvoiceEmailTemplatesController < ApplicationController
+end

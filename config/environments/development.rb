@@ -27,9 +27,10 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      :user_name => '32847ea3f02545eab',
-      :password => 'af913adcbe9992',
+      :user_name => '342355de8122bb9d6',
+      :password => '3e1f338603c0b6',
       :address => 'mailtrap.io',
       :domain => 'mailtrap.io',
       :port => '2525',
@@ -37,7 +38,6 @@ Rails.application.configure do
   }
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   # Send email in development mode?
   config.action_mailer.perform_deliveries = true

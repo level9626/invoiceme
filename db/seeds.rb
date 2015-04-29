@@ -9,3 +9,15 @@ user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
 # Environment variables (ENV['...']) can be set in the file config/application.yml.
 # See http://railsapps.github.io/rails-environment-variables.html
+
+# Create default primary templates for admin user
+params = {
+    name: 'Test Template',
+    template_body: '<h1>Test Template</h1><p>Will a little formatting</p>',
+    template_subject: 'Test Subject'
+}
+user.invoice_email_templates << InvoiceEmailTemplate.where(params)
+                                    .first_or_create
+
+# Import all invoice templates for all old users
+User.all.each{|u| u.send(:_import_primary_invoice_templates)}

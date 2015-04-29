@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :invoice_email_templates
+
   resources :payments
 
   mount Upmin::Engine => '/admin'
@@ -25,5 +27,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'visitors#index'
+  root to: 'devise/sessions#new'
 end

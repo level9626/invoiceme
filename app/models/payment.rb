@@ -26,6 +26,7 @@ class Payment < ActiveRecord::Base
   private
 
   ## Callbacks handlers
+  # TODO: need to be tested
   def update_invoice!
     invoiced = invoice.amount
     payed    = invoice.payments.map(&:amount).reduce(:+)

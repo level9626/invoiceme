@@ -14,8 +14,6 @@
 
 class Company < ActiveRecord::Base
   mount_uploader :logo, LogoUploader
-  ## Scopes
-  scope :default, -> { find_by(default: true) }
 
   ## Relations
   belongs_to :user
@@ -30,9 +28,23 @@ class Company < ActiveRecord::Base
   ## Callbacks
   before_save :change_default!, if: proc { |model| model.default }
 
+  ## Class methods
+
+  # Scope wont work here. Scope has a default behaviour to return
+  # all records, when it returns nil.
+  # Scopes should return ActiveRecord::Relation, not module. For
+  # single record querying, use class methods.
+  def self.default
+    find_by(default: true)
+  end
+
   private
 
   ## Callbacks Handlers
+
+  # Changes default company for a user.
+  # User can have only one default company.
+  # TODO: need to be tested
   def change_default!
     Company.where(user_id: user_id).update_all(default: false)
   end

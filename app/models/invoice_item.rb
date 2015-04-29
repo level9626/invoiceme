@@ -20,6 +20,7 @@ class InvoiceItem < ActiveRecord::Base
   validates :rate, :hours_or_tasks, :amount, numericality: true
 
   ## Instance methods
+  # TODO: need to be tested
   def sum
     amount * rate
   end

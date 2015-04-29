@@ -18,7 +18,7 @@
 #  vat_rate         :float
 #  vat              :float
 #  discount         :float
-#  status           :string(255)      default("open"), not null
+#  state            :string(20)       default(:new), not null
 #
 
 require 'rails_helper'
