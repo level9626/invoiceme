@@ -12,11 +12,14 @@
 
         section#invoice_number-invoice-date
           .row
-            .col-md-6#invoice_number
+            .col-md-4#invoice_number
               = f.input :invoice_number, \
                         input_html: { value: ['#', current_user.invoices.count + 1].join}
-            .col-md-6#invoice-date
+            .col-md-4#invoice-date
               = f.input :invoice_date, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y') }
+            .col-md-4#net
+              = f.input :net, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y') }
+
 
         section#company-client
           .row
@@ -36,6 +39,7 @@
                           class: 'wysihtml5', \
                           id: 'companies_address'\
                         }
+
             .col-md-6
               = f.input :client_row_text, label: false, \
                         input_html: { \

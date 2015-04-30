@@ -16,6 +16,7 @@ h3
                 th = sort_link @search, :currency , "Currency"
                 th = sort_link @search, :invoice_state , "State"
                 th = sort_link @search, :invoice_date , "Invoice Date"
+                th = sort_link @search, :net, "Invoice net"
                 th
 
             tbody
@@ -26,6 +27,7 @@ h3
                   td= invoice.currency
                   td= invoice.state
                   td= invoice.invoice_date
+                  td= invoice.net
                   td= render 'actions', :'@invoice' => invoice
                 == render 'modal', :'@invoice' => invoice
     br

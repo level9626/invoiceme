@@ -101,6 +101,7 @@ class InvoicesController < ApplicationController
       :vat_rate,
       :vat,
       :discount,
+      :net,
       invoice_items_attributes: [
         :description,
         :hours_or_tasks,

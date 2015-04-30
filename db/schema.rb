@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150426135212) do
+ActiveRecord::Schema.define(version: 20150427133120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20150426135212) do
     t.float    "vat"
     t.float    "discount"
     t.string   "state",            limit: 20, default: "new", null: false
+    t.datetime "net"
   end
 
   add_index "invoices", ["invoice_number", "client_id", "company_id"], name: "index_invoices_on_invoice_number_and_client_id_and_company_id", unique: true, using: :btree

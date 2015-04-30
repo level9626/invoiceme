@@ -58,3 +58,20 @@ $('.btn').click(function() {
     $('.modal').modal('show');
 });
 
+//Add "Show/Hide" button for each wysihtml5 text editor. Found it as .wysihtml
+//class through form -> parent
+$(document).ready(function(){
+   $("form").find(".wysihtml5-toolbar").each(function () {
+      var that = $(this);
+      $(this).parent().prepend('<button class="btn btn-primary btn-xs btn-block"\ ' +
+      'style="margin-bottom: 10px;">Show / Hide</button>').on('click', function(){
+          if (that.hasClass('hidden')){
+              that.removeClass('hidden');
+          }else{
+              that.addClass('hidden')   ;
+          }
+          return false;
+      });
+      $(this).addClass('hidden');
+   });
+});
