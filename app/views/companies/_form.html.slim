@@ -2,14 +2,14 @@
   .col-md-6
     section.task-panel.tasks-widget
       .panel-body
-          = simple_form_for(@company) do |f|
-            = f.error_notification
+        = simple_form_for(@company) do |f|
+          = f.error_notification
 
-            .form-inputs
-              = f.input :logo, as: :file
-              = f.input :name
-              = f.input :address, input_html: { class: 'wysihtml5' }
-              = f.input :default
+          .form-inputs
+            = f.input :logo, as: :file
+            = f.input :name
+            = f.input :address, input_html: { class: 'wysihtml5' }
+            = f.input :default
 
-            .form-actions
-              = f.button :submit
+          .form-actions
+            = f.button :submit
