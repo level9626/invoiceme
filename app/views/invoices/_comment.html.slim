@@ -1,7 +1,9 @@
 br
 br
-a.btn.btn-primary.cd-btn data-cd='comments' Comments
-
+a.btn.btn-primary.cd-btn data-cd='comments'
+  | Comments
+  span.badge
+    == @invoice.thread.comments.count
 
 .cd-panel.panel.panel-default#comments
   .panel-heading
@@ -11,15 +13,3 @@ a.btn.btn-primary.cd-btn data-cd='comments' Comments
         span.glyphicon.glyphicon-remove
   .panel-body
     == commontator_thread(@invoice)
-
-
-/#myModal1.modal.fade
-/  .modal-dialog
-/    .modal-content
-/      .modal-header
-/        button.close aria-hidden="true" data-dismiss="modal" type="button"  &times;
-/        h4.modal-title Comments
-/      .modal-body
-/        == commontator_thread(@invoice)
-/        br
-/        button.btn.btn-default data-dismiss="modal" type="button" class="btn btn-primary"  Close

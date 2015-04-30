@@ -61,21 +61,24 @@ $('.btn').click(function() {
 //Add "Show/Hide" button for each wysihtml5 text editor. Found it as .wysihtml
 //class through form -> parent
 $(document).ready(function(){
-   $("form").find(".wysihtml5-toolbar").each(function () {
-      var that = $(this);
-      $(this).parent().prepend('<button id="wys" class="btn btn-primary btn-xs"\ ' +
-      'style="margin-bottom: 10px;">Show Editor</button>').on('click', function(){
-          if (that.hasClass('hidden')){
-              $(event.target).html("Hide editor");
-
-              that.removeClass('hidden');
-          }else{
-              $(event.target).html("Show editor");
-
-              that.addClass('hidden')   ;
-          }
-          return false;
-      });
+    $("form").find(".wysihtml5-toolbar").each(function () {
+       // Init event
       $(this).addClass('hidden');
-   });
+      $(this).parent()
+             .prepend('<button class="wys btn-primary btn-xs">Show Editor</button>');
+    });
+
+    // Init event handlers
+    $('.wys').on('click', function(){
+        var that = $(this).parent().find('.wysihtml5-toolbar');
+
+        if (that.hasClass('hidden')){
+            $(this).html("Hide editor");
+            that.removeClass('hidden');
+        }else{
+            $(this).html("Show editor");
+            that.addClass('hidden')   ;
+        }
+        return false;
+    });
 });
