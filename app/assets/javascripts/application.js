@@ -63,11 +63,15 @@ $('.btn').click(function() {
 $(document).ready(function(){
    $("form").find(".wysihtml5-toolbar").each(function () {
       var that = $(this);
-      $(this).parent().prepend('<button class="btn btn-primary btn-xs btn-block"\ ' +
-      'style="margin-bottom: 10px;">Show / Hide</button>').on('click', function(){
+      $(this).parent().prepend('<button id="wys" class="btn btn-primary btn-xs"\ ' +
+      'style="margin-bottom: 10px;">Show Editor</button>').on('click', function(){
           if (that.hasClass('hidden')){
+              $(event.target).html("Hide editor");
+
               that.removeClass('hidden');
           }else{
+              $(event.target).html("Show editor");
+
               that.addClass('hidden')   ;
           }
           return false;
