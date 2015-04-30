@@ -3,7 +3,7 @@ br
 a.btn.btn-primary.cd-btn data-cd='comments'
   | Comments
   span.badge
-    == @invoice.thread.comments.count
+    == @invoice.thread.comments.where(deleted_at: nil).count
 
 .cd-panel.panel.panel-default#comments
   .panel-heading

@@ -2470,6 +2470,10 @@ label {
   display: block;
   margin-bottom: 5px;
 }
+//Fixed badge's bug for "Comment" button
+#journals {
+  z-index: 1;
+}
 
 //.modal.fade:not(.in) .modal-dialog {
 //  -webkit-transform: translate3d(125%, 0, 0);
