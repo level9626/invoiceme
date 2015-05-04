@@ -1,6 +1,9 @@
 br
 br
-a.btn.btn-primary.cd-btn data-cd='journals' Logs
+a.btn.btn-primary.cd-btn data-cd='journals'
+  | Logs
+  span.badge
+    == @invoice.journals.count
 
 
 
