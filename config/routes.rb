@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
+  resources :invoice_mails
+
   resources :invoice_email_templates
 
   resources :payments
-
-  mount Upmin::Engine => '/admin'
-
-  mount Commontator::Engine => '/commontator'
 
   resources :clients
 
@@ -27,5 +25,13 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'devise/sessions#new'
+  unauthenticated :user do
+    devise_scope :user do
+      root to: 'devise/sessions#new', as: 'unauthenticated'
+    end
+  end
+
+  mount Upmin::Engine => '/admin'
+
+  mount Commontator::Engine => '/commontator'
 end

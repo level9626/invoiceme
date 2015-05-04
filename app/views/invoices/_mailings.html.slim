@@ -1,0 +1,15 @@
+- if @invoice.can_publish?
+  br
+  br
+  button.btn.btn-primary.cd-btn data-cd='publish' Send Invoice
+
+
+
+.cd-panel.panel.panel-default#publish
+  .panel-heading
+    h3.panel-title New Invoice Mailing
+    span.pull-right
+      a.cd-panel-close href="#"
+        span.glyphicon.glyphicon-remove
+  .panel-body
+    = render 'invoice_mails/form', :'@invoice_mail' => @invoice.invoice_mails.new

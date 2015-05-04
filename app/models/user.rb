@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
   has_many :companies
   has_many :payments, through: :invoices
   has_many :invoice_email_templates, foreign_key: :owner_id
+  has_many :invoice_mails
 
   ## Nested Forms
   accepts_nested_attributes_for :clients_users, :invoices, :companies

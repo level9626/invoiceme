@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Invoice:
+  = @invoice_mail.invoice_id
+p
+  strong To:
+  = @invoice_mail.to
+p
+  strong User:
+  = @invoice_mail.user_id
+p
+  strong Subject:
+  = @invoice_mail.subject
+p
+  strong Cc:
+  = @invoice_mail.cc
+p
+  strong Body:
+  = @invoice_mail.body
+p
+  strong Invoice email template:
+  = @invoice_mail.invoice_email_template_id
+
+= link_to 'Edit', edit_invoice_mail_path(@invoice_mail)
+'|
+= link_to 'Back', invoice_mails_path

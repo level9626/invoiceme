@@ -1,12 +1,8 @@
 aside
   #sidebar.nav-collapse
     ul#nav-accordion.sidebar-menu
-      p.centered
-        a href="profile.html"
-        = image_tag current_user.logo_url, class: 'img-circle', size: "60x60"
-        h5.centered= current_user.name
       li
-        = link_to root_path, class: current_page?(root_path) && 'active'
+        = link_to profile_path, class: current_page?(profile_path) && 'active'
           i.fa.fa-user Profile
       li
         = link_to edit_user_registration_path, class: current_page?(edit_user_registration_path) && 'active'

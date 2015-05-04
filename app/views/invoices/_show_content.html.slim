@@ -10,7 +10,7 @@ section.task-panel.tasks-widget
           .col-md-6#invoice-date.text-right
             h3
               .fa.fa-calendar
-              span=t @invoice.invoice_date
+              span= @invoice.invoice_date.strftime("%m/%d/%Y")
       hr
       section#company-client
         .col-md-6

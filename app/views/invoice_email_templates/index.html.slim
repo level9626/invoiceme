@@ -1,0 +1,19 @@
+h1 Listing invoice_email_templates
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @invoice_email_templates.each do |invoice_email_template|
+      tr
+        td = link_to 'Show', invoice_email_template
+        td = link_to 'Edit', edit_invoice_email_template_path(invoice_email_template)
+        td = link_to 'Destroy', invoice_email_template, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Invoice email template', new_invoice_email_template_path

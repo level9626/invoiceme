@@ -37,6 +37,7 @@ class Invoice < ActiveRecord::Base
   has_many :invoice_items, dependent: :destroy
   has_many :payments, dependent: :destroy
   has_many :journals, dependent: :destroy
+  has_many :invoice_mails
 
   ## Nested forms
   accepts_nested_attributes_for :invoice_items

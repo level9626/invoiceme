@@ -12,7 +12,14 @@
 #
 
 class InvoiceEmailTemplate < ActiveRecord::Base
+  ## Relations
   belongs_to :owner, class_name: User
+  has_many :invoice_mails
+
+  ## Validations
+  validates :owner_id, presence: true
+  validates :name, :template_subject, length: { in: 1..255 }
+  validates :template_body, length: { in: 1..4000 }
 
   ## Scopes
   scope :by_role, lambda { |role|

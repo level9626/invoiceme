@@ -28,14 +28,21 @@ Rails.application.configure do
   config.assets.debug = true
 
   config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #     :user_name => '342355de8122bb9d6',
+  #     :password => '3e1f338603c0b6',
+  #     :address => 'mailtrap.io',
+  #     :domain => 'mailtrap.io',
+  #     :port => '2525',
+  #     :authentication => :cram_md5
+  # }
   config.action_mailer.smtp_settings = {
-      :user_name => '342355de8122bb9d6',
-      :password => '3e1f338603c0b6',
-      :address => 'mailtrap.io',
-      :domain => 'mailtrap.io',
-      :port => '2525',
-      :authentication => :cram_md5
-  }
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'example.com',
+      user_name:            'yasinishyn.a.n@gmail.com',
+      password:             'nazarova_239',
+      authentication:       'plain'}
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.raise_delivery_errors = true

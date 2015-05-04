@@ -1,0 +1,33 @@
+h1 Listing invoice_mails
+
+table
+  thead
+    tr
+      th Invoice
+      th To
+      th User
+      th Subject
+      th Cc
+      th Body
+      th Invoice email template
+      th
+      th
+      th
+
+  tbody
+    - @invoice_mails.each do |invoice_mail|
+      tr
+        td = invoice_mail.invoice_id
+        td = invoice_mail.to
+        td = invoice_mail.user_id
+        td = invoice_mail.subject
+        td = invoice_mail.cc
+        td = invoice_mail.body
+        td = invoice_mail.invoice_email_template_id
+        td = link_to 'Show', invoice_mail
+        td = link_to 'Edit', edit_invoice_mail_path(invoice_mail)
+        td = link_to 'Destroy', invoice_mail, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Invoice mail', new_invoice_mail_path

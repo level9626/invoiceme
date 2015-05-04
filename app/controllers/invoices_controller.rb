@@ -75,7 +75,7 @@ class InvoicesController < ApplicationController
 
   def _set_invoice
     @invoice = current_user.invoices
-               .includes(:journals)
+               .includes(:journals, :company, :client, :invoice_items)
                .find(params[:id])
   end
 
