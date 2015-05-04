@@ -1,7 +1,7 @@
-section.task-panel.tasks-widget
-  .panel-body
-    .task-content= simple_form_for(@invoice) do |f|
-      .col-md-12#invoice
+.task-content= simple_form_for(@invoice) do |f|
+  .col-md-9#invoice
+    section.task-panel.tasks-widget
+      .panel-body
         section#header
           .row
             .col-md-6#logo
@@ -12,11 +12,14 @@ section.task-panel.tasks-widget
 
         section#invoice_number-invoice-date
           .row
-            .col-md-6#invoice_number
+            .col-md-4#invoice_number
               = f.input :invoice_number, \
                         input_html: { value: ['#', current_user.invoices.count + 1].join}
-            .col-md-6#invoice-date
+            .col-md-4#invoice-date
               = f.input :invoice_date, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y') }
+            .col-md-4#net
+              = f.input :net, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y') }
+
 
         section#company-client
           .row
@@ -36,6 +39,7 @@ section.task-panel.tasks-widget
                           class: 'wysihtml5', \
                           id: 'companies_address'\
                         }
+
             .col-md-6
               = f.input :client_row_text, label: false, \
                         input_html: { \
@@ -108,3 +112,10 @@ section.task-panel.tasks-widget
         .section
           .form-actions
             = f.button :submit, class: 'btn-success pull-right'
+  .col-md-3#invoice
+    section.task-panel.tasks-widget
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title Title
+        .panel-body
+          h3 hello my friend

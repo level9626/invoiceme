@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 20150501071659) do
     t.float    "vat"
     t.float    "discount"
     t.string   "state",            limit: 20, default: "new", null: false
+    t.datetime "net"
   end
 
   add_index "invoices", ["invoice_number", "client_id", "company_id"], name: "index_invoices_on_invoice_number_and_client_id_and_company_id", unique: true, using: :btree

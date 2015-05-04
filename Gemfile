@@ -51,6 +51,10 @@ gem 'mini_magick'
 # Search
 gem 'ransack'
 
+# Worker
+gem 'sidekiq'
+gem 'sidetiq'
+
 # Other
 gem 'figaro',       '>= 1.0.0.rc1'
 gem 'high_voltage'
