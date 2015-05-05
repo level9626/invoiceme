@@ -14,8 +14,8 @@ h3
       .panel-heading
         h3.panel-title Actions
         span.pull-right.clickable
-          i.glyphicon.glyphicon-chevron-up
-      .panel-body
+          i.glyphicon.glyphicon-chevron-down
+      .panel-body#invoice_filter
 
         = link_to "Download PDF", invoice_path(@invoice, :format => 'pdf'), class: "btn btn-success", target: '_blank'
         br

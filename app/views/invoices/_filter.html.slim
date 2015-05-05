@@ -7,8 +7,8 @@
   .panel-heading
     h3.panel-title Filters
     span.pull-right.clickable
-      i.glyphicon.glyphicon-chevron-up
-  .panel-body
+      i.glyphicon.glyphicon-chevron-down
+  .panel-body#invoice_filter
     = search_form_for @search, :builder => SimpleForm::FormBuilder do |f|
       / Client contain text
       = f.label :client_name_cont, 'Client name', class: "fa fa-tag"
