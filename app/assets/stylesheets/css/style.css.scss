@@ -2459,9 +2459,6 @@ label {
   width: 50px;
 }
 
-#main-content > section > div > div > div > div.col-md-9 > section > div > div > table > thead > tr > th:nth-child(6) {
-  width: 200px;
-}
 .comment_avatar {
   display: none;
 }
@@ -2470,14 +2467,25 @@ label {
   display: block;
   margin-bottom: 5px;
 }
-//Fixed badge's bug for "Comment" button
-.badge {
-  z-index: 0;
-}
+//Fixed badge's bug with z-index for "Comment" button
 
 #journals {
   z-index: 1;
 }
+
+#publish {
+  z-index: 1;
+}
+
+
+// Additional actions at invoice page button
+#invoices_actions_button::before {
+  color: #000000;
+}
+//#main-content > section > div > div > div.row.mt > div.col-md-3.filter > div > div.panel-body {
+//  display: none;
+//}
+
 
 //.modal.fade:not(.in) .modal-dialog {
 //  -webkit-transform: translate3d(125%, 0, 0);

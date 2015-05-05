@@ -7,11 +7,8 @@ h3
     .white-panel.pn.donut-chart
       .white-header
         h5 Default Company
-    - if @company!=@company.default
+    - if @company
       = render 'companies/company', company: @company
-
-    - else
-      h3 there are no default companies, create one
 
   .col-lg-6
     .content-panel
