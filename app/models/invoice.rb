@@ -59,6 +59,9 @@ class Invoice < ActiveRecord::Base
   validates :subtotal, presence: true, numericality: true
   validates :vat_rate, :vat, :discount, numericality: true, allow_blank: true
 
+  ## by default invoice query doesn't show closed invoices
+  default_scope { where.not(state: "closed") }
+
   ## Instance methods
   # TODO: need to be tested
   def amount
