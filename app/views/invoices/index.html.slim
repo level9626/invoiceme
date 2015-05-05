@@ -4,19 +4,19 @@ h3
 
 .row.mt
   = render 'shared/tags'
-  .col-md-9
+  .col-md-12
     section.task-panel.tasks-widget
       .panel-body
         .task-content
           table.table
             thead
               tr
-                th = sort_link @search, :invoice_number, "Invoice Number"
+                th = sort_link @search, :invoice_number, "No."
                 th = sort_link @search, :client_name , "Client"
                 th = sort_link @search, :currency , "Currency"
                 th = sort_link @search, :invoice_state , "State"
-                th = sort_link @search, :invoice_date , "Invoice Date"
-                th = sort_link @search, :net, "Invoice net"
+                th = sort_link @search, :invoice_date , "Created At"
+                th = sort_link @search, :net, "NET"
                 th
 
             tbody
@@ -26,8 +26,8 @@ h3
                   td= invoice.client.name
                   td= invoice.currency
                   td= invoice.state
-                  td= invoice.invoice_date
-                  td= invoice.net
+                  td= invoice.invoice_date.try(:strftime, "%m/%d/%Y")
+                  td= invoice.net.try(:strftime, "%m/%d/%Y")
                   td= render 'actions', :'@invoice' => invoice
                 == render 'modal', :'@invoice' => invoice
     br
@@ -40,6 +40,6 @@ h3
           .fa.fa-download
           | Download to CSV
     = will_paginate @invoices
-  .col-md-3
+  .col-md-3.filter
     == render 'filter'
 

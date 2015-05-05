@@ -64,3 +64,20 @@ $border: grey;
     visibility: visible;
   }
 }
+
+
+.panel-body > a.btn {
+  width: 100% !important;
+}
+
+
+.filter{
+  position: absolute;
+  right: 4px;
+  top: 34px;
+
+  .panel-heading{
+    background: #68dff0;
+    color: white;
+  }
+}

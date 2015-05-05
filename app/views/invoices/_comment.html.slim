@@ -1,13 +1,13 @@
 br
 br
 a.btn.btn-primary.cd-btn data-cd='comments'
-  | Comments
+  | Notes
   span.badge
     == @invoice.thread.comments.where(deleted_at: nil).count
 
 .cd-panel.panel.panel-default#comments
   .panel-heading
-    h3.panel-title Comments
+    h3.panel-title Notes
     span.pull-right
       a.cd-panel-close href="#"
         span.glyphicon.glyphicon-remove

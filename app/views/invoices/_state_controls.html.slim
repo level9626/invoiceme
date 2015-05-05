@@ -1,10 +1,10 @@
-/- Invoice.state_machines[:state].events.map(&:name).each do |event|
-/  - next unless @invoice.send("can_#{event}?")
-/  br
-/  br
-/  = link_to send("#{event}_invoice_path", @invoice), :method => :get, class: "btn btn-primary"
-/    .fa.fa-pencil
-/      = event.to_s.camelcase
+- Invoice.state_machines[:state].events.map(&:name).each do |event|
+  - next unless @invoice.send("can_#{event}?")
+  br
+  br
+  = link_to send("#{event}_invoice_path", @invoice), :method => :get, class: "btn btn-primary"
+    .fa.fa-pencil
+      = event.to_s.camelcase
 
 
 
