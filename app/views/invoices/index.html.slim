@@ -1,17 +1,24 @@
 h3
   i.fa.fa-angle-right
   | Your invoices
+  //buttons above filters. filters and tags in col-md 12. 8/4
 
-.col-md-6
-  = link_to new_invoice_path, class: "btn btn-primary btn-sm"
-    .fa.fa-plus
-      | Add New Invoice
-  = link_to invoices_path(params.merge(format: 'csv')), class: "btn btn-success btn-sm"
-    .fa.fa-download
-      | Download to CSV
 .row.mt
-  = render 'shared/tags'
   .col-md-12
+    .col-md-8#tags.tags
+      == render 'shared/tags'
+    .col-md-4.pull-right.filter
+      = link_to new_invoice_path, class: "btn btn-primary btn-sm"
+        .fa.fa-plus
+          | Add New Invoice
+      = link_to invoices_path(params.merge(format: 'csv')), class: "btn btn-success btn-sm"
+        .fa.fa-download
+          | Download to CSV
+      br
+      br
+      == render 'filter'
+.row.mt
+  .col-md-12.index_invoice
     section.task-panel.tasks-widget
       .panel-body
         .task-content
@@ -38,6 +45,3 @@ h3
                   td= render 'actions', :'@invoice' => invoice
                 == render 'modal', :'@invoice' => invoice
     = will_paginate @invoices
-  .col-md-3.filter
-    == render 'filter'
-

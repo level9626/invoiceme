@@ -1,11 +1,10 @@
-.col-md-12#tags
-  - unless @search.conditions.empty?
-    .panel.panel-default
-      .panel-heading
-        h3.panel-title Tags
-      .panel-body
-        - @search.conditions.each do |condition|
-          - condition.attributes.each do |attribute|
-            button.btn.btn-round.btn-default id="#{attribute.name}_#{condition.predicate.name}"
-              = attribute.name
-              span.glyphicon.glyphicon-remove aria-hidden="true"
+- unless @search.conditions.empty?
+  .panel.panel-default
+    .panel-heading
+      h3.panel-title Tags
+    .panel-body
+      - @search.conditions.each do |condition|
+        - condition.attributes.each do |attribute|
+          button.btn.btn-round.btn-default id="#{attribute.name}_#{condition.predicate.name}"
+            = attribute.name
+            span.glyphicon.glyphicon-remove aria-hidden="true"

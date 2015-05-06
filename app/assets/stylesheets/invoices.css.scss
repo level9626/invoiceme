@@ -70,14 +70,42 @@ $border: grey;
   width: 100% !important;
 }
 
+.index_invoice {
+  top: 10px;
+}
 
 .filter{
   position: absolute;
   right: 4px;
-  top: 50px;
+  z-index: 1;
+  top: -50px;
 
   .panel-heading{
     background: #68dff0;
     color: white;
   }
+}
+
+.filter_showpage {
+  position: absolute;
+  right: 4px;
+  z-index: 1;
+  top: 37px;
+
+  a.btn {
+    margin-bottom: 10px;
+  }
+
+  .panel-heading{
+    background: #68dff0;
+    color: white;
+  }
+}
+
+.tags {
+  padding-left: 4px;
+}
+
+a.btn.btn-sm {
+  width: 49%;
 }
