@@ -34,29 +34,6 @@ Number.prototype.round = function(p) {
     return parseFloat( this.toFixed(p) );
 };
 
-// Filters on invoice's index page, hidden by default and actions on view page
-jQuery(function ($) {
-    var panel = $('#main-content').find('#invoice_filter');
-    $(document).ready(function(){
-        $(panel).hide();
-    });
-    if (panel.hide()) {
-        $('.panel-heading span.clickable').on("click", function (e) {
-            if (!($(this).hasClass('panel-collapsed'))) {
-                // expand the panel
-                $(this).parents('.panel').find('.panel-body').slideDown();
-                $(this).addClass('panel-collapsed');
-                $(this).find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
-            }
-            else {
-                // collapse the panel
-                $(this).parents('.panel').find('.panel-body').slideUp();
-                $(this).removeClass('panel-collapsed');
-                $(this).find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
-            }
-        });
-    }
-});
 
 $('.btn').click(function() {
     $('.modal')
