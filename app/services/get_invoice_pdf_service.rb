@@ -7,6 +7,7 @@ class GetInvoicePdfService
     template = Rails.root.join('app', 'views', 'invoices', \
                                '_show_content.html.slim').to_s
     layout = 'pdf_layout'
+    # rubocop:disable all
     params = { layout: layout, zoom: 0.9, locals: { :'@invoice' => @invoice } }
 
     WickedPdf.new.pdf_from_string ac.render_to_string(template, params)

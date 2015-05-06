@@ -20,6 +20,7 @@ class InvoiceMailsController < ApplicationController
   def edit
   end
 
+  # rubocop:disable all
   def create
     @invoice_mail = current_user.invoice_mails.new(invoice_mail_params)
     @invoice_mail.to = invoice_mail_params['to'].split(',').map(&:strip)
