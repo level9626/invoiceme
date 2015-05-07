@@ -3,11 +3,11 @@
 /  - currency (select)
 /  - invoice date (from - to)
 
-.panel.panel-default
+.panel.panel-default.panel_invoice
   .panel-heading
-    h3.panel-title Filters
+    panel-title.filter_text Filters
     span.pull-right.clickable
-      i.glyphicon.glyphicon-chevron-down
+      i.glyphicon.glyphicon-chevron-down.filter_glyph
   .panel-body.dropdown_panel
     = search_form_for @search, :builder => SimpleForm::FormBuilder do |f|
       / Client contain text

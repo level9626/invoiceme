@@ -38,6 +38,17 @@ $border: grey;
   padding-left: 5px;
 }
 
+.filter_glyph {
+  top: 21px;
+}
+
+.filter_text {
+
+
+  font-family: FontAwesome;
+  font-size: 12px;
+}
+
 .white-panel {
   footer {
     padding-right: 10px;
@@ -65,32 +76,42 @@ $border: grey;
   }
 }
 
-
 .panel-body > a.btn {
   width: 100% !important;
 }
 
 .index_invoice {
-  top: 10px;
+  margin: 0px 0px 0px -5px;
 }
-
+.panel_invoice {
+  border-color: #68dff0;
+}
 .filter{
   position: absolute;
-  right: 4px;
+  right: 10px;
   z-index: 1;
-  top: -50px;
-
+  top: -60px;
+  width: auto;
+  .panel-title {
+    padding-top: 0px;
+  }
   .panel-heading{
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+
+    border-bottom: 1px solid #68dff0;
     background: #68dff0;
     color: white;
   }
 }
 
+
 .filter_showpage {
   position: absolute;
   right: 4px;
   z-index: 1;
-  top: 37px;
+  top: 25px;
 
   a.btn {
     margin-bottom: 10px;
@@ -103,9 +124,5 @@ $border: grey;
 }
 
 .tags {
-  padding-left: 4px;
-}
-
-a.btn.btn-sm {
-  width: 49%;
+  padding-left: 0px;
 }
