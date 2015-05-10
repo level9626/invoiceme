@@ -22,7 +22,7 @@
         a.btn.btn-theme01 data-toggle="modal" href="#myModal"
           | Receive payment
       li
-        = render 'state_controls'
+        == render 'state_controls'
       li
         = link_to @invoice, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-theme04"
           | Delete invoice

@@ -43,8 +43,6 @@ $border: grey;
 }
 
 .filter_text {
-
-
   font-family: FontAwesome;
   font-size: 12px;
 }
@@ -125,4 +123,13 @@ $border: grey;
 
 .tags {
   padding-left: 0px;
+}
+
+.mail {
+  display: none;
+
+}
+
+.new_invoice_button {
+  margin-right: 15px;
 }
