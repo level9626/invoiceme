@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    == render 'layouts/head'
+  body
+    .row.mt
+      .col-lg-12
+        = link_to 'Back', previous_path
+        == render 'layouts/messages'
+        == yield

@@ -43,5 +43,5 @@ h3
                   td= invoice.invoice_date.try(:strftime, "%m/%d/%Y")
                   td= invoice.net.try(:strftime, "%m/%d/%Y")
                   td= render 'actions', :'@invoice' => invoice
-                == render 'modal', :'@invoice' => invoice
+                == render 'payment', :'@invoice' => invoice
     = will_paginate @invoices

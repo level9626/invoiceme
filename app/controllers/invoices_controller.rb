@@ -1,7 +1,9 @@
 class InvoicesController < ApplicationController
   before_action :_set_invoice, only: [:show, :edit, :update, :destroy] + \
     Invoice.state_machines[:state].events.map(&:name)
-  before_action :_verify_company!, only: [:new]
+  before_action :_verify_company!, only: :new
+
+  layout :_invoice_layout
 
   respond_to :html
 
@@ -84,6 +86,10 @@ class InvoicesController < ApplicationController
 
     flash[:notice] = "You'll need to create a company first!"
     redirect_to new_company_path
+  end
+
+  def _invoice_layout
+    action_name == 'show' ? 'show_layout' : 'authenticated'
   end
 
   # rubocop:disable all
