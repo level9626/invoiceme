@@ -85,6 +85,28 @@ class Invoice < ActiveRecord::Base
     _with_currency payments.where.not(id: nil).map(&:amount).reduce(:+)
   end
 
+  ## Class methods
+
+  # Statistics
+  def self.count_by_currency user
+    connection.execute(<<-EOQ)
+      SELECT currency, count(*) AS invoices_count
+      FROM invoices
+      WHERE user_id=#{user.id}
+      GROUP BY currency;
+    EOQ
+  end
+
+  def self.overdue_count_by_currency user
+    connection.execute(<<-EOQ)
+      SELECT currency, count(*) AS invoices_count
+      FROM invoices
+      WHERE state='overdue'
+      AND user_id=#{user.id}
+      GROUP BY currency;
+    EOQ
+  end
+
   private
   ## Private instance methods
   def _with_currency amount

@@ -1,12 +1,16 @@
 class InvoicesController < ApplicationController
+  ## Controller filters
   before_action :_set_invoice, only: [:show, :edit, :update, :destroy] + \
     Invoice.state_machines[:state].events.map(&:name)
   before_action :_verify_company!, only: :new
 
+  ## Defining layout
   layout :_invoice_layout
 
-  respond_to :html
+  ## Responce formats
+  respond_to :html, :json
 
+  ## Crud methods
   def index
     @search = _search
     @invoices = @search.result.paginate(per_page: 10, page: params[:page])
@@ -67,13 +71,21 @@ class InvoicesController < ApplicationController
     end
   end
 
-  ## Private Scope
+  # Statistics and metrics
+  def statistics
+    @statistics = {}
+    @statistics[:count] = Invoice.count_by_currency current_user
+    @statistics[:overdue_count] = Invoice.overdue_count_by_currency current_user
 
+    respond_with(@statistics)
+  end
+
+  ## Private Scope
   private
 
   def _search
     Invoice.where(user: current_user)
-      .includes(:client)
+      .includes(:journals, :company, :client, :invoice_items, :payments)
       .search(params[:q])
   end
 
