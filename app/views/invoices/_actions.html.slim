@@ -1,9 +1,8 @@
 .pull-right
-  = link_to edit_invoice_path(@invoice), :method => :get, class: "btn btn-primary btn-xs tab"
-    i.fa.fa-pencil
-  = link_to invoice_path(@invoice, :format => 'pdf'), class: "btn btn-warning btn-xs tab", target: '_blank'
-    i.fa.fa-download
-  a.btn.btn-success.btn-xs.fa.fa-euro.tab data-toggle="modal" href="#myModal"
+  = link_to @invoice, :method => :get, class: "btn btn-primary btn-xs tab"
+    i.fa.fa-eye
+  a.btn.btn-success.btn-xs data-toggle="modal" href="#paymentModal#{@invoice.id}"
+    | Receive payment
 
   .btn-group
     button.btn.btn-default.btn-xs.tab.dropdown-toggle aria-expanded="false" data-toggle="dropdown" type="button"
@@ -13,16 +12,10 @@
         = link_to @invoice, :method => :get, class: "btn btn-theme01"
           | View invoice
       li
-        = link_to edit_invoice_path(@invoice), :method => :get, class: "btn btn-theme01"
-          | Edit
-      li
-        = link_to invoice_path(@invoice, :format => 'pdf'), class: "btn btn-theme01", target: '_blank'
+        = link_to invoice_path(@invoice, :format => 'pdf'), \
+                  class: "btn btn-theme01", target: '_blank'
           | Download PDF
       li
-        a.btn.btn-theme01 data-toggle="modal" href="#myModal"
-          | Receive payment
-      li
-        == render 'state_controls'
-      li
-        = link_to @invoice, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-theme04"
+        = link_to @invoice, data: {:confirm => 'Are you sure?'}, \
+                  :method => :delete, class: "btn btn-theme01"
           | Delete invoice

@@ -1,48 +1,41 @@
-h3
-  i.fa.fa-angle-right
-  | Your invoices
-  //buttons above filters. filters and tags in col-md 12. 8/4
-
-.row.mt
-  .col-md-12
-    .col-md-8#tags.tags
-      == render 'shared/tags'
-    .col-md-4.pull-right.filter
+.row
+  .col-md-8#tags.tags
+    == render 'shared/tags'
+  .col-md-4.pull-right.filter
+    div.btn-group role="group"
       = link_to new_invoice_path, class: "btn btn-primary btn-sm"
         .fa.fa-plus
           | Add New Invoice
       = link_to invoices_path(params.merge(format: 'csv')), class: "btn btn-success btn-sm"
         .fa.fa-download
           | Download to CSV
-      br
-      br
-      == render 'filter'
-.row.mt
-  .col-md-12.index_invoice
+    == render 'filter'
+
+  .col-md-12
     section.task-panel.tasks-widget
       .panel-body
         .task-content
           table.table
             thead
               tr
+                th = sort_link @search, :invoice_date , "Date"
                 th = sort_link @search, :invoice_number, "No."
-                th = sort_link @search, :client_name , "Client"
-                th = sort_link @search, :currency , "Currency"
-                th = sort_link @search, :invoice_state , "State"
-                th = sort_link @search, :invoice_date , "Created At"
-                th = sort_link @search, :net, "NET"
+                th = sort_link @search, :client_name , "Due date"
+                th = sort_link @search, :currency , "Balance"
+                th = sort_link @search, :invoice_state , "Total"
+                th = sort_link @search, :net, "Status"
                 th
 
             tbody
               - @invoices.each do |invoice|
                 tr
-                  td= invoice.invoice_number
-                  td= invoice.client.name
-                  td= invoice.currency
-                  td= invoice.state
                   td= invoice.invoice_date.try(:strftime, "%m/%d/%Y")
-                  td= invoice.net.try(:strftime, "%m/%d/%Y")
+                  td= invoice.invoice_number
+                  td= invoice.due_date.try(:strftime, "%m/%d/%Y")
+                  td= invoice.balance
+                  td= invoice.total
+                  td= invoice.state
                   td= render 'actions', :'@invoice' => invoice
-                  td.mail= render 'invoice_mails/form', :'@invoice_mail' => invoice.invoice_mails.new
-                == render 'modal', :'@invoice' => invoice
+                == render 'payment', :'@invoice' => invoice
     = will_paginate @invoices
+

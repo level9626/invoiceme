@@ -1,26 +1,21 @@
-a.btn.btn-primary.cd-btn data-cd='journals'
-  | Activities
-  span.badge
-    == @invoice.journals.count
-
-.cd-panel.panel.panel-default#journals
-  .panel-heading
-    h3.panel-title Title Goes Here
-    span.pull-right
-      a.cd-panel-close href="#"
-        span.glyphicon.glyphicon-remove
-  .panel-body
-    table.table
-      thead
-        tr
-          th Date
-          th Event
-          th From State
-          th To State
-      tbody
-        - @invoice.journals.each do |log|
-          tr
-            td= log.created_at.strftime('%B %-d, %Y')
-            td= log.event.split('_').map(&:camelize).join(' ')
-            td= log.from.split('_').map(&:camelize).join(' ')
-            td= log.to.split('_').map(&:camelize).join(' ')
+.modal.fade id="jurnalsModal#{@invoice.id}"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-hidden="true" data-dismiss="modal" type="button"  &times;
+        h4.modal-title Activities
+      .modal-body
+        table.table
+          thead
+            tr
+              th Date
+              th Event
+              th From State
+              th To State
+          tbody
+            - @invoice.journals.each do |log|
+              tr
+                td= log.created_at.strftime('%B %-d, %Y')
+                td= log.event.split('_').map(&:camelize).join(' ')
+                td= log.from.split('_').map(&:camelize).join(' ')
+                td= log.to.split('_').map(&:camelize).join(' ')

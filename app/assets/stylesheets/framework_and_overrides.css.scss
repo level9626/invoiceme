@@ -89,3 +89,39 @@ i.fa.fa-money::before {
   color: $orange-main;
   padding-right: 5px;
 }
+
+.thin-menu {
+  header {
+    min-height: 40px;
+    height: 40px;
+    top: 0;
+    a.logo {
+      font-size: 15px;
+      margin-top: 10px;
+    }
+    .dropdown-menu.extended.tasks-bar{
+      left: -100px;
+      width: auto !important;
+      max-width: auto !important;
+      min-width: auto !important;
+    }
+
+    .btn.btn-theme.dropdown-toggle {
+      margin-top: 5px;
+      margin-right: 0px;
+    }
+
+    .badge {
+      margin-left: 5px;
+    }
+
+    .btn.btn-theme {
+      margin-top: 5px;
+      &:hover, &:focus {
+        color: #68dff0 !important;
+        border-color: #68dff0 !important;
+        background: white !important;
+      }
+    }
+  }
+}

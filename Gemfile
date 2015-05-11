@@ -18,6 +18,7 @@ gem 'will_paginate'
 gem 'font-awesome-rails'
 gem 'morrisjs-rails'
 gem 'raphael-rails'
+gem 'angularjs-rails'
 
 # Comments
 gem 'commontator'

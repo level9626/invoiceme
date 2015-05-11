@@ -12,9 +12,17 @@ $border: grey;
 //Form
 #invoice {
   @extend .borderise;
+  #header {
+    margin-bottom: 50px;
+  }
+  #invoice_items {
+    margin-bottom: 0;
+  }
   #logo {
     img {
       @extend .img-left;
+      height: 50px;
+      width: auto;
     }
   }
 
@@ -85,11 +93,14 @@ $border: grey;
   border-color: #68dff0;
 }
 .filter{
-  position: absolute;
-  right: 10px;
-  z-index: 1;
-  top: -60px;
-  width: auto;
+  margin-bottom: 10px;
+  .btn-group {
+    width: 100%;
+    margin-bottom: 10px;
+    .btn {
+      width: 50%;
+    }
+  }
   .panel-title {
     padding-top: 0px;
   }
@@ -101,6 +112,20 @@ $border: grey;
     border-bottom: 1px solid #68dff0;
     background: #68dff0;
     color: white;
+  }
+
+  .panel-body {
+    position: absolute;
+    margin: 15px;
+    margin-top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    background: white;
+  }
+
+  .panel {
+    margin-bottom: 0;
   }
 }
 

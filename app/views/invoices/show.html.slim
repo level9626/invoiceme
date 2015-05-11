@@ -1,68 +1,58 @@
-h3
-  i.fa.fa-angle-right
-  | Invoice number
-  span= @invoice.invoice_number
+/ Payment modal
+== render 'payment'
+== render 'mailings'
+== render 'journals'
+== render 'comment'
 
+/ Navigation
+section#container.thin-menu
+  header.header.black-bg
+    == link_to '< Back', previous_path, class: 'logo'
+    .top-menu
+      ul.nav.pull-right.top-menu
+        li
+          a.btn.btn-theme.btn-default data-toggle="modal" href="#paymentModal#{@invoice.id}"
+            | Receive payment
+        - if @invoice.can_publish?
+          li
+            a.btn.btn-theme.btn-default data-toggle="modal" href="#mailingModal#{@invoice.id}"
+              | Send
+        li
+          = link_to "Download PDF", invoice_path(@invoice, :format => 'pdf'), \
+                    target: '_blank', class: 'btn btn-theme btn-default'
+        li
+          a.btn.btn-theme.btn-default data-toggle="modal" href="#commentsModal#{@invoice.id}"
+            | Notes
+            span.badge= @invoice.thread.comments.where(deleted_at: nil).count
+        li
+          a.btn.btn-theme.btn-default data-toggle="modal" href="#jurnalsModal#{@invoice.id}"
+            | Activities
+            span.badge= @invoice.journals.count
+br
+/ Content
+.container.mt
+  .row.mt
+    .col-md-8
+      = render 'form'
 
-.row.mt
-  .col-md-12
-    / Main content here
-    = render 'show_content'
-    / Main content here
-  .col-md-3.filter_showpage
-    .panel.panel-default
-      .panel-heading
-        h3.panel-title Actions
-        span.pull-right.clickable
-          i.glyphicon.glyphicon-chevron-down
-      .panel-body.dropdown_panel
+    .col-md-4
+      .panel.panel-default
+        .panel-heading Info
+        .panel-body
+          p= "Status: #{@invoice.state.capitalize}"
+          p= "Balance: #{@invoice.balance}"
+          p= "Total: #{@invoice.total}"
 
-        = link_to "Download PDF", invoice_path(@invoice, :format => 'pdf'), class: "btn btn-success", target: '_blank'
-
-        = link_to "Edit", edit_invoice_path(@invoice), :method => :get, class: "btn btn-primary"
-
-        = render 'state_controls'
-        = render 'journals'
-        = render 'invoices/comment'
-
-        a.btn.btn-primary data-toggle="modal" href="#myModal" Launch Payment
-
-        /a.btn.fa.fa-chevron-left.back-to-top style="display: inline;" data-toggle="modal" href="#myModal1"
-
-== render 'modal'
-
-.row.mt
-  .col-md-12
-    .panel-heading Payments
-    .panel.panel-default
-      .panel-body
-        table.table
-          thead
-            tr
-              th Date
-              th amount
-          tbody
-            - @invoice.payments.each do |payment|
+      .panel.panel-default
+        .panel-heading Payments
+        .panel-body
+          table.table
+            thead
               tr
-                td= payment.created_at.try(:strftime, '%B %-d, %Y')
-                td= payment.amount
-
-.row.mt
-  .col-md-12
-    .panel.panel-default
-      .panel-heading Activities
-      .panel-body
-        table.table
-          thead
-            tr
-              th Date
-              th Event
-              th From State
-              th To State
-          tbody
-            - @invoice.journals.each do |log|
-              tr
-                td= log.created_at.strftime('%B %-d, %Y')
-                td= log.event.split('_').map(&:camelize).join(' ')
-                td= log.from.split('_').map(&:camelize).join(' ')
-                td= log.to.split('_').map(&:camelize).join(' ')
+                th Date
+                th amount
+            tbody
+              - @invoice.payments.each do |payment|
+                tr
+                  td= payment.created_at.try(:strftime, '%B %-d, %Y')
+                  td= payment.amount

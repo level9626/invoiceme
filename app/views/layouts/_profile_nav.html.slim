@@ -2,11 +2,8 @@ aside
   #sidebar.nav-collapse
     ul#nav-accordion.sidebar-menu
       li
-        = link_to profile_path, class: current_page?(profile_path) && 'active'
-          i.fa.fa-user Profile
-      li
-        = link_to edit_user_registration_path, class: current_page?(edit_user_registration_path) && 'active'
-          i.fa.fa-gears Account settings
+        = link_to dashboard_path, class: current_page?(dashboard_path) && 'active'
+          i.fa.fa-user Dashboard
       li
         = link_to companies_path, class: current_page?(companies_path) && 'active'
           i.fa.fa-briefcase My Companies
