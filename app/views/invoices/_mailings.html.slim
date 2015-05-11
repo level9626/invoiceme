@@ -1,13 +1,8 @@
-- if @invoice.can_publish?
-  a.btn.btn-theme02.cd-btn data-cd='publish' Send Invoice
-
-
-
-.cd-panel.panel.panel-default#publish
-  .panel-heading
-    h3.panel-title New Invoice Mailing
-    span.pull-right
-      a.cd-panel-close href="#"
-        span.glyphicon.glyphicon-remove
-  .panel-body
-    = render 'invoice_mails/form', :'@invoice_mail' => @invoice.invoice_mails.new
+.modal.fade id="mailingModal#{@invoice.id}"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-hidden="true" data-dismiss="modal" type="button" &times;
+        h4.modal-title Send Invoice
+      .modal-body
+        = render 'invoice_mails/form', :'@invoice_mail' => @invoice.invoice_mails.new

@@ -1,6 +1,6 @@
 .task-content= simple_form_for(@invoice) do |f|
 
-  section.task-panel.tasks-widget
+  section.task-panel.tasks-widget.panel.panel-default#invoice
     .panel-body
       section#header
         .row
@@ -8,20 +8,18 @@
             / Will be appended dynamically
             - if @invoice.try(:company).try(:logo_url)
               = image_tag @invoice.company.logo_url, size: '50x50'
-          .col-md-6.text-right INVOICE
+          .col-md-6.text-right= "INVOICE #{@invoice.invoice_number}"
 
       section#invoice_number-invoice-date
         .row
-          .col-md-4#invoice_number
+          .col-md-6#invoice_number
             = f.input :invoice_number, \
                       input_html: { value: f.object.invoice_number || \
                                 ['#', current_user.invoices.count + 1].join }
-          .col-md-4#invoice-date
+          .col-md-6#invoice-date
             = f.input :invoice_date, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y') }
-          .col-md-4#net
-            = f.input :net, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y') }
 
-
+      hr
       section#company-client
         .row
           .col-md-6
@@ -32,8 +30,6 @@
             = f.input :client_id, boolean_style: :inline, label: 'To', \
                       collection: current_user.clients,\
                       input_html: {data: {:'relation-name' => 'clients'}}
-        hr
-        .row
           .col-md-6
             = f.input :company_row_text, label: false, \
                       input_html: { \
@@ -50,7 +46,7 @@
 
       hr
       section
-        table class="table"
+        table#invoice_items class="table"
           thead
             tr
               th DESCRIPTION
@@ -61,14 +57,17 @@
           tbody#invoice_items_container
             = f.simple_fields_for :invoice_items do |invoice_item|
               = render 'invoices/invoice_item_fields', :f => invoice_item
-
+        p= link_to_add_association "Add a Item", f, :invoice_items, \
+                         class: "btn btn-primary", \
+                         'data-association-insertion-node' => '#invoice_items_container',\
+                         'data-association-insertion-method' => 'append'
+      hr
+      section
         .row
           .col-md-6
-            p= link_to_add_association "Add a Item", f, :invoice_items, \
-                 class: "btn btn-primary", \
-                 'data-association-insertion-node' => '#invoice_items_container',\
-                 'data-association-insertion-method' => 'append'
-          .col-md-6
+            = f.input :comment, input_html: {class: 'wysihtml5'}
+          .col-md-6.pull-right
+            = f.input :currency, collection: ['EUR', 'USD', 'UAH', 'RUB']
             table class="table"
               tbody
                 tr
@@ -89,17 +88,6 @@
                   td
                     strong DISCOUNT:
                   td#discount
-      hr
-      section
-        .row
-          .col-md-4
-            = f.input :currency, collection: ['EUR', 'USD', 'UAH', 'RUB']
-
-      hr
-      section#coment
-        .row
-          .col-md-12
-            = f.input :comment, input_html: { class: 'wysihtml5' }
 
       hr
       section#footer
@@ -112,4 +100,5 @@
       hr
       .section
         .form-actions
-          = f.button :submit, class: 'btn-success pull-right'
+          = f.button :submit, 'Save', class: 'btn-default pull-right'
+          = f.button :submit, 'Save and Send', class: 'btn-success pull-left'

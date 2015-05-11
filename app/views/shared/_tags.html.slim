@@ -1,10 +1,7 @@
-- unless @search.conditions.empty?
-  .panel.panel-default
-    .panel-heading
-      h3.panel-title Tags
-    .panel-body
-      - @search.conditions.each do |condition|
-        - condition.attributes.each do |attribute|
-          button.btn.btn-round.btn-default id="#{attribute.name}_#{condition.predicate.name}"
-            = attribute.name
-            span.glyphicon.glyphicon-remove aria-hidden="true"
+.col-md-12
+  - unless @search.conditions.empty?
+    - @search.conditions.each do |condition|
+      - condition.attributes.each do |attribute|
+        button.btn.btn-round.btn-default.btn-sm id="#{attribute.name}_#{condition.predicate.name}"
+          = "#{attribute.name.split('_').join(' ')} = #{condition.values.map(&:value).join(',')}"
+          span.glyphicon.glyphicon-remove aria-hidden="true"

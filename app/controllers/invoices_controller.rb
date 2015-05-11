@@ -77,7 +77,7 @@ class InvoicesController < ApplicationController
 
   def _set_invoice
     @invoice = current_user.invoices
-               .includes(:journals, :company, :client, :invoice_items)
+               .eager_load(:journals, :company, :client, :invoice_items, :payments)
                .find(params[:id])
   end
 

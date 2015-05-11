@@ -27,6 +27,9 @@ class Invoice < ActiveRecord::Base
   CURRENCY = %w(EUR USD UAH RUB)
   STATE = state_machines[:state].states.map(&:name)
 
+  # Default query scope
+  default_scope { where.not(:state => 'closed') }
+
   ## Comments
   acts_as_commontable
 
@@ -68,13 +71,24 @@ class Invoice < ActiveRecord::Base
     invoice_items.map(&:sum).reduce(:+)
   end
 
-  # TODO: need to be removed, implemented via state machine
-  def close!
-    update_attribute(:state, 'closed')
+  # Invoice due date
+  def due_date
+    created_at + net.to_i
   end
 
-  # TODO: need to be removed, implemented via state machine
-  def overdue!
-    update_attribute(:state, 'overdue')
+  # invoice balance
+  def balance
+    _with_currency subtotal
+  end
+  # invoice total
+  def total
+    _with_currency payments.where.not(id: nil).map(&:amount).reduce(:+)
+  end
+
+  private
+  ## Private instance methods
+  def _with_currency amount
+    return '--/--' unless amount
+    "#{amount} #{currency}"
   end
 end

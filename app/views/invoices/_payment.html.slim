@@ -1,4 +1,4 @@
-#myModal.modal.fade
+.modal.fade id="paymentModal#{@invoice.id}"
   .modal-dialog
     .modal-content
       .modal-header
@@ -6,5 +6,3 @@
         h4.modal-title Add new payment
       .modal-body
         == render 'payments/form', :'@payment' => @invoice.payments.build
-        br
-        button.btn.btn-default data-dismiss="modal" type="button"  Close

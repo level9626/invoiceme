@@ -1,13 +1,8 @@
-a.btn.btn-primary.cd-btn data-cd='comments'
-  | Notes
-  span.badge
-    == @invoice.thread.comments.where(deleted_at: nil).count
-
-.cd-panel.panel.panel-default#comments
-  .panel-heading
-    h3.panel-title Notes
-    span.pull-right
-      a.cd-panel-close href="#"
-        span.glyphicon.glyphicon-remove
-  .panel-body
-    == commontator_thread(@invoice)
+.modal.fade id="commentsModal#{@invoice.id}"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-hidden="true" data-dismiss="modal" type="button"  &times;
+        h4.modal-title Add new payment
+      .modal-body
+        == commontator_thread(@invoice)
