@@ -4,7 +4,7 @@ class InvoiceMailsController < ApplicationController
   respond_to :html
 
   def index
-    @invoice_mails = cueent_user.invoice_mails.all
+    @invoice_mails = current_user.invoice_mails.all
     respond_with(@invoice_mails)
   end
 
