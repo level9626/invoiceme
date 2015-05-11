@@ -47,7 +47,9 @@ class InvoicesController < ApplicationController
 
   def update
     @invoice.update(invoice_params)
-    respond_with(@invoice)
+    # redirect back to show page, and show errors if any
+    # TODO: refactor to work with JSON
+    render :show, layout: 'show_layout'
   end
 
   def destroy
@@ -109,6 +111,7 @@ class InvoicesController < ApplicationController
       :discount,
       :net,
       invoice_items_attributes: [
+        :id,
         :description,
         :hours_or_tasks,
         :rate,

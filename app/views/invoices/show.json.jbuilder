@@ -1,1 +1,1 @@
-json.extract! @invoice, :id, :title, :user_id, :created_at, :updated_at
+json.extract! @invoice, :id, :user_id, :created_at, :updated_at
