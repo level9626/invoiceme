@@ -57,12 +57,45 @@ $(document).ready( function() {
 * Submits froms, and opens a new mailing modal
 */
 $(document).ready( function() {
+
+    $("form.new_invoice, form.edit_invoice").validate({
+        debug: true,
+        errorElement: "span",
+        errorClass: "help-block",
+        highlight: function (element, errorClass, validClass) {
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorPlacement: function (error, element) {
+            if (element.parent('.input-group').length || element.prop('type') === 'checkbox' || element.prop('type') === 'radio') {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        rules: {
+            "invoice[invoice_number]":   { required: true },
+            "invoice[invoice_date]":     { required: true },
+            "invoice[company_id]":       { required: true },
+            "invoice[company_row_text]": { required: true },
+            ".hours_or_tasks":           { required: true, number: true},
+            ".hours_or_tasks":           { required: true, number: true},
+            ".rate":                     { required: true, number: true},
+            "invoice[currency]":         { required: true },
+            "invoice[comment]":          { required: true }
+        }
+    });
+
+
     $('#save-and-send').click(function(e){
         e.preventDefault();
 
         var form = $(this).parents('form');
 
-        $.ajax({
+        if ( form.valid() ) {
+            $.ajax({
                 url:    form.attr('action')+'.json',
                 type:   form.attr('method'),
                 data:   form.serializeObject()
@@ -70,9 +103,10 @@ $(document).ready( function() {
             .done(function(data) {
                 $('#mailingModal'+data.id).modal();
             })
-            .fail(function() {
-                // TODO: handle validations
+            .fail(function(errors) {
+                alert(errors);
             });
+        }
 
         return false;
     })

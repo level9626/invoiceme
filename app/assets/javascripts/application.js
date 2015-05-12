@@ -1,6 +1,7 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require jquery.validate
 //= require cocoon
 //= require turbolinks
 //= require jquery_ujs
