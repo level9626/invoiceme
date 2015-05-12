@@ -15,6 +15,9 @@ Rails.application.routes.draw do
         get event
       end
     end
+    collection do
+      get :statistics
+    end
   end
 
   devise_for :users

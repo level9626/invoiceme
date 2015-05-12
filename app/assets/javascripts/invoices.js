@@ -50,36 +50,27 @@ $(document).ready( function() {
     });
 });
 
-
 /*
- * Sidebar toggle animation
- */
+* Submits froms, and opens a new mailing modal
+*/
+$(document).ready( function() {
+    $('#save-and-send').click(function(e){
+        e.preventDefault();
 
-$(document).ready(function($){
-    $('.btn-group').on('click', function() {
-        $(this).find('.cd-btn').on('click', function(){
-            $(this).parentsUntil('tr').next('td').addClass('show').css('background-color','red');
+        var form = $(this).parents('form');
 
-        });
-    //});
-    //$(elem).on('click', function() {
-    //    var id = $(this).parentsUntil('table').closest('tr').css('background-color','red');
-    //    //var id = '#'+$(elem).data('cd');
-        //$(id).addClass('is-visible');
-    });
+        $.ajax({
+                url:    form.attr('action')+'.json',
+                type:   form.attr('method'),
+                data:   form.serializeObject()
+            })
+            .done(function(data) {
+                $('#mailingModal'+data.id).modal();
+            })
+            .fail(function() {
+                // TODO: handle validations
+            });
 
-    ////open the lateral panel
-    //$('.cd-btn').on('click', function(event){
-    //    event.preventDefault();
-    //    var id = '#'+$(this).data('cd');
-    //    $(id).addClass('is-visible');
-    //    //FIND PARENT
-    //    //
-    //});
-    ////clode the lateral panel
-    //$('.cd-panel-close').on('click', function(event){
-    //    $('.cd-panel').removeClass('is-visible');
-    //    event.preventDefault();
-    //    return false
-    //});
+        return false;
+    })
 });

@@ -11,6 +11,7 @@
 //= require morris
 //= require_tree .
 
+// wysihtml5 Overall confings
 $(document).ready(function(){
     // Text editor
     $('.wysihtml5').wysihtml5({
@@ -28,24 +29,35 @@ $(document).ready(function(){
     });
 });
 
-
+// Manky patch JS Number class
 Number.prototype.round = function(p) {
     p = p || 10;
     return parseFloat( this.toFixed(p) );
 };
 
 
-$('.btn').click(function() {
-    $('.modal')
-        .prop('class', 'modal fade') // revert to default
-        .addClass( $(this).data('direction') );
-    $('.modal').modal('show');
-});
+// Add form serialization functionality to Jquery
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};
 
 //Add "Show/Hide" button for each wysihtml5 text editor. Found it as .wysihtml
 //class through form -> parent
 $(document).ready(function(){
-    $("form").find(".wysihtml5-toolbar").each(function () {
+    $(".wysihtml5-toolbar").each(function () {
        // Init event
       $(this).addClass('hidden');
       $(this).parent()

@@ -25,7 +25,7 @@ class Invoice < ActiveRecord::Base
   # include StateMachines::InvoiceMachine
   include InvoiceMachine
   CURRENCY = %w(EUR USD UAH RUB)
-  STATE = state_machines[:state].states.map(&:name)
+  STATE = state_machines[:state].states.map(&:name).map(&:to_s)
 
   # Default query scope
   default_scope { where.not(:state => 'closed') }
@@ -52,7 +52,7 @@ class Invoice < ActiveRecord::Base
     # rubocop:disable all
     inclusion = eval param.to_s
     # rubocop:enable all
-    message = "is not included in the list #{inclusion.join(',')}"
+    message = "is not included in the list: #{inclusion.join(',')}"
     validates param.downcase, inclusion: { in: inclusion, message: message }
   end
 
@@ -83,6 +83,28 @@ class Invoice < ActiveRecord::Base
   # invoice total
   def total
     _with_currency payments.where.not(id: nil).map(&:amount).reduce(:+)
+  end
+
+  ## Class methods
+
+  # Statistics
+  def self.count_by_currency user
+    connection.execute(<<-EOQ)
+      SELECT currency, count(*) AS invoices_count
+      FROM invoices
+      WHERE user_id=#{user.id}
+      GROUP BY currency;
+    EOQ
+  end
+
+  def self.overdue_count_by_currency user
+    connection.execute(<<-EOQ)
+      SELECT currency, count(*) AS invoices_count
+      FROM invoices
+      WHERE state='overdue'
+      AND user_id=#{user.id}
+      GROUP BY currency;
+    EOQ
   end
 
   private
