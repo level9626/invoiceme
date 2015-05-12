@@ -80,7 +80,6 @@ i {
   -webkit-border-radius: 4px;
   border: 1px solid $blue-light !important;
   padding: 5px 10px;
-  margin-right: 200px;
   background: $blue-lightest;
   margin-top: 15px;
 
@@ -643,13 +642,15 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .dropdown-menu.extended {
   max-width: 300px !important;
   min-width: 160px !important;
+  left: -198px;
   top: 42px;
   width: 235px !important;
   padding: 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.176) !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.176)!important;
   border: none !important;
   border-radius: 4px;
   -webkit-border-radius: 4px;
+  border-top-right-radius: 0;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -693,6 +694,8 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .dropdown-menu.extended li a:hover {
   background-color: #F7F8F9 !important;
   color: #2E2E2E;
+  border-radius: 4px;
+  border-top-right-radius: 0px;
 }
 
 .dropdown-menu.tasks-bar .task-info .desc {

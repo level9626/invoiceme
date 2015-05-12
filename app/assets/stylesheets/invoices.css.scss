@@ -129,6 +129,48 @@ $border: grey;
   }
 }
 
+//Comments styles
+.thread > .thread_header {
+  display: none;
+}
+
+.thread_comment_list {
+   > .comment {
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-family: 'FontAwesome';
+
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-radius: 4px;
+
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    color: #000;
+    border-color: #DDD;
+    background-color: #F2F2F2;
+
+    clear: both;
+  }
+   .comment_actions {
+    margin-bottom: -20px;
+  }
+  .comment_div {
+    width: 95%;
+    font-size: 20px;
+  }
+  .comment_timestamp {
+    font-size: 10px;
+  }
+}
+
 
 .filter_showpage {
   position: absolute;

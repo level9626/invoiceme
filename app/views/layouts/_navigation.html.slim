@@ -16,9 +16,6 @@ section#container
 
         li.dropdown
           button.btn.btn-theme.dropdown-toggle data-toggle="dropdown" type="button"
-            i.fa.fa-cog.fa-spin
+            i.fa.fa-cog
           ul.dropdown-menu.extended.tasks-bar
-            .notify-arrow.notify-arrow-green
-            li
-              p.green Choose
-              == render 'layouts/navigation_links'
+            == render 'layouts/navigation_links'
