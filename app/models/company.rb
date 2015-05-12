@@ -25,8 +25,14 @@ class Company < ActiveRecord::Base
   validates :name,    presence: true, length: { maximum: 150 }
   validates :address, presence: true, length: { maximum: 300 }
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 150 },
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+
   ## Callbacks
   before_save :change_default!, if: proc { |model| model.default }
+  before_save { self.email = email.downcase }
 
   ## Class methods
 
