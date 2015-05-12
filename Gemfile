@@ -19,6 +19,7 @@ gem 'font-awesome-rails'
 gem 'morrisjs-rails'
 gem 'raphael-rails'
 gem 'angularjs-rails'
+gem 'jquery-validation-rails'
 
 # Comments
 gem 'commontator'

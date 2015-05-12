@@ -46,11 +46,8 @@ class InvoicesController < ApplicationController
   def create
     @invoice = current_user.invoices.new(invoice_params)
     # redirect back to show page, and show errors if any
-    if @invoice.save
-      respond_with(@invoice)
-    else
-      render :new, layout: 'show_layout'
-    end
+    @invoice.save
+    respond_with(@invoice)
   end
 
   def update
@@ -106,7 +103,7 @@ class InvoicesController < ApplicationController
   end
 
   def _invoice_layout
-    ['show', 'new'].include?(action_name) ? 'show_layout' : 'authenticated'
+    ['show', 'new', 'create'].include?(action_name) ? 'show_layout' : 'authenticated'
   end
 
   # rubocop:disable all
