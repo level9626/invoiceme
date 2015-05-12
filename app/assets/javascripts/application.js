@@ -16,10 +16,11 @@ $(document).ready(function(){
     // Text editor
     $('.wysihtml5').wysihtml5({
         toolbar: {
+            "font-styles": false,
             "lists": false,
             "link": false,
             "image": false,
-            "color": true,
+            "color": false,
             "blockquote": false,
             "size": 'xs'
         }
