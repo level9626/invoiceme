@@ -16,10 +16,14 @@
 $(document).ready(function(){
     // Text editor
     $('.wysihtml5').wysihtml5({
-        "lists": false,
-        "link":  false,
-        "image": false,
-        "color": true
+        toolbar: {
+            "lists": false,
+            "link": false,
+            "image": false,
+            "color": true,
+            "blockquote": false,
+            "size": 'xs'
+        }
     });
 
     // Date and timepicker
