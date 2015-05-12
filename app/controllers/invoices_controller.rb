@@ -45,14 +45,17 @@ class InvoicesController < ApplicationController
 
   def create
     @invoice = current_user.invoices.new(invoice_params)
-    @invoice.save
-    respond_with(@invoice)
+    # redirect back to show page, and show errors if any
+    if @invoice.save
+      respond_with(@invoice)
+    else
+      render :new, layout: 'show_layout'
+    end
   end
 
   def update
     @invoice.update(invoice_params)
     # redirect back to show page, and show errors if any
-    # TODO: refactor to work with JSON
     render :show, layout: 'show_layout'
   end
 
@@ -103,7 +106,7 @@ class InvoicesController < ApplicationController
   end
 
   def _invoice_layout
-    action_name == 'show' ? 'show_layout' : 'authenticated'
+    ['show', 'new'].include?(action_name) ? 'show_layout' : 'authenticated'
   end
 
   # rubocop:disable all

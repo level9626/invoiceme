@@ -9,6 +9,9 @@ $(document).ready( function() {
     // On Client or company field change, call API to receive address texts
     $('#invoice_company_id, #invoice_client_id').change(function (){
 
+        if ( !$(this).val() )
+            return null
+
         //Relation name is stored in relation-name data attr
         var changed_id      = $(this).val(),
             relation_name   = $(this).data('relation-name'),

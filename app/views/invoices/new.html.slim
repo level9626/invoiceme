@@ -1,1 +1,60 @@
-== render 'form'
+/ Payment modal
+== render 'payment'
+== render 'mailings'
+== render 'journals'
+== render 'comment'
+
+/ Navigation
+section#container.thin-menu
+  header.header.black-bg
+    == link_to '< Back', previous_path, class: 'logo'
+    .top-menu
+      ul.nav.pull-right.top-menu
+        - if @invoice.can_have_instance_actions?
+          li
+            a.btn.btn-theme.btn-default data-toggle="modal" href="#paymentModal#{@invoice.id}"
+              | Receive payment
+          li
+            = link_to "Download PDF", invoice_path(@invoice, :format => 'pdf'), \
+                    target: '_blank', class: 'btn btn-theme btn-default'
+          - if @invoice.can_publish?
+            li
+              a.btn.btn-theme.btn-default data-toggle="modal" href="#mailingModal#{@invoice.id}"
+                | Send
+        li
+          a.btn.btn-theme.btn-default data-toggle="modal" href="#commentsModal#{@invoice.id}"
+            | Notes
+            span.badge= @invoice.thread.comments.where(deleted_at: nil).count
+        li
+          a.btn.btn-theme.btn-default data-toggle="modal" href="#jurnalsModal#{@invoice.id}"
+            | Activities
+            span.badge= @invoice.journals.count
+br
+/ Content
+.container.mt
+  .row.mt
+    .col-md-8
+      = render 'form'
+
+    .col-md-4
+      .panel.panel-default
+        .panel-heading Info
+        .panel-body
+          p= "Status: #{@invoice.state.capitalize}"
+          p= "Balance: #{@invoice.balance}"
+          p= "Total: #{@invoice.total}"
+
+      - if @invoice.can_have_instance_actions?
+        .panel.panel-default
+          .panel-heading Payments
+          .panel-body
+            table.table
+              thead
+                tr
+                  th Date
+                  th amount
+              tbody
+                - @invoice.payments.each do |payment|
+                  tr
+                    td= payment.created_at.try(:strftime, '%B %-d, %Y')
+                    td= payment.amount

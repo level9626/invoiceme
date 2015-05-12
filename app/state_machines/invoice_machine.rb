@@ -10,12 +10,12 @@ module InvoiceMachine
 
     klass.send :state_machine, initial: :new do
       # Defining main states
-      state :new, value: :new
-      state :open, value: :open
-      state :partly_paid, value: :partly_paid
-      state :closed, value: :closed
-      state :overdue, value: :overdue
-      state :bad_debt, value: :bad_debt
+      state :new, value: 'new'
+      state :open, value: 'open'
+      state :partly_paid, value: 'partly_paid'
+      state :closed, value: 'closed'
+      state :overdue, value: 'overdue'
+      state :bad_debt, value: 'bad_debt'
 
       # Defining main transitions
       event :publish do

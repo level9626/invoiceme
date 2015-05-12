@@ -61,6 +61,10 @@ class Invoice < ActiveRecord::Base
   validates :company_row_text, :client_row_text, length: { in: 1..300 }
   validates :subtotal, presence: true, numericality: true
   validates :vat_rate, :vat, :discount, numericality: true, allow_blank: true
+  validates :invoice_number, \
+            uniqueness: { scope: [:user_id, :client_id, :company_id], \
+                          message: "should be unique" }
+
 
   ## by default invoice query doesn't show closed invoices
   default_scope { where.not(state: 'closed') }
@@ -74,6 +78,11 @@ class Invoice < ActiveRecord::Base
   # Invoice due date
   def due_date
     created_at + net.to_i
+  end
+
+  # Verify whether new object
+  def can_have_instance_actions?
+    !!id
   end
 
   # invoice balance
