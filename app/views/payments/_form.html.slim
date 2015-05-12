@@ -2,9 +2,13 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :invoice_id, \
-              collection: Invoice.all.map{ |el| [el.invoice_number, el.id] }
-    = f.input :amount
+    .col-md-6
+      = f.input :invoice_id, \
+                collection: Invoice.all.map{ |el| [el.invoice_number, el.id] }
+    .col-md-6
+      = f.input :currency, collection: ['EUR', 'USD', 'UAH', 'RUB']
+    .col-md-12
+      = f.input :amount
 
   .form-actions
     = f.button :submit, 'Save', class: "btn btn-primary"

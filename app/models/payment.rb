@@ -17,7 +17,7 @@ class Payment < ActiveRecord::Base
   has_one :company, through: :invoice
 
   ## Validations
-  validates :invoice_id, :amount, presence: true
+  validates :invoice_id, :amount, :currency, presence: true
   validates :amount, numericality: { greater_than_or_equal_to: 0.1 }
 
   ## Callbacks
