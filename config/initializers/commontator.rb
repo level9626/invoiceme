@@ -120,7 +120,7 @@ Commontator.configure do |config|
   #   :l (only if it's the latest comment)
   #   :n (never)
   # Default: :l
-  config.comment_editing = :a
+  config.comment_editing = :n
 
   # comment_deletion
   # Type: Symbol
