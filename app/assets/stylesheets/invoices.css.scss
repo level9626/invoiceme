@@ -129,6 +129,23 @@ $border: grey;
   }
 }
 
+.activities_table {
+  width: 70px;
+}
+.actions_table {
+  width: 200px;
+}
+#badge_corner {
+  position: relative;
+  right: 12px;
+  top: -10px;
+  z-index: 100;
+  border-radius: 10px;
+  font-size: 10px;
+  color: white;
+  background-color: red;
+}
+
 //Comments styles
 .thread > .thread_header {
   display: none;

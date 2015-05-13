@@ -9,6 +9,10 @@
       i.fa.fa-chevron-down#invoices_actions_button
     ul.dropdown-menu.pull-right role="menu"
       li
+        a.btn data-toggle="modal" href="#commentsModal#{@invoice.id}"
+          | Notes
+          span.badge= @invoice.thread.comments.where(deleted_at: nil).count
+      li
         = link_to invoice_path(@invoice, :format => 'pdf'), \
                   class: "btn btn-theme01", target: '_blank'
           | Download PDF
@@ -16,3 +20,5 @@
         = link_to @invoice, data: {:confirm => 'Are you sure?'}, \
                   :method => :delete, class: "btn btn-theme01"
           | Delete invoice
+== render 'journals'
+== render 'comment'
