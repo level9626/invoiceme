@@ -101,5 +101,6 @@
       .section
         .form-actions
           = f.button :submit, 'Save', class: 'btn-default pull-right'
-          = f.button :submit, 'Save and Send', class: 'btn-success pull-left', \
-                                               id: 'save-and-send'
+          - if @invoice.can_have_instance_actions?
+            = f.button :submit, 'Save and Send', class: 'btn-success pull-left', \
+                                                 id: 'save-and-send'
