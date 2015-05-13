@@ -11,8 +11,8 @@
   .panel-body.dropdown_panel
     = search_form_for @search, :builder => SimpleForm::FormBuilder do |f|
       / Client contain text
-      = f.label :client_name_cont, 'Client name', class: "fa fa-tag"
-      = f.input :client_name_cont, label: false
+      = f.label :client_name_cont, 'Client', class: "fa fa-tag"
+      = f.input :client_name_cont, collection: current_user.clients.map{|client| [client.name, client.name]}, label: false
 
       / Status: closed/open/overdue
       = f.label :state_eq, 'Status', class: "fa fa-check"
