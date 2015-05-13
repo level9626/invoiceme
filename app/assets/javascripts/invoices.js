@@ -59,7 +59,7 @@ $(document).ready( function() {
 $(document).ready( function() {
 
     // Invoice front-end form validations
-    var $invoice_form_validator = $("form.new_invoice, form.edit_invoice").validate({
+    $("form.new_invoice, form.edit_invoice").validate({
         debug: true,
         errorElement: "span",
         errorClass: "help-block",
@@ -76,6 +76,11 @@ $(document).ready( function() {
                 error.insertAfter(element);
             }
         },
+        submitHandler: function(form) {
+            if ($(form).valid())
+                form.submit();
+            return false; // prevent normal form posting
+        },
         rules: {
             "invoice[invoice_number]":   { required: true },
             "invoice[invoice_date]":     { required: true },
@@ -88,7 +93,6 @@ $(document).ready( function() {
             "invoice[comment]":          { required: true }
         }
     });
-
 
     // Saves the form and opens new mailing dialog
     $('#save-and-send').click(function(e){
@@ -106,14 +110,10 @@ $(document).ready( function() {
                 $('#mailingModal'+data.id).modal();
             })
             .fail(function(errors) {
-                    $invoice_form_validator.showErrors(errors);
-                    //$.each(errors, function(_, error) {
-                    //$invoice_form_validator
-                    //alert(errors);
-                //});
+                alert('Cant save invoice doe to errors.');
             });
         }
 
         return false;
-    })
+    });
 });
