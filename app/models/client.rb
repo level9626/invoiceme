@@ -9,6 +9,8 @@
 #  updated_at :datetime
 #
 class Client < ActiveRecord::Base
+  before_save { self.email = email.downcase }
+
   ## Relations
   has_many :clients_users, dependent: :destroy
   has_many :users, through: :clients_users
@@ -16,6 +18,12 @@ class Client < ActiveRecord::Base
   accepts_nested_attributes_for :users
 
   ## Validations
-  validates :name,    presence: true, length: { maximum: 150 }
+  validates :name, presence: true, length: { maximum: 150 }
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 150 },
+            format: { with: VALID_EMAIL_REGEX },
+            uniqueness: { case_sensitive: false }
+
   validates :address, presence: true, length: { maximum: 300 }
 end

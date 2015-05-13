@@ -3,12 +3,12 @@
 /  - currency (select)
 /  - invoice date (from - to)
 
-.panel.panel-default
+.panel.panel-default.panel_invoice
   .panel-heading
-    h3.panel-title Filters
+    panel-title.filter_text Filters
     span.pull-right.clickable
-      i.glyphicon.glyphicon-chevron-up
-  .panel-body
+      i.glyphicon.glyphicon-chevron-down.filter_glyph
+  .panel-body.dropdown_panel
     = search_form_for @search, :builder => SimpleForm::FormBuilder do |f|
       / Invoice.invoice_number text
       = f.label :invoice_invoice_number_cont, 'Invoice Number', class: "fa fa-tag"

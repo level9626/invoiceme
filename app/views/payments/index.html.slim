@@ -1,22 +1,31 @@
-h3
-  i.fa.fa-angle-right
-  | My Payments
+.row
+  .col-md-8#tags.tags
+    .col-md-12.row
+      == render 'shared/tags'
+  .col-md-4.pull-right.filter
+    div.btn-group role="group"
+      = link_to new_payment_path, class: "btn btn-primary btn-sm"
+        .fa.fa-plus
+          | Add New Payment
+      = link_to payments_path(params.merge(format: 'csv')), class: "btn btn-success btn-sm"
+        .fa.fa-download
+          | Download to CSV
+    == render 'filter'
 
-.row.mt
-  = render 'shared/tags'
-  .col-md-9
+
+
+  .col-md-12
     section.task-panel.tasks-widget
       .panel-body
         .task-content
           table.table
             thead
               tr
-                th=sort_link @search, :invoice_invoice_number, 'Invoice'
-                th=sort_link @search, :amount, 'Amount'
-                th=sort_link @search, :client_name, 'Client'
-                th=sort_link @search, :company_name, 'Company'
-                th
-                th
+                th = sort_link @search, :invoice_invoice_number, 'Invoice'
+                th = sort_link @search, :amount, 'Amount'
+                th = sort_link @search, :client_name, 'Client'
+                th = sort_link @search, :company_name, 'Company'
+                th = sort_link @search, :invoice_currency, 'Currency'
                 th
 
             tbody
@@ -26,20 +35,5 @@ h3
                   td= payment.amount
                   td= payment.client.name
                   td= payment.company.name
-                  td= link_to payment, :method => :get, class: "btn btn-success btn-xs"
-                    i.fa.fa-eye
-                  td = link_to edit_payment_path(payment), :method => :get, class: "btn btn-primary btn-xs"
-                    i.fa.fa-pencil
-                  td = link_to payment, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger btn-xs"
-                    i.fa.fa-trash-o
-    br
-      .col-md-2
-        = button_to new_payment_path, :method => :get, class: "btn btn-primary btn-sm" do
-          .fa.fa-plus
-            | Add New Payment
-      .col-md-4
-        = link_to payments_path(params.merge(format: 'csv')), class: "btn btn-success btn-sm"
-          .fa.fa-download
-          | Download to CSV
-  .col-md-3
-    = render 'filter'
+                  td= payment.invoice.currency
+                  td= render 'actions', :'@payment' => payment
