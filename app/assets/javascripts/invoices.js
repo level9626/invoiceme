@@ -58,7 +58,8 @@ $(document).ready( function() {
 */
 $(document).ready( function() {
 
-    $("form.new_invoice, form.edit_invoice").validate({
+    // Invoice front-end form validations
+    var $invoice_form_validator = $("form.new_invoice, form.edit_invoice").validate({
         debug: true,
         errorElement: "span",
         errorClass: "help-block",
@@ -89,6 +90,7 @@ $(document).ready( function() {
     });
 
 
+    // Saves the form and opens new mailing dialog
     $('#save-and-send').click(function(e){
         e.preventDefault();
 
@@ -104,7 +106,11 @@ $(document).ready( function() {
                 $('#mailingModal'+data.id).modal();
             })
             .fail(function(errors) {
-                alert(errors);
+                    $invoice_form_validator.showErrors(errors);
+                    //$.each(errors, function(_, error) {
+                    //$invoice_form_validator
+                    //alert(errors);
+                //});
             });
         }
 
