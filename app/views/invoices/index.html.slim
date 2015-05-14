@@ -36,8 +36,6 @@
                   td
                     a.btn.btn-primary.btn-xs data-toggle="modal" href="#jurnalsModal#{invoice.id}"
                       i.fa.fa-book
-                    - if !invoice.journals.count.eql?(0)
-                      span.badge#badge_corner= invoice.journals.count
                   td= invoice.invoice_date.try(:strftime, "%m/%d/%Y")
                   td= invoice.invoice_number
                   td= invoice.due_date.try(:strftime, "%m/%d/%Y")
