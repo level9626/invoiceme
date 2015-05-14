@@ -28,7 +28,7 @@ class Invoice < ActiveRecord::Base
   STATE = state_machines[:state].states.map(&:name).map(&:to_s)
 
   # Default query scope
-  default_scope { where.not(:state => 'closed') }
+  default_scope { where.not(state: 'closed') }
 
   ## Comments
   acts_as_commontable
@@ -63,8 +63,7 @@ class Invoice < ActiveRecord::Base
   validates :vat_rate, :vat, :discount, numericality: true, allow_blank: true
   validates :invoice_number, \
             uniqueness: { scope: [:user_id, :client_id, :company_id], \
-                          message: "should be unique" }
-
+                          message: 'should be unique' }
 
   ## by default invoice query doesn't show closed invoices
   default_scope { where.not(state: 'closed') }
@@ -82,22 +81,34 @@ class Invoice < ActiveRecord::Base
 
   # Verify whether new object
   def can_have_instance_actions?
-    !!id
+    id
   end
 
-  # invoice balance
+  # invoice balance. Total payed.
   def balance
+    _with_currency _balance
+  end
+
+  # invoice total. Total Invoiced
+  def total
     _with_currency subtotal
   end
-  # invoice total
-  def total
-    _with_currency payments.where.not(id: nil).map(&:amount).reduce(:+)
+
+  # percent payed
+  def percent_payed
+    (_normed_balance).percent_of(subtotal)
+  end
+
+  # Change state after peyment received.
+  def payment_received
+    return invoice.close if percent_payed <= 100
+    invoice.partly_pay
   end
 
   ## Class methods
 
   # Statistics
-  def self.count_by_currency user
+  def self.count_by_currency(user)
     connection.execute(<<-EOQ)
       SELECT currency, count(*) AS invoices_count
       FROM invoices
@@ -106,7 +117,7 @@ class Invoice < ActiveRecord::Base
     EOQ
   end
 
-  def self.overdue_count_by_currency user
+  def self.overdue_count_by_currency(user)
     connection.execute(<<-EOQ)
       SELECT currency, count(*) AS invoices_count
       FROM invoices
@@ -117,9 +128,19 @@ class Invoice < ActiveRecord::Base
   end
 
   private
+
   ## Private instance methods
-  def _with_currency amount
+  def _with_currency(amount)
     return '--/--' unless amount
     "#{amount} #{currency}"
+  end
+
+  def _balance
+    payments.where.not(id: nil).map(&:amount).reduce(:+)
+  end
+
+  def _normed_balance
+    return 0 unless _balance
+    return subtotal if _balance > subtotal
   end
 end

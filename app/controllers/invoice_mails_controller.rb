@@ -32,7 +32,7 @@ class InvoiceMailsController < ApplicationController
       # TODO: move publish and email sending to service
       InvoiceMailer.invoice_mail(@invoice_mail).deliver
       # publish invoice
-      @invoice_mail.invoice.publish
+      @invoice_mail.invoice.publish unless @invoice_mail.invoice.open?
     else
       flash[:error] = 'Invoice Mail was not successfully created.'
     end

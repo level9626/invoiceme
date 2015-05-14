@@ -26,7 +26,7 @@
 
   <%= hidden_field_tag :per_page, per_page %>
   <div class="comment_form_field">
-    <%= f.text_area :body, :rows => '7', class: 'wysihtml5' %>
+    <%= f.text_area :body, :rows => '7', class: 'add-wysihtml5' %>
   </div>
 
   <div class="comment_form_actions">
@@ -37,11 +37,16 @@
 <% end %>
 
 <script type="text/javascript">
-  $(document).ready(function(){
-
-    $('.wysihtml5').each(function(i, elem) {
-      $(elem).wysihtml5();
+  $('.add-wysihtml5')
+    .wysihtml5({
+      toolbar: {
+        "font-styles": false,
+        "lists": false,
+        "link": false,
+        "image": false,
+        "color": false,
+        "blockquote": false,
+        "size": 'xs'
+      }
     });
-
-  })
 </script>

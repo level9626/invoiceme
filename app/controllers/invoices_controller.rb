@@ -81,6 +81,7 @@ class InvoicesController < ApplicationController
   end
 
   ## Private Scope
+
   private
 
   def _search
@@ -91,7 +92,8 @@ class InvoicesController < ApplicationController
 
   def _set_invoice
     @invoice = current_user.invoices
-               .eager_load(:journals, :company, :client, :invoice_items, :payments)
+               .eager_load(:journals, :company, :client,
+                           :invoice_items, :payments)
                .find(params[:id])
   end
 
@@ -103,7 +105,8 @@ class InvoicesController < ApplicationController
   end
 
   def _invoice_layout
-    ['show', 'new', 'create'].include?(action_name) ? 'show_layout' : 'authenticated'
+    return 'show_layout' if %w(show new create).include?(action_name)
+    'authenticated'
   end
 
   # rubocop:disable all
