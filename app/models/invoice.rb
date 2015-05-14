@@ -28,7 +28,7 @@ class Invoice < ActiveRecord::Base
   STATE = state_machines[:state].states.map(&:name).map(&:to_s)
 
   # Default query scope
-  default_scope { where.not(:state => 'closed') }
+  default_scope { where.not(state: 'closed') }
 
   ## Comments
   acts_as_commontable
@@ -63,7 +63,7 @@ class Invoice < ActiveRecord::Base
   validates :vat_rate, :vat, :discount, numericality: true, allow_blank: true
   validates :invoice_number, \
             uniqueness: { scope: [:user_id, :client_id, :company_id], \
-                          message: "should be unique" }
+                          message: 'should be unique' }
 
 
   ## by default invoice query doesn't show closed invoices
@@ -85,19 +85,20 @@ class Invoice < ActiveRecord::Base
     !!id
   end
 
-  # invoice balance
+  # invoice balance. Total payed.
   def balance
-    _with_currency subtotal
+    _with_currency _balance
   end
-  # invoice total
+
+  # invoice total. Total invoiced.
   def total
-    _with_currency payments.where.not(id: nil).map(&:amount).reduce(:+)
+    _with_currency subtotal
   end
 
   ## Class methods
 
   # Statistics
-  def self.count_by_currency user
+  def self.count_by_currency(user)
     connection.execute(<<-EOQ)
       SELECT currency, count(*) AS invoices_count
       FROM invoices
@@ -118,7 +119,7 @@ class Invoice < ActiveRecord::Base
 
   private
   ## Private instance methods
-  def _with_currency amount
+  def _with_currency(amount)
     return '--/--' unless amount
     "#{amount} #{currency}"
   end

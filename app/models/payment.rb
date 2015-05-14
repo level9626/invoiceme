@@ -21,17 +21,13 @@ class Payment < ActiveRecord::Base
   validates :amount, numericality: { greater_than_or_equal_to: 0.1 }
 
   ## Callbacks
-  after_save :update_invoice!
+  after_save :_update_invoice!
 
   private
 
   ## Callbacks handlers
   # TODO: need to be tested
-  def update_invoice!
-    invoiced = invoice.amount
-    payed    = invoice.payments.map(&:amount).reduce(:+)
-
-    invoice.close! if invoiced <= payed
-    invoice.overdue! if invoiced > payed
+  def _update_invoice!
+    invoice.payment_received
   end
 end
