@@ -142,5 +142,6 @@ class Invoice < ActiveRecord::Base
   def _normed_balance
     return 0 unless _balance
     return subtotal if _balance > subtotal
+    _balance
   end
 end
