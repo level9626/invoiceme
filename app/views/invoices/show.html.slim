@@ -13,10 +13,10 @@ section#container.thin-menu
         li
           a.btn.btn-theme.btn-default data-toggle="modal" href="#paymentModal#{@invoice.id}"
             | Receive payment
-        - if @invoice.can_publish?
-          li
-            a.btn.btn-theme.btn-default data-toggle="modal" href="#mailingModal#{@invoice.id}"
-              | Send
+        /- if @invoice.can_publish?
+        li
+          a.btn.btn-theme.btn-default data-toggle="modal" href="#mailingModal#{@invoice.id}"
+            | Send
         li
           = link_to "Download PDF", invoice_path(@invoice, :format => 'pdf'), \
                     target: '_blank', class: 'btn btn-theme btn-default'

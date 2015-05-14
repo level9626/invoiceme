@@ -81,6 +81,7 @@ class InvoicesController < ApplicationController
   end
 
   ## Private Scope
+
   private
 
   def _search
