@@ -24,4 +24,14 @@ $(document).ready( function() {
     });
 
     $('.hours_or_tasks, .rate').trigger('change');
+
+
+    //Change currency value on new/show pages.
+    var p = $('#invoice').find('#invoice_currency option:selected').val();
+    $('.currency_value').text(p);
+
+    $('#invoice').on('change', '#invoice_currency', function(){
+        var b = $(this).val();
+        $('.currency_value').text(b);
+    });
 });
