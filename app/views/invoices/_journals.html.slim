@@ -15,7 +15,7 @@
           tbody
             - @invoice.journals.each do |log|
               tr
-                td= log.created_at.strftime('%B %-d, %Y')
+                td= log.created_at.strftime('%B %-d, %Y, %H:%M')
                 td= log.event.split('_').map(&:camelize).join(' ')
                 td= log.from.split('_').map(&:camelize).join(' ')
                 td= log.to.split('_').map(&:camelize).join(' ')
