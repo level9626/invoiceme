@@ -35,8 +35,9 @@ class User < ActiveRecord::Base
   has_many :invoices
   has_many :companies
   has_many :payments, through: :invoices
-  has_many :invoice_email_templates, foreign_key: :owner_id
   has_many :invoice_mails
+  has_many :mail_templates, as: :email_templatable, \
+                            class_name: InvoiceEmailTemplate
 
   ## Nested Forms
   accepts_nested_attributes_for :clients_users, :invoices, :companies
@@ -72,7 +73,7 @@ class User < ActiveRecord::Base
     return unless user?
 
     InvoiceEmailTemplate.primary.each do |invoice_template|
-      invoice_email_templates << invoice_template.dup
+      mail_templates << invoice_template.dup
     end
   end
 end

@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512154425) do
+ActiveRecord::Schema.define(version: 20150517124706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: true do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -87,13 +102,19 @@ ActiveRecord::Schema.define(version: 20150512154425) do
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
 
   create_table "invoice_email_templates", force: true do |t|
-    t.string   "name",             limit: 100
+    t.string   "name",                   limit: 100
     t.text     "template_body"
     t.string   "template_subject"
-    t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "email_templatable_id"
+    t.string   "email_templatable_type"
+    t.string   "to",                                 default: [], array: true
+    t.string   "cc",                                 default: [], array: true
+    t.string   "from"
   end
+
+  add_index "invoice_email_templates", ["email_templatable_id", "email_templatable_type"], name: "invoice_email_templates_email_templatable", using: :btree
 
   create_table "invoice_items", force: true do |t|
     t.string   "description",    default: "", null: false
@@ -117,6 +138,7 @@ ActiveRecord::Schema.define(version: 20150512154425) do
     t.integer  "invoice_email_template_id",              null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "from"
   end
 
   create_table "invoices", force: true do |t|

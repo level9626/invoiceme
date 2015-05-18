@@ -70,7 +70,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       port:       587,
       address:    "smtp.mandrillapp.com",
-      domain:     "tripoded.com",
+      domain:     "invoiceme.com",
       enable_starttls_auto: true,
       user_name:  'yasinishyn.a.n@gmail.com',
       password:   'LxolLBQtpMtIeJUd29RaVw'

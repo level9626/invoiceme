@@ -7,6 +7,7 @@
 #  amount     :float            not null
 #  created_at :datetime
 #  updated_at :datetime
+#  currency   :string(255)
 #
 
 class Payment < ActiveRecord::Base

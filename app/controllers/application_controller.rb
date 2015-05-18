@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
 
+  def authenticate_admin_user!
+    authenticate_user!
+    redirect_to new_user_session_path unless current_user.admin?
+  end
+
   protected
 
   def _get_layout

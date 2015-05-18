@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users
+
+  ActiveAdmin.routes(self)
+
   resources :invoice_mails
 
   resources :invoice_email_templates
@@ -20,8 +24,6 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users
-
   authenticated :user do
     devise_scope :user do
       root to: 'dashboard#show', as: 'dashboard'
@@ -33,8 +35,6 @@ Rails.application.routes.draw do
       root to: 'devise/sessions#new', as: 'unauthenticated'
     end
   end
-
-  mount Upmin::Engine => '/admin'
 
   mount Commontator::Engine => '/commontator'
 end

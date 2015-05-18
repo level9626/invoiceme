@@ -10,14 +10,30 @@ puts 'CREATED ADMIN USER: ' << user.email
 # Environment variables (ENV['...']) can be set in the file config/application.yml.
 # See http://railsapps.github.io/rails-environment-variables.html
 
+
+InvoiceEmailTemplate.delete_all
 # Create default primary templates for admin user
-params = {
-    name: 'Test Template',
-    template_body: '<h1>Test Template</h1><p>Will a little formatting</p>',
-    template_subject: 'Test Subject'
-}
-user.invoice_email_templates << InvoiceEmailTemplate.where(params)
-                                    .first_or_create
+if user.mail_templates.empty?
+  inv_et = InvoiceEmailTemplate.new
+  inv_et2 = InvoiceEmailTemplate.new
+
+  inv_et.name = 'Send Invoice'
+  inv_et.template_body = '<h1>Test Template</h1><p>Will a little formatting</p>'
+  inv_et.template_subject = 'Test Subject'
+  inv_et.to = ['email1@example.com']
+  inv_et.cc = ['email2@example.com']
+  inv_et.from = 'email3@example.com'
+
+  inv_et2.name = 'Receive Payment'
+  inv_et2.template_body = '<h1>Test Template</h1><p>Will a little formatting</p>'
+  inv_et2.template_subject = 'Test Subject'
+  inv_et2.to = ['email1@example.com']
+  inv_et2.cc = ['email2@example.com']
+  inv_et2.from = 'email3@example.com'
+
+  puts 'CREATING PRIMARY INVOICE TEMPLATES:'
+  puts user.mail_templates << [inv_et, inv_et2]
+end
 
 # Import all invoice templates for all old users
 User.all.each{|u| u.send(:_import_primary_invoice_templates)}

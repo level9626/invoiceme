@@ -37,7 +37,7 @@ gem 'state_machines-activerecord'
 # Authentication, authorization
 gem 'devise'
 gem 'pundit'
-gem 'upmin-admin'
+gem 'activeadmin', '~> 1.0.0.pre1'
 
 # Json builder
 gem 'jbuilder',     '~> 2.0'

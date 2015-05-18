@@ -18,7 +18,8 @@
 #  vat_rate         :float
 #  vat              :float
 #  discount         :float
-#  state            :string(20)       default(:new), not null
+#  state            :string(20)       default("new"), not null
+#  net              :datetime
 #
 
 require 'rails_helper'

@@ -10,6 +10,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  default    :boolean          default(FALSE), not null
+#  email      :string(255)
 #
 
 class Company < ActiveRecord::Base
