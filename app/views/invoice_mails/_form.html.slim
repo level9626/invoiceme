@@ -4,7 +4,7 @@
   .form-inputs
 
     = f.input :invoice_email_template_id, label: 'Select Email Template', \
-                  collection: current_user.invoice_email_templates
+                  collection: current_user.mail_templates
     hr
 
     = f.input :to, input_html: { value: f.object.invoice.client.email }
@@ -14,7 +14,7 @@
     = f.input :subject
     hr
 
-    = f.input :body, input_html: { class: 'wysihtml5'}
+    = f.input :body, input_html: { class: 'wysihtml5' }
 
     / Hidden field
     = f.input :invoice_id, as: :hidden
