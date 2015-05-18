@@ -1,6 +1,0 @@
-#navbar-main
-  %ul.nav.nav-pills.nav-stacked
-    - Upmin::Model.all.each do |m|
-      %li
-        %a{href: m.search_path}
-          = m.humanized_name(:plural)
