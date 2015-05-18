@@ -11,7 +11,26 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import 'bootstrap-wysihtml5/bootstrap3-wysihtml5.css';
+
+
+
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+
+.label {
+  color: #5E6469;
+}
+
+#editor {
+  display: inline-block;
+  float: right;
+  margin: 0px 20px 0 0;
+  position: static;
+  width: 79% !important;
+}

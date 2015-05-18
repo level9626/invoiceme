@@ -22,7 +22,7 @@ ActiveAdmin.register InvoiceEmailTemplate do
       f.input :to
       f.input :cc
       f.input :from
-      f.input :template_body
+      f.input :template_body, input_html: { class: 'admin_wysihtml5', id: 'editor' }
     end
     actions
   end
