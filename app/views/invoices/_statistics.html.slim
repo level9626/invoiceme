@@ -3,7 +3,7 @@
     | Count by curreny
     - Invoice::CURRENCY.each do |currency|
       span id="stats-#{currency}" class="stats"
-        b= currency
+        b= link_to currency, invoices_path(:currency => currency)
         i 0
 
 .col-md-6.stats-cont#overdue_count
@@ -11,7 +11,7 @@
     | Overdue count by curreny
     - Invoice::CURRENCY.each do |currency|
       span id="stats-#{currency}" class="stats"
-        b= currency
+        b= link_to currency, invoices_path(currency: :currency, state: :overdue)
         i 0
 
 javascript:
