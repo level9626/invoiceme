@@ -1,4 +1,4 @@
-.col-md-6.stats-cont#count
+.col-md-5.stats-cont#count
   h6
     | Count by curreny
     - Invoice::CURRENCY.each do |currency|
@@ -6,13 +6,16 @@
         b= link_to currency, invoices_path(:currency => currency)
         i 0
 
-.col-md-6.stats-cont#overdue_count
+.col-md-5.stats-cont#overdue_count
   h6
     | Overdue count by curreny
     - Invoice::CURRENCY.each do |currency|
       span id="stats-#{currency}" class="stats"
         b= link_to currency, invoices_path(currency: :currency, state: :overdue)
         i 0
+.col-md-2
+  h6#clear-filter
+    = link_to 'Clear Filters', invoices_path, class: "btn btn-xs btn-danger"
 
 javascript:
   $.ajax({

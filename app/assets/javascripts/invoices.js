@@ -53,6 +53,18 @@ $(document).ready( function() {
     });
 });
 
+
+/*
+ * Hide button for statistics filters
+ */
+$(document).ready( function(){
+    var url = window.location.href;
+    if (url.indexOf("?") == -1) {
+        $('#clear-filter').hide();
+    } else { $('#clear-filter').show(); }
+});
+
+
 /*
 * Submits froms, and opens a new mailing modal
 */
