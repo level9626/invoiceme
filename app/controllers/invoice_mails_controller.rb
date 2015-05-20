@@ -4,8 +4,12 @@ class InvoiceMailsController < ApplicationController
   respond_to :html
 
   def index
-    @invoice_mails = current_user.invoice_mails.all
-    respond_with(@invoice_mails)
+    @search = _search
+    @invoice_mails = @search.result.paginate(per_page: 10, page: params[:page])
+    respond_to do |format|
+      format.html
+      format.csv { send_data @invoice_mails.to_csv }
+    end
   end
 
   def show
@@ -55,6 +59,10 @@ class InvoiceMailsController < ApplicationController
   end
 
   private
+
+  def _search
+    InvoiceMail.includes(invoice: :client).where(user: current_user).search(params[:q])
+  end
 
   def set_invoice_mail
     @invoice_mail = current_user.invoice_mails.find(params[:id])

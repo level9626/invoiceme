@@ -1,33 +1,44 @@
-h1 Listing invoice_mails
+.row
+  .col-md-8#tags.tags
+    .col-md-12.row
+      == render 'shared/tags'
+  .col-md-4.pull-right.filter
+    div.btn-group role="group"
+      = link_to invoice_mails_path, class: "btn btn-primary btn-sm"
+        .fa.fa-plus
+          | Some action will add
+      = link_to invoice_mails_path(params.merge(format: 'csv')), class: "btn btn-success btn-sm"
+        .fa.fa-download
+          | Download to CSV
+    == render 'filter'
+  .col-md-12
+    section.task-panel.tasks-widget
+      .panel-body
+        .task-content
+          table.table
+            thead
+              tr
+                th = sort_link @search, :invoice_id, 'Invoice id'
+                th = sort_link @search, :invoice_client_name,  'Client'
+                th = sort_link @search, :invoice_email_template_id,'Invoice email template'
+                /th From
+                th = sort_link @search, :to, 'To'
+                th = sort_link @search, :cc, 'Cc'
+                th = sort_link @search, :subject, 'Subject'
+                th Body
+                th.actions_table
 
-table
-  thead
-    tr
-      th Invoice
-      th To
-      th User
-      th Subject
-      th Cc
-      th Body
-      th Invoice email template
-      th
-      th
-      th
-
-  tbody
-    - @invoice_mails.each do |invoice_mail|
-      tr
-        td = invoice_mail.invoice_id
-        td = invoice_mail.to
-        td = invoice_mail.user_id
-        td = invoice_mail.subject
-        td = invoice_mail.cc
-        td = invoice_mail.body
-        td = invoice_mail.invoice_email_template_id
-        td = link_to 'Show', invoice_mail
-        td = link_to 'Edit', edit_invoice_mail_path(invoice_mail)
-        td = link_to 'Destroy', invoice_mail, data: {:confirm => 'Are you sure?'}, :method => :delete
-
-br
-
-= link_to 'New Invoice mail', new_invoice_mail_path
+            tbody
+              - @invoice_mails.each do |invoice_mail|
+                tr
+                  td = invoice_mail.invoice_id
+                  td = invoice_mail.invoice.client.name
+                  td = invoice_mail.invoice_email_template.name
+                  /td = invoice_mail.from
+                  td = invoice_mail.to.join(', ')
+                  td = invoice_mail.cc.join(', ')
+                  td = invoice_mail.subject
+                  // td= truncate(email_template.template_body.html_safe, length: 100)
+                  td = invoice_mail.body.try(:html_safe)
+                  td= render 'actions', :'@invoice_mail' => invoice_mail
+    = will_paginate @invoice_mails

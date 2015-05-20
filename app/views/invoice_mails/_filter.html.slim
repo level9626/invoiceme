@@ -1,0 +1,16 @@
+.panel.panel-default.panel_invoice
+  .panel-heading
+    panel-title.filter_text Filters
+    span.pull-right.clickable
+      i.glyphicon.glyphicon-chevron-down.filter_glyph
+  .panel-body.dropdown_panel
+    = search_form_for @search, :builder => SimpleForm::FormBuilder do |f|
+      = f.label :invoice_id_cont, 'Invoice id', class: "fa fa-tag"
+      = f.input :invoice_id_cont, label: false
+
+      = f.label :invoice_client_name_cont, 'Client name', class: "fa fa-check"
+      = f.input :invoice_client_name_cont, collection: current_user.clients.map{|client| [client.name, client.name]}, label: false
+
+      = f.button :submit, "Filter", class: "btn btn-round btn-primary"
+      .pull-right
+        = link_to 'Clear Filters', invoice_email_templates_path, class: "btn btn-round btn-danger"

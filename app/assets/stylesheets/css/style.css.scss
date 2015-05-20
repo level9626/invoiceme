@@ -34,6 +34,10 @@ h3 {
     color: $grey-light;
     padding-right: 5px;
   }
+  &.fa-file-text-o::before {
+    color: $grey-light;
+    padding-right: 5px;
+  }
 }
 
 i {

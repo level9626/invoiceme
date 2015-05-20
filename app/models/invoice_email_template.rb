@@ -18,6 +18,7 @@
 class InvoiceEmailTemplate < ActiveRecord::Base
   ## Relations
   belongs_to :email_templatable, polymorphic: true
+  belongs_to :invoice
   has_many :invoice_mails
 
   ## Validations
