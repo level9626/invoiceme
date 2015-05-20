@@ -1,5 +1,34 @@
-p#notice = notice
+.row.mt
+  .col-md-4
+    section.task-panel.tasks-widget
+      .panel-body
+        p#notice = notice
+        center
+          p
+            strong To
+            br
+            = @invoice_email_template.to
+          p
+            strong CC
+            br
+            = @invoice_email_template.cc
+          p
+            strong From
+            br
+            = @invoice_email_template.from
+          p
+            strong Name
+            br
+            = @invoice_email_template.name
+          p
+            strong Template subject
+            br
+            = @invoice_email_template.template_subject
+          p
+            strong Template body
+            br
 
+            = @invoice_email_template.template_body.try(:html_safe)
 
 = link_to 'Edit', edit_invoice_email_template_path(@invoice_email_template)
 '|

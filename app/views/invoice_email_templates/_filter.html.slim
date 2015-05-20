@@ -12,15 +12,15 @@
     = search_form_for @search, :builder => SimpleForm::FormBuilder do |f|
       / Client contain text
       = f.label :name_cont, 'Name', class: "fa fa-tag"
-      = f.input :name_cont
+      = f.input :name_cont, label: false
 
       / Status: closed/open/overdue
       = f.label :template_subject_cont, 'Subject', class: "fa fa-check"
-      = f.input :template_subject_cont
+      = f.input :template_subject_cont, label: false
 
       / Currency: EUR/USD/UAH/RUB
-      = f.label :template_body_cont, 'Body', class: "fa fa-usd"
-      = f.input :template_body_cont
+      = f.label :template_body_cont, 'Body', class: "fa fa-file-text-o"
+      = f.input :template_body_cont, label: false
 
       / Invoice: from date to date
       = f.label :created_at_gteq, 'From Date', class: "fa fa-calendar"

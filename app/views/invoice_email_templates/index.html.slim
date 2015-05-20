@@ -6,7 +6,7 @@
     div.btn-group role="group"
       = link_to new_invoice_email_template_path, class: "btn btn-primary btn-sm"
         .fa.fa-plus
-          | Add New Invoice
+          | Add New Template
       = link_to invoice_email_templates_path(params.merge(format: 'csv')), class: "btn btn-success btn-sm"
         .fa.fa-download
           | Download to CSV
@@ -22,9 +22,9 @@
                 th = sort_link @search, :name , "Name"
                 th = sort_link @search, :template_subject, "Subject"
                 th = sort_link @search, :template_body , "Body"
-                th = sort_link @search, :to , "to"
-                th = sort_link @search, :cc , "cc"
-                th = sort_link @search, :from, "from"
+                th = sort_link @search, :to , "TO"
+                th = sort_link @search, :cc , "CC"
+                th = sort_link @search, :from, "From"
                 th.actions_table
 
             tbody
@@ -36,5 +36,6 @@
                   td= email_template.to.join(', ')
                   td= email_template.cc.join(', ')
                   td= email_template.from
+                  td
                   td= render 'actions', :'@email_template' => email_template
     = will_paginate @invoices
