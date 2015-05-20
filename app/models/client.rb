@@ -14,7 +14,8 @@ class Client < ActiveRecord::Base
   before_save { self.email = email.downcase }
 
   ## Relations
-  has_many :mail_templates, as: :email_templatable
+  has_many :mail_templates, as: :email_templatable, \
+                            class_name: InvoiceEmailTemplate
   has_many :clients_users, dependent: :destroy
   has_many :users, through: :clients_users
   has_many :invoices, dependent: :destroy

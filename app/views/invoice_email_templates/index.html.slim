@@ -1,19 +1,40 @@
-h1 Listing invoice_email_templates
+.row
+  .col-md-8#tags.tags
+    .col-md-12.row
+      == render 'shared/tags'
+  .col-md-4.pull-right.filter
+    div.btn-group role="group"
+      = link_to new_invoice_email_template_path, class: "btn btn-primary btn-sm"
+        .fa.fa-plus
+          | Add New Invoice
+      = link_to invoice_email_templates_path(params.merge(format: 'csv')), class: "btn btn-success btn-sm"
+        .fa.fa-download
+          | Download to CSV
+    == render 'filter'
 
-table
-  thead
-    tr
-      th
-      th
-      th
+  .col-md-12
+    section.task-panel.tasks-widget
+      .panel-body
+        .task-content
+          table.table
+            thead
+              tr
+                th = sort_link @search, :name , "Name"
+                th = sort_link @search, :template_subject, "Subject"
+                th = sort_link @search, :template_body , "Body"
+                th = sort_link @search, :to , "to"
+                th = sort_link @search, :cc , "cc"
+                th = sort_link @search, :from, "from"
+                th.actions_table
 
-  tbody
-    - @invoice_email_templates.each do |invoice_email_template|
-      tr
-        td = link_to 'Show', invoice_email_template
-        td = link_to 'Edit', edit_invoice_email_template_path(invoice_email_template)
-        td = link_to 'Destroy', invoice_email_template, data: {:confirm => 'Are you sure?'}, :method => :delete
-
-br
-
-= link_to 'New Invoice email template', new_invoice_email_template_path
+            tbody
+              - @invoice_email_templates.each do |email_template|
+                tr
+                  td= email_template.name
+                  td= email_template.template_subject
+                  / td= truncate(email_template.template_body.html_safe, length: 100)
+                  td= email_template.to.join(', ')
+                  td= email_template.cc.join(', ')
+                  td= email_template.from
+                  td= render 'actions', :'@email_template' => email_template
+    = will_paginate @invoices

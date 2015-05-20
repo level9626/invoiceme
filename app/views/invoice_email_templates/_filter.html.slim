@@ -1,0 +1,34 @@
+/  - Client
+/  - status(closed, open, overdue) (select)
+/  - currency (select)
+/  - invoice date (from - to)
+
+.panel.panel-default.panel_invoice
+  .panel-heading
+    panel-title.filter_text Filters
+    span.pull-right.clickable
+      i.glyphicon.glyphicon-chevron-down.filter_glyph
+  .panel-body.dropdown_panel
+    = search_form_for @search, :builder => SimpleForm::FormBuilder do |f|
+      / Client contain text
+      = f.label :name_cont, 'Name', class: "fa fa-tag"
+      = f.input :name_cont
+
+      / Status: closed/open/overdue
+      = f.label :template_subject_cont, 'Subject', class: "fa fa-check"
+      = f.input :template_subject_cont
+
+      / Currency: EUR/USD/UAH/RUB
+      = f.label :template_body_cont, 'Body', class: "fa fa-usd"
+      = f.input :template_body_cont
+
+      / Invoice: from date to date
+      = f.label :created_at_gteq, 'From Date', class: "fa fa-calendar"
+      = f.input :created_at_gteq, as: :string, input_html: { class: "datepicker" }, label: false
+      = f.label :created_at_lteq, 'to Date', class: "fa fa-calendar"
+      = f.input :created_at_lteq, as: :string, input_html: { class: "datepicker" }, label: false
+
+
+      = f.button :submit, "Filter", class: "btn btn-round btn-primary"
+      .pull-right
+        = link_to 'Clear Filters', invoice_email_templates_path, class: "btn btn-round btn-danger"

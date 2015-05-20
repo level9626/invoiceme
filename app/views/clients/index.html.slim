@@ -6,7 +6,7 @@ h3
   - @clients.each_with_index do |client, i|
     - if i%3==0
       .col-md-12
-    .col-md-4.col-sm-4.mb
+    .col-md-6.col-sm-6.mb
       .white-panel.pn.donut-chart
         .white-header
           h5= client.name
@@ -22,8 +22,10 @@ h3
                        class: 'btn btn-default pull-left'
           = button_to 'Edit', edit_client_path(client), method: :get, \
                       class: 'btn btn-default pull-left'
-          = button_to 'Destroy', client, data: {:confirm => 'Are you sure?'}, \
-                      :method => :delete, class: 'btn btn-danger pull-right'
+          = button_to 'Email Templates', client_invoice_email_templates_path(client),\
+                      method: :get, class: 'btn btn-info pull-left'
+          = button_to 'Destroy', client, data: { confirm: 'Are you sure?' }, \
+                      method: :delete, class: 'btn btn-danger pull-right'
 
 
   .col-md-12
