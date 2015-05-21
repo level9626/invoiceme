@@ -103,8 +103,8 @@ class Invoice < ActiveRecord::Base
 
   # Change state after peyment received.
   def payment_received
-    return invoice.close if percent_payed <= 100
-    invoice.partly_pay
+    return close if percent_payed <= 100
+    partly_pay
   end
 
   ## Class methods
@@ -138,7 +138,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def _balance
-    payments.where.not(id: nil).map(&:amount).reduce(:+)
+    payments.where.not(id: nil).sum(:amount)
   end
 
   def _normed_balance
