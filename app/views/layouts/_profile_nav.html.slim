@@ -14,10 +14,6 @@ aside
         = link_to invoices_path, class: current_page?(invoices_path) && 'active'
           i.fa.fa-folder My Invoices
       li
-        = link_to invoice_email_templates_path, \
-        class: current_page?(invoice_email_templates_path) && 'active'
-          i.fa.fa-folder Email Templates
-      li
         = link_to invoice_mails_path, \
         class: current_page?(invoice_mails_path) && 'active'
           i.fa.fa-folder Invoice Mails
