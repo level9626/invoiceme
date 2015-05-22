@@ -4,11 +4,11 @@
   .form-inputs
 
     = f.input :invoice_email_template_id, label: 'Select Email Template', \
-                  collection: current_user.mail_templates
+                  collection: current_user.mail_templates_for(client ||= nil)
     hr
 
-    = f.input :to, input_html: { value: f.object.invoice.client.email }
-    = f.input :cc, input_html: { value: f.object.cc.empty? ? '' : f.object.cc }
+    = f.input :to
+    = f.input :cc
     hr
 
     = f.input :subject

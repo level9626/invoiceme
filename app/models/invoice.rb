@@ -30,6 +30,7 @@ class Invoice < ActiveRecord::Base
 
   # Default query scope
   default_scope { where.not(state: 'closed') }
+  scope :open, -> { where.not(state: [:closed, :bad_debt]) }
 
   ## Comments
   acts_as_commontable
@@ -115,6 +116,7 @@ class Invoice < ActiveRecord::Base
       SELECT currency, count(*) AS invoices_count
       FROM invoices
       WHERE user_id=#{user.id}
+      AND state <> 'closed'
       GROUP BY currency;
     EOQ
   end
@@ -125,6 +127,7 @@ class Invoice < ActiveRecord::Base
       FROM invoices
       WHERE state='overdue'
       AND user_id=#{user.id}
+      AND state <> 'closed'
       GROUP BY currency;
     EOQ
   end
@@ -134,15 +137,15 @@ class Invoice < ActiveRecord::Base
   ## Private instance methods
   def _with_currency(amount)
     return '--/--' unless amount
+    return '--/--' if amount.to_i.zero?
     "#{amount} #{currency}"
   end
 
   def _balance
-    payments.where.not(id: nil).sum(:amount)
+    payments.sum_amount
   end
 
   def _normed_balance
-    return 0 unless _balance
     return subtotal if _balance > subtotal
     _balance
   end

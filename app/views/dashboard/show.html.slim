@@ -9,8 +9,14 @@ h3
         h5 Default Company
     - if @company
       = render 'companies/company', company: @company
+  .col-md-4.col-sm-4.mb
+    .panel.panel-default
+      .panel-heading Invoice Balance
+      .panel-body
+        = render 'shared/moris_donut', \
+                 { percent_payed: current_user.percent_payed.round(2) }
 
-  .col-lg-6
+  .col-lg-4
     .content-panel
       h4
         i.fa.fa-angle-right

@@ -21,6 +21,9 @@ class Payment < ActiveRecord::Base
   validates :invoice_id, :amount, :currency, presence: true
   validates :amount, numericality: { greater_than_or_equal_to: 0.1 }
 
+  ## Scopes
+  scope :sum_amount, -> { where.not(id: nil).sum(:amount) }
+
   ## Callbacks
   after_save :_update_invoice!
 

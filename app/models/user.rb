@@ -26,8 +26,12 @@
 class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
 
-  ## Comments
+  ## Gem Modules
+  # Comments
   acts_as_commontator
+  # Devise 
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   ## Relations
   has_many :clients_users
@@ -46,14 +50,21 @@ class User < ActiveRecord::Base
   after_initialize :_set_default_role, if: :new_record?
   after_create :_import_primary_invoice_templates
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable
-
   ## Instance Methods
   def logo_url
     companies.default.try(:logo_url) || 'fallback/default_logo.png'
+  end
+
+  def mail_templates_for(client = nil)
+    return client.mail_templates if client && !client.mail_templates.empty?
+    mail_templates
+  end
+
+  def percent_payed
+    normed_balance = invoices.open
+                       .map{ |invoice| invoice.send(:_normed_balance) }
+                       .reduce(:+)
+    (normed_balance).percent_of(invoices.sum(:subtotal))
   end
 
   private

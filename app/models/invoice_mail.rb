@@ -16,6 +16,8 @@
 #
 
 class InvoiceMail < ActiveRecord::Base
+  ## Modules
+  include Modules::MailFormater
   ## Relations
   belongs_to :invoice
   belongs_to :invoice_email_template

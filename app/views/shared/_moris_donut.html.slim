@@ -1,0 +1,24 @@
+/ graph
+- percent_unpayed = 100 - percent_payed
+#graph
+  javascript:
+    Morris.Donut({
+      element: 'graph',
+      data: [
+        {
+          value: "#{percent_payed.round(2)}",
+          label: 'Payed'
+        },{
+          value: "#{percent_unpayed.round(2)}",
+          label: 'Unpayed'
+        }
+      ],
+      backgroundColor: '#ccc',
+      colors: [
+        '#0BA462',
+        '#d9534f'
+      ],
+      formatter: function (x) {
+        return x + "%"
+      }
+    });
