@@ -16,6 +16,8 @@
 #
 
 class InvoiceEmailTemplate < ActiveRecord::Base
+  ## Modules
+  include Modules::MailFormater
   ## Relations
   belongs_to :email_templatable, polymorphic: true
   belongs_to :invoice

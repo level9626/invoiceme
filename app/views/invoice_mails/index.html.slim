@@ -18,27 +18,22 @@
           table.table
             thead
               tr
-                th = sort_link @search, :invoice_id, 'Invoice id'
+                th = sort_link @search, :invoice_invoice_number, 'Invoice'
                 th = sort_link @search, :invoice_client_name,  'Client'
-                th = sort_link @search, :invoice_email_template_id,'Invoice email template'
-                /th From
+                th = sort_link @search, :subject, 'Subject'
                 th = sort_link @search, :to, 'To'
                 th = sort_link @search, :cc, 'Cc'
-                th = sort_link @search, :subject, 'Subject'
                 th Body
                 th.actions_table
 
             tbody
               - @invoice_mails.each do |invoice_mail|
                 tr
-                  td = invoice_mail.invoice_id
+                  td = invoice_mail.invoice.invoice_number
                   td = invoice_mail.invoice.client.name
-                  td = invoice_mail.invoice_email_template.name
-                  /td = invoice_mail.from
+                  td = invoice_mail.subject
                   td = invoice_mail.to.join(', ')
                   td = invoice_mail.cc.join(', ')
-                  td = invoice_mail.subject
-                  // td= truncate(email_template.template_body.html_safe, length: 100)
-                  td = invoice_mail.body.try(:html_safe)
-                  td= render 'actions', :'@invoice_mail' => invoice_mail
+                  td = truncate( invoice_mail.body.html_safe, length: 100 )
+                  td = render 'actions', :'@invoice_mail' => invoice_mail
     = will_paginate @invoice_mails
