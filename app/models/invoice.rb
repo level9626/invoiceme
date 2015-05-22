@@ -134,15 +134,15 @@ class Invoice < ActiveRecord::Base
   ## Private instance methods
   def _with_currency(amount)
     return '--/--' unless amount
+    return '--/--' if amount.to_i.zero?
     "#{amount} #{currency}"
   end
 
   def _balance
-    payments.where.not(id: nil).sum(:amount)
+    payments.sum_amount
   end
 
   def _normed_balance
-    return 0 unless _balance
     return subtotal if _balance > subtotal
     _balance
   end

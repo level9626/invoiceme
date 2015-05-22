@@ -42,29 +42,9 @@ br
           p= "Status: #{@invoice.state.capitalize}"
           p= "Balance: #{@invoice.balance}"
           p= "Total: #{@invoice.total}"
-          / graph
-          #graph
-            javascript:
-              Morris.Donut({
-                element: 'graph',
-                data: [
-                  {
-                    value: "#{@invoice.percent_payed.round(2)}",
-                    label: 'Payed'
-                  },{
-                    value: "#{100-@invoice.percent_payed.round(2)}",
-                    label: 'Unpayed'
-                  }
-                ],
-                backgroundColor: '#ccc',
-                colors: [
-                  '#0BA462',
-                  '#d9534f'
-                ],
-                formatter: function (x) {
-                  return x + "%"
-                }
-              });
+
+          = render 'shared/moris_donut', \
+                   { percent_payed: @invoice.percent_payed.round(2) }
 
       .panel.panel-default
         .panel-heading Payments
