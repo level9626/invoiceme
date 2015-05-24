@@ -1,12 +1,6 @@
 h3
-  i.fa.fa-angle-right
-  | Listing companies
-
 .row.mt
   .col-md-4.col-sm-4.mb
-    .white-panel.pn.donut-chart
-      .white-header
-        h5 Default Company
     - if @company
       = render 'companies/company', company: @company
   .col-md-4.col-sm-4.mb
@@ -16,10 +10,9 @@ h3
         = render 'shared/moris_donut', \
                  { percent_payed: current_user.percent_payed.round(2) }
 
-  .col-lg-4
-    .content-panel
-      h4
-        i.fa.fa-angle-right
-        | Invoices
+  .col-sm-4.mb
+    .panel.panel-default
+      .panel-heading Recent Invoices
       .panel-body
-        #pipe-chart
+        - @invoices.each do |invoice|
+          p= invoice.invoice_number

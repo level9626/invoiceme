@@ -16,13 +16,14 @@ ActiveAdmin.register InvoiceEmailTemplate do
   end
 
   form do |f|
-    f.inputs "InvoiceEmailTemplate" do
+    f.inputs 'InvoiceEmailTemplate' do
       f.input :name
       f.input :template_subject
       f.input :to
       f.input :cc
       f.input :from
-      f.input :template_body, input_html: { class: 'admin_wysihtml5', id: 'editor' }
+      f.input :template_body, \
+              input_html: { class: 'admin_wysihtml5', id: 'editor' }
     end
     actions
   end

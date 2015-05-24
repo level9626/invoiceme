@@ -1,4 +1,4 @@
-class InvoicesController < ApplicationController
+class InvoicesController < ApplicationController # rubocop:disable ClassLength
   ## Controller filters
   before_action :_set_invoice, only: [:show, :edit, :update, :destroy] + \
     Invoice.state_machines[:state].events.map(&:name)
@@ -14,13 +14,6 @@ class InvoicesController < ApplicationController
   def index
     @search = _search
     @invoices = @search.result.paginate(per_page: 10, page: params[:page])
-
-    if params[:currency]
-      @invoices = Invoice.where(currency: params[:currency]).paginate(per_page: 10, page: params[:page])
-    elsif params[:currency] && params[:state]
-      @invoices = Invoice.where(currency: params[:currency], state: params[:state]).paginate(per_page: 10, page: params[:page])
-    end
-
     respond_to do |format|
       format.html
       format.csv { send_data @invoices.to_csv }

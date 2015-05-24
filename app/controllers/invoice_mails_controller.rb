@@ -1,5 +1,5 @@
 class InvoiceMailsController < ApplicationController
-  before_action :set_invoice_mail, only: [:show, :edit, :update, :destroy]
+  before_action :_set_invoice_mail, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
@@ -58,12 +58,16 @@ class InvoiceMailsController < ApplicationController
 
   def _search
     @invoice = Invoice.find(params[:invoice_id])
-    current_user.invoice_mails.where(invoice_id: params[:invoice_id]).search(params[:q])
+    _collection.search(params[:q])
   end
 
-  def set_invoice_mail
-    @invoice_mail = current_user.invoice_mails.where(invoice_id: params[:invoice_id]).find(params[:id])
+  def _set_invoice_mail
+    @invoice_mail = _collection.find(params[:id])
     @invoice = Invoice.find(params[:invoice_id])
+  end
+
+  def _collection
+    current_user.invoice_mails.where(invoice_id: params[:invoice_id])
   end
 
   def invoice_mail_params

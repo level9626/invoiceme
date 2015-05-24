@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   ## Gem Modules
   # Comments
   acts_as_commontator
-  # Devise 
+  # Devise
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -62,8 +62,8 @@ class User < ActiveRecord::Base
 
   def percent_payed
     normed_balance = invoices.open
-                       .map{ |invoice| invoice.send(:_normed_balance) }
-                       .reduce(:+)
+                     .map { |invoice| invoice.send(:_normed_balance) }
+                     .reduce(:+)
     (normed_balance).percent_of(invoices.sum(:subtotal))
   end
 

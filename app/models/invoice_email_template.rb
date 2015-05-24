@@ -36,8 +36,8 @@ class InvoiceEmailTemplate < ActiveRecord::Base
       INNER JOIN users ON
       users.id = invoice_email_templates.email_templatable_id
     ))
-    .where(email_templatable_type: :User)
-    .where(users: { role: User.roles[role] })
+      .where(email_templatable_type: :User)
+      .where(users: { role: User.roles[role] })
   }
   scope :primary, -> { by_role(:admin) }
   scope :user_templates, -> { by_role(:user) }

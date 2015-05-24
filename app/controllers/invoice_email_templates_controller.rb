@@ -1,6 +1,6 @@
 class InvoiceEmailTemplatesController < ApplicationController
   before_action :_get_parent
-  before_action :set_invoice_email_template, \
+  before_action :_set_invoice_email_template, \
                 only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :json
@@ -8,7 +8,7 @@ class InvoiceEmailTemplatesController < ApplicationController
   def index
     @search = _search
     @invoice_email_templates = @search.result
-                                 .paginate(per_page: 10, page: params[:page])
+                               .paginate(per_page: 10, page: params[:page])
   end
 
   def show
@@ -52,9 +52,8 @@ class InvoiceEmailTemplatesController < ApplicationController
 
   private
 
-  def set_invoice_email_template
-    @invoice_email_template = @parent.mail_templates
-                                .find(params[:id])
+  def _set_invoice_email_template
+    @invoice_email_template = @parent.mail_templates.find(params[:id])
   end
 
   def invoice_email_template_params
