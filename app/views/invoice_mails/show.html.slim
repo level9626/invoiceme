@@ -1,27 +1,26 @@
-p#notice = notice
+.row.mt
+  .col-md-12
+    section.task-panel.tasks-widget
+      .panel-body
+        .task-content
+          table.table
+            thead
+              tr
+                p#notice = notice
+                th Invoice
+                th To
+                th User
+                th Subject
+                th CC
+                th Body
+                th Invoice email template
+            tbody
+              tr
+                td= @invoice_mail.invoice_id
+                td= @invoice_mail.to
+                td= @invoice_mail.user_id
+                td= @invoice_mail.subject
+                td= @invoice_mail.cc
+                td= @invoice_mail.body
+                td= @invoice_mail.invoice_email_template_id
 
-p
-  strong Invoice:
-  = @invoice_mail.invoice_id
-p
-  strong To:
-  = @invoice_mail.to
-p
-  strong User:
-  = @invoice_mail.user_id
-p
-  strong Subject:
-  = @invoice_mail.subject
-p
-  strong Cc:
-  = @invoice_mail.cc
-p
-  strong Body:
-  = @invoice_mail.body
-p
-  strong Invoice email template:
-  = @invoice_mail.invoice_email_template_id
-
-= link_to 'Edit', edit_invoice_mail_path(@invoice_mail)
-'|
-= link_to 'Back', invoice_mails_path

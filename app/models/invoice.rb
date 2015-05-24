@@ -47,6 +47,7 @@ class Invoice < ActiveRecord::Base
 
   ## Nested forms
   accepts_nested_attributes_for :invoice_items
+  accepts_nested_attributes_for :invoice_mails
 
   ## Validations
   # Iterates through constants, and dynamically creates validations

@@ -4,10 +4,10 @@
       == render 'shared/tags'
   .col-md-4.pull-right.filter
     div.btn-group role="group"
-      = link_to invoice_mails_path, class: "btn btn-primary btn-sm"
+      = link_to '#', class: "btn btn-primary btn-sm"
         .fa.fa-plus
           | Some action will add
-      = link_to invoice_mails_path(params.merge(format: 'csv')), class: "btn btn-success btn-sm"
+      = link_to invoice_invoice_mails_path(params.merge(format: 'csv')), class: "btn btn-success btn-sm"
         .fa.fa-download
           | Download to CSV
     == render 'filter'

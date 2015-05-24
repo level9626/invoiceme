@@ -1,5 +1,5 @@
 .pull-right
-  = link_to @invoice_mail, :method => :get, class: "btn btn-primary btn-xs tab"
+  = link_to [@invoice, @invoice_mail], :method => :get, class: "btn btn-primary btn-xs tab"
     i.fa.fa-eye
 
   .btn-group
@@ -7,9 +7,6 @@
       i.fa.fa-chevron-down#invoices_actions_button
     ul.dropdown-menu.pull-right role="menu"
       li
-        = link_to 'Edit', edit_invoice_mail_path(@invoice_mail), \
-                  class: "btn btn-theme01"
-      li
-        = link_to @invoice_mail, data: {:confirm => 'Are you sure?'}, \
+        = link_to [@invoice, @invoice_mail], data: {:confirm => 'Are you sure?'}, \
                   :method => :delete, class: "btn btn-theme01"
           | Delete

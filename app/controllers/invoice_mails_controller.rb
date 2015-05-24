@@ -13,7 +13,6 @@ class InvoiceMailsController < ApplicationController
   end
 
   def show
-    respond_with(@invoice_mail)
   end
 
   def new
@@ -26,6 +25,7 @@ class InvoiceMailsController < ApplicationController
 
   def create
     @invoice_mail = current_user.invoice_mails.new(invoice_mail_params)
+    @invoice_mail.invoice_id = params[:invoice_id]
     if @invoice_mail.save
       flash[:notice] = 'Invoice Mail was successfully send.'
       # TODO: catch errors
@@ -57,11 +57,13 @@ class InvoiceMailsController < ApplicationController
   private
 
   def _search
-    InvoiceMail.includes(invoice: :client).where(user: current_user).search(params[:q])
+    @invoice = Invoice.find(params[:invoice_id])
+    current_user.invoice_mails.where(invoice_id: params[:invoice_id]).search(params[:q])
   end
 
   def set_invoice_mail
-    @invoice_mail = current_user.invoice_mails.find(params[:id])
+    @invoice_mail = current_user.invoice_mails.where(invoice_id: params[:invoice_id]).find(params[:id])
+    @invoice = Invoice.find(params[:invoice_id])
   end
 
   def invoice_mail_params

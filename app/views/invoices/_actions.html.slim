@@ -13,6 +13,9 @@
           | Notes
           span.badge= @invoice.thread.comments.where(deleted_at: nil).count
       li
+        = link_to invoice_invoice_mails_path(@invoice), class: "btn btn-theme01"
+          | Invoice Mails
+      li
         = link_to invoice_path(@invoice, :format => 'pdf'), \
                   class: "btn btn-theme01", target: '_blank'
           | Download PDF

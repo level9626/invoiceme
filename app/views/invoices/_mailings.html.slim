@@ -7,4 +7,5 @@
       .modal-body
         = render 'invoice_mails/form', \
                  :'@invoice_mail' => @invoice.invoice_mails.new, \
+                 :'@invoice' => @invoice, \
                  client: @invoice.client

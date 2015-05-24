@@ -14,12 +14,6 @@ aside
         = link_to invoices_path, class: current_page?(invoices_path) && 'active'
           i.fa.fa-folder My Invoices
       li
-        = link_to invoice_mails_path, \
-        class: current_page?(invoice_mails_path) && 'active'
-          i.fa.fa-folder Invoice Mails
-
-        end
-      li
         = link_to payments_path, class: current_page?(payments_path) && 'active'
           i.fa.fa-money My Payments
 
