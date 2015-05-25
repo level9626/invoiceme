@@ -1,10 +1,11 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :_set_client, only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :json
 
   def index
-    @clients = current_user.clients
+    @search = _search
+    @clients = @search.result.paginate(per_page: 10, page: params[:page])
     respond_with(@clients)
   end
 
@@ -39,8 +40,12 @@ class ClientsController < ApplicationController
 
   private
 
-  def set_client
+  def _set_client
     @client = current_user.clients.find(params[:id])
+  end
+
+  def _search
+    current_user.clients.search(params[:q])
   end
 
   def client_params

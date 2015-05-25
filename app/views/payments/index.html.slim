@@ -15,25 +15,28 @@
 
 
   .col-md-12
-    section.task-panel.tasks-widget
-      .panel-body
-        .task-content
-          table.table
-            thead
-              tr
-                th = sort_link @search, :invoice_invoice_number, 'Invoice'
-                th = sort_link @search, :amount, 'Amount'
-                th = sort_link @search, :client_name, 'Client'
-                th = sort_link @search, :company_name, 'Company'
-                th = sort_link @search, :invoice_currency, 'Currency'
-                th
-
-            tbody
-              - @payments.each do |payment|
+    - if @payments.empty?
+      h5.text-center You don't have payments yet.
+    - else
+      section.task-panel.tasks-widget
+        .panel-body
+          .task-content
+            table.table
+              thead
                 tr
-                  td= payment.invoice.invoice_number
-                  td= payment.amount
-                  td= payment.client.name
-                  td= payment.company.name
-                  td= payment.invoice.currency
-                  td= render 'actions', :'@payment' => payment
+                  th = sort_link @search, :invoice_invoice_number, 'Invoice'
+                  th = sort_link @search, :amount, 'Amount'
+                  th = sort_link @search, :client_name, 'Client'
+                  th = sort_link @search, :company_name, 'Company'
+                  th = sort_link @search, :invoice_currency, 'Currency'
+                  th
+
+              tbody
+                - @payments.each do |payment|
+                  tr
+                    td= payment.invoice.invoice_number
+                    td= payment.amount
+                    td= payment.client.name
+                    td= payment.company.name
+                    td= payment.invoice.currency
+                    td= render 'actions', :'@payment' => payment

@@ -12,28 +12,31 @@
           | Download to CSV
     == render 'filter'
   .col-md-12
-    section.task-panel.tasks-widget
-      .panel-body
-        .task-content
-          table.table
-            thead
-              tr
-                th = sort_link @search, :invoice_invoice_number, 'Invoice'
-                th = sort_link @search, :invoice_client_name,  'Client'
-                th = sort_link @search, :subject, 'Subject'
-                th = sort_link @search, :to, 'To'
-                th = sort_link @search, :cc, 'Cc'
-                th Body
-                th.actions_table
-
-            tbody
-              - @invoice_mails.each do |invoice_mail|
+    - if @invoice_mails.empty?
+      h5.text-center You don't have invoice mails yet.
+    - else
+      section.task-panel.tasks-widget
+        .panel-body
+          .task-content
+            table.table
+              thead
                 tr
-                  td = invoice_mail.invoice.invoice_number
-                  td = invoice_mail.invoice.client.name
-                  td = invoice_mail.subject
-                  td = invoice_mail.to.join(', ')
-                  td = invoice_mail.cc.join(', ')
-                  td = truncate( invoice_mail.body.html_safe, length: 100 )
-                  td = render 'actions', :'@invoice_mail' => invoice_mail
+                  th = sort_link @search, :invoice_invoice_number, 'Invoice'
+                  th = sort_link @search, :invoice_client_name,  'Client'
+                  th = sort_link @search, :subject, 'Subject'
+                  th = sort_link @search, :to, 'To'
+                  th = sort_link @search, :cc, 'Cc'
+                  th Body
+                  th.actions_table
+
+              tbody
+                - @invoice_mails.each do |invoice_mail|
+                  tr
+                    td = invoice_mail.invoice.invoice_number
+                    td = invoice_mail.invoice.client.name
+                    td = invoice_mail.subject
+                    td = invoice_mail.to.join(', ')
+                    td = invoice_mail.cc.join(', ')
+                    td = truncate( invoice_mail.body.html_safe, length: 100 )
+                    td = render 'actions', :'@invoice_mail' => invoice_mail
     = will_paginate @invoice_mails

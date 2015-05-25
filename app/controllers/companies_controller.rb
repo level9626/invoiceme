@@ -1,10 +1,11 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :_set_company, only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :json
 
   def index
-    @companies = current_user.companies.all
+    @search = _search
+    @companies = @search.result.paginate(per_page: 10, page: params[:page])
     respond_with(@companies)
   end
 
@@ -38,7 +39,11 @@ class CompaniesController < ApplicationController
 
   private
 
-  def set_company
+  def _search
+    current_user.companies.search(params[:q])
+  end
+
+  def _set_company
     @company = current_user.companies.find(params[:id])
   end
 

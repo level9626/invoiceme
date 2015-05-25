@@ -13,29 +13,32 @@
     == render 'filter'
 
   .col-md-12
-    section.task-panel.tasks-widget
-      .panel-body
-        .task-content
-          table.table
-            thead
-              tr
-                th = sort_link @search, :name , "Name"
-                th = sort_link @search, :template_subject, "Subject"
-                th = sort_link @search, :template_body , "Body"
-                th = sort_link @search, :to , "TO"
-                th = sort_link @search, :cc , "CC"
-                th = sort_link @search, :from, "From"
-                th.actions_table
-
-            tbody
-              - @invoice_email_templates.each do |email_template|
+    - if @invoice_email_templates.empty?
+      h5.text-center You don't have email templates yet.
+    - else
+      section.task-panel.tasks-widget
+        .panel-body
+          .task-content
+            table.table
+              thead
                 tr
-                  td= email_template.name
-                  td= email_template.template_subject
-                  / td= truncate(email_template.template_body.html_safe, length: 100)
-                  td= email_template.to.join(', ')
-                  td= email_template.cc.join(', ')
-                  td= email_template.from
-                  td
-                  td= render 'actions', :'@email_template' => email_template
+                  th = sort_link @search, :name , "Name"
+                  th = sort_link @search, :template_subject, "Subject"
+                  th = sort_link @search, :template_body , "Body"
+                  th = sort_link @search, :to , "TO"
+                  th = sort_link @search, :cc , "CC"
+                  th = sort_link @search, :from, "From"
+                  th.actions_table
+
+              tbody
+                - @invoice_email_templates.each do |email_template|
+                  tr
+                    td= email_template.name
+                    td= email_template.template_subject
+                    / td= truncate(email_template.template_body.html_safe, length: 100)
+                    td= email_template.to.join(', ')
+                    td= email_template.cc.join(', ')
+                    td= email_template.from
+                    td
+                    td= render 'actions', :'@email_template' => email_template
     = will_paginate @invoices

@@ -15,33 +15,36 @@
     == render 'filter'
 
   .col-md-12
-    section.task-panel.tasks-widget
-      .panel-body
-        .task-content
-          table.table
-            thead
-              tr
-                th.activities_table
-                th = sort_link @search, :invoice_date , "Date"
-                th = sort_link @search, :invoice_number, "No."
-                th = sort_link @search, :client_name , "Due date"
-                th = sort_link @search, :currency , "Balance"
-                th = sort_link @search, :invoice_state , "Total"
-                th = sort_link @search, :net, "Status"
-                th.actions_table
-
-            tbody
-              - @invoices.each do |invoice|
+    - if @invoices.empty?
+      h5.text-center You don't have invoices yet.
+    - else
+      section.task-panel.tasks-widget
+        .panel-body
+          .task-content
+            table.table
+              thead
                 tr
-                  td
-                    a.btn.btn-primary.btn-xs data-toggle="modal" href="#jurnalsModal#{invoice.id}"
-                      i.fa.fa-book
-                  td= invoice.invoice_date.try(:strftime, "%m/%d/%Y")
-                  td= invoice.invoice_number
-                  td= invoice.due_date.try(:strftime, "%m/%d/%Y")
-                  td= invoice.balance
-                  td= invoice.total
-                  td= invoice.state
-                  td= render 'actions', :'@invoice' => invoice
-                == render 'payment', :'@invoice' => invoice
+                  th.activities_table
+                  th = sort_link @search, :invoice_date , "Date"
+                  th = sort_link @search, :invoice_number, "No."
+                  th = sort_link @search, :client_name , "Due date"
+                  th = sort_link @search, :currency , "Balance"
+                  th = sort_link @search, :invoice_state , "Total"
+                  th = sort_link @search, :net, "Status"
+                  th.actions_table
+
+              tbody
+                - @invoices.each do |invoice|
+                  tr
+                    td
+                      a.btn.btn-primary.btn-xs data-toggle="modal" href="#jurnalsModal#{invoice.id}"
+                        i.fa.fa-book
+                    td= invoice.invoice_date.try(:strftime, "%m/%d/%Y")
+                    td= invoice.invoice_number
+                    td= invoice.due_date.try(:strftime, "%m/%d/%Y")
+                    td= invoice.balance
+                    td= invoice.total
+                    td= invoice.state
+                    td= render 'actions', :'@invoice' => invoice
+                  == render 'payment', :'@invoice' => invoice
     = will_paginate @invoices
