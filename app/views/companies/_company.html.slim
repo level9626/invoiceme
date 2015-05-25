@@ -12,12 +12,13 @@
         = company.address.try(:html_safe)
     hr
     footer.clearfix
-      = button_to 'Show', company, method: :get, \
-                      class: 'btn btn-default pull-left'
-      = button_to 'Edit', edit_company_path(company), method: :get, \
-                      class: 'btn btn-default pull-left'
+      .btn-group.pull-left role="group"
+        = link_to 'Show', company, method: :get, \
+                    class: 'btn btn-default'
+        = link_to 'Edit', edit_company_path(company), method: :get, \
+                    class: 'btn btn-default'
       = button_to 'Destroy', company, data: {:confirm => 'Are you sure?'}, \
-                      :method => :delete, class: 'btn btn-danger pull-right'
+                  :method => :delete, class: 'btn btn-danger pull-right'
 - else
   .white-panel.pn.donut-chart
     .white-header

@@ -111,7 +111,7 @@ class Invoice < ActiveRecord::Base
 
   # Returns collection of user and client mail templates
   def grouped_mail_templates
-    mail_templates + user.mail_templates
+    client.mail_templates + user.mail_templates
   end
 
   ## Class methods
