@@ -28,6 +28,9 @@ class InvoiceEmailTemplate < ActiveRecord::Base
             presence: true
   validates :name, :template_subject, length: { in: 1..255 }
   validates :template_body, length: { in: 1..4000 }
+  validates :name, uniqueness: { scope: [:email_templatable_type, \
+                                         :email_templatable_id], \
+                                 message: 'name should be unique' }
 
   ## Scopes
   scope :by_role, lambda { |role|
@@ -41,4 +44,12 @@ class InvoiceEmailTemplate < ActiveRecord::Base
   }
   scope :primary, -> { by_role(:admin) }
   scope :user_templates, -> { by_role(:user) }
+
+  ## Instance methods
+
+  # need to use read_attribute[:name] in order to avoid infinite loop when
+  # inside method name, attribute name is called.
+  def name
+    "#{email_templatable_type} template: #{self[:name]}"
+  end
 end

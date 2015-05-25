@@ -55,15 +55,12 @@ class User < ActiveRecord::Base
     companies.default.try(:logo_url) || 'fallback/default_logo.png'
   end
 
-  def mail_templates_for(client = nil)
-    return client.mail_templates if client && !client.mail_templates.empty?
-    mail_templates
-  end
-
   def percent_payed
     normed_balance = invoices.open
                      .map { |invoice| invoice.send(:_normed_balance) }
                      .reduce(:+)
+
+    return 100 unless normed_balance
     (normed_balance).percent_of(invoices.sum(:subtotal))
   end
 

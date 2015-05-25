@@ -4,7 +4,7 @@
   .form-inputs
 
     = f.input :invoice_email_template_id, label: 'Select Email Template', \
-                  collection: current_user.mail_templates_for(client ||= nil)
+              collection: @invoice.grouped_mail_templates
     hr
 
     = f.input :to

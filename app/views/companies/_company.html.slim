@@ -1,19 +1,33 @@
-.white-panel.pn.donut-chart
-  .white-header
-    h5= company.name
-  .row
-    .col-sm-6.col-xs-6.goleft
-      p
-        i.fa.fa-database 70%
-    .col-sm-12.col-sx-12
-      = image_tag company.logo
-    .col-sm-12.col-sx-12
-      = company.address.try(:html_safe)
-  hr
-  footer.clearfix
-    = button_to 'Show', company, method: :get, \
-                    class: 'btn btn-default pull-left'
-    = button_to 'Edit', edit_company_path(company), method: :get, \
-                    class: 'btn btn-default pull-left'
-    = button_to 'Destroy', company, data: {:confirm => 'Are you sure?'}, \
-                    :method => :delete, class: 'btn btn-danger pull-right'
+- if company
+  .white-panel.pn.donut-chart
+    .white-header
+      h5= company.name
+    .row
+      .col-sm-6.col-xs-6.goleft
+        p
+          i.fa.fa-database 70%
+      .col-sm-12.col-sx-12
+        = image_tag company.logo
+      .col-sm-12.col-sx-12
+        = company.address.try(:html_safe)
+    hr
+    footer.clearfix
+      = button_to 'Show', company, method: :get, \
+                      class: 'btn btn-default pull-left'
+      = button_to 'Edit', edit_company_path(company), method: :get, \
+                      class: 'btn btn-default pull-left'
+      = button_to 'Destroy', company, data: {:confirm => 'Are you sure?'}, \
+                      :method => :delete, class: 'btn btn-danger pull-right'
+- else
+  .white-panel.pn.donut-chart
+    .white-header
+      h5 Notice!
+    .row
+      .col-sm-12.col-sx-12
+        p You need to create a company in order to continue
+    hr
+    footer.clearfix
+      = button_to new_company_path, method: :get, \
+                                          class: 'btn btn-primary btn-sm' do
+        .fa.fa-plus
+          | Add New Company

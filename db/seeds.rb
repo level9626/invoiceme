@@ -36,4 +36,7 @@ if user.mail_templates.empty?
 end
 
 # Import all invoice templates for all old users
-User.all.each{|u| u.send(:_import_primary_invoice_templates)}
+User.all.each do |u|
+  puts 'COPYING PRIMARY INVOICE TEMPLATES FOR ' << u.email
+  u.send(:_import_primary_invoice_templates) if u.mail_templates.empty?
+end
