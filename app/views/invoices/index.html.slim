@@ -46,5 +46,4 @@
                     td= invoice.total
                     td= invoice.state
                     td= render 'actions', :'@invoice' => invoice
-                  == render 'payment', :'@invoice' => invoice
     = will_paginate @invoices

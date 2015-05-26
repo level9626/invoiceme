@@ -1,12 +1,23 @@
-p#notice = notice
-
-p
-  strong Invoice:
-  = @payment.invoice_id
-p
-  strong Amount:
-  = @payment.amount
-
-= link_to 'Edit', edit_payment_path(@payment)
-'|
-= link_to 'Back', payments_path
+h4.mb
+  i.fa.fa-angle-righ
+  | Your payment
+.row.mt
+  .col-md-12
+    section.task-panel.tasks-widget
+      .panel-body
+        .task-content
+          table.table
+            thead
+              tr
+                p#notice = notice
+                th Invoice
+                th Amount
+                th Currency
+            tbody
+              tr
+                td= @payment.invoice_id
+                td= @payment.amount
+                td= @payment.currency
+        .inline-block.btn-group
+          = link_to payments_path, class: 'btn btn-default btn-xs'
+            | Back

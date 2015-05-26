@@ -1,8 +1,3 @@
-/  - Client
-/  - status(closed, open, overdue) (select)
-/  - currency (select)
-/  - invoice date (from - to)
-
 .panel.panel-default.panel_invoice
   .panel-heading
     panel-title.filter_text Filters
@@ -14,15 +9,9 @@
       = f.label :name_cont, 'Name', class: "fa fa-tag"
       = f.input :name_cont, label: false
 
-      / Status: closed/open/overdue
       = f.label :template_subject_cont, 'Subject', class: "fa fa-check"
       = f.input :template_subject_cont, label: false
 
-      / Currency: EUR/USD/UAH/RUB
-      = f.label :template_body_cont, 'Body', class: "fa fa-file-text-o"
-      = f.input :template_body_cont, label: false
-
-      / Invoice: from date to date
       = f.label :created_at_gteq, 'From Date', class: "fa fa-calendar"
       = f.input :created_at_gteq, as: :string, input_html: { class: "datepicker" }, label: false
       = f.label :created_at_lteq, 'to Date', class: "fa fa-calendar"

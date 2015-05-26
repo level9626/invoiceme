@@ -1,30 +1,26 @@
 .row.mt
-  .col-md-6.col-md-offset-3
+  .col-md-12
     section.task-panel.tasks-widget
       .panel-body
-        center
-          p
-            strong To
-            br
-            = @invoice_email_template.to
-          p
-            strong CC
-            br
-            = @invoice_email_template.cc
-          p
-            strong From
-            br
-            = @invoice_email_template.from
-          p
-            strong Name
-            br
-            = @invoice_email_template.name
-          p
-            strong Template subject
-            br
-            = @invoice_email_template.template_subject
-          p
-            strong Template body
-            br
-
-            = @invoice_email_template.template_body.try(:html_safe)
+        .task-content
+          table.table
+            thead
+              tr
+                p#notice = notice
+                th Name
+                th To
+                th CC
+                th From
+                th Template subject
+                th Template body
+            tbody
+              tr
+                td= @invoice_email_template.name
+                td= @invoice_email_template.to
+                td= @invoice_email_template.cc
+                td= @invoice_email_template.from
+                td= @invoice_email_template.template_subject
+                td= @invoice_email_template.template_body.try(:html_safe)
+          .inline-block.btn-group
+            = link_to invoice_email_templates_path, class: 'btn btn-default btn-xs'
+              | Back

@@ -1,8 +1,3 @@
-/  - Client
-/  - status(closed, open, overdue) (select)
-/  - currency (select)
-/  - invoice date (from - to)
-
 .panel.panel-default.panel_invoice
   .panel-heading
     panel-title.filter_text Filters
@@ -10,25 +5,22 @@
       i.glyphicon.glyphicon-chevron-down.filter_glyph
   .panel-body.dropdown_panel
     = search_form_for @search, :builder => SimpleForm::FormBuilder do |f|
-      / Invoice.invoice_number text
+
       = f.label :invoice_invoice_number_cont, 'Invoice Number', class: "fa fa-tag"
       = f.input :invoice_invoice_number_cont, label: false
 
-      / Client name text
       = f.label :client_name_cont, 'Client', class: "fa fa-tag"
       = f.input :client_name_cont, label: false
 
-      / Company name text
-      = f.label :company_name_cont, 'Client', class: "fa fa-tag"
+      = f.label :company_name_cont, 'Company', class: "fa fa-tag"
       = f.input :company_name_cont, label: false
 
-      / Amount: Integer number
       = f.label :amount_gteq, 'Amount Range From', class: "fa fa-usd"
       = f.input :amount_gteq, label: false
       = f.label :amount_lteq, 'Amount Range To', class: "fa fa-usd"
       = f.input :amount_lteq, label: false
 
       = f.button :submit, "Filter", class: "btn btn-round btn-primary"
-      /= f.button :submit, "Clear Filter"
+
       .pull-right
-        = link_to 'Clear Filters', invoices_path, class: "btn btn-round btn-danger"
+        = link_to 'Clear Filters', payments_path, class: "btn btn-round btn-danger"

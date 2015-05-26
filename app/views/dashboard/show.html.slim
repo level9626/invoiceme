@@ -13,6 +13,7 @@
           - @invoices.each do |invoice|
             p= invoice.invoice_number
       footer.clearfix
+        hr
         = button_to new_invoice_path, method: :get, \
                                       class: 'btn btn-primary btn-sm' do
           .fa.fa-plus

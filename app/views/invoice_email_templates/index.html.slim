@@ -23,19 +23,19 @@
               thead
                 tr
                   th = sort_link @search, :name , "Name"
-                  th = sort_link @search, :template_subject, "Subject"
                   th = sort_link @search, :to , "TO"
                   th = sort_link @search, :cc , "CC"
                   th = sort_link @search, :from, "From"
+                  th = sort_link @search, :template_subject, "Subject"
                   th.actions_table
 
               tbody
                 - @invoice_email_templates.each do |email_template|
                   tr
                     td= email_template.name
-                    td= email_template.template_subject
                     td= email_template.to
                     td= email_template.cc
                     td= email_template.from
+                    td= email_template.template_subject
                     td= render 'actions', :'@email_template' => email_template
     = will_paginate @invoices
