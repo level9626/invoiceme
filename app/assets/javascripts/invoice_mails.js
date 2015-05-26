@@ -17,6 +17,12 @@ $(document).ready( function() {
                 invoice_mails.form.find('#invoice_mail_subject')
                     .val(data.template_subject);
 
+                // Add to and cc value
+                invoice_mails.form.find('#invoice_mail_to')
+                    .val(data.to);
+                invoice_mails.form.find('#invoice_mail_cc')
+                    .val(data.cc);
+
                 // Add body content
                 invoice_mails.form.find('#invoice_mail_body')
                     .data('wysihtml5')

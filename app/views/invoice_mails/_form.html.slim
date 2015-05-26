@@ -7,8 +7,8 @@
               collection: @invoice.grouped_mail_templates
     hr
 
-    = f.input :to
-    = f.input :cc
+    = f.input :to, input_html: {value: f.object.to.empty? ? '' : f.object.to}
+    = f.input :cc, input_html: {value: f.object.cc.empty? ? '' : f.object.cc}
     hr
 
     = f.input :subject
