@@ -1,5 +1,5 @@
 .pull-right
-  - if @email_template.primary === true
+  - if !@email_template.primary === true
     = link_to @email_template, data: {:confirm => 'Are you sure?'}, \
                       :method => :delete, class: 'btn btn-danger btn-xs tab'
       i.fa.fa-trash-o
