@@ -1,7 +1,7 @@
 class InvoiceEmailTemplatesController < ApplicationController
   before_action :_get_parent
   before_action :_set_invoice_email_template, \
-                only: [:show, :edit, :update, :destroy]
+                only: [:show, :edit, :update, :destroy, :copy]
 
   respond_to :html, :json
 
@@ -32,6 +32,12 @@ class InvoiceEmailTemplatesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def copy
+    @existing_email_template = InvoiceEmailTemplate.find(params[:id])
+    @invoice_email_template = @existing_email_template.dup
+    render :new
   end
 
   def update
