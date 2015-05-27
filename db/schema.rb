@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522052108) do
+ActiveRecord::Schema.define(version: 20150527095008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,9 +108,10 @@ ActiveRecord::Schema.define(version: 20150522052108) do
     t.datetime "updated_at"
     t.integer  "email_templatable_id"
     t.string   "email_templatable_type"
-    t.string   "to",                                 default: [], array: true
-    t.string   "cc",                                 default: [], array: true
+    t.string   "to",                                 default: [],                 array: true
+    t.string   "cc",                                 default: [],                 array: true
     t.string   "from"
+    t.boolean  "primary",                            default: false, null: false
   end
 
   add_index "invoice_email_templates", ["email_templatable_id", "email_templatable_type"], name: "invoice_email_templates_email_templatable", using: :btree
