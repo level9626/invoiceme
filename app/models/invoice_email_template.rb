@@ -33,7 +33,7 @@ class InvoiceEmailTemplate < ActiveRecord::Base
                                  message: 'name should be unique' }
 
   ## Callbacks
-  after_save :change_primary, on: :create
+  before_save :change_primary, on: :create
 
   ## Scopes
   scope :by_role, lambda { |role|
