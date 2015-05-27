@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150527095008) do
+ActiveRecord::Schema.define(version: 20150527123246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,16 +129,17 @@ ActiveRecord::Schema.define(version: 20150527095008) do
   add_index "invoice_items", ["invoice_id"], name: "index_invoice_items_on_invoice_id", using: :btree
 
   create_table "invoice_mails", force: true do |t|
-    t.integer  "invoice_id",                             null: false
-    t.string   "to",                        default: [], null: false, array: true
-    t.integer  "user_id",                                null: false
+    t.integer  "invoice_id",                               null: false
+    t.string   "to",                        default: [],   null: false, array: true
+    t.integer  "user_id",                                  null: false
     t.string   "subject"
-    t.string   "cc",                        default: [],              array: true
-    t.text     "body",                                   null: false
-    t.integer  "invoice_email_template_id",              null: false
+    t.string   "cc",                        default: [],                array: true
+    t.text     "body",                                     null: false
+    t.integer  "invoice_email_template_id",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "from"
+    t.boolean  "attachment",                default: true, null: false
   end
 
   create_table "invoices", force: true do |t|
