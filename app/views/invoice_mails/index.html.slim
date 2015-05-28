@@ -1,3 +1,4 @@
+== content_for(:page_name, 'Invoice Mails')
 .row
   .col-md-8#tags.tags
     .col-md-12.row
@@ -35,8 +36,8 @@
                     td = invoice_mail.invoice.invoice_number
                     td = invoice_mail.invoice.client.name
                     td = invoice_mail.subject
-                    td = invoice_mail.to.join(', ')
-                    td = invoice_mail.cc.join(', ')
+                    td = invoice_mail.to
+                    td = invoice_mail.cc
                     td = truncate( invoice_mail.body.html_safe, length: 100 )
                     td = render 'actions', :'@invoice_mail' => invoice_mail
     = will_paginate @invoice_mails

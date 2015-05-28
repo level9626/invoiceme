@@ -576,12 +576,25 @@ div.panel-body {
   width: 100%;
 }
 
+//navigation logo text with yield field name
 a.logo {
+  display: inline-flex;
   font-size: 20px;
   color: #ffffff;
   float: left;
   margin-top: 15px;
   text-transform: uppercase;
+  .page-name {
+    pointer-events: none;
+    cursor: default;
+    color: $grey-light;
+    font-size: 15px;
+    height: 22px;
+    margin-left: 10px;
+    margin-top: 3px;
+    padding-left: 10px;
+    border-left: 2px solid $grey-light;
+  }
 }
 
 a.logo b {

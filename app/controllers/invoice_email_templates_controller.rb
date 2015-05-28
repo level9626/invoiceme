@@ -1,7 +1,7 @@
 class InvoiceEmailTemplatesController < ApplicationController
   before_action :_get_parent
   before_action :_set_invoice_email_template, \
-                only: [:show, :edit, :update, :destroy, :copy]
+                only: [:show, :edit, :update, :copy, :destroy]
 
   respond_to :html, :json
 
@@ -50,7 +50,7 @@ class InvoiceEmailTemplatesController < ApplicationController
   end
 
   def destroy
-    if @invoice_email_template.primary === true
+    if @invoice_email_template.primary
       @invoice_email_template.destroy
 
       redirect_to invoice_email_templates_url, \
@@ -71,7 +71,8 @@ class InvoiceEmailTemplatesController < ApplicationController
       :name,
       :cc,
       :to,
-      :from
+      :from,
+      :primary
     ])
   end
 

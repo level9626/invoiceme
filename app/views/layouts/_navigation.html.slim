@@ -1,9 +1,10 @@
 section#container
   header.header.black-bg
-    .sidebar-toggle-box
-      .fa.fa-bars.tooltips data-original-title=("Toggle Navigation") data-placement="right"
-    a.logo href="/"
-      b INVOICEME
+    div
+      a.logo href="/"
+        b Invoiceme
+        .page-name
+          == yield(:page_name)
     /! logo end
     #top_menu.nav.notify-row
       /! notification start
