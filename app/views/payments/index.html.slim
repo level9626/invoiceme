@@ -4,9 +4,6 @@
       == render 'shared/tags'
   .col-md-4.pull-right.filter
     div.btn-group role="group"
-      = link_to new_payment_path, class: "btn btn-primary btn-sm"
-        .fa.fa-plus
-          | Add New Payment
       = link_to payments_path(params.merge(format: 'csv')), class: "btn btn-success btn-sm"
         .fa.fa-download
           | Download to CSV

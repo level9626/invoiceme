@@ -28,6 +28,7 @@ class PaymentsController < ApplicationController
 
   def create
     @payment = Payment.new(payment_params)
+    @invoice = Invoice.find(payment_params[:invoice_id])
     @payment.save
     respond_with(@payment)
   end
@@ -45,8 +46,9 @@ class PaymentsController < ApplicationController
   private
 
   def _search
-    current_user.payments
-      .includes(:client, :invoice, :company)
+    Payment.joins(:invoice)
+      .includes(:client, :company)
+      .where(invoices: {user_id: current_user.id})
       .search(params[:q])
   end
 
