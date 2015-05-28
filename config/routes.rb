@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   resources :payments
 
-  resources :invoice_email_templates
+  resources :invoice_email_templates do
+    member do
+      get :copy
+    end
+  end
 
   resources :clients do
     resources :invoice_email_templates

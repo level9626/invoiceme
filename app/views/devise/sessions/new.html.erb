@@ -7,26 +7,19 @@
           <%= f.email_field :email, :autofocus => true, placeholder: 'User email', class: 'form-control' %>
           <br>
           <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
-
-          <div class="pull-left">
-            <% if devise_mapping.rememberable? -%>
-              <div class="checkbox">
-                <label>
-                  <%= f.check_box :remember_me %> Remember me
-                </label>
-              </div>
-            <% end -%>
-          </div>
-
-          <span class="pull-right">
-              <%- if devise_mapping.recoverable? %>
-                <%= link_to "Forgot password?", new_password_path(resource_name) %> <%#=sessionpath%>
+            <div class="inline-block">
+              <% if devise_mapping.rememberable? -%>
+                <div class="checkbox">
+                  <label>
+                    <%= f.check_box :remember_me %> Remember me
+                  </label>
+                </div>
               <% end -%>
-          </span>
+            </div>
+
           <%= button_tag(type: 'submit', class: "btn btn-theme btn-block") do %>
             <i class="fa fa-lock"></i> SIGN IN
-        <% end %>
-
+          <% end %>
         <hr>
 
         <div class="login-social-link centered">
@@ -34,12 +27,21 @@
           <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
           <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
         </div>
+        <hr>
         <div class="registration">
           Don't have an account yet?<br/>
           <%- if devise_mapping.registerable? %>
             <%= link_to 'Create an account', new_registration_path(resource_name), class: 'center'  %>
           <% end -%>
         </div>
+        <hr>
+        <div class="registration">
+          Forgot your password?<br/>
+          <%- if devise_mapping.recoverable? %>
+            <%= link_to "Restore password", new_password_path(resource_name) %> <%#=sessionpath%>
+          <% end -%>
+        </div>
+
       </div>
     <% end %>
   </div>

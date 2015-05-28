@@ -1,7 +1,7 @@
 class InvoiceEmailTemplatesController < ApplicationController
   before_action :_get_parent
   before_action :_set_invoice_email_template, \
-                only: [:show, :edit, :update, :destroy]
+                only: [:show, :edit, :update, :destroy, :copy]
 
   respond_to :html, :json
 
@@ -34,6 +34,12 @@ class InvoiceEmailTemplatesController < ApplicationController
     end
   end
 
+  def copy
+    @existing_email_template = InvoiceEmailTemplate.find(params[:id])
+    @invoice_email_template = @existing_email_template.dup
+    render :new
+  end
+
   def update
     if @invoice_email_template.update(invoice_email_template_params)
       redirect_to @invoice_email_template, \
@@ -44,10 +50,12 @@ class InvoiceEmailTemplatesController < ApplicationController
   end
 
   def destroy
-    @invoice_email_template.destroy
+    if @invoice_email_template.primary === true
+      @invoice_email_template.destroy
 
-    redirect_to invoice_email_templates_url, \
+      redirect_to invoice_email_templates_url, \
                 notice: 'Invoice email template was successfully destroyed.'
+    end
   end
 
   private

@@ -77,7 +77,8 @@ class InvoiceMailsController < ApplicationController
       :subject,
       :cc,
       :body,
-      :invoice_email_template_id
+      :invoice_email_template_id,
+      :attachment
     ])
   end
 end
