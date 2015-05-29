@@ -28,7 +28,6 @@
                   th = sort_link @search, :cc , "CC"
                   th = sort_link @search, :from, "From"
                   th = sort_link @search, :template_subject, "Subject"
-                  th primary
                   th.actions_table
 
               tbody
@@ -39,6 +38,5 @@
                     td= email_template.cc
                     td= email_template.from
                     td= email_template.template_subject
-                    td= email_template.primary
                     td= render 'actions', :'@email_template' => email_template
     = will_paginate @invoices

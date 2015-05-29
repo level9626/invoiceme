@@ -1,7 +1,0 @@
-$("#comment_<%= @comment.id.to_s %>_div").hide();
-
-//Change comment's count badge without refresh
-var c = $( "[id^='comment_'][id $='bottom_div']:visible").length;
-$('.comments_count').text(c);
-
-<%= javascript_proc %>

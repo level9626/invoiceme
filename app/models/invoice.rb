@@ -32,9 +32,6 @@ class Invoice < ActiveRecord::Base
   default_scope { where.not(state: 'closed') }
   scope :open, -> { where.not(state: [:closed, :bad_debt]) }
 
-  ## Comments
-  acts_as_commontable
-
   ## Relations
   belongs_to :company
   belongs_to :client

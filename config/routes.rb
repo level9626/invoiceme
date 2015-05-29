@@ -40,6 +40,4 @@ Rails.application.routes.draw do
       root to: 'devise/sessions#new', as: 'unauthenticated'
     end
   end
-
-  mount Commontator::Engine => '/commontator'
 end

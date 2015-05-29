@@ -21,9 +21,6 @@ gem 'raphael-rails'
 gem 'angularjs-rails'
 gem 'jquery-validation-rails'
 
-# Comments
-gem 'commontator'
-
 # PDF
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'

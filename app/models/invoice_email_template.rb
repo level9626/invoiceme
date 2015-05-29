@@ -32,9 +32,6 @@ class InvoiceEmailTemplate < ActiveRecord::Base
                                          :email_templatable_id], \
                                  message: 'name should be unique' }
 
-  ## Callbacks
-  before_save :change_primary, on: :create
-
   ## Scopes
   scope :by_role, lambda { |role|
     # owner is actually referencing users table
@@ -54,11 +51,5 @@ class InvoiceEmailTemplate < ActiveRecord::Base
   # inside method name, attribute name is called.
   def name
     "#{email_templatable_type} template: #{self[:name]}"
-  end
-
-  private
-
-  def change_primary
-    self.primary = true
   end
 end

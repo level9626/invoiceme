@@ -27,8 +27,6 @@ class User < ActiveRecord::Base
   enum role: [:user, :vip, :admin]
 
   ## Gem Modules
-  # Comments
-  acts_as_commontator
   # Devise
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
