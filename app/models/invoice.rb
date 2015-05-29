@@ -41,6 +41,7 @@ class Invoice < ActiveRecord::Base
   has_many :journals, dependent: :destroy
   has_many :invoice_mails
   has_many :invoice_email_templates
+  has_many :comments, as: :commentable
 
   ## Nested forms
   accepts_nested_attributes_for :invoice_items

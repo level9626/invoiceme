@@ -16,6 +16,7 @@ class Payment < ActiveRecord::Base
   has_one :user, through: :invoice
   has_one :client, through: :invoice
   has_one :company, through: :invoice
+  has_many :comments, as: :commentable
 
   ## Validations
   validates :invoice_id, :amount, :currency, presence: true

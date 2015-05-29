@@ -11,7 +11,7 @@
       li
         a.btn data-toggle="modal" href="#commentsModal#{@invoice.id}"
           | Notes
-          span.badge= @invoice.thread.comments.where(deleted_at: nil).count
+          /span.badge= @invoice.thread.comments.where(deleted_at: nil).count
       li
         = link_to invoice_invoice_mails_path(@invoice), class: "btn btn-theme01"
           | Invoice Mails

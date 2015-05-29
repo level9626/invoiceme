@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  resources :payments
+  resources :payments do
+    resources :comments
+  end
 
   resources :invoice_email_templates do
     member do
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
   resources :companies
 
   resources :invoices do
+    resources :comments
     resources :invoice_mails
     member do
       Invoice.state_machines[:state].events.map(&:name).each do |event|
