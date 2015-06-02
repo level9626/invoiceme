@@ -1,6 +1,6 @@
 class InvoiceMailer < ActionMailer::Base
   def invoice_mail(invoice_mail)
-    if !invoice_mail.attachment === false
+    if invoice_mail.attachment
       attachments['invoice.pdf'] = GetInvoicePdfService.new
                                    .call invoice_mail.invoice
     end

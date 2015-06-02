@@ -48,7 +48,7 @@ class PaymentsController < ApplicationController
   def _search
     Payment.joins(:invoice)
       .includes(:client, :company)
-      .where(invoices: {user_id: current_user.id})
+      .where(invoices: { user_id: current_user.id })
       .search(params[:q])
   end
 
