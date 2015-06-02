@@ -30,7 +30,7 @@ class InvoiceMailsController < ApplicationController
       flash[:notice] = 'Invoice Mail was successfully send.'
       # TODO: catch errors
       # TODO: move publish and email sending to service
-      InvoiceMailer.invoice_mail(@invoice_mail).deliver
+      InvoiceMailer.invoice_mail(@invoice_mail, params[:invoice_pdf]).deliver
       # publish invoice
       @invoice_mail.invoice.publish unless @invoice_mail.invoice.open?
     else

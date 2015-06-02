@@ -232,6 +232,11 @@ $border: grey;
   }
 }
 
-body > div.alert.alert-success {
-  margin-top: 50px;
+body > div.alert {
+  &.alert-success {
+    margin-top: 50px;
+  }
+  &.alert-danger {
+    margin-top: 50px;
+  }
 }
