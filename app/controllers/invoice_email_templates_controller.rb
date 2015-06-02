@@ -50,12 +50,11 @@ class InvoiceEmailTemplatesController < ApplicationController
   end
 
   def destroy
-    if @invoice_email_template.primary
-      @invoice_email_template.destroy
+    return unless @invoice_email_template.primary
+    @invoice_email_template.destroy
 
-      redirect_to invoice_email_templates_url, \
+    redirect_to invoice_email_templates_url, \
                 notice: 'Invoice email template was successfully destroyed.'
-    end
   end
 
   private

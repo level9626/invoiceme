@@ -1,5 +1,5 @@
 class InvoiceMailer < ActionMailer::Base
-
+  # rubocop:disable all
   def invoice_mail(invoice_mail, invoice_pdf)
     if invoice_pdf
       attachments['invoice.pdf'] = GetInvoicePdfService.new
@@ -15,4 +15,5 @@ class InvoiceMailer < ActionMailer::Base
       format.html { invoice_mail.body }
     end
   end
+  # rubocop:enable all
 end

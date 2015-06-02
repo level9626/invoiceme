@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :load_commentable
+  before_action :load_commentable
 
   respond_to :html, :json
 
@@ -13,7 +13,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @commentable.comments.new(params.require(:comment).permit(:content))
+    @comment = @commentable.comments.new(params.require(:comment)
+                                             .permit(:content))
     if @comment.save
       redirect_to [@commentable, :comments], notice: 'Comment created'
     else
@@ -31,10 +32,4 @@ class CommentsController < ApplicationController
     resource, id = request.path.split('/')[1, 2]
     @commentable = resource.singularize.classify.constantize.find(id)
   end
-
-  #Alternative method
-  # def load_commentable
-  #   klass = [Invoice, Payment].detect { |c| params["#{c.name.underscore}_id"] }
-  #   @commentable = klass.find(params["#{klass.name.underscore}_id"])
-  # end
 end

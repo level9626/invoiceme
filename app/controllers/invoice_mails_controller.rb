@@ -23,6 +23,7 @@ class InvoiceMailsController < ApplicationController
   def edit
   end
 
+  # rubocop:disable all
   def create
     @invoice_mail = current_user.invoice_mails.new(invoice_mail_params)
     @invoice_mail.invoice_id = params[:invoice_id]
@@ -38,6 +39,7 @@ class InvoiceMailsController < ApplicationController
     end
     redirect_to :back
   end
+  # rubocop:enable all
 
   def update
     if @invoice_mail.update(invoice_mail_params)
