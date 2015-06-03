@@ -3,9 +3,11 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  resources :payments do
+  concern :commentable do
     resources :comments
   end
+
+  resources :payments, concerns: :commentable
 
   resources :invoice_email_templates do
     member do
@@ -19,8 +21,7 @@ Rails.application.routes.draw do
 
   resources :companies
 
-  resources :invoices do
-    resources :comments
+  resources :invoices, concerns: :commentable do
     resources :invoice_mails
     member do
       Invoice.state_machines[:state].events.map(&:name).each do |event|
