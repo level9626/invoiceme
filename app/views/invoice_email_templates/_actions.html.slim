@@ -3,9 +3,9 @@
     = link_to @email_template, data: {:confirm => 'Are you sure?'}, \
                       :method => :delete, class: 'btn btn-danger btn-xs tab'
       i.fa.fa-trash-o
-  = link_to edit_invoice_email_template_path(@email_template), \
+  = link_to [:edit, @template_parent, @email_template], \
                   class: 'btn btn-primary btn-xs tab'
       i.fa.fa-pencil
-  = link_to copy_invoice_email_template_path(@email_template), \
+  = link_to [:copy, @template_parent, @email_template], \
                     class: 'btn btn-primary btn-xs tab'
     i.fa.fa-copy

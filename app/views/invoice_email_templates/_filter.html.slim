@@ -4,7 +4,11 @@
     span.pull-right.clickable
       i.glyphicon.glyphicon-chevron-down.filter_glyph
   .panel-body.dropdown_panel
-    = search_form_for @search, :builder => SimpleForm::FormBuilder do |f|
+    = search_form_for @search, url: [ \
+                                      @template_parent, \
+                                      :invoice_email_templates \
+                                    ], \
+                      :builder => SimpleForm::FormBuilder do |f|
       / Client contain text
       = f.label :name_cont, 'Name', class: "fa fa-tag"
       = f.input :name_cont, label: false
@@ -20,4 +24,5 @@
 
       = f.button :submit, "Filter", class: "btn btn-round btn-primary"
       .pull-right
-        = link_to 'Clear Filters', invoice_email_templates_path, class: "btn btn-round btn-danger"
+        = link_to 'Clear Filters', [@template_parent, :invoice_email_templates],\
+                   class: "btn btn-round btn-danger"

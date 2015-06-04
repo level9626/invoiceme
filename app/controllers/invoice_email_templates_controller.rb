@@ -1,5 +1,5 @@
 class InvoiceEmailTemplatesController < ApplicationController
-  before_action :_get_parent
+  before_action :_load_template_parent
   before_action :_set_invoice_email_template, \
                 only: [:show, :edit, :update, :copy, :destroy]
 
@@ -23,7 +23,7 @@ class InvoiceEmailTemplatesController < ApplicationController
   end
 
   def create
-    @invoice_email_template = @parent.mail_templates
+    @invoice_email_template = @template_parent.mail_templates
                               .new(invoice_email_template_params)
 
     if @invoice_email_template.save
@@ -61,7 +61,7 @@ class InvoiceEmailTemplatesController < ApplicationController
   private
 
   def _set_invoice_email_template
-    @invoice_email_template = @parent.mail_templates.find(params[:id])
+    @invoice_email_template = @template_parent.mail_templates.find(params[:id])
   end
 
   def invoice_email_template_params
@@ -77,10 +77,11 @@ class InvoiceEmailTemplatesController < ApplicationController
   end
 
   def _search
-    @parent.mail_templates.search(params[:q])
+    @template_parent.mail_templates.search(params[:q])
   end
 
-  def _get_parent
-    @parent = Client.find_by(id: params[:client_id]) || current_user
+  def _load_template_parent
+     resource, id = request.path.split('/')[1, 2]
+     @template_parent = resource.singularize.classify.constantize.find(id)
   end
 end

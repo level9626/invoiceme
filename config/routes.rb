@@ -1,19 +1,21 @@
 Rails.application.routes.draw do
-  devise_for :users
-
   ActiveAdmin.routes(self)
 
-  resources :payments
-
-  resources :invoice_email_templates do
-    member do
-      get :copy
+  concern :email_templates do
+    resources :invoice_email_templates do
+      member do
+        get :copy
+      end
     end
   end
 
-  resources :clients do
-    resources :invoice_email_templates
-  end
+  devise_for :users
+
+  resources :users, only: [], concerns: [:email_templates]
+
+  resources :payments
+
+  resources :clients, concerns: [:email_templates]
 
   resources :companies
 
