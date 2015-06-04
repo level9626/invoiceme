@@ -13,6 +13,7 @@
 #  to                     :string(255)      default([]), is an Array
 #  cc                     :string(255)      default([]), is an Array
 #  from                   :string(255)
+#  default                :boolean          default(FALSE), not null
 #
 
 FactoryGirl.define do

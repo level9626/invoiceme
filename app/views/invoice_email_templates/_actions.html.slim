@@ -1,7 +1,9 @@
 .pull-right
-  - if @email_template.default
-    = link_to @email_template, data: {:confirm => 'Are you sure?'}, \
-                      :method => :delete, class: 'btn btn-danger btn-xs tab'
+  - unless @email_template.default
+    = link_to [@template_parent, @email_template], \
+              data: { :confirm => 'Are you sure?' }, \
+              method: :delete, \
+              class: 'btn btn-danger btn-xs tab'
       i.fa.fa-trash-o
   = link_to [:edit, @template_parent, @email_template], \
                   class: 'btn btn-primary btn-xs tab'

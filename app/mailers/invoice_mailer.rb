@@ -1,5 +1,5 @@
 class InvoiceMailer < ActionMailer::Base
-  def invoice_mail(invoice_mail)
+  def invoice_mail(invoice_mail) # rubocop:disable MethodLength
     if invoice_mail.attachment
       attachments['invoice.pdf'] = GetInvoicePdfService.new
                                    .call invoice_mail.invoice

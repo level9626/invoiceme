@@ -23,7 +23,7 @@ class InvoiceMailsController < ApplicationController
   def edit
   end
 
-  def create
+  def create # rubocop:disable Metrics/AbcSize
     @invoice_mail = current_user.invoice_mails.new(invoice_mail_params)
     @invoice_mail.invoice_id = params[:invoice_id]
     if @invoice_mail.save

@@ -16,7 +16,7 @@ module Modules
     private
 
     def _import_primary_invoice_templates
-      return if self.is_a?(User) and !user? # !user? - means with admin role
+      return if self.is_a?(User) && !user? # !user? - means with admin role
 
       InvoiceEmailTemplate.primary.each do |invoice_template|
         mail_templates << invoice_template.dup
