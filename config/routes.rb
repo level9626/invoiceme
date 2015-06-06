@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :companies
 
-  resources :invoices do
+  resources :invoices, except: [:edit] do
     resources :invoice_mails
     member do
       Invoice.state_machines[:state].events.map(&:name).each do |event|

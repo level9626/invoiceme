@@ -75,6 +75,11 @@ class Invoice < ActiveRecord::Base
     invoice_items.map(&:sum).reduce(:+)
   end
 
+  # Generates unique invoice number for not persisted object
+  def invoice_number
+    self[:invoice_number] || _gen_number
+  end
+
   # Invoice due date
   def due_date
     created_at + net.to_i
@@ -151,5 +156,13 @@ class Invoice < ActiveRecord::Base
   def _normed_balance
     return subtotal if _balance > subtotal
     _balance
+  end
+
+  def _gen_number(number = nil)
+    number ||= user.invoices.count
+    num = '#' + (number + 1).to_s
+
+    return num unless user.invoices.where(invoice_number: num).exists?
+    _gen_number(number + 1)
   end
 end

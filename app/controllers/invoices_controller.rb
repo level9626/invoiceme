@@ -38,9 +38,6 @@ class InvoicesController < ApplicationController # rubocop:disable ClassLength
     respond_with(@invoice)
   end
 
-  def edit
-  end
-
   def create
     @invoice = current_user.invoices.new(invoice_params)
     # redirect back to show page, and show errors if any
