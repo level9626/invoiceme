@@ -1,21 +1,19 @@
 $(document).ready( function() {
-  var el        = $('[data-content-toggle]'),
-      vals      = el.attr('data-content-toggle').split(','),
-      texts     = el.attr('data-button-values').split(','),
-      text_from = texts[0],
-      text_to   = texts[1],
-      from      = $(vals[0]),
-      to        = $(vals[1]);
 
-  console.log(from);
-  console.log(to);
+  $('[data-content-toggle]').click(function() {
+    var el        = $(this),
+        vals      = el.attr('data-content-toggle').split(','),
+        texts     = el.attr('data-button-values').split(','),
+        text_from = texts[0],
+        text_to   = texts[1],
+        from      = $(vals[0]),
+        to        = $(vals[1]);
 
-  // By default 'from' DOM element will be shown.
-  $(to).addClass('hidden');
-  el.find('a').text(text_from);
+    // By default 'from' DOM element will be shown.
+    $(to).addClass('hidden');
+    el.find('a').text(text_from);
 
-  el.click(function () {
-    if(from.hasClass('hidden')) {
+    if (from.hasClass('hidden')) {
       from.removeClass('hidden');
       to.addClass('hidden');
       el.find('a').text(text_from);
@@ -24,6 +22,6 @@ $(document).ready( function() {
       from.addClass('hidden');
       el.find('a').text(text_to);
     }
-  });
 
+  });
 });
