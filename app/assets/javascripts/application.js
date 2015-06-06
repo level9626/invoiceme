@@ -10,6 +10,7 @@
 //= require bootstrap-wysihtml5
 //= require raphael
 //= require morris
+//= require data-content-toggle
 //= require_tree .
 
 // wysihtml5 Overall confings

@@ -12,10 +12,12 @@ section#container.thin-menu
     == link_to '< Back', previous_path, class: 'logo'
     .top-menu
       ul.nav.pull-right.top-menu
+        li data-content-toggle='#invoice-content #show, #invoice-content #edit' data-button-values='Edit,Show'
+          a.btn.btn-theme.btn-default
+            | Edit
         li
           a.btn.btn-theme.btn-default data-toggle="modal" href="#paymentModal#{@invoice.id}"
             | Receive payment
-        /- if @invoice.can_publish?
         li
           a.btn.btn-theme.btn-default data-toggle="modal" href="#mailingModal#{@invoice.id}"
             | Send
@@ -34,8 +36,11 @@ br
 / Content
 .container.mt
   .row.mt
-    .col-md-8
-      = render 'show_content'
+    .col-md-8#invoice-content
+      #show
+        = render 'show_content'
+      #edit.hidden
+        = render 'form'
 
     .col-md-4
       .panel.panel-default
