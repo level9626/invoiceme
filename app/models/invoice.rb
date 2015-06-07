@@ -22,7 +22,7 @@
 #  net              :datetime
 #
 
-class Invoice < ActiveRecord::Base
+class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
   include InvoiceMachine
   include Modules::WithCurrency
   CURRENCY = %w(EUR USD UAH RUB)
@@ -38,7 +38,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :user
   has_many :invoice_items, dependent: :destroy
   has_many :payments, dependent: :destroy
-  has_many :journals, dependent: :destroy
+  has_many :journals, as: :journalable, dependent: :destroy
   has_many :invoice_mails
   has_many :invoice_email_templates
 

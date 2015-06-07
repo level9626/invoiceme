@@ -39,8 +39,10 @@ module InvoiceMachine
       end
 
       # Generic transition callback *after* the transition is performed
+      # transition example => {:event=>:publish, :from=>"new", :to=>"open"}
+      # obj is an record
       after_transition do |obj, transition|
-        Journal.log(obj, transition) # obj is the record
+        Journal.log(obj, transition.to_h[:event])
       end
     end
   end

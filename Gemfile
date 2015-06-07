@@ -30,6 +30,7 @@ gem 'pg'
 gem 'composite_primary_keys'
 gem 'slim-rails'
 gem 'state_machines-activerecord'
+gem 'active_record_union'
 
 # Authentication, authorization
 gem 'devise'

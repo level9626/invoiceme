@@ -17,6 +17,7 @@ class Payment < ActiveRecord::Base
   has_one :user, through: :invoice
   has_one :client, through: :invoice
   has_one :company, through: :invoice
+  has_many :journals, as: :journalable, dependent: :destroy
 
   ## Validations
   validates :invoice_id, :amount, :currency, presence: true
@@ -26,7 +27,9 @@ class Payment < ActiveRecord::Base
   scope :sum_amount, -> { where.not(id: nil).sum(:amount) }
 
   ## Callbacks
-  after_save :_update_invoice!
+  before_create :_update_invoice!
+  before_update :_log_edition!
+  before_destroy :_log_deletion!
 
   def amount_with_currency
     _with_currency(amount)
@@ -38,5 +41,13 @@ class Payment < ActiveRecord::Base
 
   def _update_invoice!
     invoice.payment_received
+  end
+
+  def _log_edition!
+    Journal.log(self.invoice, :edit_payment, amount_with_currency)
+  end
+
+  def _log_deletion!
+    Journal.log(self.invoice, :remove_payment, amount_with_currency)
   end
 end
