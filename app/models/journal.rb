@@ -20,12 +20,13 @@ class Journal < ActiveRecord::Base
   validates :description, length: { maximum: 255 }
 
   ## Class Methods
-  # TODO: need to be tested
+  # transition example => {:event=>:publish, :from=>"new", :to=>"open"}
   def self.log(obj, transition)
     transition = transition.to_h
-    logger.info 'Journal*log' * 10
-    logger.info transition
-    logger.info 'Journal*log' * 10
+    transition[:description] = I18n.t("journals.#{transition[:event]}", \
+                                      amount: obj.payments
+                                                .try(:last)
+                                                .try(:amount_with_currency))
     obj.journals.create(transition)
   end
 end

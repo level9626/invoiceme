@@ -20,4 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  journals:
+    publish: 'Your invoice is opened, and ready receiving payments.'
+    partly_pay: "You've received payment %{amount}."
+    overdue: "invoice date expired. Please contact your client."
+    bad_debt: "It seems like no one is going to pay this bill."
+    close: "Finally Invoice is closed."

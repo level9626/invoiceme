@@ -11,6 +11,7 @@
 #
 
 class Payment < ActiveRecord::Base
+  include Modules::WithCurrency
   ## Relations
   belongs_to :invoice
   has_one :user, through: :invoice
@@ -27,10 +28,14 @@ class Payment < ActiveRecord::Base
   ## Callbacks
   after_save :_update_invoice!
 
+  def amount_with_currency
+    _with_currency(amount)
+  end
+
   private
 
   ## Callbacks handlers
-  # TODO: need to be tested
+
   def _update_invoice!
     invoice.payment_received
   end

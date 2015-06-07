@@ -1,18 +1,20 @@
 = simple_form_for @payment do |f|
   = f.error_notification
 
-  .form-inputs
+  .form-inputs.row
     .col-md-6
-      = f.input :invoice_id, \
-                collection: [[@invoice.invoice_number, @invoice.id]], \
-                input_html: { selected: @invoice.id }
+      b.inline-label INVOICE:
+      = @invoice.invoice_number
+      .hidden= f.input :invoice_id, input_html: { value: @invoice.id }
 
     .col-md-6
-      = f.input :currency, \
-                input_html: { value: @invoice.currency }
-
+      b.inline-label CURRENCY:
+      = @invoice.currency
+      .hidden= f.input :currency, input_html: { value: @invoice.currency }
+  hr
+  .form-inputs.row
     .col-md-12
-      = f.input :amount
+      = f.input :amount, input_html: { value: @invoice.unpayed }
 
   .form-actions
     = f.button :submit, 'Save', class: "btn btn-primary save-button-payment"

@@ -23,8 +23,8 @@
 #
 
 class Invoice < ActiveRecord::Base
-  # include StateMachines::InvoiceMachine
   include InvoiceMachine
+  include Modules::WithCurrency
   CURRENCY = %w(EUR USD UAH RUB)
   STATE = state_machines[:state].states.map(&:name).map(&:to_s)
 
@@ -92,12 +92,16 @@ class Invoice < ActiveRecord::Base
 
   # invoice balance. Total payed.
   def balance
-    _with_currency _balance
+    _with_currency(_balance)
+  end
+
+  def unpayed
+    subtotal - _balance
   end
 
   # invoice total. Total Invoiced
   def total
-    _with_currency subtotal
+    _with_currency(subtotal)
   end
 
   # percent payed
@@ -144,11 +148,6 @@ class Invoice < ActiveRecord::Base
   private
 
   ## Private instance methods
-  def _with_currency(amount)
-    return '--/--' unless amount
-    return '--/--' if amount.to_i.zero?
-    "#{amount} #{currency}"
-  end
 
   def _balance
     payments.sum_amount
