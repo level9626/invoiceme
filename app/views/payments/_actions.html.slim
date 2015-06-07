@@ -1,5 +1,7 @@
 .pull-right
   = link_to @payment, :method => :get, class: "btn btn-success btn-xs tab"
     i.fa.fa-eye
+  = link_to edit_payment_path(@payment), :method => :get, class: "btn btn-info btn-xs tab"
+    i.fa.fa-pencil-square-o
   = link_to @payment, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger btn-xs tab"
     i.fa.fa-trash-o

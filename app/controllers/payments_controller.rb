@@ -24,6 +24,7 @@ class PaymentsController < ApplicationController
   end
 
   def edit
+    @invoice = @payment.invoice
   end
 
   def create
