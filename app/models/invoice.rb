@@ -107,7 +107,8 @@ class Invoice < ActiveRecord::Base
 
   # Change state after peyment received.
   def payment_received
-    return close if percent_payed <= 100
+    publish if state? :new
+    return close if percent_payed >= 100
     partly_pay
   end
 

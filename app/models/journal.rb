@@ -12,12 +12,20 @@
 #
 
 class Journal < ActiveRecord::Base
-  ## Validations
+  ## Relations
   belongs_to :invoice
+
+  ## Validations
+  validates :invoice_id, :event, :from, :to, presence: true
+  validates :description, length: { maximum: 255 }
 
   ## Class Methods
   # TODO: need to be tested
   def self.log(obj, transition)
-    obj.journals.create(transition.to_h)
+    transition = transition.to_h
+    logger.info 'Journal*log' * 10
+    logger.info transition
+    logger.info 'Journal*log' * 10
+    obj.journals.create(transition)
   end
 end
