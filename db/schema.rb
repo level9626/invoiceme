@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602120026) do
+ActiveRecord::Schema.define(version: 20150608084550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20150602120026) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "attachments", force: true do |t|
+    t.string   "attachment"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attachments", ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type", using: :btree
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -185,11 +195,12 @@ ActiveRecord::Schema.define(version: 20150602120026) do
   end
 
   create_table "payments", force: true do |t|
-    t.integer  "invoice_id", null: false
-    t.float    "amount",     null: false
+    t.integer  "invoice_id",       null: false
+    t.float    "amount",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "currency"
+    t.integer  "banking_overhead"
   end
 
   add_index "payments", ["invoice_id"], name: "index_payments_on_invoice_id", using: :btree

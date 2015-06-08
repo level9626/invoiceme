@@ -3,13 +3,17 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  concern :commentable do
-    resources :comments
+  concern :attachable do
+    resources :attachments
   end
 
-  resources :payments, concerns: :commentable
+  concern :commentable do
+    resources :comments, concerns: :attachable
+  end
 
-  resources :invoice_email_templates do
+  resources :payments, concerns: [:commentable, :attachable]
+
+  resources :invoice_email_templates, concerns: :attachable do
     member do
       get :copy
     end
@@ -21,7 +25,7 @@ Rails.application.routes.draw do
 
   resources :companies
 
-  resources :invoices, concerns: :commentable do
+  resources :invoices, concerns: [:commentable, :attachable] do
     resources :invoice_mails
     member do
       Invoice.state_machines[:state].events.map(&:name).each do |event|
