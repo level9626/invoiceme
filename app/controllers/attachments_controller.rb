@@ -15,6 +15,7 @@ class AttachmentsController < ApplicationController
     respond_with(@attachment)
   end
 
+  # rubocop:disable all
   def create
     @attachment = @attachable.attachments.new(params.require(:attachment)
                                              .permit(:attachment))
@@ -25,6 +26,7 @@ class AttachmentsController < ApplicationController
       end
     end
   end
+  # rubocop:enable all
 
   def destroy
   end

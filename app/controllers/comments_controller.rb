@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   def index
     @comments = @commentable.comments
   end
-``
+
   def new
     @comment = @commentable.comments.new
     respond_with(@comment)
@@ -21,11 +21,13 @@ class CommentsController < ApplicationController
     render json: @comment
   end
 
+  # rubocop:disable all
   def destroy
     if @commentable.comments.find(params[:id]).destroy
       render json: { success: true }
     end
   end
+  # rubocop:enable all
 
   private
 
