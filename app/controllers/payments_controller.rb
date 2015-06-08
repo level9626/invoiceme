@@ -24,13 +24,13 @@ class PaymentsController < ApplicationController
   end
 
   def edit
+    @invoice = @payment.invoice
   end
 
   def create
     @payment = Payment.new(payment_params)
-    @invoice = Invoice.find(payment_params[:invoice_id])
     @payment.save
-    respond_with(@payment)
+    redirect_to :back
   end
 
   def update

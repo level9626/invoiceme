@@ -23,7 +23,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
-    @client.clients_users.build(user_id: current_user.id)
+    @client.clients_users.build(user: current_user)
     @client.save
     respond_with(@client)
   end

@@ -14,8 +14,7 @@
         .row
           .col-md-6#invoice_number
             = f.input :invoice_number, \
-                      input_html: { value: f.object.invoice_number || \
-                                ['#', current_user.invoices.count + 1].join }
+                      input_html: { value: f.object.invoice_number }
           .col-md-6#invoice-date
             = f.input :invoice_date, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y') }
 

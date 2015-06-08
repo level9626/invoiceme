@@ -1,38 +1,49 @@
-section.task-panel.tasks-widget
-  .panel-body
-    .task-content
+.task-content
 
-      section#invoice_number-invoice-date
+  section.task-panel.tasks-widget.panel.panel-default#invoice
+    .panel-body
+      section#header
         .row
           .col-md-6
             .pull-left#logo= image_tag @invoice.company.logo_url, size: '50x50'
             .pull-left= wicked_pdf_image_tag @invoice.company.logo_url, size: '50x50'
-          .col-md-6#invoice-date.text-right
-            h3
-              .fa.fa-calendar
+          .col-md-6.text-right= "INVOICE #{@invoice.invoice_number}"
+
+      section#invoice_number-invoice-date
+        .row
+          .col-md-6#invoice_number
+            span
+              b.inline-label INVOICE NUMBER:
+              = @invoice.invoice_number
+          .col-md-6#invoice-date
+            .fa.fa-calendar
+              b.inline-label INVOICE DATE
               span= @invoice.invoice_date.strftime("%m/%d/%Y")
+
       hr
       section#company-client
-        .col-md-6
-          .panel.panel-default
-            .panel-heading
-              h3.panel-title
-                | From:
-                span= @invoice.company.name
-            .panel-body
-              .row
-                .col-md-6= @invoice.company_row_text.html_safe
-        .col-md-6
-          .panel.panel-default
-            .panel-heading
-              h3.panel-title
-                | To:
-                span= @invoice.client.name
-            .panel-body
-              .row
-                .col-md-6= @invoice.client_row_text.html_safe
+        .row
+          .col-md-6
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title
+                  b.inline-label From:
+                  span= @invoice.company.name
+              .panel-body
+                .row
+                  .col-md-6= @invoice.company_row_text.html_safe
+          .col-md-6
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title
+                  b.inline-label To:
+                  span= @invoice.client.name
+              .panel-body
+                .row
+                  .col-md-6= @invoice.client_row_text.html_safe
+
       hr
-      .col-md-12
+      section
         .panel.panel-default
           .panel-body
             table class="table"
@@ -40,55 +51,64 @@ section.task-panel.tasks-widget
                 tr
                   th
                     .fa.fa-pencil
-                      | DESCRIPTION
+                      b.inline-label DESCRIPTION
                   th
                     .fa.fa-clock-o
-                      | HOURS/TASKS
+                      b.inline-label HOURS/TASKS
                   th
                     .fa.fa-star
-                      | RATE
+                      b.inline-label RATE
                   th
                     .fa.fa-money
-                      | AMOUNT
+                      b.inline-label AMOUNT
 
                 .row
                   tbody#invoice_items_container
                     - @invoice.invoice_items.each do |invoice_item|
                       tr
-                        td= invoice_item.description
+                        td= invoice_item.or(:description, '--/--')
                         td= invoice_item.hours_or_tasks
                         td= invoice_item.rate
-                        td= invoice_item.amount
+                        td
+                          span= invoice_item.amount
+                          b.currency_value= @invoice.currency
       hr
       section
         .row
-          .col-md-12
-            .col-md-6#invoice_comment
-              = @invoice.comment.html_safe
-            .col-md-6
-              table class="table"
-                tbody
-                  tr
-                    td
-                      strong SUBTOTAL:
-                    td#subtotal= @invoice.subtotal
-                  tr
-                    td
-                      strong VAT RATE:
-                    td#vat-rate= @invoice.vat_rate
-                  tr
-                    td
-                      strong VAT:
-                    td#vat= @invoice.vat
-                  tr
-                    td
-                      strong DISCOUNT:
-                    td#discount= @invoice.discount
-              hr
-              h4
-                | Currency:
-                span
-                = @invoice.currency
+          .col-md-6
+            p
+              strong COMMENT:
+            p= @invoice.comment.html_safe
+          .col-md-6.pull-right
+            table class="table"
+              tbody
+                tr
+                  td
+                    strong SUBTOTAL:
+                  td#subtotal
+                    span= @invoice.subtotal
+                    b.currency_value= @invoice.currency
+                tr
+                  td
+                    strong VAT RATE:
+                  td#vat-rate
+                    | --/--
+                tr
+                  td
+                    strong VAT:
+                  td#vat
+                    | --/--
+                tr
+                  td
+                    strong DISCOUNT:
+                  td#discount
+                    | --/--
+                tr
+                  td
+                    strong CURRENCY
+                  td#currency
+                    span= @invoice.currency
+
       hr
       section#footer
         .col-md-6

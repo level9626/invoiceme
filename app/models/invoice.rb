@@ -22,9 +22,9 @@
 #  net              :datetime
 #
 
-class Invoice < ActiveRecord::Base
-  # include StateMachines::InvoiceMachine
+class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
   include InvoiceMachine
+  include Modules::WithCurrency
   CURRENCY = %w(EUR USD UAH RUB)
   STATE = state_machines[:state].states.map(&:name).map(&:to_s)
 
@@ -38,7 +38,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :user
   has_many :invoice_items, dependent: :destroy
   has_many :payments, dependent: :destroy
-  has_many :journals, dependent: :destroy
+  has_many :journals, as: :journalable, dependent: :destroy
   has_many :invoice_mails
   has_many :invoice_email_templates
   has_many :comments, as: :commentable
@@ -77,6 +77,11 @@ class Invoice < ActiveRecord::Base
     invoice_items.map(&:sum).reduce(:+)
   end
 
+  # Generates unique invoice number for not persisted object
+  def invoice_number
+    self[:invoice_number] || _gen_number
+  end
+
   # Invoice due date
   def due_date
     created_at + net.to_i
@@ -89,12 +94,16 @@ class Invoice < ActiveRecord::Base
 
   # invoice balance. Total payed.
   def balance
-    _with_currency _balance
+    _with_currency(_balance)
+  end
+
+  def unpayed
+    subtotal - _balance
   end
 
   # invoice total. Total Invoiced
   def total
-    _with_currency subtotal
+    _with_currency(subtotal)
   end
 
   # percent payed
@@ -104,7 +113,8 @@ class Invoice < ActiveRecord::Base
 
   # Change state after peyment received.
   def payment_received
-    return close if percent_payed <= 100
+    publish if state? :new
+    return close if percent_payed >= 100
     partly_pay
   end
 
@@ -140,11 +150,6 @@ class Invoice < ActiveRecord::Base
   private
 
   ## Private instance methods
-  def _with_currency(amount)
-    return '--/--' unless amount
-    return '--/--' if amount.to_i.zero?
-    "#{amount} #{currency}"
-  end
 
   def _balance
     payments.sum_amount
@@ -153,5 +158,13 @@ class Invoice < ActiveRecord::Base
   def _normed_balance
     return subtotal if _balance > subtotal
     _balance
+  end
+
+  def _gen_number(number = nil)
+    number ||= user.invoices.count
+    num = '#' + (number + 1).to_s
+
+    return num unless user.invoices.where(invoice_number: num).exists?
+    _gen_number(number + 1)
   end
 end

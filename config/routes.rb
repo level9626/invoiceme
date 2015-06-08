@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
-
   ActiveAdmin.routes(self)
 
   concern :attachable do
@@ -13,19 +11,25 @@ Rails.application.routes.draw do
 
   resources :payments, concerns: [:commentable, :attachable]
 
-  resources :invoice_email_templates, concerns: :attachable do
-    member do
-      get :copy
+  concern :email_templates do
+    resources :invoice_email_templates, concerns: :attachable do
+      member do
+        get :copy
+      end
     end
   end
 
-  resources :clients do
-    resources :invoice_email_templates
-  end
+  devise_for :users
+
+  resources :users, only: [], concerns: [:email_templates]
+
+  resources :payments
+
+  resources :clients, concerns: [:email_templates]
 
   resources :companies
 
-  resources :invoices, concerns: [:commentable, :attachable] do
+  resources :invoices, concerns: [:commentable, :attachable], except: [:edit] do
     resources :invoice_mails
     member do
       Invoice.state_machines[:state].events.map(&:name).each do |event|

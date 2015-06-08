@@ -21,6 +21,3 @@
                 td= @invoice_email_template.from
                 td= @invoice_email_template.template_subject
                 td= @invoice_email_template.template_body.try(:html_safe)
-          .inline-block.btn-group
-            = link_to invoice_email_templates_path, class: 'btn btn-default btn-xs'
-              | Back

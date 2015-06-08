@@ -186,12 +186,12 @@ ActiveRecord::Schema.define(version: 20150608084550) do
   add_index "invoices", ["state"], name: "index_invoices_on_state", using: :btree
 
   create_table "journals", force: true do |t|
-    t.integer  "invoice_id"
-    t.string   "event",      limit: 20
-    t.string   "from",       limit: 20
-    t.string   "to",         limit: 20
+    t.string   "event",            limit: 20
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description",                 default: "", null: false
+    t.integer  "journalable_id",                           null: false
+    t.string   "journalable_type",                         null: false
   end
 
   create_table "payments", force: true do |t|

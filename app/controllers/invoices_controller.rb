@@ -38,9 +38,6 @@ class InvoicesController < ApplicationController # rubocop:disable ClassLength
     respond_with(@invoice)
   end
 
-  def edit
-  end
-
   def create
     @invoice = current_user.invoices.new(invoice_params)
     # redirect back to show page, and show errors if any
@@ -83,14 +80,14 @@ class InvoicesController < ApplicationController # rubocop:disable ClassLength
   private
 
   def _search
-    Invoice.where(user: current_user)
+    current_user.invoices
       .includes(:journals, :company, :client, :invoice_items, :payments)
       .search(params[:q])
   end
 
   def _set_invoice
     @invoice = current_user.invoices
-               .eager_load(:journals, :company, :client,
+               .eager_load(:journals, :company, :client, \
                            :invoice_items, :payments)
                .find(params[:id])
   end

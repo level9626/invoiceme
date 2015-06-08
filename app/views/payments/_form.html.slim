@@ -3,20 +3,33 @@
 
   .form-inputs
     .row
-      .col-md-4
-        = f.label 'Invoice number'
-        = f.input :invoice_id,
-                  #collection: [[@invoice.invoice_number, @invoice.id]],
-                  input_html: { selected: @invoice.id },
-                  readonly: true,
-                  label: false
+      .col-md-6
+        b.inline-label INVOICE:
+        = @invoice.invoice_number
+        .hidden= f.input :invoice_id, input_html: {value: @invoice.id}
+      /.col-md-4
+      /  = f.label 'Invoice number'
+      /  = f.input :invoice_id,
+      /            #collection: [[@invoice.invoice_number, @invoice.id]],
+      /            input_html: { selected: @invoice.id },
+      /            readonly: true,
+      /            label: false
 
-      .col-md-4
-        = f.label 'Currency'
-        = f.input :currency,
-                  input_html: { value: @invoice.currency },
-                  readonly: true,
-                  label: false
+      .col-md-6
+        b.inline-label CURRENCY:
+        = @invoice.currency
+        .hidden= f.input :currency, input_html: {value: @invoice.currency}
+      /.col-md-4
+      /  = f.label 'Currency'
+      /  = f.input :currency,
+      /            input_html: { value: @invoice.currency },
+      /            readonly: true,
+      /            label: false
+
+  hr
+  .form-inputs.row
+    .col-md-12
+      = f.input :amount, input_html: { value: f.object.amount || @invoice.unpayed }
 
       .col-md-4
         = f.label 'Client name'

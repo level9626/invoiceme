@@ -24,6 +24,7 @@
 #
 
 class User < ActiveRecord::Base
+  include Modules::TemplateImportable
   enum role: [:user, :vip, :admin]
 
   ## Gem Modules
@@ -38,15 +39,12 @@ class User < ActiveRecord::Base
   has_many :companies
   has_many :payments, through: :invoices
   has_many :invoice_mails
-  has_many :mail_templates, as: :email_templatable, \
-                            class_name: InvoiceEmailTemplate
 
   ## Nested Forms
   accepts_nested_attributes_for :clients_users, :invoices, :companies
 
   ## Callbacks
   after_initialize :_set_default_role, if: :new_record?
-  after_create :_import_primary_invoice_templates
 
   ## Instance Methods
   def logo_url
@@ -68,18 +66,5 @@ class User < ActiveRecord::Base
   # TODO: need to be tested
   def _set_default_role
     self.role ||= :user
-  end
-
-  # Imports all admin primary templates for a given user.
-  # User can have a separate template, based on default one.
-  # Any updates in user templates should not cause issues for
-  # primary admin templates.
-  # TODO: need to be tested
-  def _import_primary_invoice_templates
-    return unless user?
-
-    InvoiceEmailTemplate.primary.each do |invoice_template|
-      mail_templates << invoice_template.dup
-    end
   end
 end
