@@ -1,18 +1,60 @@
-= simple_form_for @payment do |f|
+= simple_form_for @payment, html: { multipart: true } do |f|
   = f.error_notification
 
   .form-inputs
-    .col-md-6
-      = f.input :invoice_id, \
-                collection: [[@invoice.invoice_number, @invoice.id]], \
-                input_html: { selected: @invoice.id }
+    .row
+      .col-md-4
+        = f.label 'Invoice number'
+        = f.input :invoice_id,
+                  #collection: [[@invoice.invoice_number, @invoice.id]],
+                  input_html: { selected: @invoice.id },
+                  readonly: true,
+                  label: false
 
-    .col-md-6
-      = f.input :currency, \
-                input_html: { value: @invoice.currency }
+      .col-md-4
+        = f.label 'Currency'
+        = f.input :currency,
+                  input_html: { value: @invoice.currency },
+                  readonly: true,
+                  label: false
 
-    .col-md-12
-      = f.input :amount
+      .col-md-4
+        = f.label 'Client name'
+        = f.input :client,
+                  input_html: { value: @invoice.client.name },
+                  readonly: true,
+                  label: false
+    .row
+      .col-md-6
+        = f.label 'Amount'
+        = f.input :amount,
+                  input_html: { value: @invoice.subtotal - @invoice.balance.to_i },
+                  label: false
 
-  .form-actions
-    = f.button :submit, 'Save', class: "btn btn-primary save-button-payment"
+      .col-md-6
+        /= render template: 'comments/index', locals: { :'@commentable' => @payment }
+        = f.label 'Payment comments'
+        = f.input :comments,
+                  input_html: { value: @payment.comments },
+                  label: false
+
+    .row
+      .col-md-6
+        = f.label 'Banking overhead'
+        = f.input :banking_overhead, label: false
+
+      .col-md-6
+        /= f.simple_fields_for :attachments do |attachment|
+        /  = render 'payments/attachment_fields', f: attachment
+        /.links
+        /  = link_to_add_association 'add attachment', f, :attachments
+        = f.label 'Attachments'
+        = f.file_field :attachment
+
+  hr
+  .row
+    .form-inline
+      = f.button :submit, 'Save', class: 'btn btn-primary save-button-payment'
+
+      .pull-right
+        = link_to 'Inspect Invoice', invoice_url(@invoice.id), method: :get, class: 'btn btn-default inspect-button-payment'

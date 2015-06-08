@@ -17,10 +17,12 @@ class Payment < ActiveRecord::Base
   has_one :client, through: :invoice
   has_one :company, through: :invoice
   has_many :comments, as: :commentable
+  has_many :attachments, as: :attachable
 
   ## Validations
   validates :invoice_id, :amount, :currency, presence: true
   validates :amount, numericality: { greater_than_or_equal_to: 0.1 }
+  validates :banking_overhead, numericality: { greater_than_or_equal_to: 0 }
 
   ## Scopes
   scope :sum_amount, -> { where.not(id: nil).sum(:amount) }

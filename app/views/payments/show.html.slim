@@ -14,11 +14,17 @@ h4.mb
                 th Invoice
                 th Amount
                 th Currency
+                th Client name
+                th Payment comments
+                th Banking overhead
             tbody
               tr
                 td= @payment.invoice_id
                 td= @payment.amount
                 td= @payment.currency
+                td= @payment.client.name
+                td= @payment.comments
+                td= @payment.banking_overhead
         .inline-block.btn-group
           = link_to payments_path, class: 'btn btn-default btn-xs'
             | Back
