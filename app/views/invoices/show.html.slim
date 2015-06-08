@@ -25,7 +25,7 @@ section#container.thin-menu
         li
           a.btn.btn-theme.btn-default data-toggle="modal" href="#commentsModal#{@invoice.id}"
             | Notes
-            /span.badge.comments_count= @invoice.thread.comments.where(deleted_at: nil).count
+            span.badge.comments_count= @invoice.comments.count
         li
           a.btn.btn-theme.btn-default data-toggle="modal" href="#jurnalsModal#{@invoice.id}"
             | Activities

@@ -1,0 +1,12 @@
+div.place
+  - @commentable.comments.each do |comment|
+    .well data-item_id="#{comment.id}"
+      div.incomplete-comments
+        .inline-block.pull-right
+          span.deleteAction
+            .fa.fa-close
+          /= button_to invoice_comment_path(@commentable, comment), \
+          /                  data: {:confirm => 'Are you sure?'}, :method => :delete, \
+          /                  class: 'btn btn-danger btn-xs pull-right'
+          /  i.fa.fa-close
+        = comment.content

@@ -1,0 +1,7 @@
+= simple_form_for [@commentable, Comment.new] do |f|
+  .form-group
+    = f.text_area :content, class: 'form-control non-resizable', placeholder: 'Add a comment'
+
+  /span.btn.btn-primary.createComment Create comment
+  .form-actions
+    =f.submit 'Save', class: 'btn btn-primary'

@@ -1,3 +1,18 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.non-resizable {
+  resize: vertical;
+}
+
+.deleteAction {
+  color: red;
+  cursor: pointer;
+}
+
+.createComment {
+  color: #0000ff;
+  border-radius: 2px;
+  cursor: pointer;
+}
