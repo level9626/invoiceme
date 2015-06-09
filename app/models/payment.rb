@@ -21,7 +21,7 @@ class Payment < ActiveRecord::Base
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :journals, as: :journalable, dependent: :destroy
 
-  accepts_nested_attributes_for :attachments, :allow_destroy => true
+  accepts_nested_attributes_for :attachments, allow_destroy: true
 
   ## Validations
   validates :invoice_id, :amount, :currency, presence: true
@@ -48,6 +48,7 @@ class Payment < ActiveRecord::Base
     invoice.payment_received
   end
 
+  # rubocop:disable all
   def _log_edition!
     Journal.log(self.invoice, :edit_payment, amount_with_currency)
   end
@@ -55,4 +56,5 @@ class Payment < ActiveRecord::Base
   def _log_deletion!
     Journal.log(self.invoice, :remove_payment, amount_with_currency)
   end
+  # rubocop:enable all
 end

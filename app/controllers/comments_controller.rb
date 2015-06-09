@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
     respond_with(@comment)
   end
 
+  # rubocop:disable all
   def create
     @comment = @commentable.comments.new(comment_params)
     respond_to do |format|
@@ -23,10 +24,12 @@ class CommentsController < ApplicationController
         format.json { render json: @comment }
       else
         format.html { render action: new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.json { render json: @comment.errors,
+                             status: :unprocessable_entity }
       end
     end
   end
+  # rubocop:enable all
 
   # rubocop:disable all
   def destroy

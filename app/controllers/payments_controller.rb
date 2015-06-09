@@ -51,6 +51,7 @@ class PaymentsController < ApplicationController
     @payment = Payment.find(params[:id])
   end
 
+  # rubocop:disable all
   def payment_params
     params.require(:payment).permit(
       :invoice_id,
@@ -64,4 +65,5 @@ class PaymentsController < ApplicationController
       ]
     )
   end
+  # rubocop:enable all
 end
