@@ -41,12 +41,14 @@ class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
   has_many :journals, as: :journalable, dependent: :destroy
   has_many :invoice_mails
   has_many :invoice_email_templates
-  has_many :comments, as: :commentable
-  has_many :attachments, as: :attachable
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :attachments, as: :attachable, dependent: :destroy
 
   ## Nested forms
   accepts_nested_attributes_for :invoice_items
   accepts_nested_attributes_for :invoice_mails
+  accepts_nested_attributes_for :attachments
+  accepts_nested_attributes_for :comments
 
   ## Validations
   # Iterates through constants, and dynamically creates validations

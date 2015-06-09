@@ -17,9 +17,11 @@ class Payment < ActiveRecord::Base
   has_one :user, through: :invoice
   has_one :client, through: :invoice
   has_one :company, through: :invoice
-  has_many :comments, as: :commentable
-  has_many :attachments, as: :attachable
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :attachments, as: :attachable, dependent: :destroy
   has_many :journals, as: :journalable, dependent: :destroy
+
+  accepts_nested_attributes_for :attachments, :allow_destroy => true
 
   ## Validations
   validates :invoice_id, :amount, :currency, presence: true

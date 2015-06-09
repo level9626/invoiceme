@@ -17,8 +17,7 @@ class AttachmentsController < ApplicationController
 
   # rubocop:disable all
   def create
-    @attachment = @attachable.attachments.new(params.require(:attachment)
-                                             .permit(:attachment))
+    @attachment = @attachable.attachments.new(comment_params)
     if @attachment.save
       respond_to do |format|
         format.html { redirect_to @attachable }
@@ -34,7 +33,7 @@ class AttachmentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:attachment).permit(:attachment)
+    params.require(:attachment).permit(:file)
   end
 
   def load_attachable
