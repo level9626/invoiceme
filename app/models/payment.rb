@@ -22,6 +22,7 @@ class Payment < ActiveRecord::Base
   has_many :journals, as: :journalable, dependent: :destroy
 
   accepts_nested_attributes_for :attachments, allow_destroy: true
+  accepts_nested_attributes_for :comments, allow_destroy: true
 
   ## Validations
   validates :invoice_id, :amount, :currency, presence: true

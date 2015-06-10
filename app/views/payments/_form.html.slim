@@ -39,8 +39,13 @@
   hr
     .row
       .col-md-12
-        = f.label 'Payment comment'
-        = render 'comments/form', :'@commentable' => @payment
+        #comments
+          = f.label 'Comments'
+          = f.simple_fields_for :comments do |comment|
+            = render 'payments/comment_fields', :f => comment
+          .links
+            = link_to_add_association 'Add comment', f, :comments, \
+                                             class: 'btn btn-primary btn-xs add_attachment'
 
   hr
     .row

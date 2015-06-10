@@ -62,6 +62,11 @@ class PaymentsController < ApplicationController
           :id,
           :file,
           :_destroy
+      ],
+      comments_attributes: [
+          :id,
+          :content,
+          :_destroy
       ]
     )
   end
