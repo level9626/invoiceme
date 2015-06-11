@@ -16,7 +16,7 @@
 
     = f.input :body, input_html: { class: 'wysihtml5' }
 
-    = check_box_tag :invoice_pdf
+    = check_box_tag :invoice_pdf, 'yes', true
     = label_tag :invoice_pdf, 'Add invoice pdf attachment?'
 
     / Hidden field
