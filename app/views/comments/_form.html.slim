@@ -1,6 +1,6 @@
-= simple_form_for [@commentable, Comment.new] do |f|
+= simple_form_for [@commentable, Comment.new], remote: true do |f|
   .form-group
-    = f.text_area :content, class: 'form-control non-resizable', placeholder: 'Add a comment'
+    = f.text_area :content, class: 'form-control non-resizable'
 
   /span.btn.btn-primary.createComment Create comment
   .form-actions

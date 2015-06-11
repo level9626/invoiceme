@@ -16,3 +16,26 @@
   border-radius: 2px;
   cursor: pointer;
 }
+
+.right-inner-addon {
+  position: relative;
+}
+
+.right-inner-addon input {
+  padding-right: 30px;
+}
+
+.right-inner-addon i {
+  position: absolute;
+  right: 0px;
+  padding: 6px 45px;
+  pointer-events: none;
+}
+
+.comment_field_payment {
+  resize: vertical;
+  width: 100% !important;
+
+  margin-bottom: 5px;
+  margin-top: 5px;
+}

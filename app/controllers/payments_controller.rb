@@ -18,11 +18,6 @@ class PaymentsController < ApplicationController
     respond_with(@payment)
   end
 
-  def new
-    @payment = Payment.new
-    respond_with(@payment)
-  end
-
   def edit
     @invoice = @payment.invoice
   end
@@ -56,10 +51,24 @@ class PaymentsController < ApplicationController
     @payment = Payment.find(params[:id])
   end
 
+  # rubocop:disable all
   def payment_params
-    params.require(:payment).permit(:invoice_id,
-                                    :currency,
-                                    :amount,
-                                    :banking_overhead)
+    params.require(:payment).permit(
+      :invoice_id,
+      :currency,
+      :amount,
+      :banking_overhead,
+      attachments_attributes: [
+          :id,
+          :file,
+          :_destroy
+      ],
+      comments_attributes: [
+          :id,
+          :content,
+          :_destroy
+      ]
+    )
   end
+  # rubocop:enable all
 end

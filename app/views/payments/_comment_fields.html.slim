@@ -1,0 +1,6 @@
+/ Do not remove .nested-fields class. Cocoon gem depends on it
+.nested-fields.form-inline
+  .field
+    = f.text_area :content, class: 'form-control comment_field_payment'
+  = link_to_remove_association 'Remove', f, class: 'btn btn-danger btn-xs'
+  br

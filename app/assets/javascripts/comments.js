@@ -48,19 +48,3 @@ $(document).ready(function(){
         return false;
     });
 });
-
-//$(document).ready(function(){
-//    $('.createComment').click(function(){
-//        var pathname = window.location.pathname.split('/')[1];
-//        var pathname_id = window.location.pathname.split('/')[2];
-//        var current_comment = $(this).parents('.well');
-//        $.ajax({
-//            url: pathname + '/' + pathname_id +'/comments/' + $(current_comment).attr('data-item_id'),
-//            type: 'POST',
-//            data: { _method: 'POST' },
-//            success: function(){
-//                $()
-//            }
-//        });
-//    });
-//});
