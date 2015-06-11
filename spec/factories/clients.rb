@@ -11,7 +11,7 @@
 
 FactoryGirl.define do
   factory :client do
-    company_name 'MyString'
+    name 'MyString'
     address 'MyText'
   end
 end

@@ -2,12 +2,13 @@
 #
 # Table name: payments
 #
-#  id         :integer          not null, primary key
-#  invoice_id :integer          not null
-#  amount     :float            not null
-#  created_at :datetime
-#  updated_at :datetime
-#  currency   :string(255)
+#  id               :integer          not null, primary key
+#  invoice_id       :integer          not null
+#  amount           :float            not null
+#  created_at       :datetime
+#  updated_at       :datetime
+#  currency         :string(255)
+#  banking_overhead :integer
 #
 
 require 'rails_helper'

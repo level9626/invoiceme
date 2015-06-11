@@ -15,9 +15,14 @@
 
 FactoryGirl.define do
   factory :company do
-    logo 'MyString'
+    logo do
+      path = File.join(Rails.root, 'spec', 'support', 'assets', 'img', '1.png')
+      Rack::Test::UploadedFile.new(path)
+    end
     name 'MyString'
     address 'MyText'
-    user_id 1
+    email 'test@example.com'
+
+    association :user, factory: :user, email: 'test1@example.com'
   end
 end
