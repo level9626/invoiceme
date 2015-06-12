@@ -75,7 +75,12 @@ class InvoiceEmailTemplatesController < ApplicationController
       :cc,
       :to,
       :from,
-      :primary
+      :primary,
+      attachments_attributes: [
+          :id,
+          :file,
+          :_destroy
+      ]
     ])
   end
 
