@@ -47,16 +47,7 @@
             = link_to_add_association 'Add comment', f, :comments, \
                                              class: 'btn btn-primary btn-xs add_attachment'
 
-  hr
-    .row
-      .col-md-12
-        #attachments
-          = f.label 'Attachments'
-          = f.simple_fields_for :attachments do |attachment|
-            = render 'payments/attachment_fields', :f => attachment
-          .links
-            = link_to_add_association 'Add attachment', f, :attachments, \
-                                     class: 'btn btn-primary btn-xs add_attachment'
+
 
   hr
   .row
