@@ -127,6 +127,11 @@ class InvoicesController < ApplicationController # rubocop:disable ClassLength
         :rate,
         :_destroy,
         :amount
+      ],
+      attachments_attributes: [
+          :id,
+          :file,
+          :_destroy
       ]
     ])
   end
