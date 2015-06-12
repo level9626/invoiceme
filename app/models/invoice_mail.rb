@@ -23,6 +23,9 @@ class InvoiceMail < ActiveRecord::Base
   belongs_to :invoice
   belongs_to :invoice_email_template
   belongs_to :user
+  has_many :attachments, as: :attachable, dependent: :destroy
+
+  accepts_nested_attributes_for :attachments, allow_destroy: true
 
   ## Validations
   validates :invoice_id, :user_id, :invoice_email_template_id, \

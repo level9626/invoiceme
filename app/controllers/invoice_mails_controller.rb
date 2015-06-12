@@ -79,7 +79,12 @@ class InvoiceMailsController < ApplicationController
       :cc,
       :body,
       :invoice_email_template_id,
-      :attachment
+      :attachment,
+      attachments_attributes: [
+          :id,
+          :file,
+          :_destroy
+      ]
     ])
   end
 end
