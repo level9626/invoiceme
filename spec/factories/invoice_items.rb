@@ -15,8 +15,9 @@
 FactoryGirl.define do
   factory :invoice_item do
     description 'MyString'
-    hours_or_tasks 1.5
-    rate 1.5
-    invoice_id 1
+    hours_or_tasks 150
+    rate 10
+    amount 150*10
+    invoice
   end
 end

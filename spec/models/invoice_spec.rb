@@ -25,9 +25,9 @@
 require 'rails_helper'
 
 RSpec.describe Invoice, type: :model do
-  # describe :validation do
-  #   it 'is valid' do
-  #
-  #   end
-  # end
+  describe :validation do
+    it 'is valid' do
+      FactoryGirl.create(:invoice).should be_valid
+    end
+  end
 end

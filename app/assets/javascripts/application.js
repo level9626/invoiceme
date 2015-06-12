@@ -8,6 +8,7 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require bootstrap-wysihtml5
+//= require rails_allow_action
 //= require raphael
 //= require morris
 //= require data-content-toggle

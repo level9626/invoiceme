@@ -24,14 +24,22 @@
 
 FactoryGirl.define do
   factory :invoice do
-    invoice_number 1
+    invoice_number '#1'
     invoice_date Time.zone.now
-    user_id 1
     currency 'USD'
     comment Faker::Lorem.sentence
-    company_id 1
-    client_id 1
     company_row_text Faker::Lorem.sentence
     client_row_text Faker::Lorem.sentence
+    subtotal 100
+
+    # Factory associations
+    client
+    company
+    user
+
+    after(:create) do |invoice|
+      create_list(:invoice_item, 5, invoice: invoice)
+      invoice.subtotal = invoice.invoice_items.map(&:sum).reduce(:+)
+    end
   end
 end

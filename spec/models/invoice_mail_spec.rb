@@ -4,7 +4,7 @@
 #
 #  id                        :integer          not null, primary key
 #  invoice_id                :integer          not null
-#  to                        :string(255)     default([]), not null, is an Array
+#  to                        :string(255)      default([]), not null, is an Array
 #  user_id                   :integer          not null
 #  subject                   :string(255)
 #  cc                        :string(255)      default([]), is an Array
@@ -13,7 +13,6 @@
 #  created_at                :datetime
 #  updated_at                :datetime
 #  from                      :string(255)
-#  attachment                :boolean          default(TRUE), not null
 #
 
 require 'rails_helper'
