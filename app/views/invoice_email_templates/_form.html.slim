@@ -8,6 +8,19 @@
     = f.input :from
     = f.input :template_subject
     = f.input :template_body, input_html: { class: 'wysihtml5' }
+
+    - if @invoice_email_template.attachments.exists?
+      hr
+        .row
+          .col-md-12
+            #attachments
+              h4 Attachments
+              - @invoice_email_template.attachments.each do |attachment|
+                = File.basename(attachment.file.path)
+                = link_to attachment.file.url, class: 'btn btn-default btn-xs'
+                  .fa.fa-download
+      hr
+
     .row
       .col-md-12
         #attachments
