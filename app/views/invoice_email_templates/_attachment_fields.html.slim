@@ -1,0 +1,6 @@
+/ Do not remove .nested-fields class. Cocoon gem depends on it
+.nested-fields.form-inline
+  .field
+    = f.file_field :file, label: false
+  = link_to_remove_association 'Remove', f, class: 'btn btn-danger btn-xs remove_attachment'
+  br

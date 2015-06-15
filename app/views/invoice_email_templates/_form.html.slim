@@ -9,6 +9,29 @@
     = f.input :template_subject
     = f.input :template_body, input_html: { class: 'wysihtml5' }
 
+    - if @invoice_email_template.attachments.exists?
+      hr
+        .row
+          .col-md-12
+            #attachments
+              h4 Attachments
+              - @invoice_email_template.attachments.each do |attachment|
+                = File.basename(attachment.file.path)
+                = link_to attachment.file.url, class: 'btn btn-default btn-xs'
+                  .fa.fa-download
+      hr
+
+    .row
+      .col-md-12
+        #attachments
+          = f.label 'Attachments'
+          = f.simple_fields_for :attachments do |attachment|
+            = render 'attachment_fields', :f => attachment
+          .links
+            = link_to_add_association 'Add attachment', f, :attachments, \
+                                                 class: 'btn btn-primary btn-xs add_attachment'
+    hr
+
   .form-actions
     = f.button :submit, class: "btn btn-primary"
       .fa.fa-plus

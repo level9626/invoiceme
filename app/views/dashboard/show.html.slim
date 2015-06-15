@@ -12,7 +12,22 @@
           - if @invoices.empty?
             p You don't have opened invoices.
           - @invoices.each do |invoice|
-            p= invoice.invoice_number
+            table.table.invoice-icons
+              thead.centered
+                tr
+                  th
+                  th
+                  th
+              tbody
+                tr
+                  td= invoice.invoice_number
+                  td= invoice.created_at
+                  td
+                    a.btn.btn-success.btn-xs data-toggle="modal" href="#paymentModal#{invoice.id}"
+                      .fa.fa-dollar
+                    = link_to @invoice, :method => :get, class: "btn btn-primary btn-xs dashboard-eye"
+                      .fa.fa-eye
+              == render 'payment', :'@invoice' => invoice
       footer.clearfix
         hr
         = button_to new_invoice_path, method: :get, \

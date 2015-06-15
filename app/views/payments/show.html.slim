@@ -1,30 +1,49 @@
 == content_for(:page_name, 'Payments')
-h4.mb
-  i.fa.fa-angle-righ
-  | Your payment
-.row.mt
-  .col-md-12
-    section.task-panel.tasks-widget
-      .panel-body
-        .task-content
-          table.table
-            thead
-              tr
-                p#notice = notice
-                th Invoice
-                th Amount
-                th Currency
-                th Client name
-                th Payment comments
-                th Banking overhead
-            tbody
-              tr
-                td= @payment.invoice_id
-                td= @payment.amount
-                td= @payment.currency
-                td= @payment.client.name
-                td= @payment.comments
-                td= @payment.banking_overhead
-        .inline-block.btn-group
-          = link_to payments_path, class: 'btn btn-default btn-xs'
-            | Back
+
+.col-md-8
+  section.task-panel.tasks-widget
+    .panel-body
+      .task-content
+        .form-inputs
+          .row.centered
+            .col-md-4
+              b.inline-label Invoice:
+              = @payment.invoice.invoice_number
+
+            .col-md-4
+              b.inline-label Currency:
+              = @payment.currency
+
+            .col-md-4
+              b.inline-label Client name:
+              = @payment.invoice.client.name
+
+        hr
+          .row
+            .col-md-4 Amount
+            .col-md-6
+              = @payment.amount
+            .col-md-2
+              i= @payment.currency
+          .row
+            .col-md-4 Banking overhead
+            .col-md-6
+              =  @payment.banking_overhead
+            .col-md-2
+              i= @payment.currency
+
+        hr
+          .row
+            .col-md-12
+              #comments
+                h4 Comments
+                - @payment.comments.each do |comment|
+                  = comment.content
+
+        hr
+          .row
+            .col-md-12
+              #attachments
+                h4 Attachments
+                - @payment.attachments.each do |attachment|
+                  = link_to 'Download attachment', attachment.file.url

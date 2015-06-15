@@ -16,7 +16,19 @@
 
     = f.input :body, input_html: { class: 'wysihtml5' }
 
-    = check_box_tag :invoice_pdf
+    hr
+    .row
+      .col-md-12
+        #attachments
+          = f.label 'Attachments'
+          = f.simple_fields_for :attachments do |attachment|
+            = render 'attachment_fields', :f => attachment
+          .links
+            = link_to_add_association 'Add attachment', f, :attachments, \
+                                                         class: 'btn btn-primary btn-xs add_attachment'
+    hr
+
+    = check_box_tag :invoice_pdf, 'yes', true
     = label_tag :invoice_pdf, 'Add invoice pdf attachment?'
 
     / Hidden field

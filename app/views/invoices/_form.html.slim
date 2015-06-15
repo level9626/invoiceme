@@ -90,6 +90,16 @@
                   td#discount
 
       hr
+        .row
+          .col-md-12
+            #attachments
+              = f.label 'Attachments'
+              = f.simple_fields_for :attachments do |attachment|
+                = render 'attachment_fields', :f => attachment
+              .links
+                = link_to_add_association 'Add attachment', f, :attachments, \
+                                                                     class: 'btn btn-primary btn-xs add_attachment'
+      hr
       section#footer
         .col-md-6
           p.text-left Thank You For Your Business!
