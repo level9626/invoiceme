@@ -42,7 +42,9 @@ $(document).ready(function(){
             },
             error: function(){
                 // TODO: Handle exceptions/validations
-                alert('fail');
+                alert('Fix problems below: \n' +
+                      'Cannot be empty.\n' +
+                      'The number of characters is invalid (1 to 300)');
             }
         });
         return false;

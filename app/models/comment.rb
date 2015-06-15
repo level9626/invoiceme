@@ -16,5 +16,5 @@ class Comment < ActiveRecord::Base
 
   accepts_nested_attributes_for :attachments, allow_destroy: true
 
-  validates :content, presence: true, length: { maximum: 5 }
+  validates :content, presence: true, length: { in: 1..300 }
 end
