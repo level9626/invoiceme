@@ -1,6 +1,7 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$grey-light: #797979;
 
 .non-resizable {
   resize: vertical;
@@ -12,7 +13,7 @@
 }
 
 .createComment {
-  color: #0000ff;
+  color: blue;
   border-radius: 2px;
   cursor: pointer;
 }
@@ -28,10 +29,13 @@
 .right-inner-addon i {
   position: absolute;
   right: 0px;
-  padding: 6px 45px;
+  padding: 3px 45px;
   pointer-events: none;
-  color: #797979;
+  color: $grey-light;
   font-style: normal;
+  &.span {
+    color: red;
+  }
 }
 
 .comment_field_payment {

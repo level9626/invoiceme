@@ -9,3 +9,20 @@
 .inspect-button-payment {
   margin-right: 15px;
 }
+
+.banking-overhead-field {
+  font-size: 10px;
+}
+
+// Input field for banking overhead
+#payment_banking_overhead {
+  padding: 0px;
+  margin: 0px 0px 0px 16px;
+  height: 20px;
+  width: 50px;
+}
+
+.amount-field {
+  font-size: 20px;
+  font-weight: bold;
+}

@@ -19,22 +19,24 @@
         = @invoice.client.name
 
   hr
-    .row
-      .col-md-4
+    .row.amount-field
+      .col-md-2
         = f.label 'Amount'
-      .col-md-6
+      .col-md-8
         = f.input :amount,
                   input_html: { value: f.object.amount || @invoice.unpayed },
                   label: false
       .col-md-2.right-inner-addon
         i= @invoice.currency
-    .row
-      .col-md-4
-        = f.label 'Banking overhead'
-      .col-md-6
-        = f.input :banking_overhead, label: false
-      .col-md-2.right-inner-addon
-        i= @invoice.currency
+    .row.banking-overhead-field
+      .col-md-12
+        .form-inline
+          .form-group
+            | Banking overhead
+          .form-group
+            = f.input :banking_overhead, input_html: { class: 'span3' }, label: false
+          .form-group
+            i= @invoice.currency
 
   hr
     .row
