@@ -1,6 +1,8 @@
 = simple_form_for [@commentable, Comment.new], remote: true, html: { multipart: true } do |f|
   .form-group
-    = f.text_area :content, class: 'form-control non-resizable'
+    = f.input :content, input_html: {class: 'wysihtml5'}, \
+              class: 'form-control non-resizable',
+              label: false
   .row
     .col-md-12
       #attachments
