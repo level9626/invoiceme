@@ -74,10 +74,6 @@ class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
   default_scope { where.not(state: 'closed') }
 
   ## Instance methods
-  # TODO: need to be tested
-  def amount
-    invoice_items.map(&:sum).reduce(:+)
-  end
 
   # Generates unique invoice number for not persisted object
   def invoice_number
@@ -116,7 +112,7 @@ class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
   # Change state after peyment received.
   def payment_received
     publish if state? :new
-    return close if percent_payed >= 100
+    return self.close if percent_payed >= 100
     partly_pay
   end
 

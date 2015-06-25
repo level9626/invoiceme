@@ -19,9 +19,16 @@ class InvoiceItem < ActiveRecord::Base
   validates :hours_or_tasks, :rate, :amount, presence: true
   validates :rate, :hours_or_tasks, :amount, numericality: true
 
-  ## Instance methods
-  # TODO: need to be tested
-  def sum
-    amount * rate
+  ## Scopes
+  scope :sum_amount, -> { where.not(id: nil).sum(:amount) }
+
+  ## Callbacks
+  after_save :_update_invoice
+
+  private
+
+  def _update_invoice
+    return if invoice.subtotal == invoice.invoice_items.sum_amount
+    invoice.update_attribute(:subtotal, invoice.invoice_items.sum_amount)
   end
 end
