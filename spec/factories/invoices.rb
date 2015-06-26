@@ -37,9 +37,10 @@ FactoryGirl.define do
     company
     user
 
-    after(:create) do |invoice|
-      create_list(:invoice_item, 5, invoice: invoice)
-      invoice.subtotal = invoice.invoice_items.map(&:sum).reduce(:+)
+    trait :with_items do
+      after(:create) do |invoice|
+        create_list(:invoice_item, 5, invoice: invoice)
+      end
     end
   end
 end

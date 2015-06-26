@@ -19,5 +19,9 @@ FactoryGirl.define do
     rate 10
     amount 150 * 10
     invoice
+
+    factory :invoice_item_eq_ten do
+      amount 10
+    end
   end
 end

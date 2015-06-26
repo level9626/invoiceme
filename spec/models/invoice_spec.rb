@@ -27,7 +27,18 @@ require 'rails_helper'
 RSpec.describe Invoice, type: :model do
   describe :validation do
     it 'is valid' do
-      FactoryGirl.create(:invoice).should be_valid
+      expect(FactoryGirl.create(:invoice)).to be_valid
+    end
+  end
+
+  describe :subtotal do
+    let (:invoice) { FactoryGirl.create(:invoice) }
+
+    it 'Subtotal depends on invoice items amount sum' do
+      10.times do |t|
+        invoice.invoice_items.create(attributes_for(:invoice_item_eq_ten))
+      end
+      expect(invoice.subtotal).to be(100.0)
     end
   end
 end

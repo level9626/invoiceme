@@ -87,6 +87,7 @@ class InvoicesController < ApplicationController # rubocop:disable ClassLength
 
   def _set_invoice
     @invoice = current_user.invoices
+               .unscoped
                .eager_load(:journals, :company, :client, \
                            :invoice_items, :payments)
                .find(params[:id])

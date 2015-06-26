@@ -29,7 +29,8 @@ class Payment < ActiveRecord::Base
   validates :invoice_id, :amount, :currency, presence: true
   validates :amount, numericality: { greater_than_or_equal_to: 0.1,
                                      less_than: 1_000_000 }
-  validates :banking_overhead, numericality: { greater_than_or_equal_to: 0 }
+  validates :banking_overhead, numericality: { greater_than_or_equal_to: 0 }, \
+                               allow_blank: true
 
   ## Scopes
   scope :sum_amount, -> { where.not(id: nil).sum(:amount) }
