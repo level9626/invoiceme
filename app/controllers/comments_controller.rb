@@ -43,12 +43,12 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(
+      :content,
+      comments_attributes: [
+        :id,
         :content,
-        comments_attributes: [
-            :id,
-            :content,
-            :_destroy
-        ])
+        :_destroy
+      ])
   end
 
   def load_commentable

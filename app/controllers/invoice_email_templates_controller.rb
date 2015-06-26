@@ -67,6 +67,7 @@ class InvoiceEmailTemplatesController < ApplicationController
     @invoice_email_template = @template_parent.mail_templates.find(params[:id])
   end
 
+  # rubocop:disable all
   def invoice_email_template_params
     params.require(:invoice_email_template).permit([
       :template_subject,
@@ -83,6 +84,7 @@ class InvoiceEmailTemplatesController < ApplicationController
       ]
     ])
   end
+  # rubocop:enable all
 
   def _search
     @template_parent.mail_templates.search(params[:q])

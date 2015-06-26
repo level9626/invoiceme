@@ -38,7 +38,7 @@ $(document).ready(function(){
                                     '</div>'+
                                 '</div>');
 
-                $(that).find('textarea').val('');
+                $(that).data("wysihtml5").editor.setValue('');
             },
             error: function(){
                 // TODO: Handle exceptions/validations

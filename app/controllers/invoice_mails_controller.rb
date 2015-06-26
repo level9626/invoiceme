@@ -71,6 +71,7 @@ class InvoiceMailsController < ApplicationController
     current_user.invoice_mails.where(invoice_id: params[:invoice_id])
   end
 
+  # rubocop:disable all
   def invoice_mail_params
     params.require(:invoice_mail).permit([
       :invoice_id,
@@ -81,10 +82,11 @@ class InvoiceMailsController < ApplicationController
       :invoice_email_template_id,
       :attachment,
       attachments_attributes: [
-          :id,
-          :file,
-          :_destroy
+        :id,
+        :file,
+        :_destroy
       ]
     ])
   end
+  # rubocop:enable all
 end

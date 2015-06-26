@@ -4,7 +4,6 @@ h1 New comment
     section.task-panel.tasks-widget
       .panel-body
         = simple_form_for [@commentable, @comment] do |f|
-
           = f.input :content
           = f.button :submit, 'Save'
         end
