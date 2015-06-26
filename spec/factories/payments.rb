@@ -15,6 +15,7 @@ FactoryGirl.define do
   factory :payment do
     amount 100
     currency 'USD'
+    banking_overhead 10
     invoice
   end
 end

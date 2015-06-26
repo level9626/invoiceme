@@ -96,6 +96,8 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
+  gem 'shoulda-callback-matchers'
 end
 group :doc do
   gem 'sdoc', '~> 0.4.0'

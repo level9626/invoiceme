@@ -17,7 +17,7 @@ FactoryGirl.define do
     description 'MyString'
     hours_or_tasks 150
     rate 10
-    amount 150*10
+    amount 150 * 10
     invoice
   end
 end
