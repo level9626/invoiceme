@@ -18,41 +18,43 @@ describe Payment do
     expect(FactoryGirl.build(:payment)).to be_valid
   end
 
-  let(:invoice_id) { build(:payment) }
-  let(:amount) { build(:payment) }
-  let(:currency) { build(:payment) }
-  let(:banking_overhead) { build(:payment) }
+  let(:payment) { build(:payment) }
 
   describe "Payment validations" do
     # Basic validations
-    it { expect(invoice_id).to validate_presence_of(:invoice_id) }
-    it { expect(amount).to validate_presence_of(:amount) }
-    it { expect(currency).to validate_presence_of(:currency) }
-    it { expect(amount).to validate_numericality_of(:amount)
+    it { expect(payment).to validate_presence_of(:invoice_id) }
+    it { expect(payment).to validate_presence_of(:amount) }
+    it { expect(payment).to validate_presence_of(:currency) }
+    it { expect(payment).to validate_numericality_of(:amount)
                                          .is_greater_than_or_equal_to(0.1) }
-    it { expect(banking_overhead).to validate_numericality_of(:banking_overhead)
+    it { expect(payment).to validate_numericality_of(:banking_overhead)
                                          .is_greater_than_or_equal_to(0) }
 
     # Format validation
     context "matching values" do
-      it { expect(amount).to allow_value(0.1).for(:amount) }
-      it { expect(amount).to allow_value(999999).for(:amount) }
-      it { expect(currency).to allow_value("USD").for(:currency) }
+      it { expect(payment).to allow_value(0.1).for(:amount) }
+      it { expect(payment).to allow_value(999999).for(:amount) }
+      it { expect(payment).to allow_value("USD").for(:currency) }
     end
 
     context "non-mathcing values" do
-      it { expect(amount).to_not allow_value(0).for(:amount) }
-      it { expect(amount).to_not allow_value(1111111).for(:amount) }
+      it { expect(payment).to_not allow_value(0).for(:amount) }
+      it { expect(payment).to_not allow_value(1111111).for(:amount) }
     end
 
     # Inclusion/acceptance of values
-    it { expect(amount).to_not validate_inclusion_of(:amount).in_range(0.1..100) }
+    it { expect(payment).to_not validate_inclusion_of(:amount).in_range(0.1..100) }
   end
 
   describe "Payment callbacks" do
     it { is_expected.to callback(:_update_invoice!).before(:create) }
     it { is_expected.to callback(:_log_edition!).before(:update) }
     it { is_expected.to callback(:_log_deletion!).before(:destroy) }
+  end
+
+  describe 'Units' do
+    it { expect(payment.amount_with_currency).to match(/#{payment.currency}/) }
+    it { expect(payment.amount_with_currency).to match(/#{payment.amount}/) }
   end
 
 # rubocop:enable all
