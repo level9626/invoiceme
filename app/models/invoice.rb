@@ -110,11 +110,13 @@ class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
   end
 
   # Change state after peyment received.
+  # rubocop:disable all
   def payment_received
     publish if state? :new
     return self.close if percent_payed >= 100
     partly_pay
   end
+  # rubocop:enable all
 
   # Returns collection of user and client mail templates
   def grouped_mail_templates
