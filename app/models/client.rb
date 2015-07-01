@@ -18,5 +18,6 @@ class Client < ActiveRecord::Base
   accepts_nested_attributes_for :users
 
   ## Validations
+  validates :name, presence: true, length: { maximum: 150 }
   validates :address, presence: true, length: { maximum: 300 }
 end
