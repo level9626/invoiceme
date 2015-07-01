@@ -37,7 +37,6 @@ class CommentsController < ApplicationController
       render json: { success: true }
     end
   end
-  # rubocop:enable all
 
   private
 
@@ -48,8 +47,15 @@ class CommentsController < ApplicationController
         :id,
         :content,
         :_destroy
-      ])
+      ],
+      attachments_attributes: [
+        :id,
+        :file,
+        :_destroy
+      ]
+    )
   end
+  # rubocop:enable all
 
   def load_commentable
     resource, id = request.path.split('/')[1, 2]
