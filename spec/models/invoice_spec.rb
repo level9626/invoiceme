@@ -31,6 +31,7 @@ RSpec.describe Invoice, type: :model do
     end
   end
 
+  # rubocop:disable all
   describe :subtotal do
     let (:invoice) { FactoryGirl.create(:invoice) }
 
@@ -41,4 +42,5 @@ RSpec.describe Invoice, type: :model do
       expect(invoice.subtotal).to be(100.0)
     end
   end
+  # rubocop:enable all
 end
