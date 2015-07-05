@@ -4,3 +4,14 @@
 //= require angular-rails-templates
 //= require_tree ../templates
 //= require app
+//= require_tree ./modules/clients
+//= require_tree ./modules/companies
+//= require_tree ./modules/dashboard
+//= require_tree ./modules/email_templates
+//= require_tree ./modules/invoices
+//= require_tree ./modules/payments
+//= require_tree ./modules/profiles
+//= require_tree ./modules/static_pages
+//= require_tree ./config
+//= require_tree ./directives
+//= require_tree ./filters

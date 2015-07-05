@@ -28,13 +28,19 @@ module InvoiceTracker
     end
 
     # Use Bower packages in assets pipeline
-    config.assets.paths << Rails.root.join("vendor","assets","bower_components")
-    config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
-    config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
+    config.assets.paths << \
+      Rails.root.join('vendor', 'assets', 'bower_components')
+    config.assets.paths << \
+      Rails.root.join('vendor', 'assets', 'bower_components', \
+                      'bootstrap-sass-official', 'assets', 'fonts')
+
+    config.assets.precompile << /.*.(?:eot|svg|ttf|woff)$/
 
     # Angular templates
     config.angular_templates.markups.push 'slim'
 
     config.assets.precompile += ['*.slim', '*/*.slim']
+
+    config.assets.js_compressor = Uglifier.new(mangle: false)
   end
 end

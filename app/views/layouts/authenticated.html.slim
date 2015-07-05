@@ -1,8 +1,14 @@
 doctype html
 html
   head
-    == render 'layouts/head'
-  body
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    title
+      = content_for?(:title) ? yield(:title) : 'Invoice Tracker'
+    meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Invoice Tracker'}"
+    == stylesheet_link_tag "application", :media => 'all'
+    == csrf_meta_tags
+    base href= "/"
+  body ng-app="InvMe"
 
     header
       == render 'layouts/navigation'
@@ -10,7 +16,6 @@ html
     section#main-content
       section.wrapper.site-min-height
         .row.mt
-          .col-lg-12
-            == render 'layouts/messages'
-            == yield
-      //== render 'layouts/footer'
+          .col-lg-12 ng-view=""
+
+  == javascript_include_tag 'angular_application'

@@ -1,10 +1,8 @@
 'use strict';
 
-angular.module('Olive')
+angular.module('InvMe')
   .config([
     '$httpProvider',
     function ($httpProvider) {
-
-      // Catch 500, 403, and 404 errors
-
+      $httpProvider.defaults.headers.common = 'application/json';
     }]);

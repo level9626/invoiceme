@@ -13,6 +13,11 @@ class ApplicationController < ActionController::Base
     redirect_to new_user_session_path unless current_user.admin?
   end
 
+  # For Angular.js
+  def index
+    render text: '', layout: true
+  end
+
   protected
 
   def _get_layout

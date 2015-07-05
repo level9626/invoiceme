@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('Olive')
+angular.module('InvMe')
   .config(['$routeProvider',
     '$locationProvider',
     function ($routeProvider, $locationProvider) {
@@ -11,24 +11,8 @@ angular.module('Olive')
     $routeProvider
       // Add
       .when('/', {
-        templateUrl: 'adds/landing.html',
-        controller: 'AddLandingCtrl'
-      })
-      .when('/adds', {
-        templateUrl: 'adds/index.html',
-        controller: 'AddIndexCtrl'
-      })
-      .when('/adds/new', {
-        templateUrl: 'adds/new.html',
-        controller: 'AddNewCtrl'
-      })
-      .when('/adds/:addId/edit', {
-        templateUrl: 'adds/edit.html',
-        controller: 'AddEditCtrl'
-      })
-      .when('/adds/:addId', {
-        templateUrl: 'adds/show.html',
-        controller: 'AddShowCtrl'
+        templateUrl: 'dashboard/index.html',
+        controller: 'DashboardCtrl'
       })
       // static pages
       .when('/404', {

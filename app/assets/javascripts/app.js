@@ -1,10 +1,25 @@
-angular.module('AddsApp',        []);
-angular.module('StaticPagesApp', []);
+'use strict';
 
-angular.module('Olive', [
+angular.module('InvoicesApp',       []);
+angular.module('PaymentsApp',       []);
+angular.module('DashboardApp',      []);
+angular.module('CompaniesApp',      []);
+angular.module('ClientsApp',        []);
+angular.module('CompaniesApp',      []);
+angular.module('ProfilesApp',       []);
+angular.module('EmailTemplatesApp', []);
+angular.module('StaticPagesApp',    []);
+
+angular.module('InvMe', [
   'templates',
   'ngRoute',
   'ngResource',
-  'AddsApp',
+  'InvoicesApp',
+  'PaymentsApp',
+  'DashboardApp',
+  'ClientsApp',
+  'CompaniesApp',
+  'ProfilesApp',
+  'EmailTemplatesApp',
   'StaticPagesApp'
 ]);
