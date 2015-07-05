@@ -25,7 +25,11 @@ Rails.application.routes.draw do
     resources :payments, concerns: [:commentable, :attachable]
     resources :payments
     resources :clients, concerns: [:email_templates]
-    resources :companies
+    resources :companies do
+      collection do
+        get 'default'
+      end
+    end
 
     resources :invoices, concerns: [:commentable, :attachable], \
                          except: [:edit] do

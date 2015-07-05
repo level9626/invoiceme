@@ -1,7 +1,7 @@
 title Dashboard
 .row.mt
   .col-md-4.col-sm-4.mb
-    / = render 'companies/company', company: @company
+    div ng-include="'companies/_company.html'"
 
   .col-sm-4.mb
     .white-panel.pn.donut-chart

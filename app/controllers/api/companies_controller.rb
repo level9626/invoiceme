@@ -7,7 +7,7 @@ module Api
     def index
       @search = _search
       @companies = @search.result.paginate(per_page: 10, page: params[:page])
-      respond_with(@companies)
+      @companies
     end
 
     def show
@@ -36,6 +36,13 @@ module Api
     def destroy
       @company.destroy
       respond_with(@company)
+    end
+
+    # Custom actions
+
+    def default
+      @company = current_user.companies.default
+      render template: 'companies/show.json'
     end
 
     private

@@ -3,13 +3,15 @@
 angular.module('DashboardApp')
   .controller('DashboardCtrl',
     ['$scope',
+    '$sce',
     'Company',
     'Invoice',
     'Profile',
-    function ($scope, Company, Invoice, Profile) {
+    function ($scope, $sce, Company, Invoice, Profile) {
 
-      Company.query(function (data) {
-        $scope.companies = data.companies;
+      Company.default(function (company) {
+        $scope.company = company;
+        $scope.company.address = $sce.trustAsHtml(company.address);
       });
 
       Invoice.query(function (data) {

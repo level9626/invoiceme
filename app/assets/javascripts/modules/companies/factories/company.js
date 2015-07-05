@@ -5,13 +5,20 @@ angular.module('CompaniesApp')
     ['$resource',
     function($resource) {
 
-      return $resource('/api/companies/:id', { id: '@id' }, {
+      var _basePath = '/api/companies/';
+
+      return $resource(_basePath + ':id', { id: '@id' }, {
         update: {
           method: 'PUT'
         },
         query: {
           method: 'GET',
           isArray: false
+        },
+        default: {
+          method: 'GET',
+          isArray: false,
+          url: _basePath + 'default'
         }
       });
 
