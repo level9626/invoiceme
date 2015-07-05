@@ -11,6 +11,7 @@ angular.module('EmailTemplatesApp', []);
 angular.module('StaticPagesApp',    []);
 
 angular.module('InvMe', [
+  'viewhead',
   'templates',
   'angular.morris-chart',
   'ngRoute',

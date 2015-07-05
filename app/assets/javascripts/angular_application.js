@@ -6,6 +6,7 @@
 //= require angular-resource/angular-resource
 //= require angular-rails-templates
 //= require angular-morris-chart
+//= require angularjs-viewhead
 //= require_tree ../templates
 //= require app
 //= require_tree ./modules/clients

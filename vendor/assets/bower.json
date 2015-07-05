@@ -4,6 +4,7 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-resource": "latest",
-    "angular-morris-chart": "latest"
+    "angular-morris-chart": "latest",
+    "angularjs-viewhead": "latest"
   }
 }

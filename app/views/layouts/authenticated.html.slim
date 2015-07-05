@@ -1,14 +1,13 @@
 doctype html
-html
+html ng-app="InvMe"
   head
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
-    title
-      = content_for?(:title) ? yield(:title) : 'Invoice Tracker'
+    title ng-bind-template="InvoiceMe | {{viewTitle}}" InvoiceMe
     meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Invoice Tracker'}"
     == stylesheet_link_tag "application", :media => 'all'
     == csrf_meta_tags
     base href= "/"
-  body ng-app="InvMe"
+  body
 
     header
       == render 'layouts/navigation'
