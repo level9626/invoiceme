@@ -7,12 +7,19 @@ angular.module('InvMe')
     // Allow push state for navigation
     $locationProvider.html5Mode(true);
 
-
     $routeProvider
       // Add
       .when('/', {
         templateUrl: 'dashboard/index.html',
         controller: 'DashboardCtrl'
+      })
+      .when('/invoices', {
+        templateUrl: 'invoices/index.html',
+        controller: 'InvoicesIndexCtrl'
+      })
+      .when('/invoices/:id', {
+        templateUrl: 'dashboard/index.html',
+        controller: 'InvoicesShowCtrl'
       })
       // static pages
       .when('/404', {

@@ -3,14 +3,11 @@
 angular.module('DashboardApp')
   .controller('DashboardCtrl',
     ['$scope',
-    '$rootScope',
     '$sce',
     'Company',
     'Invoice',
     'Profile',
-    function ($scope, $rootScope, $sce, Company, Invoice, Profile) {
-
-      $rootScope._title = 'Dashboard'
+    function ($scope, $sce, Company, Invoice, Profile) {
 
       Company.default(function (company) {
         $scope.company = company;
