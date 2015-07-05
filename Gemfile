@@ -20,6 +20,9 @@ gem 'morrisjs-rails'
 gem 'raphael-rails'
 gem 'angularjs-rails'
 gem 'jquery-validation-rails'
+gem 'sprockets', '2.12.3'
+gem 'angular-rails-templates', '0.1.5'
+gem 'bower-rails'
 
 # PDF
 gem 'wicked_pdf'
