@@ -17,3 +17,7 @@ Is implemented using https://github.com/upmin/upmin-admin-ruby
 
 - Email: __user@example.com__
 - Password: __changeme__
+
+Wireframes
+==========
+[https://projects.invisionapp.com/share/ZC3AV80UR#/screens/84178246?maintainScrollPosition=false](Wireframes)
