@@ -1,7 +1,11 @@
+//= require jquery
+//= require raphael
+//= require morris
 //= require angular/angular
 //= require angular-route/angular-route
 //= require angular-resource/angular-resource
 //= require angular-rails-templates
+//= require angular-morris-chart
 //= require_tree ../templates
 //= require app
 //= require_tree ./modules/clients

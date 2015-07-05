@@ -12,6 +12,7 @@ angular.module('StaticPagesApp',    []);
 
 angular.module('InvMe', [
   'templates',
+  'angular.morris-chart',
   'ngRoute',
   'ngResource',
   'InvoicesApp',

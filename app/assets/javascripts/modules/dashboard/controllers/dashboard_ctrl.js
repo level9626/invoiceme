@@ -17,8 +17,14 @@ angular.module('DashboardApp')
       });
 
       Profile.percent_payed()
-        .success(function (data) {
-          $scope.percent_payed = data.percent_payed;
+        .success(function (percent_payed) {
+          $scope.userPaymentStats = [{
+            label: 'Percent Payed',
+            value: percent_payed
+          },{
+            label: 'Percent not payed',
+            value: 100 - percent_payed
+          }];
         });
 
     }]);
