@@ -8,7 +8,7 @@ aside
         = link_to api_companies_path, class: current_page?(api_companies_path) && 'active'
           i.fa.fa-briefcase My Companies
       li
-        = link_to api_clients_path, class: current_page?(api_clients_path) && 'active'
+        a href="/clients"
           i.fa.fa-users My Clients
       li
         a href="/invoices"

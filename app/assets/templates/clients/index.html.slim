@@ -1,0 +1,18 @@
+view-title Clients
+.row
+  .col-md-8#tags.tags
+    .col-md-12.row
+      /div ng-include="'shared/tags'"
+  .col-md-4.filter
+    a href="#" class="btn btn-primary btn-sm pull-right"
+      .fa.fa-plus
+        | Add New Client
+
+.row.mt
+  h5.text-center ng-if="!clients"
+    | You don't have clients yet.
+
+  tr ng-repeat="invoice in invoices"
+    .col-md-6
+      /div ng-include="'clients/_client.html'"
+  /= will_paginate @companies
