@@ -3,8 +3,7 @@ section#container
     div
       a.logo href="/"
         b Invoiceme
-        .page-name
-          == yield(:page_name)
+        .page-name ng-bind-template="{{viewTitle}}"
     /! logo end
     #top_menu.nav.notify-row
       /! notification start

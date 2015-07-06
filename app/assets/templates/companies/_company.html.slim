@@ -1,0 +1,30 @@
+.white-panel.pn.donut-chart ng-if='company'
+  .white-header
+    h5
+      | {{ company.name }}
+  .row
+    .col-sm-6.col-xs-6.goleft
+      p
+        i.fa.fa-database 70%
+    .col-sm-12.col-sx-12
+      img src="{{company.logo}}"
+    .col-sm-12.col-sx-12
+      div ng-bind-html="company.address"
+  hr
+  footer.clearfix
+    .btn-group.pull-left role="group"
+      a href="#" class='btn btn-default' Show
+      a href="#" class='btn btn-default' Edit
+      a href="#" class='btn btn-danger pull-right' Destroy
+
+.white-panel.pn.donut-chart ng-if='!company'
+  .white-header
+    h5 Notice!
+  .row
+    .col-sm-12.col-sx-12
+      p You need to create a company in order to continue
+  hr
+  footer.clearfix
+    a href="#" class='btn btn-primary btn-sm'
+      .fa.fa-plus
+      | Add New Company

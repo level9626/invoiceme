@@ -1,0 +1,11 @@
+#add_container.grid
+  .unit.whole
+    h1.text-center
+      | {{ add.title }}
+  .unit.whole.grid
+    .unit.one-fifth
+      p
+        | {{ add.price }} {{ add.currency }}
+    .unit.one-fifth
+      p
+        | Description: {{ add.description }}

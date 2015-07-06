@@ -5,15 +5,15 @@ aside
         = link_to dashboard_path, class: current_page?(dashboard_path) && 'active'
           i.fa.fa-user Dashboard
       li
-        = link_to companies_path, class: current_page?(companies_path) && 'active'
+        = link_to api_companies_path, class: current_page?(api_companies_path) && 'active'
           i.fa.fa-briefcase My Companies
       li
-        = link_to clients_path, class: current_page?(clients_path) && 'active'
+        = link_to api_clients_path, class: current_page?(api_clients_path) && 'active'
           i.fa.fa-users My Clients
       li
-        = link_to invoices_path, class: current_page?(invoices_path) && 'active'
+        a href="/invoices"
           i.fa.fa-folder My Invoices
       li
-        = link_to payments_path, class: current_page?(payments_path) && 'active'
+        = link_to api_payments_path, class: current_page?(api_payments_path) && 'active'
           i.fa.fa-money My Payments
 

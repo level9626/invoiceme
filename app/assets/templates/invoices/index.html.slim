@@ -1,0 +1,56 @@
+view-title Invoices
+.row
+  .col-md-8#tags.tags
+    .col-md-12.row
+      div ng-include="'invoices/_statistics.html'"
+    .col-md-12.row
+      div ng-include="'layouts/_tags.html'"
+  .col-md-4.pull-right.filter
+    div.btn-group role="group"
+      a href="#" class="btn btn-primary btn-sm"
+        .fa.fa-plus
+          | Add New Invoice
+      a href="#" class="btn btn-success btn-sm"
+        .fa.fa-download
+          | Download to CSV
+    div ng-include="'invoices/_filter.html'"
+
+  .col-md-12
+    h5.text-center ng-if="!invoices"
+      | You don't have invoices yet.
+
+    section.task-panel.tasks-widget ng-if="invoices"
+      .panel-body
+        .task-content
+          table.table
+            thead
+              tr
+                th.activities_table
+                th Date
+                th No.
+                th Due date
+                th Balance
+                th Total
+                th Status
+                th.actions_table
+
+            tbody
+              tr ng-repeat="invoice in invoices"
+                td
+                  a.btn.btn-primary.btn-xs data-toggle="modal" href="#jurnalsModal{{invoice.id}}"
+                    i.fa.fa-book
+                td
+                  | {{ invoice.invoice_date | date:'m/d/Y' }}
+                td
+                  | {{ invoice.invoice_number }}
+                td
+                  | {{ invoice.due_date | date:'m/d/Y' }}
+                td
+                  | {{ invoice.balance }}
+                td
+                  | {{ invoice.total }}
+                td
+                  | {{ invoice.state }}
+                td
+                  div ng-include="'invoices/_actions.html'"
+    / = will_paginate @invoices

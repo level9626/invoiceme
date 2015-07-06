@@ -1,0 +1,32 @@
+/ .col-md-5.stats-cont#count
+/   h6
+/     | Count by curreny
+/     - Invoice::CURRENCY.each do |currency|
+/       span id="stats-#{currency}" class="stats"
+/         b= link_to currency, invoices_path(q: { currency_eq: currency })
+/         i 0
+
+/ .col-md-5.stats-cont#overdue_count
+/   h6
+/     | Overdue count by currency
+/     - Invoice::CURRENCY.each do |currency|
+/       span id="stats-#{currency}" class="stats"
+/         b= link_to currency, invoices_path(q: { currency_eq: currency, state_eq: :overdue })
+/         i 0
+/ .col-md-2
+/   h6#clear-filter
+/     = link_to 'Clear Filters', invoices_path, class: "btn btn-xs btn-danger"
+
+/ javascript:
+/   $.ajax({
+/     url: "#{statistics_invoices_path}.json",
+/     type: 'get'
+/   })
+/   .done(function (data) {
+/     $.each(data.count, function( _, el ) {
+/       $('#count #stats-'+el.currency+' i').text(el.invoices_count);
+/     });
+/     $.each(data.overdue_count, function( _, el ) {
+/       $('#overdue_count #stats-'+el.currency+' i').text(el.invoices_count);
+/     });
+/   });
