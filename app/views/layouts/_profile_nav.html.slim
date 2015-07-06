@@ -5,7 +5,7 @@ aside
         = link_to dashboard_path, class: current_page?(dashboard_path) && 'active'
           i.fa.fa-user Dashboard
       li
-        = link_to api_companies_path, class: current_page?(api_companies_path) && 'active'
+        a href="/companies"
           i.fa.fa-briefcase My Companies
       li
         a href="/clients"
