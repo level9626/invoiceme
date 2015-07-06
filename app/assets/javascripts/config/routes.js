@@ -29,6 +29,10 @@ angular.module('InvMe')
         templateUrl: 'companies/index.html',
         controller: 'CompaniesIndexCtrl'
       })
+      .when('/payments', {
+        templateUrl: 'companies/index.html',
+        controller: 'CompaniesIndexCtrl'
+      })
       // static pages
       .when('/404', {
         templateUrl: 'static_pages/404.html',
