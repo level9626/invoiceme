@@ -3,20 +3,16 @@
 /  - currency (select)
 /  - invoice date (from - to)
 
-.panel.panel-default.panel_invoice
-  .panel-heading
-    panel-title.filter_text Filters
-    span.pull-right.clickable
-      i.glyphicon.glyphicon-chevron-down.filter_glyph
-  .panel-body.dropdown_panel
-    / = search_form_for @search, :builder => SimpleForm::FormBuilder do |f|
-    /   / Client contain text
-    /   = f.label :client_name_cont, 'Client', class: "fa fa-tag"
-    /   = f.input :client_name_cont, collection: current_user.clients.map{|client| [client.name, client.name]}, label: false
+in-filter
+  .form-group
+    label for="client_name_cont" Client
+    input#client_name_cont.form-control placeholder="Enter Client Name" name="q[client_name_cont]"
+  .form-group
+    label for="state_eq" Status
+    select#state_eq.form-control name="q[state_eq]"
+      option ng-repeat="status in ['', 'open', 'close', 'overdue']" value='{{status}}'
+       | {{ status }}
 
-    /   / Status: closed/open/overdue
-    /   = f.label :state_eq, 'Status', class: "fa fa-check"
-    /   = f.input :state_eq, collection: ['open', 'close', 'overdue'], label: false
 
     /   / Currency: EUR/USD/UAH/RUB
     /   = f.label :currency_cont, 'Currency', class: "fa fa-usd"

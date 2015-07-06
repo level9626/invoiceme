@@ -11,7 +11,8 @@ angular.module('InvoicesApp')
         },
         query: {
           method: 'GET',
-          isArray: false
+          isArray: false,
+          q: '@q'
         }
       });
 
