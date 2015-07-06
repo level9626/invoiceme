@@ -12,20 +12,14 @@ in-filter
     select#state_eq.form-control name="q[state_eq]"
       option ng-repeat="status in ['', 'open', 'close', 'overdue']" value='{{status}}'
        | {{ status }}
-
-
-    /   / Currency: EUR/USD/UAH/RUB
-    /   = f.label :currency_cont, 'Currency', class: "fa fa-usd"
-    /   = f.input :currency_cont, collection: ['EUR', 'USD', 'UAH', 'RUB'], label: false
+  .form-group
+    label for="currency_cont" Currency
+    select#currency_cont.form-control name="q[currency_cont]"
+      option ng-repeat="currency in ['', 'USD', 'UAH', 'RUB']" value='{{currency}}'
+       | {{ currency }}
 
     /   / Invoice: from date to date
     /   = f.label :invoice_date_gteq, 'From Date', class: "fa fa-calendar"
     /   = f.input :invoice_date_gteq, as: :string, input_html: { class: "datepicker" }, label: false
     /   = f.label :invoice_date_lteq, 'to Date', class: "fa fa-calendar"
     /   = f.input :invoice_date_lteq, as: :string, input_html: { class: "datepicker" }, label: false
-
-
-    /   = f.button :submit, "Filter", class: "btn btn-round btn-primary"
-    /   /= f.button :submit, "Clear Filter"
-    /   .pull-right
-    /     = link_to 'Clear Filters', invoices_path, class: "btn btn-round btn-danger"
