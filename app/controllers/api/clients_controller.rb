@@ -7,7 +7,9 @@ module Api
     def index
       @search = _search
       @clients = @search.result.paginate(per_page: 10, page: params[:page])
-      respond_with(@clients)
+      respond_to do |format|
+        format.json { render template: 'clients/index.json' }
+      end
     end
 
     def show

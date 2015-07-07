@@ -11,6 +11,7 @@ module Api
 
       respond_to do |format|
         format.html
+        format.json { render template: 'payments/index.json' }
         format.csv { send_data @payments.to_csv }
       end
     end
