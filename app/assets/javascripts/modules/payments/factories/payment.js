@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('ClientsApp')
-    .factory('Client',
+angular.module('PaymentsApp')
+    .factory('Payment',
         ['$resource',
             function($resource) {
 
-                return $resource('/api/clients/:id', { id: '@id' }, {
+                return $resource('/api/payments/:id', { id: '@id' }, {
                     update: {
                         method: 'PUT'
                     },
@@ -16,4 +16,4 @@ angular.module('ClientsApp')
                 });
 
             }
-    ]);
+        ]);

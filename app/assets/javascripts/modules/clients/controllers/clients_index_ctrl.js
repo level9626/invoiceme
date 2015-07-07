@@ -3,12 +3,12 @@
 angular.module('ClientsApp')
     .controller('ClientsIndexCtrl',
         ['$scope',
-            '$sce',
-            'Client',
-            function ($scope, $sce, Client) {
+         '$sce',
+         'Client',
+         function ($scope, $sce, Client) {
 
-                Client.query(function (data) {
-                    $scope.clients = data.clients;
-                });
+             Client.query(function (data) {
+                 $scope.clients = data.clients;
+             });
 
-            }]);
+         }]);

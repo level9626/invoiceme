@@ -30,8 +30,8 @@ angular.module('InvMe')
         controller: 'CompaniesIndexCtrl'
       })
       .when('/payments', {
-        templateUrl: 'companies/index.html',
-        controller: 'CompaniesIndexCtrl'
+        templateUrl: 'payments/index.html',
+        controller: 'PaymentsIndexCtrl'
       })
       // static pages
       .when('/404', {

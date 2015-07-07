@@ -7,11 +7,15 @@ module Api
     def index
       @search = _search
       @companies = @search.result.paginate(per_page: 10, page: params[:page])
-      @companies
+      respond_to do |format|
+        format.json { render template: 'companies/index.json' }
+      end
     end
 
     def show
-      respond_with(@company)
+      respond_to do |format|
+        format.json { render template: 'companies/show.json' }
+      end
     end
 
     def new
@@ -42,7 +46,9 @@ module Api
 
     def default
       @company = current_user.companies.default
-      render template: 'companies/show.json'
+      respond_to do |format|
+        format.json { render template: 'companies/show.json' }
+      end
     end
 
     private

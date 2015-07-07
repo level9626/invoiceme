@@ -5,16 +5,16 @@ view-title Payments
       /div ng-include="'shared/tags'"
   .col-md-4.pull-right.filter
     div.btn-group role="group"
-    a href="#" class="btn btn-success btn-sm"
-      .fa.fa-download
-        | Download to CSV
-    /div ng-include="'filter'"
+      a href="#" class="btn btn-success btn-sm"
+        .fa.fa-download
+          | Download to CSV
+    div ng-include="'payments/_filter.html'"
 
   .col-md-12
     h5.text-center ng-if="!payments"
       h5.text-center You don't have payments yet.
 
-    section.task-panel.tasks-widget ng-if="invoices"
+    section.task-panel.tasks-widget ng-if="payments"
       .panel-body
         .task-content
           table.table
@@ -40,4 +40,4 @@ view-title Payments
                 td
                   | {{ payment.invoice.currency }}
                 td
-                  div ng-include="'payments/_actions.html'"
+                  /div ng-include="'payments/_actions.html'"
