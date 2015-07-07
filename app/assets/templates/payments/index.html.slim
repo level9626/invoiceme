@@ -5,10 +5,10 @@ view-title Payments
       /div ng-include="'shared/tags'"
   .col-md-4.pull-right.filter
     div.btn-group role="group"
-    a href="#" class="btn btn-success btn-sm"
-      .fa.fa-download
-        | Download to CSV
-    /div ng-include="'filter'"
+      a href="#" class="btn btn-success btn-sm"
+        .fa.fa-download
+          | Download to CSV
+    div ng-include="'payments/_filter.html'"
 
   .col-md-12
     h5.text-center ng-if="!payments"
