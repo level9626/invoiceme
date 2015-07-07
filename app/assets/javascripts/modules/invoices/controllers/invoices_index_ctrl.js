@@ -3,11 +3,11 @@
 angular.module('InvoicesApp')
   .controller('InvoicesIndexCtrl',
     ['$scope',
-    '$sce',
+    '$location',
     'Invoice',
-    function ($scope, $sce, Invoice) {
+    function ($scope, $location, Invoice) {
 
-      Invoice.query(function (data) {
+      Invoice.query($location.search(), function (data) {
         $scope.invoices = data.invoices;
       });
 
