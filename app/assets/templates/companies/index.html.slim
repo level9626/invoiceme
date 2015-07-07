@@ -12,7 +12,7 @@ view-title Companies
   h5.text-center ng-if="!companies"
     | You don't have companies yet.
 
-  tr ng-repeat="company in companies"
+  div ng-repeat="company in companies"
     .col-md-4.col-sm-4.mb
-      /div ng-include="'companies/_company.html'"
+      div ng-include="'companies/_company.html'"
   /= will_paginate @companies

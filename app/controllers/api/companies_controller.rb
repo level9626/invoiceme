@@ -13,7 +13,9 @@ module Api
     end
 
     def show
-      respond_with(@company)
+      respond_to do |format|
+        format.json { render template: 'companies/show.json' }
+      end
     end
 
     def new

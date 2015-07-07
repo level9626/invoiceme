@@ -8,6 +8,7 @@
 //= require angular-rails-templates
 //= require angular-morris-chart
 //= require angularjs-viewhead
+//= require angular-sanitize
 //= require_tree ../templates
 //= require app
 //= require_tree ./modules/clients
