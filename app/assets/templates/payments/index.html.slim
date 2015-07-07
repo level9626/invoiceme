@@ -14,7 +14,7 @@ view-title Payments
     h5.text-center ng-if="!payments"
       h5.text-center You don't have payments yet.
 
-    section.task-panel.tasks-widget ng-if="invoices"
+    section.task-panel.tasks-widget ng-if="payments"
       .panel-body
         .task-content
           table.table
@@ -40,4 +40,4 @@ view-title Payments
                 td
                   | {{ payment.invoice.currency }}
                 td
-                  div ng-include="'payments/_actions.html'"
+                  /div ng-include="'payments/_actions.html'"

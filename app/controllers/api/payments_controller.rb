@@ -2,15 +2,13 @@ module Api
   class PaymentsController < ApplicationController
     before_action :_set_payment, only: [:show, :edit, :update, :destroy]
 
-    respond_to :html
+    ## Responce formats
+    respond_to :json
 
     def index
       @search = _search
-
       @payments = @search.result.paginate(per_page: 10, page: params[:page])
-
       respond_to do |format|
-        format.html
         format.json { render template: 'payments/index.json' }
         format.csv { send_data @payments.to_csv }
       end

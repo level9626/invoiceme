@@ -2,13 +2,13 @@
 
 angular.module('PaymentsApp')
     .controller('PaymentsIndexCtrl',
-    ['$scope',
-        '$sce',
-        'Payment',
-        function ($scope, $sce, Payment) {
+        ['$scope',
+         '$sce',
+         'Payment',
+         function ($scope, $sce, Payment) {
 
-            Payment.query(function (data) {
+             Payment.query(function (data) {
                 $scope.payments = data.payments;
-            });
+             });
 
-        }]);
+         }]);
