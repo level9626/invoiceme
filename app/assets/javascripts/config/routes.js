@@ -33,6 +33,10 @@ angular.module('InvMe')
         templateUrl: 'companies/index.html',
         controller: 'CompaniesIndexCtrl'
       })
+      .when('/companies/:id', {
+          templateUrl: 'companies/show.html',
+          controller: 'CompaniesShowCtrl'
+      })
       .when('/payments', {
         templateUrl: 'payments/index.html',
         controller: 'PaymentsIndexCtrl'
