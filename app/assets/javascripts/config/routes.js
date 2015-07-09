@@ -25,6 +25,10 @@ angular.module('InvMe')
         templateUrl: 'clients/index.html',
         controller: 'ClientsIndexCtrl'
       })
+      .when('/clients/:id', {
+          templateUrl: 'clients/show.html',
+          controller: 'ClientsShowCtrl'
+      })
       .when('/companies', {
         templateUrl: 'companies/index.html',
         controller: 'CompaniesIndexCtrl'
