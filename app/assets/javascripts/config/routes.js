@@ -33,6 +33,10 @@ angular.module('InvMe')
         templateUrl: 'payments/index.html',
         controller: 'PaymentsIndexCtrl'
       })
+      .when('/payments/:id', {
+          templateUrl: 'payments/show.html',
+          controller: 'PaymentsShowCtrl'
+      })
       // static pages
       .when('/404', {
         templateUrl: 'static_pages/404.html',
