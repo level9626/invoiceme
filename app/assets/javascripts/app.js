@@ -15,6 +15,7 @@ angular.module('InvMe', [
   'viewhead',
   'templates',
   'angular.morris-chart',
+  'ui.bootstrap',
   'ngRoute',
   'ngResource',
   'InvoicesApp',

@@ -7,6 +7,7 @@
 //= require angular-resource/angular-resource
 //= require angular-rails-templates
 //= require angular-morris-chart
+//= require angular-bootstrap
 //= require angularjs-viewhead
 //= require angular-sanitize
 //= require_tree ../templates
