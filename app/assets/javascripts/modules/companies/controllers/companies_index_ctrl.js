@@ -7,8 +7,11 @@ angular.module('CompaniesApp')
          'Company',
          function ($scope, $sce, Company) {
 
-             Company.query(function (data) {
+             Company.query(function (data, company) {
                  $scope.companies = data.companies;
+
+                 $scope.company = company;
+                 $scope.company.address = $sce.trustAsHtml(company.address);
              });
 
          }]);

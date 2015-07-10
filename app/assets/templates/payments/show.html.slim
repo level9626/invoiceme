@@ -1,0 +1,51 @@
+view-title Payments
+
+.col-md-8
+  section.task-panel.tasks-widget
+    .panel-body
+      .task-content
+        .form-inputs
+          .row.centered
+            .col-md-4
+              b.inline-label
+                | Invoice: {{ payment.invoice.invoice_number }}
+
+            .col-md-4
+              b.inline-label
+                | Currency: {{ payment.currency }}
+
+            .col-md-4
+              b.inline-label
+                | Client name: {{ payment.invoice.client.name }}
+
+        hr
+          .row
+            .col-md-4 Amount
+            .col-md-6
+              | {{ payment.amount }}
+            .col-md-2
+              i
+                | {{ payment.currency }}
+          .row
+            .col-md-4 Banking overhead
+            .col-md-6
+              | {{ payment.banking_overhead }}
+            .col-md-2
+              i
+                | {{ payment.currency }}
+
+        hr
+          .row
+            .col-md-12
+              #comments
+                h4 Comments
+                div ng-repeat="comment in payments.comments"
+                  p
+                    | {{ comment.content }}
+        hr
+          .row
+            .col-md-12
+              #attachments
+                h4 Attachments
+                div ng-repeat="attachment in payments.attachments"
+                  /= link_to 'Download attachment', attachment.file.url

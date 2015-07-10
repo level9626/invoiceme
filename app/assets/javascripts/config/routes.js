@@ -25,13 +25,25 @@ angular.module('InvMe')
         templateUrl: 'clients/index.html',
         controller: 'ClientsIndexCtrl'
       })
+      .when('/clients/:id', {
+          templateUrl: 'clients/show.html',
+          controller: 'ClientsShowCtrl'
+      })
       .when('/companies', {
         templateUrl: 'companies/index.html',
         controller: 'CompaniesIndexCtrl'
       })
+      .when('/companies/:id', {
+          templateUrl: 'companies/show.html',
+          controller: 'CompaniesShowCtrl'
+      })
       .when('/payments', {
         templateUrl: 'payments/index.html',
         controller: 'PaymentsIndexCtrl'
+      })
+      .when('/payments/:id', {
+          templateUrl: 'payments/show.html',
+          controller: 'PaymentsShowCtrl'
       })
       // static pages
       .when('/404', {

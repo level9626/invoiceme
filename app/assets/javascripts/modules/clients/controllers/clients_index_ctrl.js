@@ -7,8 +7,11 @@ angular.module('ClientsApp')
          'Client',
          function ($scope, $sce, Client) {
 
-             Client.query(function (data) {
+             Client.query(function (data, client) {
                  $scope.clients = data.clients;
+
+                 $scope.client = client;
+                 $scope.client.address = $sce.trustAsHtml(client.address);
              });
 
          }]);
