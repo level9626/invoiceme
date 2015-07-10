@@ -11,7 +11,7 @@ angular.module('EmailTemplatesApp', []);
 angular.module('StaticPagesApp',    []);
 
 angular.module('InvMe', [
-    'ngSanitize',
+  'ngSanitize',
   'viewhead',
   'templates',
   'angular.morris-chart',

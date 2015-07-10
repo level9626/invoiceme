@@ -1,0 +1,27 @@
+/ Navigation
+section#container
+  header
+    a.btn.btn-theme.btn-default.pull-left href='/invoices' < Back
+    .top-menu
+      ul.nav.pull-right.top-menu
+        li data-content-toggle='#invoice-content #show, #invoice-content #edit' data-button-values='Edit,Show'
+          a.btn.btn-theme.btn-default
+            | Edit
+        li
+          a.btn.btn-theme.btn-default data-toggle="modal" href="#paymentModal{{invoice.id}}"
+            | Receive payment
+        li
+          a.btn.btn-theme.btn-default data-toggle="modal" href="#mailingModal{{invoice.id}}"
+            | Send
+        li
+          a href='#' target='_blank' class='btn btn-theme btn-default' Download PDF
+        li
+          a.btn.btn-theme.btn-default data-toggle="modal" href="#commentsModal{{invoice.id}}"
+            | Notes
+            span.badge.comments_count
+              | {{ invoice.comments.length }}
+        li
+          a.btn.btn-theme.btn-default data-toggle="modal" href="#jurnalsModal{{invoice.id}}"
+            | Activities
+            span.badge
+              | {{ invoice.journals.length }}
