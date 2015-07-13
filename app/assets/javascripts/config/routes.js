@@ -18,7 +18,7 @@ angular.module('InvMe')
         controller: 'InvoicesIndexCtrl'
       })
       .when('/invoices/:id', {
-        templateUrl: 'dashboard/index.html',
+        templateUrl: 'invoices/show.html',
         controller: 'InvoicesShowCtrl'
       })
       .when('/clients', {

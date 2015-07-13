@@ -6,6 +6,10 @@
     "angular-resource": "latest",
     "angular-morris-chart": "latest",
     "angularjs-viewhead": "latest",
-    "angular-bootstrap": "latest"
+    "angular-bootstrap": "latest",
+    "angular-sanitize": "latest",
+    "angular-material": "latest",
+    "angular-animate": "latest",
+    "angular-aria": "latest"
   }
 }

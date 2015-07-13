@@ -23,7 +23,7 @@ module Api
 
     def show
       respond_to do |format|
-        format.html
+        format.json { render template: 'invoices/show.json'}
         format.pdf do
           render pdf: 'file',
                  template: 'invoices/_show_content.html.slim',

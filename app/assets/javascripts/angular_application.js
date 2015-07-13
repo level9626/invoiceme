@@ -9,6 +9,9 @@
 //= require angular-morris-chart
 //= require angular-bootstrap
 //= require angularjs-viewhead
+//= require angular-material
+//= require angular-animate
+//= require angular-aria
 //= require angular-sanitize
 //= require_tree ../templates
 //= require app

@@ -12,6 +12,7 @@ angular.module('StaticPagesApp',    []);
 
 angular.module('InvMe', [
   'ngSanitize',
+  'ngMaterial',
   'viewhead',
   'templates',
   'angular.morris-chart',
