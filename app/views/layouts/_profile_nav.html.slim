@@ -1,5 +1,8 @@
 aside
   #sidebar.nav-collapse
+    div
+      a.logo href="/"
+        b Invoiceme
     ul#nav-accordion.sidebar-menu
       li
         = link_to dashboard_path, class: current_page?(dashboard_path) && 'active'

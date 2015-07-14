@@ -506,7 +506,7 @@ div.panel-body {
     margin-left: 5px;
   }
   background-color: $grey-light-lightest;
-  padding-top: 50px;
+  padding-top: 60px;
   margin-left: 210px;
   color: $grey-light;
   font-family: 'Ruda', sans-serif !important;
@@ -616,6 +616,14 @@ a.logo span {
 /*notification*/
 #top_menu .nav > li, ul.top-menu > li {
   float: left;
+}
+
+.profile-sub-menu {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  background-color: white;
+  border-bottom: 1px solid #dddddd;
 }
 
 .notify-row {
