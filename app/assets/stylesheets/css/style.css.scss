@@ -558,12 +558,14 @@ div.panel-body {
   position: fixed;
   left: 0;
   right: 0;
+  top: 0;
   z-index: 1002;
 }
 
 .black-bg {
   background: $orange-main;
   border-bottom: 1px solid #c9aa5f;
+  margin-left: 210px;
 }
 
 .wrapper {

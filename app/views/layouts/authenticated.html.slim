@@ -10,9 +10,9 @@ html ng-app="InvMe"
   body
 
     header
-      == render 'layouts/navigation'
       == render 'layouts/profile_nav'
     section#main-content
+      == render 'layouts/navigation'
       section.wrapper.site-min-height
         .row.mt
           .col-lg-12 ng-view=""
