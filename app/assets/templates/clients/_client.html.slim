@@ -1,4 +1,4 @@
-.white-panel.pn.donut-chart ng-if="clients"
+.white-panel.pn.donut-chart ng-if="client"
   .white-header
     h5
       | {{ client.name }}
@@ -11,13 +11,7 @@
   hr
   footer.clearfix
     .btn-group.pull-left role="group"
-      a ng-click="view" Show
-    /  = link_to 'Show', client, method: :get, \
-    /              class: 'btn btn-default'
-    /  = link_to 'Edit', edit_client_path(client), method: :get, \
-    /              class: 'btn btn-default'
-    /  = link_to 'Email Templates', client_invoice_email_templates_path(client),\
-    /              method: :get, class: 'btn btn-info'
-    /
-    /= button_to 'Destroy', client, data: { confirm: 'Are you sure?' }, \
-    /            method: :delete, class: 'btn btn-danger pull-right'
+      a href="clients/{{ client.id }}" class='btn btn-default' Show
+      a href="#" class='btn btn-default' Edit
+      a href="#" class='btn btn-info' Email Templates
+      a href="#" class='btn btn-danger pull-right' Destroy
