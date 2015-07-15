@@ -3,9 +3,10 @@
 
 /* Import fonts */
 @import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Roboto);
 
 h3 {
-  font-family: 'Ruda', sans-serif !important;
+  font-family: 'Roboto', sans-serif !important;
 }
 
 /* COLOR VARIABLES */
@@ -43,30 +44,29 @@ h3 {
 i {
   &.fa::before {
     padding: 0;
-    color: white;
   }
   &.fa {
     &.fa-cog::before {
       font-size: large;
     }
     &.fa-user::before {
-      color: $orange-main;
+
       padding-right: 5px;
     }
     &.fa-gears::before {
-      color: $orange-main;
+
       padding-right: 5px;
     }
     &.fa-briefcase::before {
-      color: $orange-main;
+
       padding-right: 5px;
     }
     &.fa-users::before {
-      color: $orange-main;
+
       padding-right: 5px;
     }
     &.fa-folder::before {
-      color: $orange-main;
+
       padding-right: 5px;
     }
     &.fa-angle-right::before {
@@ -98,7 +98,7 @@ i {
 body {
   color: $grey-light;
   background: white;
-  font-family: 'Ruda', sans-serif;
+  font-family: 'Roboto', sans-serif;
   padding: 0px !important;
   margin: 0px !important;
   font-size:13px;
@@ -317,7 +317,7 @@ ul.top-menu > li > .logout {
   width: 210px;
   height: 100%;
   position: fixed;
-  background: #424a5d;
+  background: #0069cb;
 }
 
 #sidebar h5 {
@@ -368,7 +368,7 @@ ul.sidebar-menu , ul.sidebar-menu li ul.sub{
 }
 
 ul.sidebar-menu {
-  margin-top: 60px;
+  margin-top: 5px;
 }
 
 #sidebar > ul > li > ul.sub {
@@ -410,7 +410,7 @@ ul.sidebar-menu li ul.sub li a:hover {
 }
 
 ul.sidebar-menu li ul.sub li.active a {
-  color: $blue-lightest;
+  color: #1e7cd8;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -433,21 +433,29 @@ ul.sidebar-menu li a span{
 }
 
 ul.sidebar-menu li a{
-  color: #aeb2b7;
+  color: white;
   text-decoration: none;
   display: block;
-  padding: 15px 0 15px 10px;
-  font-size: 12px;
+  padding: 0 0 0 3em;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 42px;
+  font-family: 'Roboto';
   outline: none;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  img {
+    display: inline !important;
+    margin-right: 1em;
+    margin-bottom: 3px;
+  }
 }
 
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
-  background: $blue-lightest;
+  background: #1e7cd8;
   color: white;
   display: block;
 
@@ -498,22 +506,22 @@ div.panel-body {
 
 
 #invoice_comment {
-  font-family: FontAwesome;
+  font-family: 'Roboto';
 }
 
 #main-content {
   span {
     margin-left: 5px;
   }
-  background-color: $grey-light-lightest;
-  padding-top: 60px;
+  background-color: white;
+  padding-top: 5em;
   margin-left: 210px;
   color: $grey-light;
-  font-family: 'Ruda', sans-serif !important;
+  font-family: 'Roboto', sans-serif !important;
   > section > div > div > {
     h3 {
       color: $grey-light;
-      font-family: 'Ruda', sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-size: 24px;
     }
     div > div > section > div > div > table > tbody > tr:hover {
@@ -563,40 +571,72 @@ div.panel-body {
 }
 
 .black-bg {
-  background: $orange-main;
-  border-bottom: 1px solid #c9aa5f;
+  background: #f6f6f6;
+  height: 5em;
+  border-bottom: 1px solid #e5e5e5;
   margin-left: 210px;
+  padding: 0;
 }
 
 .wrapper {
   display: inline-block;
-  //margin-top: 60px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 15px;
-  padding-top: 0px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  padding-top: 30px;
   width: 100%;
 }
 
 //navigation logo text with yield field name
+#sidebar > .logo-rectangle {
+  background-color: #1e88e5;
+  height: 5em;
+}
+.page-title {
+  float: left;
+  display: inline;
+  margin-top: -4px;
+  margin-left: 3em;
+}
+#container > header > .btn-circle {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5em;
+
+  width: 21px;
+  height: 21px;
+  text-align: center;
+  padding: 2px 1px;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 15px;
+  border: solid 1px #dfe1e9;
+  cursor: pointer;
+}
+
 a.logo {
   display: inline-flex;
+  margin-top: 1em;
   font-size: 20px;
-  color: #ffffff;
-  float: left;
-  margin-top: 15px;
+  font-weight: 400;
+  line-height: 34px;
+  color: white;
   text-transform: uppercase;
   .page-name {
     pointer-events: none;
     cursor: default;
-    color: $grey-light;
+    color: #353535;
+    font-family: 'Roboto';
     font-size: 15px;
-    height: 22px;
-    margin-left: 10px;
-    margin-top: 3px;
-    padding-left: 10px;
-    border-left: 2px solid $grey-light;
+    font-weight: 300;
+    height: 32px;
   }
+}
+
+.user-dropdown-menu {
+  margin-top: -4.2em;
+  margin-right: 2em;
 }
 
 a.logo b {
@@ -2422,7 +2462,7 @@ label {
 
 /* SIGN IN CONFIGURATION */
 #login-page {
-  font-family: 'Ruda', sans-serif;
+  font-family: 'Roboto', sans-serif;
   > div > form > div > span {
     font-size: 13px;
     font-weight: 400;
@@ -2445,7 +2485,7 @@ label {
 }
 /* SIGN UP CONFIGURATION */
 #new_user {
-  font-family: 'Ruda', sans-serif;
+  font-family: 'Roboto', sans-serif;
   > div.modal-dialog > div > div.modal-footer > a {
     text-decoration: none;
     outline: none;
