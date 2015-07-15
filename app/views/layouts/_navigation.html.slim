@@ -1,20 +1,16 @@
 section#container
   header.header.black-bg
-    div
+    div.page-title
       a.logo href="/"
         .page-name ng-bind-template="{{viewTitle}}"
-    /! logo end
-    #top_menu.nav.notify-row
-      /! notification start
-      ul.nav.top-menu
-        li
-          .btn-group
-    .top-menu
-      ul.nav.pull-right.top-menu
-
-
-        li.dropdown
-          button.btn.btn-theme.dropdown-toggle data-toggle="dropdown" type="button"
-            i.fa.fa-cog
-          ul.dropdown-menu.extended.tasks-bar
-            == render 'layouts/navigation_links'
+    btn.btn-default.btn-circle
+      i.fa.fa-chevron-down
+    .pull-right.user-dropdown-menu.clickable
+      | {{ current_user.name }} User Name
+      dropdown-toggle data-toggle="dropdown" type="button"
+        .fa.fa-chevron-down
+      ul.dropdown-menu.extended
+        == render 'layouts/navigation_links'
+          button.btn-default.menu-button.dropdown-toggle
+            .fa.fa-chevron-down
+              ul.dropdown-menu.extended

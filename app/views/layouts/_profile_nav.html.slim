@@ -1,22 +1,30 @@
 aside
-  #sidebar.nav-collapse
-    div
+  #sidebar
+    div.logo-rectangle.centered
       a.logo href="/"
-        b Invoiceme
+        = image_tag('logo.png')
     ul#nav-accordion.sidebar-menu
       li
         = link_to dashboard_path, class: current_page?(dashboard_path) && 'active'
-          i.fa.fa-user Dashboard
+          img src="#{asset_path('icons/dashboard_icon.png')}"
+          | DASHBOARD
       li
         a href="/companies"
-          i.fa.fa-briefcase My Companies
+          img src="#{asset_path('icons/companies_icon.png')}"
+          | COMPANIES
       li
         a href="/clients"
-          i.fa.fa-users My Clients
+          img src="#{asset_path('icons/clients_icon.png')}"
+          | CLIENTS
       li
         a href="/invoices"
-          i.fa.fa-folder My Invoices
+          img src="#{asset_path('icons/invoices_icon.png')}"
+          | INVOICES
       li
         a href="/payments"
-          i.fa.fa-money My Payments
-
+          img src="#{asset_path('icons/payments_icon.png')}"
+          | PAYMENTS
+      li
+        a href="#"
+          img src="#{asset_path('icons/preferences_icon.png')}"
+          | PREFERENCES
