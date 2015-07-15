@@ -1,7 +1,12 @@
 / Navigation
 section#container
   header.profile-sub-menu.row
-    a.btn.btn-theme.btn-default.pull-left href='/invoices' < Back
+    .pull-left.date
+      img src="#{asset_path('calendar.png')}"
+      span
+        | Invoice Date - 
+        span.date
+          | {{ invoice.invoice_date | date:'d MMM yyyy' }}
     .top-menu
       ul.nav.pull-right.top-menu
         li data-content-toggle='#invoice-content #show, #invoice-content #edit' data-button-values='Edit,Show'
