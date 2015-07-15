@@ -17,6 +17,12 @@ h3 {
 
 /* BASIC THEME CONFIGURATION */
 
+img.inline {
+  margin: 0;
+  margin-right: 4px;
+  display: inline-block;
+}
+
 .fa {
   &.fa-tag::before {
     color: $grey-light;

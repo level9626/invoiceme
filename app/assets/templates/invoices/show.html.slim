@@ -2,27 +2,41 @@ view-title Invoice
 div ng-include="'invoices/_show_navigation.html'"
 section#container.thin-menu
   .row.mt
-    .col-md-8#invoice-content
+    .col-md-6#invoice-content
       #show
         div ng-include="'invoices/_show_content.html'"
 
-    .col-md-4
+    .col-md-6
       .panel.panel-default
-        .panel-heading Info
+        .panel-heading
+          img.inline src="#{asset_path('info.png')}"
+          | INFORMATION
         .panel-body
-          p
-            | Status
-            |  {{ invoice.state }}
-          p
-            | Balance
-            |  {{ invoice.balance }}
-          p
-            | Total
-            |  {{ invoice.total }}
+          .col-md-6
+            div donut-chart="" donut-data="invoicePaymentStats" donut-colors="['rgb(0, 188, 68)', 'rgb(214, 44, 52)']" donut-formatter='"currency"'
 
-          div donut-chart="" donut-data="invoicePaymentStats" donut-colors="['rgb(0, 188, 68)', 'rgb(214, 44, 52)']" donut-formatter='"currency"'
+          .col-md-6
+            table.payments
+              tr
+                td.label Status
+                td.status.partly 
+                  | {{ invoice.state }}
+              tr
+                td.label Balance
+                td
+                  | {{ invoice.balance }}
+              tr
+                td.label Total
+                td
+                  | {{ invoice.total }}
+              tr.paymens-info
+                td
+                  | Paid
+                  span.paid-circle
+                td
+                  | Unpaid
+                  span.unpaid-circle
 
-      .panel.panel-default
         .panel-heading Payments
         .panel-body
           table.table

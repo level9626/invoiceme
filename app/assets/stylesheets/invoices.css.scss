@@ -12,6 +12,7 @@ $border: grey;
 //Form
 #invoice {
   @extend .borderise;
+  padding: 0px;
   #header {
     margin-bottom: 50px;
   }
@@ -39,6 +40,22 @@ $border: grey;
 
   #footer {
     background: #DEE2F1;
+  }
+}
+
+table.payments {
+  td.label {
+    color: grey;
+  }
+  td.status.partly {
+    color: #ff8e00;
+  }
+  td {
+    color: #333;
+    padding: 4px 25px;
+  }
+  tr.paymens-info {
+    border-top: 1px solid grey;
   }
 }
 
@@ -255,9 +272,6 @@ body > div.alert {
   background-color: white;
   border-bottom: 1px solid #dddddd;
   .top-menu li a img, .date img {
-    margin: 0;
-    margin-right: 4px;
-    display: inline-block;
     margin-bottom: 4px;
   }
   .date {

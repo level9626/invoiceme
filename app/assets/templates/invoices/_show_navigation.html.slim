@@ -2,7 +2,7 @@
 section#container
   header.profile-sub-menu.row
     .pull-left.date
-      img src="#{asset_path('calendar.png')}"
+      img.inline src="#{asset_path('calendar.png')}"
       span
         | Invoice Date - 
         span.date
@@ -11,19 +11,19 @@ section#container
       ul.nav.pull-right.top-menu
         li
           a.edit href='#'
-            img src="#{asset_path('pen.png')}"
+            img.inline  src="#{asset_path('pen.png')}"
             | Edit
         li
           a.delete href="#"
-            img src="#{asset_path('delete.png')}"
+            img.inline  src="#{asset_path('delete.png')}"
             | Delete
         li
           a.download href="#"
-            img src="#{asset_path('download.png')}"
+            img.inline  src="#{asset_path('download.png')}"
             | Download PDF
         li
           a.mail
-            img src="#{asset_path('mail.png')}"
+            img.inline  src="#{asset_path('mail.png')}"
             | Send Mail
         li
           a.btn.btn-theme.btn-danger href='#'
