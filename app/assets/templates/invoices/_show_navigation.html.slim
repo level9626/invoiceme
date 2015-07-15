@@ -26,12 +26,10 @@ section#container
             img src="#{asset_path('mail.png')}"
             | Send Mail
         li
-          a.btn.btn-theme.btn-default data-toggle="modal" href="#commentsModal{{invoice.id}}"
-            | Notes
-            span.badge.comments_count
-              | {{ invoice.comments.length }}
-        li
-          a.btn.btn-theme.btn-default data-toggle="modal" href="#jurnalsModal{{invoice.id}}"
-            | Activities
+          a.btn.btn-theme.btn-danger href='#'
+            | ACTIVITIES
             span.badge
               | {{ invoice.journals.length }}
+        li
+          a.btn.btn-theme.btn-primary href='#'
+            | RECEIVE PAYMENT

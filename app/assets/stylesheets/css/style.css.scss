@@ -177,9 +177,25 @@ a, a:hover, a:focus {
 
 .btn-theme {
   color: white;
-  background-color: $blue-lightest;
-  border-color: $blue-light-green;
+  /* border-bottom: 2px solid grey; */
+  border-radius: 2px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+  border-width: 0px;
 }
+
+.btn.btn-theme {
+  &.btn-danger {
+    &:hover, &:focus, &.active, &.open {
+      color: #d9534f !important;
+    }
+  }
+  &.btn-primary {
+    &:hover, &:focus, &.active, &.open {
+      color: #337ab7 !important;
+    }
+  }
+}
+
 .btn-theme:hover,
 .btn-theme:focus,
 .btn-theme:active,
