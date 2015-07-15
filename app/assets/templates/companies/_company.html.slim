@@ -1,4 +1,4 @@
-.white-panel.pn.donut-chart ng-if="companies"
+.white-panel.pn.donut-chart ng-if="company"
   .white-header
     h5
       | {{ company.name }}
@@ -13,11 +13,11 @@
   hr
   footer.clearfix
     .btn-group.pull-left role="group"
-      a href="#" class='btn btn-default' Show
+      a href="companies/{{ company.id }}" class='btn btn-default' Show
       a href="#" class='btn btn-default' Edit
       a href="#" class='btn btn-danger pull-right' Destroy
 
-.white-panel.pn.donut-chart ng-if='!companies'
+.white-panel.pn.donut-chart ng-if='!company'
   .white-header
     h5 Notice!
   .row

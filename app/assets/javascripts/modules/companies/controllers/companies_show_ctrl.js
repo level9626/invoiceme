@@ -1,17 +1,14 @@
 'use strict';
 
 angular.module('CompaniesApp')
-    .controller('CompaniesShowCtrl',
+       .controller('CompaniesShowCtrl',
         ['$scope',
-         '$sce',
-         'Companies',
-            function ($scope, $sce, Company) {
+         '$routeParams',
+         'Company',
+             function ($scope, $routeParams, Company) {
 
-                Company.query(function (data, company) {
-                    $scope.companies = data.companies;
+                 Company.get({id: $routeParams['id']}, function (company) {
+                     $scope.company = company;
+                 });
 
-                    $scope.company = company;
-                    $scope.company.address = $sce.trustAsHtml(company.address);
-                });
-
-            }]);
+             }]);
