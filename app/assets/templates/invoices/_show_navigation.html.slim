@@ -9,17 +9,22 @@ section#container
           | {{ invoice.invoice_date | date:'d MMM yyyy' }}
     .top-menu
       ul.nav.pull-right.top-menu
-        li data-content-toggle='#invoice-content #show, #invoice-content #edit' data-button-values='Edit,Show'
-          a.btn.btn-theme.btn-default
+        li
+          a.edit href='#'
+            img src="#{asset_path('pen.png')}"
             | Edit
         li
-          a.btn.btn-theme.btn-default data-toggle="modal" href="#paymentModal{{invoice.id}}"
-            | Receive payment
+          a.delete href="#"
+            img src="#{asset_path('delete.png')}"
+            | Delete
         li
-          a.btn.btn-theme.btn-default data-toggle="modal" href="#mailingModal{{invoice.id}}"
-            | Send
+          a.download href="#"
+            img src="#{asset_path('download.png')}"
+            | Download PDF
         li
-          a href='#' target='_blank' class='btn btn-theme btn-default' Download PDF
+          a.mail
+            img src="#{asset_path('mail.png')}"
+            | Send Mail
         li
           a.btn.btn-theme.btn-default data-toggle="modal" href="#commentsModal{{invoice.id}}"
             | Notes
