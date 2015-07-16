@@ -42,9 +42,56 @@ $border: grey;
     background: #DEE2F1;
   }
 }
+.panel-body {
+  position: relative;
+  div.grey-bg {
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    right: 0px;
+    top: 41px;
+    background-color: whitesmoke;
+    border-bottom: 2px solid #dddddd;
+    height: 40px;
+  }
+}
 
-table.payments {
-  td.label {
+
+table.invoice-items, table.payments-info, table.payments{
+  position: relative;
+  margin-top: 2em;
+  margin-bottom: 2em !important;
+  border: none !important;
+  z-index: 10;
+  thead {
+    background-color: whitesmoke;
+  }
+  & td, & tr td {
+    font-size: 1em;
+    line-height: 1.5em;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+
+table.table .nbrd {
+  &, & tr td, & tr, & td{
+    border: none !important;
+  }
+}
+
+.panel-body.zpt{
+  padding-top: 0;
+  div.grey-bg {
+    height: 37px;
+    top: 1px;
+  }
+  table.payments{
+    margin-top: 0;
+  }
+}
+
+table.payments-info {
+  td.table-label {
     color: grey;
   }
   td.status.partly {
@@ -52,10 +99,24 @@ table.payments {
   }
   td {
     color: #333;
-    padding: 4px 25px;
+    padding: 4px 15px;
   }
   tr.paymens-info {
     border-top: 1px solid grey;
+  }
+  span.paid-circle, span.unpaid-circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    margin: 2px 5px 0 0;
+    display: block;
+    float: left;
+  }
+  span.paid-circle {
+    background-color: #00bd22;
+  }
+  span.unpaid-circle {
+    background-color: #d22f2f;
   }
 }
 
@@ -317,4 +378,9 @@ body > div.alert {
     color: white;
     margin-top: 5px;
   }
+}
+
+div#donut {
+  top: -5em;
+  height: 200px;
 }

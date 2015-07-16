@@ -5,132 +5,77 @@
       img.inline src="#{asset_path('book.png')}"
       | DETAILS
     .panel-body
-      section#header
-        .row
-          .col-md-6
-            .pull-left#logo
-              img src="{{ invoice.company.logo.logo.url }}" size='50x50'
-          .col-md-6.text-right 
-            | INVOICE 
-            | {{ invoice.invoice_number }}
-
-      section#invoice_number-invoice-date
-        .row
-          .col-md-6#invoice_number
-            span
-              b.inline-label INVOICE NUMBER:
-              | {{ invoice.invoice_number }}
-          .col-md-6#invoice-date
-            .fa.fa-calendar
-              b.inline-label INVOICE DATE
-              span
-                | {{ invoice.invoice_date | date:'medium' }}
-
-      hr
       section#company-client
         .row
           .col-md-6
-            .panel.panel-default
-              .panel-heading
-                h3.panel-title
-                  b.inline-label From:
-                  span
-                    | {{ invoice.company.name }}
-              .panel-body
-                .row
-                  .col-md-6 ng-bind-html="invoice.company_row_text"
+            h3.panel-title
+              b.inline-label From:
+              span
+                | {{ invoice.company.name }}
+            div ng-bind-html="invoice.company_row_text"
           .col-md-6
-            .panel.panel-default
-              .panel-heading
-                h3.panel-title
-                  b.inline-label To:
-                  span
-                    | {{ invoice.client.name }}
-              .panel-body
-                .row
-                  .col-md-6 ng-bind-html="invoice.client_row_text"
+            h3.panel-title
+              b.inline-label To:
+              span
+                | {{ invoice.client.name }}
+            div ng-bind-html="invoice.client_row_text"
+    .panel-body
+      div.grey-bg
+      table.table.invoice-items
+        thead.panel-heading
+          tr
+            th DESCRIPTION
+            th HOURS/TASKS
+            th RATE
+            th AMOUNT
+        tbody
+          tr ng-repeat="invoice_item in invoice.invoice_items"
+            td
+              | {{ invoice_item.description || '--/--' }}
+            td
+              | {{ invoice_item.hours_or_tasks }}
+            td
+              | {{ invoice_item.rate }}
+            td
+              span
+                | {{ invoice_item.amount }}
+              b.currency_value
+                | {{ invoice.currency }}
+    hr
+    .panel-body
+      table.table
+        tbody
+          tr.nbrd
+            td
+              strong Subtotal:
+            td#subtotal
+              span
+                | {{ invoice.subtotal }}
+              b.currency_value
+                | {{ invoice.currency }}
+          tr
+            td
+              strong Vat Rate:
+            td#vat-rate
+              | {{ invoice.vat_rate || '--/--' }}
+          tr
+            td
+              strong Vat:
+            td#vat
+              | {{ invoice.vat || '--/--' }}
+          tr
+            td
+              strong Discount:
+            td#discount
+              | {{ invoice.discount || '--/--' }}
+          tr
+            td
+              strong Currency
+            td#currency
+              span
+                | {{ invoice.currency || '--/--' }}
 
-      hr
-      section
-        .panel.panel-default
-          .panel-body
-            table class="table"
-              thead
-                tr
-                  th
-                    .fa.fa-pencil
-                      b.inline-label DESCRIPTION
-                  th
-                    .fa.fa-clock-o
-                      b.inline-label HOURS/TASKS
-                  th
-                    .fa.fa-star
-                      b.inline-label RATE
-                  th
-                    .fa.fa-money
-                      b.inline-label AMOUNT
+    .panel-heading COMMENTS
+    .panel-body
+      | {{ invoice.comment }}
 
-                .row
-                  tbody#invoice_items_container
-                    tr ng-repeat="invoice_item in invoice.invoice_items"
-                      td
-                        | {{ invoice_item.description || '--/--' }}
-                      td
-                        | {{ invoice_item.hours_or_tasks }}
-                      td
-                        | {{ invoice_item.rate }}
-                      td
-                        span
-                          | {{ invoice_item.amount }}
-                        b.currency_value
-                          | {{ invoice.currency }} 
-      hr
-      section
-        .row
-          .col-md-6
-            p
-              strong COMMENT:
-            p
-              | {{ invoice.comment }}
-          .col-md-6.pull-right
-            table class="table"
-              tbody
-                tr
-                  td
-                    strong SUBTOTAL:
-                  td#subtotal
-                    span
-                      | {{ invoice.subtotal }}
-                    b.currency_value
-                      | {{ invoice.currency }}
-                tr
-                  td
-                    strong VAT RATE:
-                  td#vat-rate
-                    | {{ invoice.vat_rate || '--/--' }}
-                tr
-                  td
-                    strong VAT:
-                  td#vat
-                    | {{ invoice.vat || '--/--' }}
-                tr
-                  td
-                    strong DISCOUNT:
-                  td#discount
-                    | {{ invoice.discount || '--/--' }}
-                tr
-                  td
-                    strong CURRENCY
-                  td#currency
-                    span
-                      | {{ invoice.currency || '--/--' }}
-
-      hr
-      section#footer
-        .col-md-6
-          p.text-left Thank You For Your Business!
-        .col-md-6
-          p.text-right
-            | Make all checks payable to:
-            span
-              | {{ invoice.company.name }}

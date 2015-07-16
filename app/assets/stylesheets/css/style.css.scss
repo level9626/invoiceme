@@ -219,7 +219,7 @@ a, a:hover, a:focus {
     right: -10px;
     border: 1px solid white;
     & > span {
-      padding: 3px 7px;
+      padding: 4px 7px;
       margin: 0 !important;
       border: 1px solid white;
       border-radius: 10px;
@@ -619,7 +619,7 @@ div.panel-body {
 
 .black-bg {
   background: #f6f6f6;
-  height: 5em;
+  height: 5.1em;
   border-bottom: 1px solid #e5e5e5;
   margin-left: 210px;
   padding: 0;
@@ -627,10 +627,10 @@ div.panel-body {
 
 .wrapper {
   display: inline-block;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
   padding-bottom: 30px;
-  padding-top: 30px;
+  padding-top: 0;
   width: 100%;
 }
 
