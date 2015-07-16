@@ -10,3 +10,4 @@ json.invoice_items @invoice.invoice_items
 json.balance @invoice.balance
 json.total @invoice.total
 json.percent_payed @invoice.percent_payed
+json.activities @invoice.journals
