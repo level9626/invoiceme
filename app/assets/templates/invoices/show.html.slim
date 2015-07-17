@@ -2,37 +2,52 @@ view-title Invoice
 div ng-include="'invoices/_show_navigation.html'"
 section#container.thin-menu
   .row.mt
-    .col-md-8#invoice-content
+    .col-md-6#invoice-content
       #show
         div ng-include="'invoices/_show_content.html'"
 
-    .col-md-4
+    .col-md-6
       .panel.panel-default
-        .panel-heading Info
+        .panel-heading
+          img.inline src="#{asset_path('info.png')}"
+          | INFORMATION
         .panel-body
-          p
-            | Status
-            |  {{ invoice.state }}
-          p
-            | Balance
-            |  {{ invoice.balance }}
-          p
-            | Total
-            |  {{ invoice.total }}
+          .col-md-6
+            div#donut donut-chart="" donut-data="invoicePaymentStats" donut-colors="['rgb(0, 188, 68)', 'rgb(214, 44, 52)']" donut-formatter='"currency"' donut-resize='true'
 
-          div donut-chart="" donut-data="invoicePaymentStats" donut-colors="['rgb(0, 188, 68)', 'rgb(214, 44, 52)']" donut-formatter='"currency"'
+          .col-md-6
+            table.payments-info.table
+              tr.nbrd
+                td.table-label Status
+                td.status.partly 
+                  | {{ invoice.state }}
+              tr.nbrd
+                td.table-label Balance
+                td
+                  | {{ invoice.balance }}
+              tr.nbrd
+                td.table-label Total
+                td
+                  | {{ invoice.total }}
+              tr.paymens-info
+                td
+                  span.paid-circle
+                  | Paid
+                td
+                  span.unpaid-circle
+                  | Unpaid
 
-      .panel.panel-default
         .panel-heading Payments
-        .panel-body
-          table.table
+        .panel-body.zpt
+          div.grey-bg
+          table.table.payments.col-md-12
             thead
               tr
                 th Date
                 th amount
-            tbody
-              tr ng-repeat='payment in invoice.payments'
-                td
-                  | {{ payment.created_at | date:'medium' }}
-                td
-                  | {{ payment.amount }}
+              tbody
+                tr ng-repeat='payment in invoice.payments'
+                  td
+                    | {{ payment.created_at | date:'medium' }}
+                  td
+                    | {{ payment.amount }}

@@ -11,10 +11,10 @@ angular.module('InvoicesApp')
         $scope.invoice = invoice;
         var percent_payed = Math.round(invoice.percent_payed)
         $scope.invoicePaymentStats = [{
-          label: 'Percent Payed',
+          label: 'Payed',
           value: percent_payed
         },{
-          label: 'Percent not payed',
+          label: 'Unpayed',
           value: 100 - percent_payed
         }];
       });

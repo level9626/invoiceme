@@ -2,31 +2,38 @@
 section#container
   header.profile-sub-menu.row
     .pull-left.date
-      img src="#{asset_path('calendar.png')}"
+      img.inline src="#{asset_path('calendar.png')}"
       span
         | Invoice Date - 
         span.date
           | {{ invoice.invoice_date | date:'d MMM yyyy' }}
     .top-menu
       ul.nav.pull-right.top-menu
-        li data-content-toggle='#invoice-content #show, #invoice-content #edit' data-button-values='Edit,Show'
-          a.btn.btn-theme.btn-default
+        li
+          a.edit href='#'
+            img.inline  src="#{asset_path('pen.png')}"
             | Edit
         li
-          a.btn.btn-theme.btn-default data-toggle="modal" href="#paymentModal{{invoice.id}}"
-            | Receive payment
+          a.delete href="#"
+            img.inline  src="#{asset_path('delete.png')}"
+            | Delete
         li
-          a.btn.btn-theme.btn-default data-toggle="modal" href="#mailingModal{{invoice.id}}"
-            | Send
+          a.download href="#"
+            img.inline  src="#{asset_path('download.png')}"
+            | Download PDF
         li
-          a href='#' target='_blank' class='btn btn-theme btn-default' Download PDF
+          a.mail href="#"
+            img.inline  src="#{asset_path('mail.png')}"
+            | Send Mail
         li
-          a.btn.btn-theme.btn-default data-toggle="modal" href="#commentsModal{{invoice.id}}"
-            | Notes
-            span.badge.comments_count
-              | {{ invoice.comments.length }}
-        li
-          a.btn.btn-theme.btn-default data-toggle="modal" href="#jurnalsModal{{invoice.id}}"
-            | Activities
+          a.btn.btn-theme.btn-danger href='#'
+            | ACTIVITIES
             span.badge
-              | {{ invoice.journals.length }}
+              span
+                | 5
+        li
+          a.btn.btn-theme.btn-primary href='#'
+            | RECEIVE PAYMENT
+            span.badge
+              span
+                | 5
