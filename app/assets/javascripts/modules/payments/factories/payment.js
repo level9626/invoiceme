@@ -11,7 +11,7 @@ angular.module('PaymentsApp')
                     },
                     query: {
                         method: 'GET',
-                        isArray: true
+                        isArray: false
                     }
                 });
 

@@ -12,7 +12,7 @@ view-title Clients
   h5.text-center ng-if="!clients"
     | You don't have clients yet.
 
-  div ng-repeat="invoice in invoices"
+  div ng-if="clients" ng-repeat="client in clients"
     .col-md-6
       div ng-include="'clients/_client.html'"
   /= will_paginate @companies

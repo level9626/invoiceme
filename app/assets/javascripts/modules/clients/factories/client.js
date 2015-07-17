@@ -11,8 +11,7 @@ angular.module('ClientsApp')
                     },
                     query: {
                         method: 'GET',
-                        isArray: true,
-                        q: '@q'
+                        isArray: false
                     }
                 });
 
