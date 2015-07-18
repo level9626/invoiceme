@@ -77,6 +77,11 @@ module Api
       respond_with(@statistics)
     end
 
+    # Returns valid for user invoice number for user
+    def invoice_number
+      respond_with({invoice_number: current_user.invoices.new.invoice_number})
+    end
+
     ## Private Scope
 
     private

@@ -5,7 +5,6 @@ json.invoices do
                            :created_at, :updated_at, :company_row_text, \
                            :client_row_text, :subtotal, :vat_rate, :vat, \
                            :discount, :state, :net
-    json.url api_invoice_url(invoice, format: :json)
     json.client invoice.client
     json.company invoice.company
     json.payments invoice.payments

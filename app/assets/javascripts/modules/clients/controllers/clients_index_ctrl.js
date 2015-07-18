@@ -1,17 +1,22 @@
 'use strict';
 
 angular.module('ClientsApp')
-    .controller('ClientsIndexCtrl',
-        ['$scope',
-         '$sce',
-         'Client',
-         function ($scope, $sce, Client) {
+  .controller('ClientsIndexCtrl',
+  ['$scope',
+   'Client',
+   function ($scope, Client) {
 
-             Client.query(function (data, client) {
-                 $scope.clients = data.clients;
+    _init();
 
-                 $scope.client = client;
-                 $scope.client.address = $sce.trustAsHtml(client.address);
-             });
+    $scope.destoryClient = function (client_id) {
+      Client.remove({id: client_id});
+      _init();
+    }
 
-         }]);
+    function _init() {
+      Client.query(function (data) {
+        $scope.clients = data.clients;
+      });
+    }
+
+  }]);

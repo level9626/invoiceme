@@ -8,11 +8,11 @@ angular.module('InvMe')
     $locationProvider.html5Mode(true);
 
     $routeProvider
-      // Add
       .when('/', {
         templateUrl: 'dashboard/index.html',
         controller: 'DashboardCtrl'
       })
+      // Invoices Recourse
       .when('/invoices', {
         templateUrl: 'invoices/index.html',
         controller: 'InvoicesIndexCtrl'
@@ -29,14 +29,24 @@ angular.module('InvMe')
         templateUrl: 'invoices/edit.html',
         controller: 'InvoiceEditCtrl'
       })
+      // Clients Recourse
       .when('/clients', {
         templateUrl: 'clients/index.html',
         controller: 'ClientsIndexCtrl'
       })
+      .when('/clients/new', {
+        templateUrl: 'clients/new.html',
+        controller: 'ClientNewCtrl'
+      })
       .when('/clients/:id', {
           templateUrl: 'clients/show.html',
-          controller: 'ClientsShowCtrl'
+          controller: 'ClientShowCtrl'
       })
+      .when('/clients/:id/edit', {
+          templateUrl: 'clients/edit.html',
+          controller: 'ClientEditCtrl'
+      })
+      // Companies Recourse
       .when('/companies', {
         templateUrl: 'companies/index.html',
         controller: 'CompaniesIndexCtrl'
@@ -45,6 +55,7 @@ angular.module('InvMe')
           templateUrl: 'companies/show.html',
           controller: 'CompaniesShowCtrl'
       })
+      // Payments Recourse
       .when('/payments', {
         templateUrl: 'payments/index.html',
         controller: 'PaymentsIndexCtrl'

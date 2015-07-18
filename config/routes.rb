@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       end
       collection do
         get :statistics
+        get :invoice_number
       end
     end
 
