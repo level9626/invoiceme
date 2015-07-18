@@ -3,20 +3,17 @@
 angular.module('ClientsApp')
   .controller('ClientsIndexCtrl',
   ['$scope',
+   '$location',
    'Client',
-   function ($scope, Client) {
+   function ($scope, $location, Client) {
 
-    _init();
+    Client.query(function (data) {
+      $scope.clients = data.clients;
+    });
 
     $scope.destoryClient = function (client_id) {
       Client.remove({id: client_id});
-      _init();
-    }
-
-    function _init() {
-      Client.query(function (data) {
-        $scope.clients = data.clients;
-      });
+       $location.path('/clients')
     }
 
   }]);
