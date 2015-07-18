@@ -68,9 +68,17 @@ angular.module('InvMe')
         templateUrl: 'payments/index.html',
         controller: 'PaymentsIndexCtrl'
       })
+      .when('/payments/new', {
+        templateUrl: 'payments/new.html',
+        controller: 'PaymentNewCtrl'
+      })
       .when('/payments/:id', {
-          templateUrl: 'payments/show.html',
-          controller: 'PaymentsShowCtrl'
+        templateUrl: 'payments/show.html',
+        controller: 'PaymentShowCtrl'
+      })
+      .when('/payments/:id/edit', {
+        templateUrl: 'payments/edit.html',
+        controller: 'PaymentEditCtrl'
       })
       // static pages
       .when('/404', {

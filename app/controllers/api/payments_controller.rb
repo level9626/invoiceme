@@ -9,13 +9,12 @@ module Api
       @search = _search
       @payments = @search.result.paginate(per_page: 10, page: params[:page])
       respond_to do |format|
-        format.json { render template: 'payments/index.json' }
+        format.json { render template: 'api/payments/index.json' }
         format.csv { send_data @payments.to_csv }
       end
     end
 
     def show
-      respond_with(@payment)
     end
 
     def edit

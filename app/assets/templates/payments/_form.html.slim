@@ -1,0 +1,54 @@
+form ng-submit='savePyment()'
+
+  .form-inputs
+    .row
+      .col-md-4
+        b.inline-label Invoice:
+
+      .col-md-4
+        b.inline-label Currency:
+
+      .col-md-4
+        b.inline-label Client name:
+
+  / hr
+  /   .row.amount-field
+  /     .col-md-2
+  /       = f.label 'Amount'
+  /     .col-md-8
+  /       = f.input :amount,
+  /                 input_html: { value: f.object.amount || @invoice.unpayed },
+  /                 label: false
+  /     .col-md-2.right-inner-addon
+  /       i= @invoice.currency
+  /   .row.banking-overhead-field
+  /     .col-md-12
+  /       .form-inline
+  /         .form-group
+  /           | Banking overhead
+  /         .form-group
+  /           = f.input :banking_overhead, input_html: { class: 'span3' }, label: false
+  /         .form-group
+  /           i= @invoice.currency
+
+  / hr
+  /   .row
+  /     .col-md-12
+  /       #comments
+  /         = f.label 'Comments'
+  /         = f.simple_fields_for :comments do |comment|
+  /           = render 'payments/comment_fields', :f => comment
+  /         .links
+  /           = link_to_add_association 'Add comment', f, :comments, \
+  /                                            class: 'btn btn-primary btn-xs add_attachment'
+
+
+
+  / hr
+  / .row
+  /   .form-inline
+  /     = f.button :submit, 'Save', class: 'btn btn-primary save-button-payment'
+
+  /     .pull-right
+  /       = link_to 'Inspect Invoice', invoice_url(@invoice.id), method: :get, \
+  /                       class: 'btn btn-default inspect-button-payment'

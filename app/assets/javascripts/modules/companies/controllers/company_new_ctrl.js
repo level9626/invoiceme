@@ -9,7 +9,7 @@ angular.module('CompaniesApp')
 
     $scope.saveCompany = function () {
       Company.save($scope.company, function (Company) {
-        $location.path('/companies/'+Company.id);
+        $location.path('/companies/'+company.id);
       });
     };
 

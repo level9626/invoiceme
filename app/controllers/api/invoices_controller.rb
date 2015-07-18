@@ -15,15 +15,11 @@ module Api
     def index
       @search = _search
       @invoices = @search.result.paginate(per_page: 10, page: params[:page])
-      respond_to do |format|
-        format.json { render template: 'invoices/index.json' }
-        format.csv { send_data @invoices.to_csv }
-      end
     end
 
     def show
       respond_to do |format|
-        format.json { render template: 'invoices/show.json'}
+        format.json { render template: 'api/invoices/show.json'}
         format.pdf do
           render pdf: 'file',
                  template: 'invoices/_show_content.html.slim',
