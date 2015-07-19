@@ -1,4 +1,29 @@
 view-title Invoices
+.row.filter-border.centered
+  .col-md-4
+    /.btn-group ng-repeat="invoice in invoices"
+      /button.btn.invoice-filter-button
+      /  | {{ invoice.state }}
+    .btn-group
+      button.btn.invoice-filter-button All
+      button.btn.invoice-filter-button Draft
+      button.btn.invoice-filter-button Unpaid
+      button.btn.invoice-filter-button Partly
+      button.btn.invoice-filter-button Paid
+      button.btn.invoice-filter-button Overdue
+      button.btn.invoice-filter-button Bad Debt
+  .col-md-4
+    .btn-group
+      button.btn.invoice-filter-button USD
+      button.btn.invoice-filter-button UAH
+      button.btn.invoice-filter-button EUR
+      button.btn.invoice-filter-button RUB
+  .col-md-4
+    .btn-group
+      button.btn.invoice-filter-button Client
+      button.btn.invoice-filter-button Company
+      button.btn.invoice-filter-button Period
+
 .row.mt
   .col-md-8#tags.tags
     .col-md-12.row
@@ -6,51 +31,59 @@ view-title Invoices
     .col-md-12.row
       div ng-include="'layouts/_tags.html'"
   .col-md-4.pull-right.filter
-    div.btn-group role="group"
+    /div.btn-group role="group"
       a href="#" class="btn btn-primary btn-sm"
         .fa.fa-plus
           | Add New Invoice
       a href="#" class="btn btn-success btn-sm"
         .fa.fa-download
           | Download to CSV
-    div ng-include="'invoices/_filter.html'"
+    /div ng-include="'invoices/_filter.html'"
 
   .col-md-12
     h5.text-center ng-if="!invoices"
       | You don't have invoices yet.
 
-    section.task-panel.tasks-widget ng-if="invoices"
-      .panel-body
-        .task-content
-          table.table
-            thead
-              tr
-                th.activities_table
-                th Date
-                th No.
-                th Due date
-                th Balance
-                th Total
-                th Status
-                th.actions_table
+    section.task-panel.tasks-widget.panel.panel-default#invoice ng-if="invoices"
+      table.table.table-hover data-toggle="table" data-click-to-select="true"
+        thead.panel-heading
+          tr
+            th.activities-table data-checkbox="true"
+            th #
+            th Date issued
+            th Date due
+            th Company
+            th Client
+            th Total
+            th Paid
+            th Outstanding
+            th.status-table Status
+            th.actions-table
 
-            tbody
-              tr ng-repeat="invoice in invoices"
-                td
-                  a.btn.btn-primary.btn-xs data-toggle="modal" href="#jurnalsModal{{invoice.id}}"
-                    i.fa.fa-book
-                td
-                  | {{ invoice.invoice_date | date:'m/d/Y' }}
-                td
-                  | {{ invoice.invoice_number }}
-                td
-                  | {{ invoice.due_date | date:'m/d/Y' }}
-                td
-                  | {{ invoice.balance }}
-                td
-                  | {{ invoice.total }}
-                td
-                  | {{ invoice.state }}
-                td
-                  div ng-include="'invoices/_actions.html'"
+        tbody.panel-heading
+          tr ng-repeat="invoice in invoices"
+            td
+              /a.btn.btn-primary.btn-xs data-toggle="modal" href="#jurnalsModal{{invoice.id}}"
+              /  i.fa.fa-book
+            td
+              |# {{ invoice.invoice_number }}
+            td
+              | {{ invoice.invoice_date | date:'d MMM yyyy' }}
+            td
+              | {{ invoice.due_date | date:'d MMM yyyy' }}
+            td.total-currency
+              | {{ invoice.company.name }}
+            td.total-currency
+              | {{ invoice.client.name }}
+            td.total-currency
+              | {{ invoice.total }}
+            td.paid-currency
+              | {{ invoice.balance }}
+            td.out-currency
+              | {{ invoice.outstanding }}
+            td
+              span.label-status.partly
+                | {{ invoice.state }}
+            td
+              div ng-include="'invoices/_actions.html'"
     / = will_paginate @invoices

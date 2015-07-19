@@ -208,12 +208,87 @@ table.payments-info {
   }
 }
 
-.activities_table {
+.activities-table {
   width: 70px;
 }
-.actions_table {
-  width: 200px;
+
+.status-table {
+  width: 1em;
 }
+.actions-table {
+  width: 1em;
+}
+
+// Invoice filters
+.invoice-filter-button {
+  border: 0px;
+  padding-bottom: 15px;
+  font-weight: bold;
+  background-color: transparent;
+  &:focus {
+    outline: none;
+    border-radius: 0px !important;
+    border-bottom: solid 2px #2780B5;
+    color: #2780B5;
+  }
+  &:hover {
+    border-bottom: solid 2px #2780B5;
+    border-radius: 0px;
+    color: #2780B5;
+  }
+  &:active {
+    box-shadow: none;
+    outline: none !important;
+  }
+}
+
+.filter-border {
+  border-bottom: solid 1px #F6F6F6;
+  margin-top: 15px;
+  //padding-bottom: 10px;
+}
+
+// Invoice currency fields
+.total-currency {
+  color: black;
+  font-weight: bold;
+}
+.paid-currency {
+  color: #1E9C54;
+  font-weight: bold;
+}
+.out-currency {
+  color: #D68D48;
+  font-weight: bold;
+}
+
+// Invoice status
+.label-status {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+  color: white;
+  &.partly {
+    background-color: #FF8E01;
+  }
+  &.unpaid {
+    background-color: #D32E31;
+  }
+  &.draft {
+    background-color: #999999;
+  }
+}
+
+.fa-ellipsis-v {
+
+}
+
 #badge_corner {
   position: relative;
   right: 12px;

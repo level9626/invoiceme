@@ -1,16 +1,25 @@
 section#container
   header.header.black-bg
-    div.page-title
-      a.logo href="/"
-        .page-name ng-bind-template="{{viewTitle}}"
-    btn.btn-default.btn-circle
-      i.fa.fa-chevron-down
-    .pull-right.user-dropdown-menu.clickable
-      | {{ current_user.name }} User Name
-      dropdown-toggle data-toggle="dropdown" type="button"
-        .fa.fa-chevron-down
-      ul.dropdown-menu.extended
-        == render 'layouts/navigation_links'
-          button.btn-default.menu-button.dropdown-toggle
-            .fa.fa-chevron-down
+    .row.center-block
+      .col-md-3
+        a.logo.page-title href="/"
+          ng-bind-template="{{ viewTitle }}"
+
+      .col-md-6.centered
+        btn.btn-default.btn-circle
+          i.fa.fa-chevron-down
+      .col-md-3
+        ul.pull-right
+          li
+            .user-dropdown-menu.clickable
+              | {{ current_user.name }} User Name
+              dropdown-toggle data-toggle="dropdown" type="button"
+                .fa.fa-chevron-down
               ul.dropdown-menu.extended
+                == render 'layouts/navigation_links'
+                  button.btn-default.menu-button.dropdown-toggle
+                    .fa.fa-chevron-down
+                      ul.dropdown-menu.extended
+          li.pull-right
+            md-button class="md-fab md-mini add-icon" aria-label="Add new"
+              md-icon md-font-icon="fa-plus" class="fa add-plus"

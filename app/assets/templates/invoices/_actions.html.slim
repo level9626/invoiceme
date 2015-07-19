@@ -1,27 +1,29 @@
 .pull-right
-  a href="invoices/{{invoice.id}}" class="btn btn-primary btn-xs tab"
-    i.fa.fa-eye
-  a.btn.btn-success.btn-xs data-toggle="modal" href="#paymentModal{{invoice.id}}"
-    | Receive payment
-
-  .btn-group
-    button.btn.btn-default.btn-xs.tab.dropdown-toggle aria-expanded="false" data-toggle="dropdown" type="button"
-      i.fa.fa-chevron-down#invoices_actions_button
-    ul.dropdown-menu.pull-right role="menu"
-      li
-        a.btn data-toggle="modal" href="#commentsModal{{invoice.id}}"
-          | Notes
-          span.badge
-            | {{ invoice.comments.length }}
-      li
-        a href="#" class="btn btn-theme01"
-          | Invoice Mails
-      li
-        a href="#" class="btn btn-theme01" target='blank'
-          | Download PDF
-      li
-        a href="#" class="btn btn-theme01"
-          | Delete invoice
+  a href="#" class="btn"
+    i.fa.fa-ellipsis-v
+  /a href="invoices/{{invoice.id}}" class="btn btn-primary btn-xs tab"
+  /  i.fa.fa-eye
+  /a.btn.btn-success.btn-xs data-toggle="modal" href="#paymentModal{{invoice.id}}"
+  /  | Receive payment
+  /
+  /.btn-group
+  /  button.btn.btn-default.btn-xs.tab.dropdown-toggle aria-expanded="false" data-toggle="dropdown" type="button"
+  /    i.fa.fa-chevron-down#invoices_actions_button
+  /  ul.dropdown-menu.pull-right role="menu"
+  /    li
+  /      a.btn data-toggle="modal" href="#commentsModal{{invoice.id}}"
+  /        | Notes
+  /        span.badge
+  /          | {{ invoice.comments.length }}
+  /    li
+  /      a href="#" class="btn btn-theme01"
+  /        | Invoice Mails
+  /    li
+  /      a href="#" class="btn btn-theme01" target='blank'
+  /        | Download PDF
+  /    li
+  /      a href="#" class="btn btn-theme01"
+  /        | Delete invoice
 / == render 'journals'
 / == render 'comment'
 / == render 'payment'
