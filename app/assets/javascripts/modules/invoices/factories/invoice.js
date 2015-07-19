@@ -20,6 +20,11 @@ angular.module('InvoicesApp')
           method: 'GET',
           isArray: false,
           url: _baseUrl + 'invoice_number'
+        },
+        statistics: {
+          method: 'GET',
+          isArray: false,
+          url: _baseUrl + 'statistics'
         }
       });
 

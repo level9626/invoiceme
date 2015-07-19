@@ -25,6 +25,7 @@
 class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
   include InvoiceMachine
   include Modules::WithCurrency
+  extend Modules::Statistics
   CURRENCY = %w(EUR USD UAH RUB)
   STATE = state_machines[:state].states.map(&:name).map(&:to_s)
 
@@ -124,28 +125,6 @@ class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
   end
 
   ## Class methods
-
-  # Statistics
-  def self.count_by_currency(user)
-    connection.execute(<<-EOQ)
-      SELECT currency, count(*) AS invoices_count
-      FROM invoices
-      WHERE user_id=#{user.id}
-      AND state <> 'closed'
-      GROUP BY currency;
-    EOQ
-  end
-
-  def self.overdue_count_by_currency(user)
-    connection.execute(<<-EOQ)
-      SELECT currency, count(*) AS invoices_count
-      FROM invoices
-      WHERE state='overdue'
-      AND user_id=#{user.id}
-      AND state <> 'closed'
-      GROUP BY currency;
-    EOQ
-  end
 
   private
 

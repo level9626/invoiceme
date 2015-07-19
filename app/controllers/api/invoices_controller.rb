@@ -65,12 +65,7 @@ module Api
 
     # Statistics and metrics
     def statistics
-      @statistics = {}
-      @statistics[:count] = Invoice.count_by_currency(current_user)
-      @statistics[:overdue_count] = \
-        Invoice.overdue_count_by_currency(current_user)
-
-      respond_with(@statistics)
+      respond_with(Invoice.build_statistics(current_user))
     end
 
     # Returns valid for user invoice number for user
