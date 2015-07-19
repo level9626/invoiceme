@@ -18,6 +18,12 @@ h3 {
 
 /* BASIC THEME CONFIGURATION */
 
+img.inline {
+  margin: 0;
+  margin-right: 4px;
+  display: inline-block;
+}
+
 .fa {
   &.fa-tag::before {
     color: $grey-light;
@@ -177,9 +183,52 @@ a, a:hover, a:focus {
 
 .btn-theme {
   color: white;
+  /* border-bottom: 2px solid grey; */
+  border-radius: 2px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+  border-width: 0px;
+}
+
+.btn.btn-theme, a.btn.btn-theme {
+  position: relative;
+  padding: 0 15px 0 15px;
+  &.btn-danger {
+    &:hover, &:focus, &.active, &.open {
+      color: #d9534f !important;
+    }
+    .badge > span {
+      color: #d9534f;
+      border-color: #d9534f;
+    }
+  }
+  &.btn-primary {
+    &:hover, &:focus, &.active, &.open {
+      color: #337ab7 !important;
+    }
+    .badge > span {
+      color: #337ab7;
+      border-color: #337ab7;
+    }
+  }
+  .badge {
+    display: inline-flex;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    border: 1px solid white;
+    & > span {
+      padding: 4px 7px;
+      margin: 0 !important;
+      border: 1px solid white;
+      border-radius: 10px;
+    }
+  }
   background-color: $blue-lightest;
   border-color: $blue-light-green;
 }
+
 .btn-theme:hover,
 .btn-theme:focus,
 .btn-theme:active,
