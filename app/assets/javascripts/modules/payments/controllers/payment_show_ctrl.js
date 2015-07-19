@@ -13,7 +13,7 @@ angular.module('PaymentsApp')
     });
 
     $scope.destoryPayment = function (payment_id) {
-      Company.remove({id: payment_id});
+      Payment.remove({id: payment_id});
       $location.path('/payments')
     }
 

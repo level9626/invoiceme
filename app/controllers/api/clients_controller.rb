@@ -2,7 +2,7 @@ module Api
   class ClientsController < ApplicationController
     before_action :_set_client, only: [:show, :edit, :update, :destroy]
 
-    respond_to :html, :json
+    respond_to :json
 
     def index
       @search = _search

@@ -41,7 +41,7 @@ module Api
     def default
       @company = current_user.companies.default
       respond_to do |format|
-        format.json { render template: 'companies/show.json' }
+        format.json { render template: 'api/companies/show.json' }
       end
     end
 

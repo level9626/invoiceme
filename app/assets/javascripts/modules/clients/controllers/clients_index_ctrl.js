@@ -15,5 +15,4 @@ angular.module('ClientsApp')
       Client.remove({id: client_id});
        $location.path('/clients')
     }
-
   }]);

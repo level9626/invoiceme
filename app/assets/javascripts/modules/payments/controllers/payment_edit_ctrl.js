@@ -4,7 +4,7 @@ angular.module('PaymentsApp')
   .controller('PaymentEditCtrl',
   ['$scope',
    '$routeParams',
-   'Company',
+   'Payment',
    function ($scope, $routeParams, Payment) {
 
     Payment.get({id: $routeParams['id']}, function (payment) {
