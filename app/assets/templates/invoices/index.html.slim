@@ -1,4 +1,7 @@
 view-title Invoices
+.row.add-button-row
+  md-button class="md-fab md-mini add-icon pull-right" aria-label="Add new"
+    md-icon md-font-icon="fa-plus" class="fa add-plus"
 .row.filter-border.centered
   .col-md-4
     /.btn-group ng-repeat="invoice in invoices"
@@ -25,20 +28,20 @@ view-title Invoices
       button.btn.invoice-filter-button Period
 
 .row.mt
-  .col-md-8#tags.tags
-    .col-md-12.row
-      div ng-include="'invoices/_statistics.html'"
-    .col-md-12.row
-      div ng-include="'layouts/_tags.html'"
-  .col-md-4.pull-right.filter
-    /div.btn-group role="group"
-      a href="#" class="btn btn-primary btn-sm"
-        .fa.fa-plus
-          | Add New Invoice
-      a href="#" class="btn btn-success btn-sm"
-        .fa.fa-download
-          | Download to CSV
-    /div ng-include="'invoices/_filter.html'"
+  /.col-md-8#tags.tags
+  /  .col-md-12.row
+  /    div ng-include="'invoices/_statistics.html'"
+  /  .col-md-12.row
+  /    div ng-include="'layouts/_tags.html'"
+  /.col-md-4.pull-right.filter
+  /  div.btn-group role="group"
+  /    a href="#" class="btn btn-primary btn-sm"
+  /      .fa.fa-plus
+  /        | Add New Invoice
+  /    a href="#" class="btn btn-success btn-sm"
+  /      .fa.fa-download
+  /        | Download to CSV
+  /  div ng-include="'invoices/_filter.html'"
 
   .col-md-12
     h5.text-center ng-if="!invoices"
@@ -84,6 +87,6 @@ view-title Invoices
             td
               span.label-status.partly
                 | {{ invoice.state }}
-            td
+            td.actions-table
               div ng-include="'invoices/_actions.html'"
     / = will_paginate @invoices

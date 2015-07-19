@@ -9,17 +9,13 @@ section#container
         btn.btn-default.btn-circle
           i.fa.fa-chevron-down
       .col-md-3
-        ul.pull-right
-          li
-            .user-dropdown-menu.clickable
-              | {{ current_user.name }} User Name
-              dropdown-toggle data-toggle="dropdown" type="button"
-                .fa.fa-chevron-down
-              ul.dropdown-menu.extended
-                == render 'layouts/navigation_links'
-                  button.btn-default.menu-button.dropdown-toggle
-                    .fa.fa-chevron-down
-                      ul.dropdown-menu.extended
-          li.pull-right
-            md-button class="md-fab md-mini add-icon" aria-label="Add new"
-              md-icon md-font-icon="fa-plus" class="fa add-plus"
+        .pull-right
+          .user-dropdown-menu.clickable
+            | {{ current_user.name }} User Name
+            dropdown-toggle data-toggle="dropdown" type="button"
+              .fa.fa-chevron-down
+            ul.dropdown-menu.extended
+              == render 'layouts/navigation_links'
+                button.btn-default.menu-button.dropdown-toggle
+                  .fa.fa-chevron-down
+                    ul.dropdown-menu.extended

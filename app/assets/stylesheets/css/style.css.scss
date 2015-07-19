@@ -687,8 +687,9 @@ a.logo {
 }
 
 .add-icon {
-  margin-top: 1em;
-  margin-right: 0px;
+  margin-top: -1.5em;
+  margin: -20px 15px -6px 8px !important;
+  z-index: 1002 !important;
 }
 
 #container > header > button {
