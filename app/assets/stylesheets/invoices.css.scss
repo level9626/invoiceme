@@ -224,7 +224,7 @@ table.payments-info {
 // Invoice filters
 .invoice-filter-button {
   border: 0px;
-  padding-bottom: 15px;
+  padding-bottom: 16px;
   font-weight: bold;
   background-color: transparent;
   &:focus {
@@ -234,7 +234,8 @@ table.payments-info {
     color: #2780B5;
   }
   &:hover {
-    border-bottom: solid 2px #2780B5;
+    border-bottom: 2px solid #2780B5;
+    padding-bottom: 14px;
     border-radius: 0px;
     color: #2780B5;
   }
@@ -250,6 +251,7 @@ table.payments-info {
 
 .filter-border {
   border-bottom: solid 1px #F6F6F6;
+  padding-bottom: 0px;
   margin-top: 15px;
   //padding-bottom: 10px;
 }
