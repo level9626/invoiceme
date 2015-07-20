@@ -6,9 +6,8 @@
         section#header
           .row
             .col-md-6#logo
-              / Will be appended dynamically
-              img src='{{invoice.company.logo}}' size='50x50'
-            .col-md-6.text-right= "INVOICE {{invoice.invoice_number}}"
+            .col-md-6.text-right
+              | INVOICE {{invoice.invoice_number}}
 
         section#invoice_number-invoice-date
           .row
@@ -34,7 +33,7 @@
                   abbr title="required"  *
                   | From
                 select#company_id.form-control ng-model="invoice.company_id"
-                  option ng-repeat="company in companies" value='company.id'
+                  option ng-repeat="company in companies" value='{{company.id}}'
                     | {{company.name}}
 
             .col-md-6
@@ -43,102 +42,100 @@
                   abbr title="required"  *
                   | To
                 select#client_id.form-control ng-model="invoice.client_id"
-                  option ng-repeat="client in clients" value='client.id'
+                  option ng-repeat="client in clients" value='{{client.id}}'
                     | {{client.name}}
 
             .col-md-6
               .form-group
                 textarea#company_row_text.form-control ng-model="invoice.company_row_text"
-
-
             .col-md-6
               .form-group
                 textarea#client_row_text.form-control ng-model="invoice.client_row_text"
 
-        hr
-        section
-          table#invoice_items class="table"
-            thead
-              tr
-                th DESCRIPTION
-                th HOURS/TASKS
-                th RATE
-                th AMOUNT
-                th #
-            tbody#invoice_items_container
-          /     = f.simple_fields_for :invoice_items do |invoice_item|
-          /       = render 'invoices/invoice_item_fields', :f => invoice_item
-          / p= link_to_add_association "Add a Item", f, :invoice_items, \
-          /                  class: "btn btn-primary", \
-          /                  'data-association-insertion-node' => '#invoice_items_container',\
-          /                  'data-association-insertion-method' => 'append'
-        hr
-        section
-          .row
-            .col-md-6
-              .form-group
-                label.control-label for="comment" 
-                  abbr title="required"  *
-                  | Comment
-                textarea#comment.form-control ng-model="invoice.comment"
-            .col-md-6.pull-right
-              .form-group
-                label.control-label for="currency" 
-                  abbr title="required"  *
-                  | Currency
-                select#currency.form-control ng-model="invoice.currency"
-                  option ng-repeat="currency in ['EUR', 'USD', 'UAH', 'RUB']" value='{{currency}}'
-                    | {{currency}}
-              table class="table"
-                tbody
-                  tr
-                    td
-                      strong SUBTOTAL:
-                    td#subtotal
-                      span
-                        | {{ invoice.subtotal }}
-                      b.currency_value
-                  tr
-                    td
-                      strong VAT RATE:
-                    td#vat-rate
-                      span
-                        | {{ invoice.vat_rate }}
-                  tr
-                    td
-                      strong VAT:
-                    td#vat
-                      span
-                        | {{ invoice.vat }}
-                  tr
-                    td
-                      strong DISCOUNT:
-                    td#discount
-                      span
-                        | {{ invoice.discount }}
+        / hr
+        / section
+        /   table#invoice_items class="table"
+        /     thead
+        /       tr
+        /         th DESCRIPTION
+        /         th HOURS/TASKS
+        /         th RATE
+        /         th AMOUNT
+        /         th #
+        /     tbody#invoice_items_container
+        /   /     = f.simple_fields_for :invoice_items do |invoice_item|
+        /   /       = render 'invoices/invoice_item_fields', :f => invoice_item
+        /   / p= link_to_add_association "Add a Item", f, :invoice_items, \
+        /   /                  class: "btn btn-primary", \
+        /   /                  'data-association-insertion-node' => '#invoice_items_container',\
+        /   /                  'data-association-insertion-method' => 'append'
+        / hr
+        / section
+        /   .row
+        /     .col-md-6
+        /       .form-group
+        /         label.control-label for="comment" 
+        /           abbr title="required"  *
+        /           | Comment
+        /         textarea#comment.form-control ng-model="invoice.comment"
+        /     .col-md-6.pull-right
+        /       .form-group
+        /         label.control-label for="currency" 
+        /           abbr title="required"  *
+        /           | Currency
+        /         select#currency.form-control ng-model="invoice.currency"
+        /           option ng-repeat="currency in ['EUR', 'USD', 'UAH', 'RUB']" value='{{currency}}'
+        /             | {{currency}}
+        /       table class="table"
+        /         tbody
+        /           tr
+        /             td
+        /               strong SUBTOTAL:
+        /             td#subtotal
+        /               span
+        /                 | {{ invoice.subtotal }}
+        /               b.currency_value
+        /           tr
+        /             td
+        /               strong VAT RATE:
+        /             td#vat-rate
+        /               span
+        /                 | {{ invoice.vat_rate }}
+        /           tr
+        /             td
+        /               strong VAT:
+        /             td#vat
+        /               span
+        /                 | {{ invoice.vat }}
+        /           tr
+        /             td
+        /               strong DISCOUNT:
+        /             td#discount
+        /               span
+        /                 | {{ invoice.discount }}
 
-        hr
-          .row
-            .col-md-12
-              #attachments
-                / = f.label 'Attachments'
-                / = f.simple_fields_for :attachments do |attachment|
-                /   = render 'attachment_fields', :f => attachment
-                / .links
-                /   = link_to_add_association 'Add attachment', f, :attachments, \
-                /                                                        class: 'btn btn-primary btn-xs add_attachment'
-        hr
-        section#footer
-          .col-md-6
-            p.text-left Thank You For Your Business!
-          .col-md-6
-            p.text-right Make all checks payable to: Company name
+        / hr
+        /   .row
+        /     .col-md-12
+        /       #attachments
+        /         / = f.label 'Attachments'
+        /         / = f.simple_fields_for :attachments do |attachment|
+        /         /   = render 'attachment_fields', :f => attachment
+        /         / .links
+        /         /   = link_to_add_association 'Add attachment', f, :attachments, \
+        /         /                                                        class: 'btn btn-primary btn-xs add_attachment'
+        / hr
+        / section#footer
+        /   .col-md-6
+        /     p.text-left Thank You For Your Business!
+        /   .col-md-6
+        /     p.text-right Make all checks payable to: Company name
 
-        br
-        hr
-        .section
-          .form-actions
-            input.btn.btn-default.btn-default.pull-right type="submit" value="Save"
-            / - if @invoice.can_have_instance_actions?
-            /   = f.button :submit, 'Save and Send', class: 'btn-success pull-left', \
-            /                                        id: 'save-and-send'
+        / br
+        / hr
+        / .section
+        /   .form-actions
+        /     input.btn.btn-default.btn-default.pull-right type="submit" value="Save"
+        /     / - if @invoice.can_have_instance_actions?
+        /     /   = f.button :submit, 'Save and Send', class: 'btn-success pull-left', \
+        /     /                                        id: 'save-and-send'

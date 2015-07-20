@@ -8,42 +8,77 @@ angular.module('InvMe')
     $locationProvider.html5Mode(true);
 
     $routeProvider
-      // Add
       .when('/', {
         templateUrl: 'dashboard/index.html',
         controller: 'DashboardCtrl'
       })
+      // Invoices Recourse
       .when('/invoices', {
         templateUrl: 'invoices/index.html',
         controller: 'InvoicesIndexCtrl'
       })
+      .when('/invoices/new', {
+        templateUrl: 'invoices/new.html',
+        controller: 'InvoiceNewCtrl'
+      })
       .when('/invoices/:id', {
         templateUrl: 'invoices/show.html',
-        controller: 'InvoicesShowCtrl'
+        controller: 'InvoiceShowCtrl'
       })
+      .when('/invoices/:id/edit', {
+        templateUrl: 'invoices/edit.html',
+        controller: 'InvoiceEditCtrl'
+      })
+      // Clients Recourse
       .when('/clients', {
         templateUrl: 'clients/index.html',
         controller: 'ClientsIndexCtrl'
       })
+      .when('/clients/new', {
+        templateUrl: 'clients/new.html',
+        controller: 'ClientNewCtrl'
+      })
       .when('/clients/:id', {
           templateUrl: 'clients/show.html',
-          controller: 'ClientsShowCtrl'
+          controller: 'ClientShowCtrl'
       })
+      .when('/clients/:id/edit', {
+          templateUrl: 'clients/edit.html',
+          controller: 'ClientEditCtrl'
+      })
+      // Companies Recourse
       .when('/companies', {
         templateUrl: 'companies/index.html',
         controller: 'CompaniesIndexCtrl'
       })
+      .when('/companies/new', {
+        templateUrl: 'companies/new.html',
+        controller: 'CompanyNewCtrl'
+      })
       .when('/companies/:id', {
           templateUrl: 'companies/show.html',
-          controller: 'CompaniesShowCtrl'
+          controller: 'CompanyShowCtrl'
       })
+      .when('/companies/:id/edit', {
+        templateUrl: 'companies/edit.html',
+        controller: 'CompanyEditCtrl'
+      })
+      // Payments Recourse
       .when('/payments', {
         templateUrl: 'payments/index.html',
         controller: 'PaymentsIndexCtrl'
       })
+      .when('/payments/new', {
+        templateUrl: 'payments/new.html',
+        controller: 'PaymentNewCtrl'
+      })
       .when('/payments/:id', {
-          templateUrl: 'payments/show.html',
-          controller: 'PaymentsShowCtrl'
+        templateUrl: 'payments/show.html',
+        controller: 'PaymentShowCtrl'
+      })
+      .when('/payments/:id/edit', {
+        templateUrl: 'payments/edit.html',
+        controller: 'PaymentEditCtrl'
       })
       // static pages
       .when('/404', {

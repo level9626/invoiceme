@@ -1,18 +1,26 @@
 view-title Companies
-.row
+.row.mt
   .col-md-8#tags.tags
     .col-md-12.row
       /div ng-include="'shared/tags.html'"
   .col-md-4.filter
-    a href="#" class="btn btn-primary btn-sm pull-right"
+    a href="companies/new" class="btn btn-primary btn-sm pull-right"
       .fa.fa-plus
         | Add New Company
 
 .row.mt
-  h5.text-center ng-if="!companies"
-    | You don't have companies yet.
+  .col-md-6.col-md-offset-3
+    .white-panel.pn.donut-chart ng-if='!companies || companies.length <= 0'
+      .white-header
+        h5 Notice!
+      .row
+        .col-sm-12.col-sx-12
+          p You need to create a company in order to continue
+      hr
+      footer.clearfix
+        a href="companies/new" class='btn btn-primary btn-sm'
+          .fa.fa-plus
+          | Add New Company
 
-  div ng-repeat="company in companies"
-    .col-md-4.col-sm-4.mb
-      div ng-include="'companies/_company.html'"
-  /= will_paginate @companies
+  .col-md-4.col-sm-4.mb ng-repeat="company in companies"
+    div ng-include="'companies/_company.html'"

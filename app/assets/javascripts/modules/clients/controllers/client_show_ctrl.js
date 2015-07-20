@@ -1,14 +1,21 @@
 'use strict';
 
 angular.module('ClientsApp')
-       .controller('ClientsShowCtrl',
-        ['$scope',
-         '$routeParams',
-         'Client',
-             function ($scope, $routeParams, Client) {
+  .controller('ClientShowCtrl',
+  ['$scope',
+   '$routeParams',
+   '$location',
+   'Client',
+   function ($scope, $routeParams, $location, Client) {
 
-                 Client.get({id: $routeParams['id']}, function (client) {
-                     $scope.client = client;
-                 });
+    Client.get({id: $routeParams['id']}, function (client) {
+      $scope.client = client;
+    });
 
-         }]);
+    $scope.destoryClient = function (client_id) {
+      Client.remove({id: client_id});
+      $location.path('/clients')
+    }
+
+  }]);
+

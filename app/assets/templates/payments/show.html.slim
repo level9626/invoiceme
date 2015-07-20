@@ -1,9 +1,11 @@
 view-title Payments
 
-.col-md-8
-  section.task-panel.tasks-widget
-    .panel-body
-      .task-content
+.col-md-8.col-md-offset-2.mt
+  .white-panel.pn.donut-chart
+    .white-header
+      h5 Payment
+    .row
+      .col-md-12
         .form-inputs
           .row.centered
             .col-md-4
@@ -16,7 +18,7 @@ view-title Payments
 
             .col-md-4
               b.inline-label
-                | Client name: {{ payment.invoice.client.name }}
+                | Client name: {{ payment.client.name }}
 
         hr
           .row
@@ -49,3 +51,9 @@ view-title Payments
                 h4 Attachments
                 div ng-repeat="attachment in payments.attachments"
                   /= link_to 'Download attachment', attachment.file.url
+    hr
+    footer.clearfix
+      .btn-group.pull-left role="group"
+        a href="payments/{{payment.id}}" class='btn btn-default' Show
+        a href="payments/{{payment.id}}/edit" class='btn btn-default' Edit
+      button.btn.btn-danger.pull-right ng-click='destoryCompany(payment.id)' Destroy

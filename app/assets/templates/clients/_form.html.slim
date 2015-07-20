@@ -1,0 +1,23 @@
+.row.mt
+  .col-md-6.col-md-offset-3
+    .panel.panel-default
+      .panel-heading New Client
+      .panel-body
+        form ng-submit="saveClient()"
+          .form-inputs
+            .form-group
+              label.control-label for="client_name" 
+                abbr title="required" *
+                | Name
+              input#client_name.form-control ng-model="client.name" type="text"
+
+            .form-group
+              label.control-label for="client_address" 
+                abbr title="required" *
+                | Address
+              textarea#client_address.form-control ng-model="client.address"
+
+          .form-actions
+            button.btn.btn-primary type="submit"
+              .fa.fa-plus
+                | New Client

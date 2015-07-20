@@ -1,5 +1,5 @@
 view-title Payments
-.row
+.row.mt
   .col-md-8#tags.tags
     .col-md-12.row
       /div ng-include="'shared/tags'"
@@ -11,8 +11,8 @@ view-title Payments
     div ng-include="'payments/_filter.html'"
 
   .col-md-12
-    /h5.text-center ng-if="!payments"
-    /  h5.text-center You don't have payments yet.
+    h5.text-center ng-if="!payments || payments.length <= 0"
+      h5.text-center You don't have payments yet.
 
     section.task-panel.tasks-widget ng-if="payments"
       .panel-body

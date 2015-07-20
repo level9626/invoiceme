@@ -1,9 +1,0 @@
-- Invoice.state_machines[:state].events.map(&:name).each do |event|
-  - next unless @invoice.send("can_#{event}?")
-
-  = link_to send("#{event}_invoice_path", @invoice), :method => :get, class: "btn btn-theme03"
-    .fa.fa-pencil
-      = event.to_s.camelcase
-
-/ Send invoice via mail
-= render 'mailings'

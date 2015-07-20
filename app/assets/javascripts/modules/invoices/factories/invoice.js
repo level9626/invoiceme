@@ -5,7 +5,9 @@ angular.module('InvoicesApp')
     ['$resource',
     function($resource) {
 
-      return $resource('/api/invoices/:id', { id: '@id' }, {
+      var _baseUrl = '/api/invoices/'
+
+      return $resource(_baseUrl + ':id', { id: '@id' }, {
         update: {
           method: 'PUT'
         },
@@ -13,6 +15,16 @@ angular.module('InvoicesApp')
           method: 'GET',
           isArray: false,
           q: '@q'
+        },
+        invoice_number: {
+          method: 'GET',
+          isArray: false,
+          url: _baseUrl + 'invoice_number'
+        },
+        statistics: {
+          method: 'GET',
+          isArray: false,
+          url: _baseUrl + 'statistics'
         }
       });
 

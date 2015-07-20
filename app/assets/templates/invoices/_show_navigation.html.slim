@@ -10,7 +10,7 @@ section#container
     .top-menu
       ul.nav.pull-right.top-menu
         li
-          a.edit href='#'
+          a.edit href='invoices/{{invoice.id}}/edit'
             img.inline  src="#{asset_path('pen.png')}"
             | Edit
         li
@@ -26,13 +26,13 @@ section#container
             img.inline  src="#{asset_path('mail.png')}"
             | Send Mail
         li
-          a.btn.btn-theme.btn-danger href='#'
+          a.btn.btn-theme2.btn-danger href='#'
             | ACTIVITIES
             span.badge
               span
                 | 5
         li
-          a.btn.btn-theme.btn-primary href='#'
+          a.btn.btn-theme2.btn-primary href='#'
             | RECEIVE PAYMENT
             span.badge
               span

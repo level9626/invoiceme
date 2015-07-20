@@ -1,4 +1,4 @@
-.white-panel.pn.donut-chart ng-if="company"
+.white-panel.pn.donut-chart
   .white-header
     h5
       | {{ company.name }}
@@ -13,18 +13,7 @@
   hr
   footer.clearfix
     .btn-group.pull-left role="group"
-      a href="companies/{{ company.id }}" class='btn btn-default' Show
-      a href="#" class='btn btn-default' Edit
-      a href="#" class='btn btn-danger pull-right' Destroy
+      a href="companies/{{company.id}}" class='btn btn-default' Show
+      a href="companies/{{company.id}}/edit" class='btn btn-default' Edit
+    button.btn.btn-danger.pull-right ng-click='destoryCompany(company.id)' Destroy
 
-.white-panel.pn.donut-chart ng-if='!company'
-  .white-header
-    h5 Notice!
-  .row
-    .col-sm-12.col-sx-12
-      p You need to create a company in order to continue
-  hr
-  footer.clearfix
-    a href="#" class='btn btn-primary btn-sm'
-      .fa.fa-plus
-      | Add New Company

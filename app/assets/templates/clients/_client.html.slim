@@ -1,4 +1,4 @@
-.white-panel.pn.donut-chart ng-if="client"
+.white-panel.pn.donut-chart
   .white-header
     h5
       | {{ client.name }}
@@ -11,7 +11,7 @@
   hr
   footer.clearfix
     .btn-group.pull-left role="group"
-      a href="clients/{{ client.id }}" class='btn btn-default' Show
-      a href="#" class='btn btn-default' Edit
-      a href="#" class='btn btn-info' Email Templates
-      a href="#" class='btn btn-danger pull-right' Destroy
+      a.btn.btn-default href="clients/{{client.id}}" Show
+      a.btn.btn-default href="clients/{{client.id}}/edit" Edit
+      a.btn.btn-info href="clients/{{client.id}}/email_templates" Email Templates
+    button.btn.btn-danger.pull-right ng-click='destoryClient(client.id)' Destroy

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('InvoicesApp')
-  .controller('InvoicesShowCtrl',
+  .controller('InvoiceShowCtrl',
     ['$scope',
     '$routeParams',
     'Invoice',

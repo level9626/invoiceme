@@ -31,20 +31,20 @@ view-title Invoices
       button.btn.invoice-filter-button Period
 
 .row.mt
-  /.col-md-8#tags.tags
-  /  .col-md-12.row
-  /    div ng-include="'invoices/_statistics.html'"
-  /  .col-md-12.row
-  /    div ng-include="'layouts/_tags.html'"
-  /.col-md-4.pull-right.filter
-  /  div.btn-group role="group"
-  /    a href="#" class="btn btn-primary btn-sm"
-  /      .fa.fa-plus
-  /        | Add New Invoice
-  /    a href="#" class="btn btn-success btn-sm"
-  /      .fa.fa-download
-  /        | Download to CSV
-  /  div ng-include="'invoices/_filter.html'"
+  .col-md-8#tags.tags
+    .col-md-12.row
+      div ng-include="'invoices/_statistics.html'"
+    .col-md-12.row
+      div ng-include="'layouts/_tags.html'"
+  .col-md-4.pull-right.filter
+    div.btn-group role="group"
+      a href="invoices/new" class="btn btn-primary btn-sm"
+        .fa.fa-plus
+          | Add New Invoice
+      a href="#" class="btn btn-success btn-sm"
+        .fa.fa-download
+          | Download to CSV
+    /div ng-include="'invoices/_filter.html'"
 
   .col-md-12
     h5.text-center ng-if="!invoices"
