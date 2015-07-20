@@ -648,10 +648,11 @@ div.panel-body {
   margin-left: 3em;
 }
 .btn-circle {
-  display: block;
+  position: absolute;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5em;
+  margin-top: -1em;
+  z-index: 1003 !important;
 
   width: 21px;
   height: 21px;
@@ -662,6 +663,9 @@ div.panel-body {
   border-radius: 15px;
   border: solid 1px #dfe1e9;
   cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 }
 
 a.logo {
