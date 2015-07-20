@@ -693,6 +693,12 @@ a.logo {
   margin-top: 10px;
   height: initial;
 }
+.md-button.md-fab.md-mini.add-icon {
+  background-color: #40A5F7;
+  &:hover {
+    background-color: #0169CC;
+  }
+}
 
 .add-icon {
   margin-top: -1.5em;
