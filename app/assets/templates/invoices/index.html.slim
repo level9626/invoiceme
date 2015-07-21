@@ -1,4 +1,10 @@
 view-title Invoices
+.row.add-button-row.centered
+  btn.btn-default.btn-circle
+    i.fa.fa-chevron-down
+.row.add-button-row
+  a href="invoices/new" class="md-button md-fab md-mini add-icon pull-right"
+    md-icon md-font-icon="fa-plus" class="fa add-plus"
 .row.filter-border.centered
   .col-md-4
     /.btn-group ng-repeat="invoice in invoices"
@@ -6,10 +12,10 @@ view-title Invoices
       /  | {{ invoice.state }}
     .btn-group
       button.btn.invoice-filter-button All
-      button.btn.invoice-filter-button Draft
-      button.btn.invoice-filter-button Unpaid
-      button.btn.invoice-filter-button Partly
-      button.btn.invoice-filter-button Paid
+      button.btn.invoice-filter-button.draft Draft
+      button.btn.invoice-filter-button.unpaid Unpaid
+      button.btn.invoice-filter-button.partly Partly
+      button.btn.invoice-filter-button.paid Paid
       button.btn.invoice-filter-button Overdue
       button.btn.invoice-filter-button Bad Debt
   .col-md-4
@@ -30,11 +36,8 @@ view-title Invoices
       div ng-include="'invoices/_statistics.html'"
     .col-md-12.row
       div ng-include="'layouts/_tags.html'"
-  .col-md-4.pull-right.filter
+  /.col-md-4.pull-right.filter
     div.btn-group role="group"
-      a href="invoices/new" class="btn btn-primary btn-sm"
-        .fa.fa-plus
-          | Add New Invoice
       a href="#" class="btn btn-success btn-sm"
         .fa.fa-download
           | Download to CSV
@@ -84,6 +87,6 @@ view-title Invoices
             td
               span.label-status.partly
                 | {{ invoice.state }}
-            td
+            td.actions-table
               div ng-include="'invoices/_actions.html'"
     / = will_paginate @invoices

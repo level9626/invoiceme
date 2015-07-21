@@ -224,17 +224,17 @@ table.payments-info {
 // Invoice filters
 .invoice-filter-button {
   border: 0px;
-  padding-bottom: 15px;
+  padding-bottom: 16px;
   font-weight: bold;
   background-color: transparent;
   &:focus {
     outline: none;
+    padding-bottom: 14px;
     border-radius: 0px !important;
     border-bottom: solid 2px #2780B5;
     color: #2780B5;
   }
   &:hover {
-    border-bottom: solid 2px #2780B5;
     border-radius: 0px;
     color: #2780B5;
   }
@@ -244,10 +244,14 @@ table.payments-info {
   }
 }
 
+.add-button-row {
+  height: 0px;
+}
+
 .filter-border {
   border-bottom: solid 1px #F6F6F6;
-  margin-top: 15px;
-  //padding-bottom: 10px;
+  padding-bottom: 0px;
+  margin-top: 14px;
 }
 
 // Invoice currency fields
@@ -285,11 +289,76 @@ table.payments-info {
   &.draft {
     background-color: #999999;
   }
+  &.paid {
+    background-color: #00BD21;
+  }
+}
+.partly {
+  &:hover {
+    color: #FF8E01;
+  }
+  &:focus {
+    padding-bottom: 14px;
+    color: #FF8E01;
+    border-bottom: solid 2px #FF8E01;
+  }
+}
+.unpaid {
+  &:hover {
+    color: #D32E31;
+  }
+  &:focus {
+    padding-bottom: 14px;
+    color: #D32E31;
+    border-bottom: solid 2px #D32E31;
+  }
+}
+.draft {
+  &:hover {
+    color: #999999;
+  }
+  &:focus {
+    padding-bottom: 14px;
+    color: #999999;
+    border-bottom: solid 2px #999999;
+  }
+}
+.paid {
+  &:hover {
+    color: #00BD21;
+  }
+  &:focus {
+    padding-bottom: 14px;
+    color: #00BD21;
+    border-bottom: solid 2px #00BD21;
+  }
 }
 
-.fa-ellipsis-v {
 
+// Invoice action buttons
+.groupX {
+  font-size: 16px;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: rgb(49, 46, 46);
+  background-color: rgba(224, 224, 224, 0.96);
+  text-transform: none;
+  font-weight: 400;
+  min-width:100px;
 }
+
+.md-button.middle {
+  border-radius: 0;
+  border-left: 1px solid rgba(230, 230, 230, 0.96);
+  border-right: 1px solid rgba(230, 230, 230, 0.96);
+}
+
+.md-button:not([disabled]):hover {
+  background-color: rgba(193, 193, 193, 0.96);
+  color: rgba(44, 65, 164, 0.96);
+  transition: 0.3s;
+}
+
 
 #badge_corner {
   position: relative;

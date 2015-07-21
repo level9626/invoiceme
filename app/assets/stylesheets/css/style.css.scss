@@ -652,10 +652,11 @@ div.panel-body {
   margin-left: 3em;
 }
 .btn-circle {
-  display: block;
+  position: absolute;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5em;
+  margin-top: -1em;
+  z-index: 1003 !important;
 
   width: 21px;
   height: 21px;
@@ -666,6 +667,9 @@ div.panel-body {
   border-radius: 15px;
   border: solid 1px #dfe1e9;
   cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 }
 
 a.logo {
@@ -689,10 +693,17 @@ a.logo {
   margin-top: 10px;
   height: initial;
 }
+.md-button.md-fab.md-mini.add-icon {
+  background-color: #40A5F7;
+  &:hover {
+    background-color: #0169CC;
+  }
+}
 
 .add-icon {
-  margin-top: 1em;
-  margin-right: 0px;
+  margin-top: -1.5em;
+  margin: -20px 15px -6px 8px !important;
+  z-index: 1002 !important;
 }
 
 #container > header > button {
