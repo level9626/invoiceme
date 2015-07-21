@@ -3,16 +3,19 @@
 angular.module('CompaniesApp')
   .controller('CompaniesIndexCtrl',
   ['$scope',
-   '$location',
    'Company',
-   function ($scope, $location, Company) {
+   function ($scope, Company) {
 
-    Company.query(function (data) {
-      $scope.companies = data.companies;
-    });
+    _init();
 
     $scope.destoryCompany = function (company_id) {
       Company.remove({id: company_id});
-      $location.path('/companies')
+      _init();
+    }
+
+    function _init() {
+      Company.query(function (data) {
+        $scope.companies = data.companies;
+      });
     }
   }]);
