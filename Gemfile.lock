@@ -68,6 +68,8 @@ GEM
     bootstrap-sass (3.3.4.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
+    bootstrap-wysihtml5-rails (0.3.3.7)
+      railties (>= 3.0)
     bourbon (3.2.4)
       sass (~> 3.2)
       thor
@@ -403,6 +405,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  bootstrap-wysihtml5-rails
   bower-rails
   capistrano (~> 3.3.0)
   capistrano-bundler
@@ -461,3 +464,6 @@ DEPENDENCIES
   wicked_pdf
   will_paginate
   wkhtmltopdf-binary
+
+BUNDLED WITH
+   1.10.3
