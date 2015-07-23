@@ -52,11 +52,16 @@ view-title Invoices
         thead.panel-heading
           tr
             th.activities-table data-checkbox="true"
-            th #
-            th Date issued
-            th Date due
-            th Company
-            th Client
+            th 
+              span sort-button="invoice_number" #
+            th
+              span sort-button="created_at" Date issued
+            th
+              span sort-button="created_at" Date due
+            th
+              span sort-button="company.name" Company
+            th
+              span sort-button="client.name" Client
             th Total
             th Paid
             th Outstanding
