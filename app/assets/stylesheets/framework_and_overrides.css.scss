@@ -4,6 +4,15 @@
 /* COLOR VARIABLES */
 @import "colors";
 
+// Editor
+.wysihtml5-sandbox {
+  max-height: 100px !important;
+  width: 100% !important;
+  @extend .form-control;
+  border: 1px solid #cccccc !important;
+  border-radius: 4px !important;
+}
+
 
 // make all images responsive by default
 img {

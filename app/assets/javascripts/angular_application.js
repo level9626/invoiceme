@@ -13,6 +13,8 @@
 //= require angular-animate
 //= require angular-aria
 //= require angular-sanitize
+//= require bootstrap-wysihtml5
+//= require underscore
 //= require_tree ../templates
 //= require app
 //= require_tree ./modules/clients
