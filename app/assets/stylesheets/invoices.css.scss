@@ -221,6 +221,37 @@ table.payments-info {
   margin: 0px !important;
 }
 
+// Invoice table
+.table-head {
+  background-color: #F8F8F8;
+}
+
+// Invoice sort
+.sort-link {
+  text-decoration: none;
+  color: #777777;
+  vertical-align: middle;
+  &:hover {
+    outline: none;
+    text-decoration: none;
+    color: #777777;
+  }
+  &:focus {
+    outline: none;
+    text-decoration: none;
+    color: #777777;
+  }
+}
+
+.fa-caret-down {
+  &:before {
+    font-size: x-large;
+    vertical-align: sub;
+    margin-left: 5px;
+  }
+}
+
+
 // Invoice filters
 .invoice-filter-button {
   border: 0px;
@@ -282,15 +313,31 @@ table.payments-info {
   color: white;
   &.partly {
     background-color: #FF8E01;
+    &:hover {
+      background-color: #FF8E01;
+      color: white;
+    }
   }
   &.unpaid {
     background-color: #D32E31;
+    &:hover {
+      background-color: #D32E31;
+      color: white;
+    }
   }
   &.draft {
     background-color: #999999;
+    &:hover {
+      background-color: #999999;
+      color: white;
+    }
   }
   &.paid {
     background-color: #00BD21;
+    &:hover {
+      background-color: #00BD21;
+      color: white;
+    }
   }
 }
 .partly {
@@ -344,19 +391,39 @@ table.payments-info {
   background-color: rgba(224, 224, 224, 0.96);
   text-transform: none;
   font-weight: 400;
-  min-width:100px;
+  min-width: 80px;
 }
 
 .md-button.middle {
   border-radius: 0;
-  border-left: 1px solid rgba(230, 230, 230, 0.96);
-  border-right: 1px solid rgba(230, 230, 230, 0.96);
 }
 
 .md-button:not([disabled]):hover {
   background-color: rgba(193, 193, 193, 0.96);
   color: rgba(44, 65, 164, 0.96);
   transition: 0.3s;
+}
+
+section > a {
+  height: 3em;
+  background-color: #0069cb !important;
+  &:nth-child(1) {
+    opacity: 0.6;
+  }
+  &:nth-child(2) {
+    opacity: 0.7;
+  }
+  &:nth-child(3) {
+    opacity: 0.8;
+  }
+  &:nth-child(4) {
+    opacity: 0.9;
+  }
+}
+
+.md-sidenav-right.bar {
+  height: 3em;
+  overflow: hidden;
 }
 
 

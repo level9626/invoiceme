@@ -50,7 +50,7 @@ view-title Invoices
     section.task-panel.tasks-widget.panel.panel-default#invoice ng-if="invoices"
       table.table.table-hover data-toggle="table" data-click-to-select="true"
         thead.panel-heading
-          tr
+          tr.table-head
             th.activities-table data-checkbox="true"
             th 
               span sort-button="invoice_number" #
@@ -69,7 +69,7 @@ view-title Invoices
             th.actions-table
 
         tbody.panel-heading
-          tr ng-repeat="invoice in invoices"
+          tr ng-repeat="invoice in invoices | orderBy:sortType:sortReverse"
             td
               /a.btn.btn-primary.btn-xs data-toggle="modal" href="#jurnalsModal{{invoice.id}}"
               /  i.fa.fa-book
