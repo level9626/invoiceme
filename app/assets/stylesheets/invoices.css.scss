@@ -339,6 +339,20 @@ table.payments-info {
       color: white;
     }
   }
+  &.overdue {
+    background-color: #8D0404;
+    &:hover {
+      background-color: #8D0404;
+      color: white;
+    }
+  }
+  &.bad-debt{
+    background-color: #333333;
+    &:hover {
+      background-color: #333333;
+      color: white;
+    }
+  }
 }
 .partly {
   &:hover {
@@ -380,6 +394,27 @@ table.payments-info {
     border-bottom: solid 2px #00BD21;
   }
 }
+.overdue {
+  &:hover {
+    color: #8D0404;
+  }
+  &:focus {
+    padding-bottom: 14px;
+    color: #8D0404;
+    border-bottom: solid 2px #8D0404;
+  }
+}
+.bad-debt {
+  &:hover {
+    color: #333333;
+  }
+  &:focus {
+    padding-bottom: 14px;
+    color: #333333;
+    border-bottom: solid 2px #333333;
+  }
+}
+
 
 
 // Invoice action buttons

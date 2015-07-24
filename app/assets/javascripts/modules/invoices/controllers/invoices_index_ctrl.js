@@ -11,10 +11,4 @@ angular.module('InvoicesApp')
             $scope.invoices = data.invoices;
         });
 
-
-        $scope.sortType     = 'invoice_number'; // set the default sort type
-        $scope.sortReverse  = false;  // set the default sort order
-
-
-
     }]);

@@ -16,8 +16,8 @@ view-title Invoices
       button.btn.invoice-filter-button.unpaid Unpaid
       button.btn.invoice-filter-button.partly Partly
       button.btn.invoice-filter-button.paid Paid
-      button.btn.invoice-filter-button Overdue
-      button.btn.invoice-filter-button Bad Debt
+      button.btn.invoice-filter-button.overdue Overdue
+      button.btn.invoice-filter-button.bad-debt Bad Debt
   .col-md-4
     .btn-group
       button.btn.invoice-filter-button USD
@@ -36,12 +36,12 @@ view-title Invoices
       div ng-include="'invoices/_statistics.html'"
     .col-md-12.row
       div ng-include="'layouts/_tags.html'"
-  /.col-md-4.pull-right.filter
-    div.btn-group role="group"
+  .col-md-4.pull-right.filter
+    /div.btn-group role="group"
       a href="#" class="btn btn-success btn-sm"
         .fa.fa-download
           | Download to CSV
-    /div ng-include="'invoices/_filter.html'"
+    div ng-include="'invoices/_filter.html'"
 
   .col-md-12
     h5.text-center ng-if="!invoices"
