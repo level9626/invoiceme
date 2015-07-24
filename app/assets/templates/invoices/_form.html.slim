@@ -52,23 +52,39 @@
               .form-group
                 textarea rich-text-editor='true' ng-model="invoice.client_row_text"
 
-        / hr
-        / section
-        /   table#invoice_items class="table"
-        /     thead
-        /       tr
-        /         th DESCRIPTION
-        /         th HOURS/TASKS
-        /         th RATE
-        /         th AMOUNT
-        /         th #
-        /     tbody#invoice_items_container
-        /   /     = f.simple_fields_for :invoice_items do |invoice_item|
-        /   /       = render 'invoices/invoice_item_fields', :f => invoice_item
-        /   / p= link_to_add_association "Add a Item", f, :invoice_items, \
-        /   /                  class: "btn btn-primary", \
-        /   /                  'data-association-insertion-node' => '#invoice_items_container',\
-        /   /                  'data-association-insertion-method' => 'append'
+        hr
+        section
+          table#invoice_items.table
+            thead
+              tr
+                th DESCRIPTION
+                th HOURS/TASKS
+                th RATE
+                th AMOUNT
+                th #
+            tbody#invoice_items_container
+              tr.nested-fields ng-repeat="item in invoice.invoice_items"
+                td
+                  .form-group
+                    input.form-control ng-model="item.description" type="text"
+                td
+                  .form-group.float.required.invoice_invoice_items_hours_or_tasks aria-required="true" 
+                    input.form-control ng-model="item.hours_or_tasks" type="number"
+                td
+                  .form-group.float.required.invoice_invoice_items_rate aria-required="true" 
+                    input.form-control ng-model="item.rate" type="number"
+                td
+                  span.amount
+                    | {{ item.amount }}
+                  b.currency_value
+                td
+                  button.btn.btn-danger. type="button" ng-click="remove_invoice_item($index)" Remove
+
+          p
+            button.btn.btn-primary type="button" ng-click="append_invoice_item()" Add a Item
+
+
+
         / hr
         / section
         /   .row

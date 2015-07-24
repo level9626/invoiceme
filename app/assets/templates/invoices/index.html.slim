@@ -52,51 +52,20 @@ view-title Invoices
         thead.panel-heading
           tr.table-head
             th.activities-table data-checkbox="true"
+            th 
+              span sort-button="invoice_number" #
             th
-              a.sort-link href="#" ng-click="sortType = 'invoice_number'; sortReverse = !sortReverse"
-                | #
-                .fa.fa-caret-down
-              span ng-show="sortType == 'invoice_number'"
+              span sort-button="created_at" Date issued
             th
-              a.sort-link href="#" ng-click="sortType = 'invoice_date'; sortReverse = !sortReverse"
-                | Date issued
-                .fa.fa-caret-down
-              span ng-show="sortType == 'invoice_date'"
+              span sort-button="created_at" Date due
             th
-              a.sort-link href="#" ng-click="sortType = 'due_date'; sortReverse = !sortReverse"
-                | Date due
-                .fa.fa-caret-down
-              span ng-show="sortType == 'due_date'"
+              span sort-button="company.name" Company
             th
-              a.sort-link href="#" ng-click="sortType = 'company.name'; sortReverse = !sortReverse"
-                | Company
-                .fa.fa-caret-down
-              span ng-show="sortType == 'company.name'"
-            th
-              a.sort-link href="#" ng-click="sortType = 'client.name'; sortReverse = !sortReverse"
-                | Client
-                .fa.fa-caret-down
-              span ng-show="sortType == 'client.name'"
-            th
-              a.sort-link href="#" ng-click="sortType = 'total'; sortReverse = !sortReverse"
-                | Total
-                .fa.fa-caret-down
-              span ng-show="sortType == 'total'"
-            th
-              a.sort-link href="#" ng-click="sortType = 'balance'; sortReverse = !sortReverse"
-                | Paid
-                .fa.fa-caret-down
-              span ng-show="sortType == 'balance'"
-            th
-              a.sort-link href="#" ng-click="sortType = 'outstanding'; sortReverse = !sortReverse"
-                | Outstanding
-                .fa.fa-caret-down
-              span ng-show="sortType == 'outstanding'"
-            th.status-table
-              a.sort-link href="#" ng-click="sortType = 'state'; sortReverse = !sortReverse"
-                | Status
-                .fa.fa-caret-down
-              span ng-show="sortType == 'state'"
+              span sort-button="client.name" Client
+            th Total
+            th Paid
+            th Outstanding
+            th.status-table Status
             th.actions-table
 
         tbody.panel-heading
