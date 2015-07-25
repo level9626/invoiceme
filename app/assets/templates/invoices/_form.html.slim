@@ -77,11 +77,50 @@
                   span.amount
                     | {{ item.amount }}
                   b.currency_value
+                    | {{invoice.currency}}
                 td
                   button.btn.btn-danger. type="button" ng-click="remove_invoice_item($index)" Remove
 
           p
             button.btn.btn-primary type="button" ng-click="append_invoice_item()" Add a Item
+        
+        hr
+        section
+          .row
+            .col-md-6
+              .form-group.invoice_comment
+                label.control-label for="invoice_comment"  Comment
+                textarea rich-text-editor='true'  ng-model="invoice.comment"
+
+            .col-md-6.pull-right
+              .form-group.invoice_currency
+                label.control-label for="invoice_currency"  Currency
+                select#invoice_currency.form-control ng-model="invoice.currency" 
+                  option ng-repeat="cur in ['EUR', 'USD', 'UAH', 'RUB']" value="{{cur}}"
+                    | {{cur}}
+              table.table
+                tbody
+                  tr
+                    td
+                      strong SUBTOTAL:
+                    td#subtotal
+                      span
+                        | {{invoice.subtotal}}
+                      b.currency_value
+                        | {{invoice.currency}}
+                  tr
+                    td
+                      strong VAT RATE:
+                    td#vat-rate
+                  tr
+                    td
+                      strong VAT:
+                    td#vat
+                  tr
+                    td
+                      strong DISCOUNT:
+                    td#discount
+
 
 
 
