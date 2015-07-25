@@ -22,7 +22,13 @@
                 label.control-label for="invoice_date" 
                   abbr title="required"  *
                   | Invoice Date
-                input#invoice_date.form-control ng-model="invoice.invoice_date" type="text"
+                  | {{ opened }}
+                div class='input-group'
+                  input#invoice_date.form-control ng-model="invoice.invoice_date" type="date" datepicker-popup="yyyy-MM-dd" is-open="datepicker.opened" close-text="Close"
+                  span.input-group-btn
+                    button.btn.btn-default ng-click="openDatepicker($event)" type="button" 
+                      i.glyphicon.glyphicon-calendar
+
 
         hr
         section#company-client
@@ -31,7 +37,7 @@
               .form-group
                 label.control-label for="company_id" 
                   abbr title="required"  *
-                  | From
+                  | From (your company)
                 select#company_id.form-control ng-model="invoice.company_id"
                   option ng-repeat="company in companies" value='{{company.id}}'
                     | {{company.name}}
@@ -40,7 +46,7 @@
               .form-group
                 label.control-label for="client_id" 
                   abbr title="required"  *
-                  | To
+                  | To (your client)
                 select#client_id.form-control ng-model="invoice.client_id"
                   option ng-repeat="client in clients" value='{{client.id}}'
                     | {{client.name}}

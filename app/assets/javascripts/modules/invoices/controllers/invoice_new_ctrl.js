@@ -15,7 +15,8 @@ angular.module('InvoicesApp')
         hours_or_tasks: null,
         rate: null,
         amount: null
-      }]
+      }],
+      invoice_date: new Date()
     };
 
     // Get Unique for user invoice number identifier
@@ -74,5 +75,12 @@ angular.module('InvoicesApp')
     $scope.remove_invoice_item = function (index) {
       $scope.invoice.invoice_items.splice(index, 1);
     };
+
+    // Datepicker
+    $scope.openDatepicker = function ($event) {
+      $event.preventDefault();
+      $event.stopPropagation();
+      $scope.datepicker = {'opened': true};
+    }
 
   }]);
