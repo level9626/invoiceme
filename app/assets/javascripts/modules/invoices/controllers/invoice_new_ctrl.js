@@ -55,8 +55,12 @@ angular.module('InvoicesApp')
       if (!invoice_items || invoice_items.length <= 0)
         return;
 
-      // TODO continue working on this
-    });
+      var subtotal = 0;
+      _.each(invoice_items, function (el) {
+        subtotal += el.amount = ( el.hours_or_tasks || 0 ) * ( el.rate || 0 );
+      });
+      $scope.invoice.subtotal = subtotal;
+    }, true);
 
     // Sends builded invoice to the backend
     $scope.saveInvoice = function () {
