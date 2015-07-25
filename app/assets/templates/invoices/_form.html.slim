@@ -23,7 +23,7 @@
                   abbr title="required"  *
                   | Invoice Date
                   | {{ opened }}
-                div class='input-group'
+                div.input-group
                   input#invoice_date.form-control ng-model="invoice.invoice_date" type="date" datepicker-popup="yyyy-MM-dd" is-open="datepicker.opened" close-text="Close"
                   span.input-group-btn
                     button.btn.btn-default ng-click="openDatepicker($event)" type="button" 
@@ -127,76 +127,26 @@
                       strong DISCOUNT:
                     td#discount
 
+        hr
+        section
+          .row
+            .col-md-12
+              #attachments
+                label for="invoice_Attachments"  Attachments
+                table.table
+                  tbody
+                    tr ng-repeat="attachment in invoice.attachments"
+                      td
+                        input#invoice_attachments_file ng-model="attachment.file" type="file"
+                      td
+                        button.btn.btn-danger.btn-xs.remove_attachment type="button" ng-click="remove_invoice_attachment($index)" ng-disabled="!invoice.attachments || invoice.attachments.length <= 1"  Remove
+
+                .links
+                  button.btn.btn-primary.btn-xs type="button" ng-click="append_invoice_attachment()" Add attachment
+        hr
+        section
+          .form-actions
+            input.btn.btn-default.btn-default.pull-right name="commit" type="submit" value="Save"
 
 
 
-        / hr
-        / section
-        /   .row
-        /     .col-md-6
-        /       .form-group
-        /         label.control-label for="comment" 
-        /           abbr title="required"  *
-        /           | Comment
-        /         textarea#comment.form-control ng-model="invoice.comment"
-        /     .col-md-6.pull-right
-        /       .form-group
-        /         label.control-label for="currency" 
-        /           abbr title="required"  *
-        /           | Currency
-        /         select#currency.form-control ng-model="invoice.currency"
-        /           option ng-repeat="currency in ['EUR', 'USD', 'UAH', 'RUB']" value='{{currency}}'
-        /             | {{currency}}
-        /       table class="table"
-        /         tbody
-        /           tr
-        /             td
-        /               strong SUBTOTAL:
-        /             td#subtotal
-        /               span
-        /                 | {{ invoice.subtotal }}
-        /               b.currency_value
-        /           tr
-        /             td
-        /               strong VAT RATE:
-        /             td#vat-rate
-        /               span
-        /                 | {{ invoice.vat_rate }}
-        /           tr
-        /             td
-        /               strong VAT:
-        /             td#vat
-        /               span
-        /                 | {{ invoice.vat }}
-        /           tr
-        /             td
-        /               strong DISCOUNT:
-        /             td#discount
-        /               span
-        /                 | {{ invoice.discount }}
-
-        / hr
-        /   .row
-        /     .col-md-12
-        /       #attachments
-        /         / = f.label 'Attachments'
-        /         / = f.simple_fields_for :attachments do |attachment|
-        /         /   = render 'attachment_fields', :f => attachment
-        /         / .links
-        /         /   = link_to_add_association 'Add attachment', f, :attachments, \
-        /         /                                                        class: 'btn btn-primary btn-xs add_attachment'
-        / hr
-        / section#footer
-        /   .col-md-6
-        /     p.text-left Thank You For Your Business!
-        /   .col-md-6
-        /     p.text-right Make all checks payable to: Company name
-
-        / br
-        / hr
-        / .section
-        /   .form-actions
-        /     input.btn.btn-default.btn-default.pull-right type="submit" value="Save"
-        /     / - if @invoice.can_have_instance_actions?
-        /     /   = f.button :submit, 'Save and Send', class: 'btn-success pull-left', \
-        /     /                                        id: 'save-and-send'

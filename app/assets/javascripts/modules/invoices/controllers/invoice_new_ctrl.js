@@ -16,6 +16,9 @@ angular.module('InvoicesApp')
         rate: null,
         amount: null
       }],
+      attachments: [{
+        file: null
+      }],
       invoice_date: new Date()
     };
 
@@ -78,6 +81,16 @@ angular.module('InvoicesApp')
     };
     $scope.remove_invoice_item = function (index) {
       $scope.invoice.invoice_items.splice(index, 1);
+    };
+
+    // Invoice attachments form actions
+    $scope.remove_invoice_attachment = function (index) {
+      $scope.invoice.attachments.splice(index, 1);
+    };
+    $scope.append_invoice_attachment = function () {
+      $scope.invoice.attachments.push({
+        file: null
+      });
     };
 
     // Datepicker
