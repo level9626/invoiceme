@@ -85,7 +85,7 @@
                   b.currency_value
                     | {{invoice.currency}}
                 td
-                  button.btn.btn-danger. type="button" ng-click="remove_invoice_item($index)" Remove
+                  button.btn.btn-danger. type="button" ng-click="remove_invoice_item($index)" ng-disabled="!invoice.invoice_items || invoice.invoice_items.length <= 1" Remove
 
           p
             button.btn.btn-primary type="button" ng-click="append_invoice_item()" Add a Item
