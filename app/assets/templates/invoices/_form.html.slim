@@ -139,7 +139,7 @@
                       td
                         input#invoice_attachments_file ng-model="attachment.file" type="file"
                       td
-                        button.btn.btn-danger.btn-xs.remove_attachment type="button" ng-click="remove_invoice_attachment($index)" ng-disabled="!invoice.attachments || invoice.attachments.length <= 1"  Remove
+                        button.btn.btn-danger.btn-xs.remove_attachment type="button" ng-click="remove_invoice_attachment($index)" Remove
 
                 .links
                   button.btn.btn-primary.btn-xs type="button" ng-click="append_invoice_attachment()" Add attachment

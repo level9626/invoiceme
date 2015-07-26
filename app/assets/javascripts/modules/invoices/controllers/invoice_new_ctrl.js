@@ -16,9 +16,7 @@ angular.module('InvoicesApp')
         rate: null,
         amount: null
       }],
-      attachments: [{
-        file: null
-      }],
+      attachments: [],
       invoice_date: new Date()
     };
 
@@ -67,7 +65,13 @@ angular.module('InvoicesApp')
 
     // Sends builded invoice to the backend
     $scope.saveInvoice = function () {
-      // Invoice.create($scope.invoice);
+      Invoice.save({invoice: _transformNested()}, function (data) {
+        console.log('success');
+        console.log(data);
+      }, function (data) {
+        console.log('error');
+        console.log(data);
+      });
     };
 
     // Appends/Removes invoice_items to invoice objects
@@ -98,6 +102,17 @@ angular.module('InvoicesApp')
       $event.preventDefault();
       $event.stopPropagation();
       $scope.datepicker = {'opened': true};
+    }
+
+    // Private Scope
+
+    // Method will give an ability to send nested attributes
+    // TODO: make as overall functionality
+    function _transformNested () {
+      var copied = angular.copy($scope.invoice);
+      copied.renameProperty('invoice_items', 'invoice_items_attributes');
+      copied.renameProperty('attachments', 'attachments_attributes');
+      return copied;
     }
 
   }]);
