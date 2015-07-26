@@ -1,5 +1,5 @@
 .task-content
-  form ng-submit='saveInvoice()'
+  form ng-submit='saveInvoice()' name="form"
 
     section.task-panel.tasks-widget.panel.panel-default#invoice
       .panel-body
@@ -12,51 +12,62 @@
         section#invoice_number-invoice-date
           .row
             .col-md-6#invoice_number
-              .form-group
+              .form-group ng-class="{'has-error': errors['invoice_number'] && !form['invoice.invoice_number'].$valid }"
                 label.control-label for="invoice_invoice_number" 
                   abbr title="required" *
                   | Invoice number
-                input#invoice_invoice_number.form-control ng-model="invoice.invoice_number" type="text" disabled='true'
+                input#invoice_invoice_number.form-control name="invoice.invoice_number" ng-model="invoice.invoice_number" type="text" disabled='true' required=""
+                span.help-block ng-hide="form['invoice.invoice_number'].$valid" ng-repeat="error in errors['invoice_number']"
+                  | {{error}}
             .col-md-6#invoice-date
-              .form-group
+              .form-group ng-class="{'has-error': errors['invoice_date'] && !form['invoice.invoice_date'].$valid }"
                 label.control-label for="invoice_date" 
                   abbr title="required"  *
                   | Invoice Date
-                  | {{ opened }}
                 div.input-group
-                  input#invoice_date.form-control ng-model="invoice.invoice_date" type="date" datepicker-popup="yyyy-MM-dd" is-open="datepicker.opened" close-text="Close"
+                  input#invoice_date.form-control name="invoice.invoice_date" ng-model="invoice.invoice_date" type="date" datepicker-popup="yyyy-MM-dd" is-open="datepicker.opened" close-text="Close" required=""
                   span.input-group-btn
                     button.btn.btn-default ng-click="openDatepicker($event)" type="button" 
                       i.glyphicon.glyphicon-calendar
+                span.help-block ng-repeat="error in errors['invoice_date']" ng-hide="form['invoice.invoice_date'].$valid"
+                  | {{error}}
 
 
         hr
         section#company-client
           .row
             .col-md-6
-              .form-group
-                label.control-label for="company_id" 
+              .form-group ng-class="{'has-error': errors['company_id'] && !form['invoice.company_id'].$valid }"
+                label.control-label for="company_id"
                   abbr title="required"  *
                   | From (your company)
-                select#company_id.form-control ng-model="invoice.company_id"
+                select#company_id.form-control name="invoice.company_id" ng-model="invoice.company_id" required=""
                   option ng-repeat="company in companies" value='{{company.id}}'
                     | {{company.name}}
+                span.help-block ng-hide="form['invoice.company_id'].$valid" ng-repeat="error in errors['company_id']"
+                  | {{error}}
 
             .col-md-6
-              .form-group
+              .form-group ng-class="{'has-error': errors['client_id'] && !form['invoice.client_id'].$valid }"
                 label.control-label for="client_id" 
                   abbr title="required"  *
                   | To (your client)
-                select#client_id.form-control ng-model="invoice.client_id"
+                select#client_id.form-control name="invoice.client_id" ng-model="invoice.client_id" required=""
                   option ng-repeat="client in clients" value='{{client.id}}'
                     | {{client.name}}
-
+                span.help-block ng-hide="form['invoice.client_id'].$valid" ng-repeat="error in errors['client_id']"
+                  | {{error}}
+          .row
             .col-md-6
-              .form-group
-                textarea rich-text-editor='true' ng-model="invoice.company_row_text"
+              .form-group ng-class="{'has-error': errors['company_row_text'] && !form['invoice.company_row_text'].$valid }"
+                textarea rich-text-editor='true' name="invoice.company_row_text" ng-model="invoice.company_row_text" required=""
+                span.help-block ng-hide="form['invoice.company_row_text'].$valid" ng-repeat="error in errors['company_row_text']"
+                  | {{error}}
             .col-md-6
-              .form-group
-                textarea rich-text-editor='true' ng-model="invoice.client_row_text"
+              .form-group ng-class="{'has-error': errors['client_row_text'] && !form['invoice.client_row_text'].$valid }"
+                textarea rich-text-editor='true' name="invoice.client_row_text" ng-model="invoice.client_row_text" required=""
+                span.help-block ng-hide="form['invoice.client_row_text'].$valid" ng-repeat="error in errors['client_row_text']"
+                  | {{error}}
 
         hr
         section
@@ -71,14 +82,20 @@
             tbody#invoice_items_container
               tr.nested-fields ng-repeat="item in invoice.invoice_items"
                 td
-                  .form-group
-                    input.form-control ng-model="item.description" type="text"
+                  .form-group ng-class="{'has-error': errors['invoice_items.description'] && !form['item-'+$index+'-description'].$valid }"
+                    input.form-control name="item-{{$index}}-description" ng-model="item.description" type="text"
+                    span.help-block ng-hide="form['item-'+$index+'-description'].$valid" ng-repeat="error in errors['invoice_items.description']"
+                      | {{error}}
                 td
-                  .form-group.float.required.invoice_invoice_items_hours_or_tasks aria-required="true" 
-                    input.form-control ng-model="item.hours_or_tasks" type="number"
+                  .form-group ng-class="{'has-error': errors['invoice_items.hours_or_tasks'] && !form['item-'+$index+'-hours_or_tasks'].$valid }"
+                    input.form-control name="item-{{$index}}-hours_or_tasks" ng-model="item.hours_or_tasks" type="number" required=""
+                    span.help-block ng-hide="form['item-'+$index+'-hours_or_tasks'].$valid" ng-repeat="error in errors['invoice_items.hours_or_tasks']"
+                      | {{error}}
                 td
-                  .form-group.float.required.invoice_invoice_items_rate aria-required="true" 
-                    input.form-control ng-model="item.rate" type="number"
+                  .form-group ng-class="{'has-error': errors['invoice_items.rate'] && !form['item-'+$index+'-rate'].$valid }"
+                    input.form-control name="item-{{$index}}-rate" ng-model="item.rate" type="number" required=""
+                    span.help-block ng-hide="form['item-'+$index+'-rate'].$valid" ng-repeat="error in errors['invoice_items.rate']"
+                      | {{error}}
                 td
                   span.amount
                     | {{ item.amount }}
@@ -94,16 +111,20 @@
         section
           .row
             .col-md-6
-              .form-group.invoice_comment
+              .form-group.invoice_comment ng-class="{'has-error': errors['comment'] && !form['invoice.comment'].$valid }"
                 label.control-label for="invoice_comment"  Comment
-                textarea rich-text-editor='true'  ng-model="invoice.comment"
+                textarea rich-text-editor='true' name="invoice.comment" ng-model="invoice.comment" required=""
+                span.help-block ng-hide="form['invoice.comment'].$valid" ng-repeat="error in errors['comment']"
+                  | {{error}}
 
             .col-md-6.pull-right
-              .form-group.invoice_currency
+              .form-group.invoice_currency ng-class="{'has-error': errors['currency'] && !form['invoice.currency'].$valid }"
                 label.control-label for="invoice_currency"  Currency
-                select#invoice_currency.form-control ng-model="invoice.currency" 
+                select#invoice_currency.form-control name="invoice.currency" ng-model="invoice.currency" required=""
                   option ng-repeat="cur in ['EUR', 'USD', 'UAH', 'RUB']" value="{{cur}}"
                     | {{cur}}
+                span.help-block ng-hide="form['invoice.currency'].$valid" ng-repeat="error in errors['currency']"
+                  | {{error}}
               table.table
                 tbody
                   tr
@@ -137,7 +158,10 @@
                   tbody
                     tr ng-repeat="attachment in invoice.attachments"
                       td
-                        input#invoice_attachments_file ng-model="attachment.file" type="file"
+                        .form-group ng-class="{'has-error': errors['attachments.file'] && !form['attachment-'+$index+'-file'].$valid }"
+                          input#invoice_attachments_file name="attachment-{{$index}}-file" ng-model="attachment.file" type="file" required=""
+                          span.help-block ng-hide="form['attachment-'+$index+'-file'].$valid" ng-repeat="error in errors['attachments.file']"
+                            | {{error}}
                       td
                         button.btn.btn-danger.btn-xs.remove_attachment type="button" ng-click="remove_invoice_attachment($index)" Remove
 
@@ -147,6 +171,3 @@
         section
           .form-actions
             input.btn.btn-default.btn-default.pull-right name="commit" type="submit" value="Save"
-
-
-

@@ -3,10 +3,11 @@
 angular.module('InvoicesApp')
   .controller('InvoiceNewCtrl',
   ['$scope',
+  '$location',
   'Invoice',
   'Company',
   'Client',
-  function ($scope, Invoice, Company, Client) {
+  function ($scope, $location, Invoice, Company, Client) {
 
     // Init Invoice object
     $scope.invoice = {
@@ -65,12 +66,11 @@ angular.module('InvoicesApp')
 
     // Sends builded invoice to the backend
     $scope.saveInvoice = function () {
+      $scope.errors = null;
       Invoice.save({invoice: _transformNested()}, function (data) {
-        console.log('success');
-        console.log(data);
-      }, function (data) {
-        console.log('error');
-        console.log(data);
+        $location.path('/invoices/'+data.invoice.id)
+      }, function (responce) {
+        $scope.errors = responce.data.errors;
       });
     };
 
