@@ -32,8 +32,8 @@ module Api
     def create
       @invoice = current_user.invoices.new(invoice_params)
       # redirect back to show page, and show errors if any
-      @invoice.save
-      respond_with(@invoice)
+      template = @invoice.save ? 'invoices/show.json' : 'shared/errors.json'
+      render template: 'api/' + template
     end
 
     def update

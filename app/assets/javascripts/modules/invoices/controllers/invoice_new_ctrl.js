@@ -12,7 +12,7 @@ angular.module('InvoicesApp')
     // Init Invoice object
     $scope.invoice = {
       invoice_items: [{
-        description: null,
+        description: '',
         hours_or_tasks: null,
         rate: null,
         amount: null
@@ -67,8 +67,8 @@ angular.module('InvoicesApp')
     // Sends builded invoice to the backend
     $scope.saveInvoice = function () {
       $scope.errors = null;
-      Invoice.save({invoice: _transformNested()}, function (data) {
-        $location.path('/invoices/'+data.invoice.id)
+      Invoice.save({invoice: _transformNested()}, function (invoice) {
+        $location.path('/invoices/'+invoice.id)
       }, function (responce) {
         $scope.errors = responce.data.errors;
       });
@@ -77,7 +77,7 @@ angular.module('InvoicesApp')
     // Appends/Removes invoice_items to invoice objects
     $scope.append_invoice_item = function () {
       $scope.invoice.invoice_items.push({
-        description: null,
+        description: '',
         hours_or_tasks: null,
         rate: null,
         amount: null
