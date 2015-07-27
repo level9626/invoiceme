@@ -3,19 +3,22 @@
 angular.module('InvoicesApp')
   .controller('InvoiceNewCtrl',
   ['$scope',
+  '$location',
   'Invoice',
   'Company',
   'Client',
-  function ($scope, Invoice, Company, Client) {
+  function ($scope, $location, Invoice, Company, Client) {
 
     // Init Invoice object
     $scope.invoice = {
       invoice_items: [{
-        description: null,
+        description: '',
         hours_or_tasks: null,
         rate: null,
         amount: null
-      }]
+      }],
+      attachments: [],
+      invoice_date: new Date()
     };
 
     // Get Unique for user invoice number identifier
@@ -54,18 +57,27 @@ angular.module('InvoicesApp')
       if (!invoice_items || invoice_items.length <= 0)
         return;
 
-      // TODO continue working on this
-    });
+      var subtotal = 0;
+      _.each(invoice_items, function (el) {
+        subtotal += el.amount = ( el.hours_or_tasks || 0 ) * ( el.rate || 0 );
+      });
+      $scope.invoice.subtotal = subtotal;
+    }, true);
 
     // Sends builded invoice to the backend
     $scope.saveInvoice = function () {
-      // Invoice.create($scope.invoice);
+      $scope.errors = null;
+      Invoice.save({invoice: _transformNested()}, function (invoice) {
+        $location.path('/invoices/'+invoice.id)
+      }, function (responce) {
+        $scope.errors = responce.data.errors;
+      });
     };
 
     // Appends/Removes invoice_items to invoice objects
     $scope.append_invoice_item = function () {
       $scope.invoice.invoice_items.push({
-        description: null,
+        description: '',
         hours_or_tasks: null,
         rate: null,
         amount: null
@@ -74,5 +86,33 @@ angular.module('InvoicesApp')
     $scope.remove_invoice_item = function (index) {
       $scope.invoice.invoice_items.splice(index, 1);
     };
+
+    // Invoice attachments form actions
+    $scope.remove_invoice_attachment = function (index) {
+      $scope.invoice.attachments.splice(index, 1);
+    };
+    $scope.append_invoice_attachment = function () {
+      $scope.invoice.attachments.push({
+        file: null
+      });
+    };
+
+    // Datepicker
+    $scope.openDatepicker = function ($event) {
+      $event.preventDefault();
+      $event.stopPropagation();
+      $scope.datepicker = {'opened': true};
+    }
+
+    // Private Scope
+
+    // Method will give an ability to send nested attributes
+    // TODO: make as overall functionality
+    function _transformNested () {
+      var copied = angular.copy($scope.invoice);
+      copied.renameProperty('invoice_items', 'invoice_items_attributes');
+      copied.renameProperty('attachments', 'attachments_attributes');
+      return copied;
+    }
 
   }]);
