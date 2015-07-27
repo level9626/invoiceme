@@ -27,4 +27,11 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
+
+  def try_respond_with(obj)
+    name = obj.class.to_s.underscore
+    tmplt = "api/#{name.pluralize}/" + (obj.save ? 'show.json' : 'errors.json')
+    status = obj.errors.any? ? 422 : 200
+    render template: tmplt, status: status, locales: { "@#{name}" => obj }
+  end
 end

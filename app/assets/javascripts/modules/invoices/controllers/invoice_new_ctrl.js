@@ -67,7 +67,7 @@ angular.module('InvoicesApp')
     // Sends builded invoice to the backend
     $scope.saveInvoice = function () {
       $scope.errors = null;
-      Invoice.save({invoice: _transformNested()}, function (invoice) {
+      Invoice.save({invoice: $scope.invoice}, function (invoice) {
         $location.path('/invoices/'+invoice.id)
       }, function (responce) {
         $scope.errors = responce.data.errors;
@@ -102,17 +102,6 @@ angular.module('InvoicesApp')
       $event.preventDefault();
       $event.stopPropagation();
       $scope.datepicker = {'opened': true};
-    }
-
-    // Private Scope
-
-    // Method will give an ability to send nested attributes
-    // TODO: make as overall functionality
-    function _transformNested () {
-      var copied = angular.copy($scope.invoice);
-      copied.renameProperty('invoice_items', 'invoice_items_attributes');
-      copied.renameProperty('attachments', 'attachments_attributes');
-      return copied;
     }
 
   }]);
