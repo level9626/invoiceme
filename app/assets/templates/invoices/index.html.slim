@@ -5,38 +5,15 @@ view-title Invoices
 .row.add-button-row
   a href="invoices/new" class="md-button md-fab md-mini add-icon pull-right"
     md-icon md-font-icon="fa-plus" class="fa add-plus"
-.row.filter-border.centered
-  .col-md-4
-    /.btn-group ng-repeat="invoice in invoices"
-      /button.btn.invoice-filter-button
-      /  | {{ invoice.state }}
-    .btn-group
-      button.btn.invoice-filter-button All
-      button.btn.invoice-filter-button.draft Draft
-      button.btn.invoice-filter-button.unpaid Unpaid
-      button.btn.invoice-filter-button.partly Partly
-      button.btn.invoice-filter-button.paid Paid
-      button.btn.invoice-filter-button.overdue Overdue
-      button.btn.invoice-filter-button.bad-debt Bad Debt
-  .col-md-4
-    .btn-group
-      button.btn.invoice-filter-button USD
-      button.btn.invoice-filter-button UAH
-      button.btn.invoice-filter-button EUR
-      button.btn.invoice-filter-button RUB
-  .col-md-4
-    .btn-group
-      button.btn.invoice-filter-button Client
-      button.btn.invoice-filter-button Company
-      button.btn.invoice-filter-button Period
+.row.filter-border.centered ng-include="'invoices/_filter.html'"
 
 .row.mt
-  .col-md-8#tags.tags
+  /.col-md-8#tags.tags
     .col-md-12.row
       div ng-include="'invoices/_statistics.html'"
     .col-md-12.row
       div ng-include="'layouts/_tags.html'"
-  .col-md-4.pull-right.filter
+  /.col-md-4.pull-right.filter
     /div.btn-group role="group"
       a href="#" class="btn btn-success btn-sm"
         .fa.fa-download

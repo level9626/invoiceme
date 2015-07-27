@@ -250,17 +250,32 @@ table.payments-info {
     margin-left: 5px;
   }
 }
+.clear-class {
+  outline: none !important;
+  margin: 0 !important;
+  &:active {
 
-
+  }
+}
+span.ng-isolate-scope {
+  span {
+    &:focus {
+      outline: none !important;
+    }
+  }
+}
+.invoice-filter-button1 {
+  padding-bottom: 24px;
+}
 // Invoice filters
 .invoice-filter-button {
   border: 0px;
-  padding-bottom: 16px;
+  padding-bottom: 24px;
   font-weight: bold;
   background-color: transparent;
   &:focus {
     outline: none;
-    padding-bottom: 14px;
+    padding-bottom: 24px;
     border-radius: 0px !important;
     border-bottom: solid 2px #2780B5;
     color: #2780B5;
@@ -281,8 +296,8 @@ table.payments-info {
 
 .filter-border {
   border-bottom: solid 1px #F6F6F6;
-  padding-bottom: 0px;
-  margin-top: 14px;
+  padding-bottom: 1.5em;
+  margin-top: 1.5em;
 }
 
 // Invoice currency fields
@@ -359,7 +374,7 @@ table.payments-info {
     color: #FF8E01;
   }
   &:focus {
-    padding-bottom: 14px;
+    padding-bottom: 24px;
     color: #FF8E01;
     border-bottom: solid 2px #FF8E01;
   }
@@ -369,7 +384,7 @@ table.payments-info {
     color: #D32E31;
   }
   &:focus {
-    padding-bottom: 14px;
+    padding-bottom: 24px;
     color: #D32E31;
     border-bottom: solid 2px #D32E31;
   }
@@ -379,7 +394,7 @@ table.payments-info {
     color: #999999;
   }
   &:focus {
-    padding-bottom: 14px;
+    padding-bottom: 24px;
     color: #999999;
     border-bottom: solid 2px #999999;
   }
@@ -389,7 +404,7 @@ table.payments-info {
     color: #00BD21;
   }
   &:focus {
-    padding-bottom: 14px;
+    padding-bottom: 24px;
     color: #00BD21;
     border-bottom: solid 2px #00BD21;
   }
@@ -399,7 +414,7 @@ table.payments-info {
     color: #8D0404;
   }
   &:focus {
-    padding-bottom: 14px;
+    padding-bottom: 24px;
     color: #8D0404;
     border-bottom: solid 2px #8D0404;
   }
@@ -409,7 +424,7 @@ table.payments-info {
     color: #333333;
   }
   &:focus {
-    padding-bottom: 14px;
+    padding-bottom: 24px;
     color: #333333;
     border-bottom: solid 2px #333333;
   }

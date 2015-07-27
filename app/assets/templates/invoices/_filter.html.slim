@@ -1,25 +1,20 @@
-/  - Client
-/  - status(closed, open, overdue) (select)
-/  - currency (select)
-/  - invoice date (from - to)
-
-in-filter
-  .form-group
-    label for="client_name_cont" Client
-    input#client_name_cont.form-control placeholder="Enter Client Name" name="q[client_name_cont]"
-  .form-group
-    label for="state_eq" Status
-    select#state_eq.form-control name="q[state_eq]"
-      option ng-repeat="status in ['', 'open', 'close', 'overdue']" value='{{status}}'
-       | {{ status }}
-  .form-group
-    label for="currency_cont" Currency
-    select#currency_cont.form-control name="q[currency_cont]"
-      option ng-repeat="currency in ['', 'USD', 'UAH', 'RUB']" value='{{currency}}'
-       | {{ currency }}
-
-    /   / Invoice: from date to date
-    /   = f.label :invoice_date_gteq, 'From Date', class: "fa fa-calendar"
-    /   = f.input :invoice_date_gteq, as: :string, input_html: { class: "datepicker" }, label: false
-    /   = f.label :invoice_date_lteq, 'to Date', class: "fa fa-calendar"
-    /   = f.input :invoice_date_lteq, as: :string, input_html: { class: "datepicker" }, label: false
+.col-md-4
+  .btn-group
+    span.invoice-filter-button All
+    span.invoice-filter-button.draft filter-button="state_eq" value="draft" Draft
+    span.invoice-filter-button.unpaid filter-button="state_eq" value="unpaid" Unpaid
+    span.invoice-filter-button.partly filter-button="state_eq" value="partly_paid" Partly
+    span.invoice-filter-button.paid filter-button="state_eq" value="paid" Paid
+    span.invoice-filter-button.overdue filter-button="state_eq" value="overdue" Overdue
+    span.invoice-filter-button.bad-debt filter-button="state_eq" value="bad_debt" Bad Debt
+.col-md-4
+  .btn-group
+    span.invoice-filter-button filter-button="currency_eq" value="USD" USD
+    span.invoice-filter-button filter-button="currency_eq" value="EUR" EUR
+    span.invoice-filter-button filter-button="currency_eq" value="UAH" UAH
+    span.invoice-filter-button filter-button="currency_eq" value="RUB" RUB
+.col-md-4
+  .btn-group
+    span.invoice-filter-button filter-button="client_name_cont" value="" Client
+    span.invoice-filter-button filter-button="company_name_cont" value="" Company
+    span.invoice-filter-button filter-button="" value="" Period
