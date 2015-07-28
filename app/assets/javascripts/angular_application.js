@@ -2,7 +2,6 @@
 //= require raphael
 //= require morris
 //= require js/serialize_object
-//= require js/rename_property
 //= require angular/angular
 //= require angular-route/angular-route
 //= require angular-resource/angular-resource
@@ -14,8 +13,11 @@
 //= require angular-animate
 //= require angular-aria
 //= require angular-sanitize
+//= require angular-file-model
 //= require bootstrap-wysihtml5
 //= require underscore
+//= require object-traverse/object-traverse
+//= require object-to-formdata
 //= require_tree ../templates
 //= require app
 //= require_tree ./modules/clients

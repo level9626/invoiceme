@@ -25,7 +25,16 @@ angular.module('InvoicesApp')
           method: 'GET',
           isArray: false,
           url: _baseUrl + 'statistics'
-        }
+        },
+        save: { 
+          method: 'POST', 
+          transformRequest: function(data){
+            return Object.toFormData(data);
+          }, 
+          headers: {
+            'Content-Type': undefined
+          }
+        } 
       });
 
     }

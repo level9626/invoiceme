@@ -10,6 +10,7 @@ angular.module('InvoicesApp')
   function ($scope, $routeParams, Invoice, Company, Client) {
     Invoice.get({id: $routeParams['id']}, function (invoice) {
       $scope.invoice = invoice;
+      $scope.invoice.invoice_date = new Date($scope.invoice.invoice_date);
     });
 
     Company.query(function (data) {

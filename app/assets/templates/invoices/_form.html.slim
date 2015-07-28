@@ -1,5 +1,5 @@
 .task-content
-  form ng-submit='saveInvoice()' name="form"
+  form ng-submit='saveInvoice()' name="form" enctype="multipart/form-data"
 
     section.task-panel.tasks-widget.panel.panel-default#invoice
       .panel-body
@@ -25,7 +25,7 @@
                   abbr title="required"  *
                   | Invoice Date
                 div.input-group
-                  input#invoice_date.form-control name="invoice.invoice_date" ng-model="invoice.invoice_date" type="date" datepicker-popup="yyyy-MM-dd" is-open="datepicker.opened" close-text="Close" required=""
+                  input#invoice_date.form-control name="invoice.invoice_date" ng-model="invoice.invoice_date" type="text" datepicker-popup="yyyy-MM-dd" is-open="datepicker.opened" close-text="Close" required="" disabled="disabled"
                   span.input-group-btn
                     button.btn.btn-default ng-click="openDatepicker($event)" type="button" 
                       i.glyphicon.glyphicon-calendar
@@ -159,7 +159,7 @@
                     tr ng-repeat="attachment in invoice.attachments"
                       td
                         .form-group ng-class="{'has-error': errors['attachments.file'] && !form['attachment-'+$index+'-file'].$valid }"
-                          input#invoice_attachments_file name="attachment-{{$index}}-file" ng-model="attachment.file" type="file" required=""
+                          input#invoice_attachments_file name="attachment-{{$index}}-file" file-model="attachment.file" type="file" required=""
                           span.help-block ng-hide="form['attachment-'+$index+'-file'].$valid" ng-repeat="error in errors['attachments.file']"
                             | {{error}}
                       td

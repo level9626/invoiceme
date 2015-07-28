@@ -32,8 +32,7 @@ module Api
     def create
       @invoice = current_user.invoices.new(invoice_params)
       # redirect back to show page, and show errors if any
-      template = @invoice.save ? 'invoices/show.json' : 'shared/errors.json'
-      render template: 'api/' + template
+      try_respond_with(@invoice)
     end
 
     def update
@@ -99,7 +98,17 @@ module Api
 
     # rubocop:disable all
     def invoice_params
-      params.require(:invoice).permit([
+      params.require(:invoice)
+        .tap { |whitelisted|
+          if params[:invoice].has_key? :invoice_items
+            whitelisted[:invoice_items_attributes] = \
+              params[:invoice][:invoice_items]
+          end
+          if params[:invoice].has_key? :attachments
+            whitelisted[:attachments_attributes] = \
+              params[:invoice][:attachments]
+          end
+        }.permit([
         :invoice_number,
         :invoice_date,
         :currency,
