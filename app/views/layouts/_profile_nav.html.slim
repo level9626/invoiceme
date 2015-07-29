@@ -2,29 +2,31 @@ aside
   #sidebar
     div.logo-rectangle.centered
       a.logo href="/"
-        = image_tag('logo.png')
-    ul#nav-accordion.sidebar-menu
-      li
-        = link_to dashboard_path, class: current_page?(dashboard_path) && 'active'
-          img src="#{asset_path('icons/dashboard_icon.png')}"
-          | DASHBOARD
-      li
-        a href="/companies"
-          img src="#{asset_path('icons/companies_icon.png')}"
-          | COMPANIES
-      li
-        a href="/clients"
-          img src="#{asset_path('icons/clients_icon.png')}"
-          | CLIENTS
-      li
-        a href="/invoices"
-          img src="#{asset_path('icons/invoices_icon.png')}"
-          | INVOICES
-      li
-        a href="/payments"
-          img src="#{asset_path('icons/payments_icon.png')}"
-          | PAYMENTS
-      li
-        a href="#"
-          img src="#{asset_path('icons/preferences_icon.png')}"
-          | PREFERENCES
+        md-icon.main-logo md-svg-src="#{asset_path('icons/invoice_logo.svg')}"
+
+    ul.md-content#nav-content.sidebar-menu
+      section layout='column'
+        li
+          md-button.md-primary active-link="" href="/"
+            md-icon.nav-icon md-svg-src="#{asset_path('icons/dashboard_icon.svg')}"
+            | DASHBOARD
+        li
+          md-button.md-primary active-link="" href="/companies"
+            md-icon.nav-icon md-svg-src="#{asset_path('icons/companies_icon.svg')}"
+            | COMPANIES
+        li
+          md-button.md-primary active-link="" href="/clients"
+            md-icon.nav-icon md-svg-src="#{asset_path('icons/clients_icon.svg')}"
+            | CLIENTS
+        li
+          md-button.md-primary active-link="" href="/invoices"
+            md-icon.nav-icon md-svg-src="#{asset_path('icons/invoices_icon.svg')}"
+            | INVOICES
+        li
+          md-button.md-primary active-link="" href="/payments"
+            md-icon.nav-icon md-svg-src="#{asset_path('icons/payments_icon.svg')}"
+            | PAYMENTS
+        li
+          md-button.md-primary active-link="" href="#"
+            md-icon.nav-icon md-svg-src="#{asset_path('icons/preferences_icon.svg')}"
+            | PREFERENCES
