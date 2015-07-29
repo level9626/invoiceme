@@ -67,7 +67,7 @@ angular.module('InvoicesApp')
     // Sends builded invoice to the backend
     $scope.saveInvoice = function () {
       $scope.errors = null;
-      Invoice.save({invoice: $scope.invoice}, function (invoice) {
+      Invoice.save($scope.invoice, function (invoice) {
         $location.path('/invoices/'+invoice.id)
       }, function (responce) {
         $scope.errors = responce.data.errors;

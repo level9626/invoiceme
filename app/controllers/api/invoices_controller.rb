@@ -38,7 +38,7 @@ module Api
     def update
       @invoice.update(invoice_params)
       # redirect back to show page, and show errors if any
-      render :show, layout: 'show_layout'
+      try_respond_with(@invoice)
     end
 
     def destroy
@@ -99,6 +99,7 @@ module Api
     # rubocop:disable all
     def invoice_params
       params.require(:invoice)
+        .remove_nulls
         .tap { |whitelisted|
           if params[:invoice].has_key? :invoice_items
             whitelisted[:invoice_items_attributes] = \

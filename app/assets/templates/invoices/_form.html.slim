@@ -41,9 +41,7 @@
                 label.control-label for="company_id"
                   abbr title="required"  *
                   | From (your company)
-                select#company_id.form-control name="invoice.company_id" ng-model="invoice.company_id" required=""
-                  option ng-repeat="company in companies" value='{{company.id}}'
-                    | {{company.name}}
+                select#company_id.form-control name="invoice.company_id" ng-model="invoice.company_id" required="" ng-options="company.id as company.name for company in companies"
                 span.help-block ng-hide="form['invoice.company_id'].$valid" ng-repeat="error in errors['company_id']"
                   | {{error}}
 
@@ -52,9 +50,7 @@
                 label.control-label for="client_id" 
                   abbr title="required"  *
                   | To (your client)
-                select#client_id.form-control name="invoice.client_id" ng-model="invoice.client_id" required=""
-                  option ng-repeat="client in clients" value='{{client.id}}'
-                    | {{client.name}}
+                select#client_id.form-control name="invoice.client_id" ng-model="invoice.client_id" required="" ng-options="client.id as client.name for client in clients"
                 span.help-block ng-hide="form['invoice.client_id'].$valid" ng-repeat="error in errors['client_id']"
                   | {{error}}
           .row
