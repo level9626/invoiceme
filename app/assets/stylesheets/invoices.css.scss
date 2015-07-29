@@ -439,6 +439,19 @@ span.ng-isolate-scope {
 
 
 // Invoice action buttons
+#invoice-actions {
+  .md-button {
+    display: inline-flex;
+    width: 40px;
+    height: 25px;
+    margin: 0;
+    padding: 0px !important;
+  }
+  .more-icon {
+    height: 20px;
+  }
+}
+
 .groupX {
   font-size: 16px;
   margin: 0 !important;

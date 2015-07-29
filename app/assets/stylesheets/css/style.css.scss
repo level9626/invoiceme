@@ -371,6 +371,9 @@ ul.top-menu > li > .logout {
   height: 100%;
   position: fixed;
   background: #0069cb;
+  .main-logo {
+    width: 6em;
+  }
 }
 
 #sidebar h5 {
@@ -649,13 +652,14 @@ div.panel-body {
   background-color: #1e88e5;
   height: 5em;
 }
+
 #nav-content {
   background-color: #0069CB;
   .md-button {
     color: white;
     border-radius: 0;
     display: -webkit-box;
-    padding: 12px 12px 12px 35px;
+    padding: 9px 9px 9px 30px;
     margin: 0;
     &:hover {
       background-color: #1e7cd8;
