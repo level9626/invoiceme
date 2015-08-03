@@ -367,12 +367,31 @@ ul.top-menu > li > .logout {
 /*sidebar navigation*/
 
 #sidebar {
-  width: 210px;
+  width: 4em;
   height: 100%;
   position: fixed;
   background: #0069cb;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  ul li {
+    overflow: hidden;
+  }
   .main-logo {
-    width: 6em;
+    width: 2em;
+  }
+  &:hover {
+    z-index: 1005;
+    width: 210px;
+    ul li {
+      overflow: visible;
+    }
+    .main-logo {
+      width: 6em;
+    }
+    ul.sidebar-menu li a span {
+      display: inline-block;
+    }
   }
 }
 
@@ -493,7 +512,7 @@ ul.sidebar-menu li.sub-menu{
 }
 
 ul.sidebar-menu li a span{
-  display: inline-block;
+  display: none;
 }
 
 ul.sidebar-menu li a{
@@ -583,7 +602,7 @@ div.panel-body {
   }
   background-color: white;
   padding-top: 5em;
-  margin-left: 210px;
+  margin-left: 4em;
   color: $grey-light;
   font-family: 'Roboto', sans-serif !important;
   > section > div > div > {
@@ -642,7 +661,7 @@ div.panel-body {
   background: #f6f6f6;
   height: 5em;
   border-bottom: 1px solid #e5e5e5;
-  margin-left: 210px;
+  margin-left: 4em;
   padding: 0;
 }
 
@@ -667,7 +686,7 @@ div.panel-body {
     color: white;
     border-radius: 0;
     display: -webkit-box;
-    padding: 9px 9px 9px 30px;
+    padding: 9px 7px;
     margin: 0;
     &:hover {
       background-color: #1e7cd8;
