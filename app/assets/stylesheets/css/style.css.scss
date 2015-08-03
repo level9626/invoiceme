@@ -412,14 +412,6 @@ ul.top-menu > li > .logout {
   padding-bottom: 10px;
 }
 
-.add-button-row {
-  height: 0px;
-  a {
-    top: 20px;
-    margin-right: 10px;
-  }
-}
-
 /*LEFT NAVIGATION ICON*/
 .dcjq-icon {
   height:17px;
@@ -2645,6 +2637,7 @@ label {
 #invoices_actions_button::before {
   color: #000000;
 }
+
 //#main-content > section > div > div > div.row.mt > div.col-md-3.filter > div > div.panel-body {
 //  display: none;
 //}
