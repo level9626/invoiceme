@@ -99,6 +99,21 @@ i.fa.fa-money::before {
   padding-right: 5px;
 }
 
+
+// #############################################################################
+// Menus
+// #############################################################################
+
+table.table.nav-boxes {
+  margin: 0;
+  tr:hover {
+    background-color: rgba(193, 193, 193, 0.96);
+  }
+  td {
+    border: none;
+  }
+}
+
 .thin-menu {
   header {
     min-height: 40px;
@@ -142,4 +157,8 @@ hr {
 
 b.inline-label {
   margin-right: 10px;
+}
+
+.ml {
+  margin-left: 15px;
 }

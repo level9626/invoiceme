@@ -18,4 +18,13 @@ angular.module('CompaniesApp')
         $scope.companies = data.companies;
       });
     }
+
+    $scope.states = [
+      'Draft',
+      'Unpaid',
+      'Partly',
+      'Paid',
+      'Overdue',
+      'Bad Dept'
+    ];
   }]);
