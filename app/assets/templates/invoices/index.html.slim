@@ -29,20 +29,42 @@ view-title Invoices
         thead.panel-heading
           tr.table-head
             th.activities-table data-checkbox="true"
-            th 
-              span sort-button="invoice_number" #
             th
-              span sort-button="created_at" Date issued
+              span sort-button="invoice_number"
+                | #
+                i.fa.fa-caret-down
             th
-              span sort-button="created_at" Date due
+              span sort-button="created_at"
+                | Date issued
+                i.fa.fa-caret-down
             th
-              span sort-button="company.name" Company
+              span sort-button="created_at"
+                | Date due
+                i.fa.fa-caret-down
             th
-              span sort-button="client.name" Client
-            th Total
-            th Paid
-            th Outstanding
-            th.status-table Status
+              span sort-button="company.name"
+                | Company
+                i.fa.fa-caret-down
+            th
+              span sort-button="client.name"
+                | Client
+                i.fa.fa-caret-down
+            th
+              span sort-button="total"
+                | Total
+                i.fa.fa-caret-down
+            th
+              span sort-button="balance"
+                | Paid
+                i.fa.fa-caret-down
+            th
+              span sort-button="outstanding"
+                | Outstanding
+                i.fa.fa-caret-down
+            th.status-table
+              span sort-button="state"
+                | Status
+                i.fa.fa-caret-down
             th.actions-table
 
         tbody.panel-heading
@@ -51,7 +73,7 @@ view-title Invoices
               /a.btn.btn-primary.btn-xs data-toggle="modal" href="#jurnalsModal{{invoice.id}}"
               /  i.fa.fa-book
             td
-              |# {{ invoice.invoice_number }}
+              | {{ invoice.invoice_number }}
             td
               | {{ invoice.invoice_date | date:'d MMM yyyy' }}
             td
@@ -61,11 +83,11 @@ view-title Invoices
             td.total-currency
               | {{ invoice.client.name }}
             td.total-currency
-              | {{ invoice.total }}
+              | {{ invoice.total }} {{ invoice.currency }}
             td.paid-currency
-              | {{ invoice.balance }}
+              | {{ invoice.balance }} {{ invoice.currency }}
             td.out-currency
-              | {{ invoice.outstanding }}
+              | {{ invoice.total - invoice.balance }} {{ invoice.currency }}
             td
               span.label-status.partly
                 | {{ invoice.state }}

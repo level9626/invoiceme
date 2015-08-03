@@ -8,5 +8,7 @@ json.invoices do
     json.client invoice.client
     json.company invoice.company
     json.payments invoice.payments
+    json.total invoice.total
+    json.total invoice.subtotal
   end
 end
