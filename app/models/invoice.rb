@@ -32,6 +32,11 @@ class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
   # Default query scope
   default_scope { where.not(state: 'closed') }
   scope :open, -> { where.not(state: [:closed, :bad_debt]) }
+  scope :unpaid, ->{ where(state: ['new', 'open']) }
+  scope :partly, ->{ where(state: 'partly_paid') }
+  scope :paid, ->{ where(state: 'closed') }
+  scope :overdue, ->{ where(state: 'overdue') }
+  scope :bad_dept, ->{ where(state: 'bad_debt') }
 
   ## Relations
   belongs_to :company
