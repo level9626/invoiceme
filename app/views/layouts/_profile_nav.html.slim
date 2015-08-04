@@ -2,7 +2,8 @@ aside
   #sidebar
     div.logo-rectangle.centered
       a.logo href="/"
-        md-icon.main-logo md-svg-src="#{asset_path('icons/invoice_logo.svg')}"
+        md-icon.main-logo.visible-logo md-svg-src="#{asset_path('logo-icon-responsive.svg')}"
+        md-icon.main-logo.non-visible-logo md-svg-src="#{asset_path('icons/invoice_logo.svg')}"
 
     ul.md-content#nav-content.sidebar-menu
       section layout='column'

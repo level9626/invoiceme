@@ -380,6 +380,9 @@ ul.top-menu > li > .logout {
   .main-logo {
     width: 2em;
   }
+  .non-visible-logo {
+    visibility: hidden;
+  }
   &:hover {
     z-index: 1005;
     width: 210px;
@@ -391,6 +394,12 @@ ul.top-menu > li > .logout {
     }
     ul.sidebar-menu li a span {
       display: inline-block;
+    }
+    .non-visible-logo {
+      visibility: visible;
+    }
+    .visible-logo {
+      display: none;
     }
   }
 }
