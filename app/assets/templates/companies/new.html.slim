@@ -1,3 +1,43 @@
-view-title New Client
+md-dialog aria-label="New Company"
+  form ng-submit="saveCompany()"
+    md-toolbar
+      .md-toolbar-tools
+        h2 New Company
+        span.flex
+        md-button class="md-icon-button" ng-click="cancel()"
+          md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"
+    md-dialog-content
+      .form-inputs
+        .form-group
+          label.control-label for="company_logo" 
+            abbr title="required" *
+            | Logo
+          input#company_logo.form-control ng-model="company.logo" type="file"
 
-div ng-include="'companies/_form.html'"
+        .form-group
+          label.control-label for="company_name" 
+            abbr title="required" *
+            | Name
+          input#company_name.form-control ng-model="company.name" type="text"
+
+        .form-group
+          label.control-label for="company_email" 
+            abbr title="required" *
+            | Name
+          input#company_email.form-control ng-model="company.email" type="email"
+
+        .form-group
+          label.control-label for="company_address" 
+            abbr title="required" *
+            | Address
+          textarea rich-text-editor='true' ng-model="company.address"
+
+        .form-group
+          label.control-label for="company_defaut" 
+            abbr title="required" *
+            | Default Company ?
+          input#company_defaut.form-control ng-model="company.default" type="checkbox"
+
+    div class="md-actions" layout="row"
+      md-button ng-click="cancel()" class="md-primary" Close
+      md-button ng-click="submit()" class="md-primary" type="submit" Save

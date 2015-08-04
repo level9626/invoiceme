@@ -1,4 +1,9 @@
 view-title Companies
+
+.row.add-button-row
+  md-button ng-click="newCompany($event)" class="md-button md-fab md-mini add-icon pull-right"
+    md-icon md-font-icon="fa-plus" class="fa add-plus"
+
 div ng-include="'companies/_index_navigation.html'"
 
 
@@ -36,6 +41,5 @@ section
           h2
             | {{ company.name }}
         section
-          span.status Draft (1)
-          span.status Unpaid (123)
-          span.status Partly (43)
+          span ng-repeat="(state, count) in company.states" ng-hide="count == 0"
+            | {{state}} ({{count}})
