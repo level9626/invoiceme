@@ -31,8 +31,8 @@ section
             .fa.fa-plus
             | Add New Company
 
-  div.companies flex="100" ng-repeat="company in companies"
-    section.company layout="row" layout-wrap=""
+  div.companies flex="100"
+    section.company layout="row" layout-wrap="" ng-repeat="company in companies"
       div flex="10"
         md-button.md-fab aria-label='company_logo'
           img src="{{company.logo}}"
@@ -41,5 +41,5 @@ section
           h2
             | {{ company.name }}
         section
-          span ng-repeat="(state, count) in company.states" ng-hide="count == 0"
+          span.state ng-repeat="(state, count) in company.states" ng-hide="count == 0"
             | {{state}} ({{count}})

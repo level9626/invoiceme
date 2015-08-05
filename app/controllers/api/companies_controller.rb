@@ -12,18 +12,9 @@ module Api
     def show
     end
 
-    def new
-      @company = Company.new
-      respond_with(@company)
-    end
-
-    def edit
-    end
-
     def create
       @company = Company.new(company_params.merge(user_id: current_user.id))
-      @company.save
-      respond_with(@company)
+      try_respond_with(@company)
     end
 
     def update
