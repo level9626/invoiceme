@@ -166,3 +166,17 @@ b.inline-label {
 .pl {
   padding-left: 15px;
 }
+
+
+// Material overrides
+a.md-button.md-primary.md-raised,
+a.md-button.md-primary.md-fab,
+.md-button.md-primary.md-raised,
+.md-button.md-primary.md-fab {
+  background-color: #42a5f5;
+  padding: 0 10px;
+  color: white;
+  &:hover {
+    color: rgba(255,255,255,0.87);
+  }
+}

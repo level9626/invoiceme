@@ -5,7 +5,7 @@
   .company {
     height: 100px;
     border-bottom: 1px solid #ededed;
-    button {
+    button.logo {
       margin: 16%;
       width: 6.6rem;
       height: 6.6rem;
@@ -16,13 +16,41 @@
         height: 6.6rem;
       }
     }
-    .state {
-      &:first-child {
-        border-left: none;
-        padding-left: 0;
+    .statuses {
+      &:before {
+        content: '\0000a0';
       }
-      border-left: 1px solid #d8d8d8;
-      padding-left: 5px;
+      position: relative;
+      .state {
+        &:first-child {
+          border-left: none;
+          padding-left: 0;
+        }
+        border-left: 1px solid #d8d8d8;
+        padding-left: 5px;
+      }
+      .actions {
+        position: absolute;
+        right: 0;
+        bottom: 0px;
+        md-fab-actions {
+          & .edit {
+            color: #42a5f5;
+            margin-right: 10px;
+            padding-top: 20px;
+            display: inline-block;
+          }
+          & .delete {
+            color: #ff6764;
+            margin-right: 10px;
+            padding-top: 20px;
+            display: inline-block;
+          }
+          .md-fab-action-item {
+            
+          }
+        }
+      }
     }
   }
 }
