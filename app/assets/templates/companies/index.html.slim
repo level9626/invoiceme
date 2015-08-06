@@ -1,26 +1,45 @@
 view-title Companies
-.row.mt
-  .col-md-8#tags.tags
-    .col-md-12.row
-      /div ng-include="'shared/tags.html'"
-  .col-md-4.filter
-    a href="companies/new" class="btn btn-primary btn-sm pull-right"
-      .fa.fa-plus
-        | Add New Company
 
-.row.mt
-  .col-md-6.col-md-offset-3
-    .white-panel.pn.donut-chart ng-if='!companies || companies.length <= 0'
-      .white-header
-        h5 Notice!
-      .row
-        .col-sm-12.col-sx-12
-          p You need to create a company in order to continue
-      hr
-      footer.clearfix
-        a href="companies/new" class='btn btn-primary btn-sm'
-          .fa.fa-plus
-          | Add New Company
+.row.add-button-row
+  md-button ng-click="newCompany($event)" class="md-button md-fab md-mini add-icon pull-right"
+    md-icon md-font-icon="fa-plus" class="fa add-plus"
 
-  .col-md-4.col-sm-4.mb ng-repeat="company in companies"
-    div ng-include="'companies/_company.html'"
+div ng-include="'companies/_index_navigation.html'"
+
+
+/ .row.mt
+/   .col-md-8#tags.tags
+/     .col-md-12.row
+/       /div ng-include="'shared/tags.html'"
+/   .col-md-4.filter
+/     a href="companies/new" class="btn btn-primary btn-sm pull-right"
+/       .fa.fa-plus
+/         | Add New Company
+
+section
+  .row.mt
+    .col-md-6.col-md-offset-3
+      .white-panel.pn.donut-chart ng-if='!companies || companies.length <= 0'
+        .white-header
+          h5 Notice!
+        .row
+          .col-sm-12.col-sx-12
+            p You need to create a company in order to continue
+        hr
+        footer.clearfix
+          a href="companies/new" class='btn btn-primary btn-sm'
+            .fa.fa-plus
+            | Add New Company
+
+  div.companies flex="100"
+    section.company layout="row" layout-wrap="" ng-repeat="company in companies"
+      div flex="10"
+        md-button.md-fab aria-label='company_logo'
+          img src="{{company.logo}}"
+      div flex="90"
+        section
+          h2
+            | {{ company.name }}
+        section
+          span.state ng-repeat="(state, count) in company.states" ng-hide="count == 0"
+            | {{state | invState}} ({{count}})

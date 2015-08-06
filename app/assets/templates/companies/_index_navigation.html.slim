@@ -1,0 +1,28 @@
+/ Navigation
+section#container
+  header.profile-sub-menu.row
+    .top-menu
+      ul.nav.pull-left.top-menu
+        li
+          md-menu
+            span ng-click="$mdOpenMenu()" 
+              | Company
+              small &nbsp;▼
+            md-menu-content width="3" 
+              md-menu-item ng-repeat="company in companies" 
+                md-button ng-click="ctrl.announceClick($index)" 
+                  | {{company.name}}
+
+        li.ml
+          md-menu
+            span ng-click="$mdOpenMenu()" 
+              | Invoice
+              small &nbsp;▼
+            md-menu-content width="3" 
+              table.table.nav-boxes
+                tbody
+                  tr ng-repeat="state in states"
+                    td
+                      input type='checkbox'
+                    td
+                      | {{state | invState}}

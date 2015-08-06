@@ -9,7 +9,13 @@ angular.module('CompaniesApp')
 
       return $resource(_basePath + ':id', { id: '@id' }, {
         update: {
-          method: 'PUT'
+          method: 'PUT',
+          transformRequest: function(data){
+            return Object.toFormData({company: data});
+          }, 
+          headers: {
+            'Content-Type': undefined
+          }
         },
         query: {
           method: 'GET',
@@ -19,6 +25,15 @@ angular.module('CompaniesApp')
           method: 'GET',
           isArray: false,
           url: _basePath + 'default'
+        },
+        save: { 
+          method: 'POST', 
+          transformRequest: function(data){
+            return Object.toFormData({company: data});
+          }, 
+          headers: {
+            'Content-Type': undefined
+          }
         }
       });
 

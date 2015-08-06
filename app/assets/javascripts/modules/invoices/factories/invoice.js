@@ -9,7 +9,13 @@ angular.module('InvoicesApp')
 
       return $resource(_baseUrl + ':id', { id: '@id' }, {
         update: {
-          method: 'PUT'
+          method: 'PUT',
+          transformRequest: function(data){
+            return Object.toFormData({invoice: data});
+          }, 
+          headers: {
+            'Content-Type': undefined
+          }
         },
         query: {
           method: 'GET',
@@ -26,10 +32,15 @@ angular.module('InvoicesApp')
           isArray: false,
           url: _baseUrl + 'statistics'
         },
+        states: {
+          method: 'GET',
+          isArray: true,
+          url: _baseUrl + 'states'
+        },
         save: { 
           method: 'POST', 
           transformRequest: function(data){
-            return Object.toFormData(data);
+            return Object.toFormData({invoice: data});
           }, 
           headers: {
             'Content-Type': undefined
