@@ -42,4 +42,4 @@ section
             | {{ company.name }}
         section
           span.state ng-repeat="(state, count) in company.states" ng-hide="count == 0"
-            | {{state}} ({{count}})
+            | {{state | invState}} ({{count}})

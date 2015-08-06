@@ -26,7 +26,8 @@ angular.module('CompaniesApp')
   ['$scope',
    '$mdDialog',
    'Company',
-   function ($scope, $mdDialog, Company) {
+   'Invoice',
+   function ($scope, $mdDialog, Company, Invoice) {
 
     _init();
 
@@ -49,14 +50,9 @@ angular.module('CompaniesApp')
       Company.query(function (data) {
         $scope.companies = data.companies;
       });
-    }
 
-    $scope.states = [
-      'Draft',
-      'Unpaid',
-      'Partly',
-      'Paid',
-      'Overdue',
-      'Bad Dept'
-    ];
+      Invoice.states(function (states) {
+        $scope.states = states
+      })
+    }
   }]);

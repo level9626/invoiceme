@@ -56,6 +56,10 @@ module Api
       end
     end
 
+    def states
+      respond_with(Invoice.select('distinct state').all.map(&:state))
+    end
+
     # Statistics and metrics
     def statistics
       respond_with(Invoice.build_statistics(current_user))

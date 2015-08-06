@@ -32,6 +32,11 @@ angular.module('InvoicesApp')
           isArray: false,
           url: _baseUrl + 'statistics'
         },
+        states: {
+          method: 'GET',
+          isArray: true,
+          url: _baseUrl + 'states'
+        },
         save: { 
           method: 'POST', 
           transformRequest: function(data){

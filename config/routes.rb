@@ -42,6 +42,7 @@ Rails.application.routes.draw do
       collection do
         get :statistics
         get :invoice_number
+        get :states
       end
     end
 
