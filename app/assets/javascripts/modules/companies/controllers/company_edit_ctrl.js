@@ -1,20 +1,19 @@
 'use strict';
 
-angular.module('CompaniesApp')
-  .controller('CompanyEditCtrl',
-  ['$scope',
-   '$routeParams',
-   'Company',
-   function ($scope, $routeParams, Company) {
+function CompanyEditCtrl($scope, $mdDialog, Company, id) {
+  Company.get({id: id}, function (company) {
+    $scope.company = company;
+  });
 
-    Company.get({id: $routeParams['id']}, function (company) {
-      $scope.company = company;
+  $scope.cancel = function() {
+    $mdDialog.cancel();
+  };
+
+  $scope.saveCompany = function () {
+    Company.update($scope.company, function (company) {
+      $mdDialog.hide();
+    }, function (responce) {
+      $scope.errors = responce.data.errors;
     });
-
-    $scope.saveCompany = function () {
-      Company.update($scope.company, function (company) {
-        $location.path('/companies/'+company.id);
-      });
-    };
-
-  }]);
+  };
+}

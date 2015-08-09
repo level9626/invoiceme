@@ -25,6 +25,19 @@ angular.module('CompaniesApp')
       });
     };
 
+    $scope.editCompany = function (ev, id) {
+      $mdDialog.show({
+        controller: CompanyEditCtrl,
+        templateUrl: 'companies/edit.html',
+        targetEvent: ev,
+        locals: {
+          id: id
+        }
+      }).then(function(answer) {
+        _init();
+      });
+    };
+
     function _init() {
       Company.query(function (data) {
         $scope.companies = data.companies;

@@ -56,6 +56,6 @@ section
                 a.delete href="#"
                   img.inline  src="#{asset_path('delete.png')}"
                   | Remove
-                a.edit href='invoices/{{invoice.id}}/edit'
+                a.edit href='#' ng-click="editCompany($event, company.id)"
                   img.inline  src="#{asset_path('pen.png')}"
                   | Edit

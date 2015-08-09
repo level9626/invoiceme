@@ -1,3 +1,4 @@
+'use strict';
 
 function CompanyNewCtrl($scope, $mdDialog, Company) {
   $scope.company = {
@@ -14,7 +15,6 @@ function CompanyNewCtrl($scope, $mdDialog, Company) {
     Company.save($scope.company, function (company) {
       $mdDialog.hide();
     }, function (responce) {
-      console.log(responce.data.errors);
       $scope.errors = responce.data.errors;
     });
   };
