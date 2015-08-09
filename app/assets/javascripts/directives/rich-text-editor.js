@@ -17,7 +17,8 @@ angular.module('InvMe')
               "color": false,
               "blockquote": false,
               "size": 'xs'
-          }
+          },
+          placeholder: attrs.placeholder
         });
         editor = textarea.data('wysihtml5').editor;
         toolbar = textarea.data('wysihtml5').toolbar;
