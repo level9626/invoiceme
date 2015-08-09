@@ -66,9 +66,13 @@
     .md-toolbar-tools {
       height: 44px;
       min-height: 44px;
+      .add-plus {
+        color: #D8D8D8;
+        margin-right: 5px;
+      }
       h2 {
         color: #2F3640;
-        font-size: 0.8em;
+        font-size: 0.7em;
       }
     }
     .close {
