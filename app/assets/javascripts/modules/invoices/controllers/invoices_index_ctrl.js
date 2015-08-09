@@ -7,8 +7,8 @@ angular.module('InvoicesApp')
     'Invoice',
     function ($scope, $location, Invoice) {
 
-        Invoice.query($location.search(), function (data) {
-            $scope.invoices = data.invoices;
-        });
+      Invoice.query($location.search(), function (data) {
+          $scope.invoices = data.invoices;
+      });
 
     }]);

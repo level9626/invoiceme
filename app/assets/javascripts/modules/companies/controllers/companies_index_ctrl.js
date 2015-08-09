@@ -38,6 +38,11 @@ angular.module('CompaniesApp')
       });
     };
 
+    $scope.removeCompany = function (id) {
+      Company.remove({id: id});
+      _init();
+    };
+
     function _init() {
       Company.query(function (data) {
         $scope.companies = data.companies;

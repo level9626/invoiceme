@@ -185,3 +185,11 @@ a.md-button.md-primary.md-fab,
     color: rgba(255,255,255,0.87);
   }
 }
+
+// buttons 
+.add-button {
+  position: fixed;
+  top: 65px;
+  right: 20px;
+  z-index: 1002;
+}
