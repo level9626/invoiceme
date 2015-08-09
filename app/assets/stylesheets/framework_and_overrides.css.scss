@@ -3,6 +3,11 @@
 @import "bootstrap";
 /* COLOR VARIABLES */
 @import "colors";
+@import url(//fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic,cyrillic-ext);
+
+body, html, p, h1, h2, h3, h4, h5, h6, span, input, label, textarea {
+  font-family: 'Roboto', sans-serif;
+}
 
 // Editor
 .wysihtml5-sandbox {
