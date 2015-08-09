@@ -1,41 +1,22 @@
-.row.mt
-  .col-md-6.col-md-offset-3
-    .panel.panel-default
-      .panel-heading New Company
-      .panel-body
-        form ng-submit="saveCompany()"
-          .form-inputs
-            .form-group
-              label.control-label for="company_logo" 
-                abbr title="required" *
-                | Logo
-              input#company_logo.form-control ng-model="company.logo" type="file"
+.form-inputs layout="row" layout-wrap=""
+  div flex="30"
+    .form-group.image-preview ng-class="{'has-error': errors['logo'] && !form['company.logo'].$valid}"
+      label.control-label for="company_logo" 
+      input#company_logo.form-control in-file-preview="true" name="company.logo"  file-model="company.logo" type="file" required=""
+      span.help-block ng-hide="form['company.logo'].$valid" ng-repeat="error in errors['logo']"
+        | {{error}}
+  div.pl flex="70"
+    .form-group ng-class="{'has-error': errors['name'] && !form['company.name'].$valid }"
+      input#company_name.form-control name="company.name" ng-model="company.name" type="text" required="" placeholder="Name"
+      span.help-block ng-hide="form['company.name'].$valid" ng-repeat="error in errors['name']"
+        | {{error}}
 
-            .form-group
-              label.control-label for="company_name" 
-                abbr title="required" *
-                | Name
-              input#company_name.form-control ng-model="company.name" type="text"
-
-            .form-group
-              label.control-label for="company_email" 
-                abbr title="required" *
-                | Name
-              input#company_email.form-control ng-model="company.email" type="email"
-
-            .form-group
-              label.control-label for="company_address" 
-                abbr title="required" *
-                | Address
-              textarea#company_address.form-control ng-model="company.address"
-
-            .form-group
-              label.control-label for="company_defaut" 
-                abbr title="required" *
-                | Default Company ?
-              input#company_defaut.form-control ng-model="company.default" type="checkbox"
-
-          .form-actions
-            button.btn.btn-primary type="submit"
-              .fa.fa-plus
-                | New Company
+    .form-group ng-class="{'has-error': errors['email'] && !form['company.email'].$valid }"
+      input#company_email.form-control name="company.email" ng-model="company.email" type="email" required="" placeholder="Email"
+      span.help-block ng-hide="form['company.email'].$valid" ng-repeat="error in errors['email']"
+        | {{error}}
+  div flex="100"
+    .form-group ng-class="{'has-error': errors['address'] && !form['company.address'].$valid }"
+      textarea rich-text-editor='true' ng-model="company.address" required="" placeholder="Address"
+      span.help-block ng-hide="form['company.address'].$valid" ng-repeat="error in errors['address']"
+        | {{error}}

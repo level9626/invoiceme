@@ -1,3 +1,4 @@
+// List styles
 .companies {
   border-radius: 3px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -53,4 +54,69 @@
       }
     }
   }
+}
+
+// Form/Modal styles
+.company-modal {
+  md-toolbar {
+    background-color: #F8F8F8;
+    border-bottom: 2px solid #E1E1E1;
+    height: 44px;
+    min-height: 44px;
+    .md-toolbar-tools {
+      height: 44px;
+      min-height: 44px;
+      h2 {
+        color: #2F3640;
+        font-size: 0.8em;
+      }
+    }
+    .close {
+      width: 20px;
+      height: 20px;
+      md-icon {
+        margin-bottom: 5px;
+        svg {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+  }
+}
+
+.bordless-form {
+  .form-inputs, .form-inputs .form-group{
+    input, textarea, select, .wysihtml5-sandbox {
+      border-top-style: none !important;
+      border-left-style: none !important;
+      border-right-style: none !important;
+      border-radius: 0px !important;
+      box-shadow: none !important;
+    }
+    textarea {
+      height: 40px
+    }
+  }
+}
+
+.form-group.image-preview {
+  position: relative;
+  label {
+    width: 110px;
+    height: 110px;
+    background-size: 110px 110px;
+    background-image: url('add_image.png');
+    z-index: 2;
+    position: relative;
+    cursor: pointer;
+  }
+  input {
+    position: absolute;
+    top: 20%;
+    right: 20%;
+    width: 5%;
+    height: 5%;
+  }
+  overflow: hidden;
 }

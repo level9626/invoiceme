@@ -1,51 +1,13 @@
-md-dialog aria-label="New Company"
-  form ng-submit="saveCompany()" name="form" enctype="multipart/form-data"
+md-dialog.company-modal aria-label="New Company"
+  form.bordless-form ng-submit="saveCompany()" name="form" enctype="multipart/form-data"
     md-toolbar
       .md-toolbar-tools
-        h2 New Company
+        h2.text-uppercase Add New Company
         span flex=''
-        md-button class="md-icon-button" ng-click="cancel()" type="button"
+        md-button.close.md-icon-button ng-click="cancel()" type="button"
           md-icon md-svg-src="#{asset_path('icons/close_purp.svg')}" aria-label="Close dialog"
     md-dialog-content
-      .form-inputs layout="row" layout-wrap=""
-        div flex="30"
-          .form-group ng-class="{'has-error': errors['logo'] && !form['company.logo'].$valid }"
-            label.control-label for="company_logo" 
-              abbr title="required" *
-              | Logo
-            input#company_logo.form-control name="company.logo"  file-model="company.logo" type="file" required=""
-            span.help-block ng-hide="form['company.logo'].$valid" ng-repeat="error in errors['logo']"
-              | {{error}}
-        div.pl flex="70"
-          .form-group ng-class="{'has-error': errors['name'] && !form['company.name'].$valid }"
-            label.control-label for="company_name" 
-              abbr title="required" *
-              | Name
-            input#company_name.form-control name="company.name" ng-model="company.name" type="text" required=""
-            span.help-block ng-hide="form['company.name'].$valid" ng-repeat="error in errors['name']"
-              | {{error}}
-
-          .form-group ng-class="{'has-error': errors['email'] && !form['company.email'].$valid }"
-            label.control-label for="company_email" 
-              abbr title="required" *
-              | Email
-            input#company_email.form-control name="company.email" ng-model="company.email" type="email" required=""
-            span.help-block ng-hide="form['company.email'].$valid" ng-repeat="error in errors['email']"
-              | {{error}}
-        div flex="100"
-          .form-group ng-class="{'has-error': errors['address'] && !form['company.address'].$valid }"
-            label.control-label for="company_address" 
-              abbr title="required" *
-              | Address
-            textarea rich-text-editor='true' ng-model="company.address" required=""
-            span.help-block ng-hide="form['company.address'].$valid" ng-repeat="error in errors['address']"
-              | {{error}}
-
-          .form-group
-            label.control-label for="company_defaut"
-              abbr title="required" *
-              | Default Company ?
-            input#company_defaut.form-control ng-model="company.default" type="checkbox"
+      div ng-include="'companies/_form.html'"
 
     div class="md-actions" layout="row"
-      md-button ng-click="submit()" class="md-primary" type="submit" Add Company
+      md-button ng-click="submit()" class="md-raised md-primary" type="submit" Add Company

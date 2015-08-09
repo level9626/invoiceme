@@ -1,3 +1,13 @@
-view-title Edit Client
+md-dialog.company-modal aria-label="Edit Company"
+  form.bordless-form ng-submit="saveCompany()" name="form" enctype="multipart/form-data"
+    md-toolbar
+      .md-toolbar-tools
+        h2.text-uppercase Edit Company
+        span flex=''
+        md-button.close.md-icon-button ng-click="cancel()" type="button"
+          md-icon md-svg-src="#{asset_path('icons/close_purp.svg')}" aria-label="Close dialog"
+    md-dialog-content
+      div ng-include="'companies/_form.html'"
 
-div ng-include="'companies/_form.html'"
+    div class="md-actions" layout="row"
+      md-button ng-click="submit()" class="md-raised md-primary" type="submit" Save Company
