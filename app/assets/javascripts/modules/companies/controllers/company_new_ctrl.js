@@ -1,16 +1,25 @@
 'use strict';
 
-angular.module('CompaniesApp')
-  .controller('CompanyNewCtrl',
-  ['$scope',
-   '$location',
-   'Company',
-   function ($scope, $location, Company) {
-
-    $scope.saveCompany = function () {
-      Company.save($scope.company, function (Company) {
-        $location.path('/companies/'+company.id);
-      });
+var CompanyNewCtrl = [
+  '$scope',
+  '$mdDialog',
+  'Company',
+  function ($scope, $mdDialog, Company) {
+    $scope.company = {
+      name: '',
+      email: '',
+      address: ''
     };
 
-  }]);
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.saveCompany = function () {
+      Company.save($scope.company, function (company) {
+        $mdDialog.hide();
+      }, function (responce) {
+        $scope.errors = responce.data.errors;
+      });
+    };
+  }];

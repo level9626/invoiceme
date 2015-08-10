@@ -3,6 +3,11 @@
 @import "bootstrap";
 /* COLOR VARIABLES */
 @import "colors";
+@import url(//fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic,cyrillic-ext);
+
+body, html, p, h1, h2, h3, h4, h5, h6, span, input, label, textarea {
+  font-family: 'Roboto', sans-serif;
+}
 
 // Editor
 .wysihtml5-sandbox {
@@ -165,4 +170,26 @@ b.inline-label {
 
 .pl {
   padding-left: 15px;
+}
+
+
+// Material overrides
+a.md-button.md-primary.md-raised,
+a.md-button.md-primary.md-fab,
+.md-button.md-primary.md-raised,
+.md-button.md-primary.md-fab {
+  background-color: #42a5f5;
+  padding: 0 10px;
+  color: white;
+  &:hover {
+    color: rgba(255,255,255,0.87);
+  }
+}
+
+// buttons 
+.add-button {
+  position: fixed;
+  top: 65px;
+  right: 20px;
+  z-index: 1002;
 }

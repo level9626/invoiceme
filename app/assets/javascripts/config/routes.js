@@ -34,34 +34,10 @@ angular.module('InvMe')
         templateUrl: 'clients/index.html',
         controller: 'ClientsIndexCtrl'
       })
-      .when('/clients/new', {
-        templateUrl: 'clients/new.html',
-        controller: 'ClientNewCtrl'
-      })
-      .when('/clients/:id', {
-          templateUrl: 'clients/show.html',
-          controller: 'ClientShowCtrl'
-      })
-      .when('/clients/:id/edit', {
-          templateUrl: 'clients/edit.html',
-          controller: 'ClientEditCtrl'
-      })
       // Companies Recourse
       .when('/companies', {
         templateUrl: 'companies/index.html',
         controller: 'CompaniesIndexCtrl'
-      })
-      .when('/companies/new', {
-        templateUrl: 'companies/new.html',
-        controller: 'CompanyNewCtrl'
-      })
-      .when('/companies/:id', {
-          templateUrl: 'companies/show.html',
-          controller: 'CompanyShowCtrl'
-      })
-      .when('/companies/:id/edit', {
-        templateUrl: 'companies/edit.html',
-        controller: 'CompanyEditCtrl'
       })
       // Payments Recourse
       .when('/payments', {

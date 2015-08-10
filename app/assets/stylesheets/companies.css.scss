@@ -1,11 +1,12 @@
-.companies {
+// List styles
+.companies, .clients {
   border-radius: 3px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   border: 1px solid #ededed;
-  .company {
+  .company, .client {
     height: 100px;
     border-bottom: 1px solid #ededed;
-    button {
+    button.logo {
       margin: 16%;
       width: 6.6rem;
       height: 6.6rem;
@@ -16,13 +17,113 @@
         height: 6.6rem;
       }
     }
-    .state {
-      &:first-child {
-        border-left: none;
-        padding-left: 0;
+    .statuses {
+      &:before {
+        content: '\0000a0';
       }
-      border-left: 1px solid #d8d8d8;
-      padding-left: 5px;
+      position: relative;
+      .state {
+        &:first-child {
+          border-left: none;
+          padding-left: 0;
+        }
+        border-left: 1px solid #d8d8d8;
+        padding-left: 5px;
+      }
+      .actions {
+        position: absolute;
+        right: 0;
+        bottom: 0px;
+        md-fab-actions {
+          & .edit {
+            color: #42a5f5;
+            margin-right: 10px;
+            padding-top: 20px;
+            display: inline-block;
+          }
+          & .delete {
+            color: #ff6764;
+            margin-right: 10px;
+            padding-top: 20px;
+            display: inline-block;
+          }
+          .md-fab-action-item {
+            
+          }
+        }
+      }
     }
   }
+}
+
+// Form/Modal styles
+.company-modal, .client-modal {
+  md-toolbar {
+    background-color: #F8F8F8;
+    border-bottom: 2px solid #E1E1E1;
+    height: 44px;
+    min-height: 44px;
+    .md-toolbar-tools {
+      height: 44px;
+      min-height: 44px;
+      .add-plus, .fa-pencil-square-o {
+        color: #D8D8D8;
+        margin-right: 5px;
+      }
+      h2 {
+        color: #2F3640;
+        font-size: 0.7em;
+      }
+    }
+    .close {
+      width: 20px;
+      height: 20px;
+      md-icon {
+        margin-bottom: 5px;
+        svg {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+  }
+}
+
+.bordless-form {
+  .form-inputs, .form-inputs .form-group{
+    input, textarea, select, .wysihtml5-sandbox {
+      border-top-style: none !important;
+      border-left-style: none !important;
+      border-right-style: none !important;
+      border-radius: 0px !important;
+      box-shadow: none !important;
+    }
+    textarea {
+      height: 40px
+    }
+  }
+}
+
+.form-group.image-preview {
+  position: relative;
+  label {
+    width: 110px;
+    height: 110px;
+    background-size: 110px 110px;
+    background-image: asset-url('add_image.png');
+    z-index: 2;
+    position: relative;
+    cursor: pointer;
+  }
+  input {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 1px;
+    height: 1px;
+    &:hover, &:focus, &:visited, &:active {
+      outline: none;
+    }
+  }
+  overflow: hidden;
 }

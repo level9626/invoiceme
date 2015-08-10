@@ -1,26 +1,5 @@
 'use strict';
 
-function DialogController($scope, $mdDialog, Company) {
-  $scope.company = {
-    name: '',
-    email: '',
-    address: ''
-  };
-
-  $scope.cancel = function() {
-    $mdDialog.cancel();
-  };
-
-  $scope.saveCompany = function () {
-    Company.save($scope.company, function (company) {
-      $mdDialog.hide();
-    }, function (responce) {
-      console.log(responce.data.errors);
-      $scope.errors = responce.data.errors;
-    });
-  };
-}
-
 angular.module('CompaniesApp')
   .controller('CompaniesIndexCtrl',
   ['$scope',
@@ -38,12 +17,30 @@ angular.module('CompaniesApp')
 
     $scope.newCompany = function (ev) {
       $mdDialog.show({
-        controller: DialogController,
+        controller: CompanyNewCtrl,
         templateUrl: 'companies/new.html',
         targetEvent: ev,
       }).then(function(answer) {
         _init();
       });
+    };
+
+    $scope.editCompany = function (ev, id) {
+      $mdDialog.show({
+        controller: CompanyEditCtrl,
+        templateUrl: 'companies/edit.html',
+        targetEvent: ev,
+        locals: {
+          id: id
+        }
+      }).then(function(answer) {
+        _init();
+      });
+    };
+
+    $scope.removeCompany = function (id) {
+      Company.remove({id: id});
+      _init();
     };
 
     function _init() {

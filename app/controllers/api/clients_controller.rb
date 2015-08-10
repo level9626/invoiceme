@@ -23,8 +23,7 @@ module Api
     def create
       @client = Client.new(client_params)
       @client.clients_users.build(user: current_user)
-      @client.save
-      respond_with(@client)
+      try_respond_with(@client)
     end
 
     def update

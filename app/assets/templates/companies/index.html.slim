@@ -1,7 +1,7 @@
 view-title Companies
 
-.row.add-button-row
-  md-button ng-click="newCompany($event)" class="md-button md-fab md-mini add-icon pull-right"
+.add-button
+  md-button ng-click="newCompany($event)" class="md-button md-fab md-mini add-icon"
     md-icon md-font-icon="fa-plus" class="fa add-plus"
 
 div ng-include="'companies/_index_navigation.html'"
@@ -34,12 +34,28 @@ section
   div.companies flex="100"
     section.company layout="row" layout-wrap="" ng-repeat="company in companies"
       div flex="10"
-        md-button.md-fab aria-label='company_logo'
+        md-button.md-fab.logo aria-label='company_logo'
           img src="{{company.logo}}"
       div flex="90"
         section
           h2
             | {{ company.name }}
-        section
+        section.statuses
           span.state ng-repeat="(state, count) in company.states" ng-hide="count == 0"
             | {{state | invState}} ({{count}})
+
+          .actions
+            md-fab-speed-dial md-direction="left" md-open="false" class="md-fling"
+              md-fab-trigger
+                md-button.md-icon-button aria-label="menu"
+                  md-icon.more-icon md-svg-src="#{asset_path('icons/more_icon.svg')}"
+              md-fab-actions
+                a href="#"
+                  md-button class="md-raised md-primary"
+                    | Add Invoice
+                a.delete href="#" ng-click="removeCompany(company.id)"
+                  img.inline  src="#{asset_path('delete.png')}"
+                  | Remove
+                a.edit href='#' ng-click="editCompany($event, company.id)"
+                  img.inline  src="#{asset_path('pen.png')}"
+                  | Edit
