@@ -1,7 +1,7 @@
 .form-inputs layout="row" layout-wrap=""
   div flex="30"
     .form-group.image-preview ng-class="{'has-error': errors['logo'] && !form['company.logo'].$valid}"
-      label.control-label for="company_logo" style="background-image: url('{{company.logo}}')"
+      label.control-label for="company_logo" ng-style="company.logo && { 'background-image': 'url('+company.logo+')'}"
       input#company_logo.form-control in-file-preview="true" name="company.logo"  file-model="company.logo" type="file" required=""
       span.help-block ng-hide="form['company.logo'].$valid" ng-repeat="error in errors['logo']"
         | {{error}}

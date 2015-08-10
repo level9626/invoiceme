@@ -121,6 +121,9 @@
     left: 10%;
     width: 1px;
     height: 1px;
+    &:hover, &:focus, &:visited, &:active {
+      outline: none;
+    }
   }
   overflow: hidden;
 }
