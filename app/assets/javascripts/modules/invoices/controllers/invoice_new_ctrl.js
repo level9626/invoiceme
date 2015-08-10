@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('InvoicesApp')
-  .controller('InvoiceNewCtrl',
-  ['$scope',
+  .controller('InvoiceNewCtrl',[
+  '$scope',
+  '$routeParams',
   '$location',
   'Invoice',
   'Company',
   'Client',
-  function ($scope, $location, Invoice, Company, Client) {
+  function ($scope, $routeParams, $location, Invoice, Company, Client) {
 
     // Init Invoice object
     $scope.invoice = {
@@ -29,9 +30,15 @@ angular.module('InvoicesApp')
     // List of companies/cliets are used to get their address
     Company.query(function (data) {
       $scope.companies = data.companies;
+      // Invoice creation for particular company
+      if($routeParams['company_id'])
+        $scope.invoice.company_id = parseInt($routeParams['company_id']);
     });
     Client.query(function (data) {
       $scope.clients = data.clients;
+      // Invoice creation for particular client
+      if($routeParams['client_id'])
+        $scope.invoice.client_id = parseInt($routeParams['client_id']);
     });
 
     // On company_id/client_id change, get appropriate record address, and use

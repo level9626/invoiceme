@@ -29,6 +29,14 @@ angular.module('InvMe')
         templateUrl: 'invoices/edit.html',
         controller: 'InvoiceEditCtrl'
       })
+      .when('/invoices/new/client/:client_id', {
+        templateUrl: 'invoices/new.html',
+        controller: 'InvoiceNewCtrl'
+      })
+      .when('/invoices/new/company/:company_id', {
+        templateUrl: 'invoices/new.html',
+        controller: 'InvoiceNewCtrl'
+      })
       // Clients Recourse
       .when('/clients', {
         templateUrl: 'clients/index.html',

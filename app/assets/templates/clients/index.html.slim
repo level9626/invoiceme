@@ -37,7 +37,7 @@ section
                 md-button.md-icon-button aria-label="menu"
                   md-icon.more-icon md-svg-src="#{asset_path('icons/more_icon.svg')}"
               md-fab-actions
-                a href="#"
+                a href="/invoices/new/client/{{client.id}}"
                   md-button class="md-raised md-primary"
                     | Add Invoice
                 a.delete href="#" ng-click="removeClient(client.id)"
