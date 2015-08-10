@@ -1,9 +1,9 @@
 // List styles
-.companies {
+.companies, .clients {
   border-radius: 3px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   border: 1px solid #ededed;
-  .company {
+  .company, .client {
     height: 100px;
     border-bottom: 1px solid #ededed;
     button.logo {
@@ -57,7 +57,7 @@
 }
 
 // Form/Modal styles
-.company-modal {
+.company-modal, .client-modal {
   md-toolbar {
     background-color: #F8F8F8;
     border-bottom: 2px solid #E1E1E1;
@@ -66,7 +66,7 @@
     .md-toolbar-tools {
       height: 44px;
       min-height: 44px;
-      .add-plus {
+      .add-plus, .fa-pencil-square-o {
         color: #D8D8D8;
         margin-right: 5px;
       }

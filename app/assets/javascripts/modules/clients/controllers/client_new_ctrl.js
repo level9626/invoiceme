@@ -1,16 +1,21 @@
 'use strict';
 
-angular.module('ClientsApp')
-  .controller('ClientNewCtrl',
-  ['$scope',
-   '$location',
-   'Client',
-   function ($scope, $location, Client) {
+function ClientNewCtrl ($scope, $mdDialog, Client) {
+  $scope.client = {
+    name: '',
+    email: '',
+    address: ''
+  };
 
-    $scope.saveClient = function () {
-      Client.save($scope.client, function (client) {
-        $location.path('/clients/'+client.id);
-      });
-    };
+  $scope.cancel = function() {
+    $mdDialog.cancel();
+  };
 
-  }]);
+  $scope.saveClient = function () {
+    Client.save($scope.client, function (client) {
+      $mdDialog.hide();
+    }, function (responce) {
+      $scope.errors = responce.data.errors;
+    });
+  };
+}

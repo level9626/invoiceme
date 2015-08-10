@@ -1,3 +1,14 @@
-view-title Edit Client
+md-dialog.client-modal aria-label="Edit Client"
+  form.bordless-form ng-submit="saveClient()" name="form" enctype="multipart/form-data"
+    md-toolbar
+      .md-toolbar-tools
+        md-icon md-font-icon="fa-pencil-square-o" class="fa fa-pencil-square-o"
+        h2.text-uppercase Edit Client
+        span flex=''
+        md-button.close.md-icon-button ng-click="cancel()" type="button"
+          md-icon md-svg-src="#{asset_path('icons/close_purp.svg')}" aria-label="Close dialog"
+    md-dialog-content
+      div ng-include="'clients/_form.html'"
 
-div ng-include="'clients/_form.html'"
+    div class="md-actions" layout="row"
+      md-button ng-click="submit()" class="md-raised md-primary" type="submit" Save Client

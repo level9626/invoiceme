@@ -34,18 +34,6 @@ angular.module('InvMe')
         templateUrl: 'clients/index.html',
         controller: 'ClientsIndexCtrl'
       })
-      .when('/clients/new', {
-        templateUrl: 'clients/new.html',
-        controller: 'ClientNewCtrl'
-      })
-      .when('/clients/:id', {
-          templateUrl: 'clients/show.html',
-          controller: 'ClientShowCtrl'
-      })
-      .when('/clients/:id/edit', {
-          templateUrl: 'clients/edit.html',
-          controller: 'ClientEditCtrl'
-      })
       // Companies Recourse
       .when('/companies', {
         templateUrl: 'companies/index.html',
