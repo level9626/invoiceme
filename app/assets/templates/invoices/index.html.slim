@@ -82,11 +82,11 @@ view-title Invoices
               | {{ invoice.company.name }}
             td.total-currency
               | {{ invoice.client.name }}
-            td.total-currency
+            td.total-currency.ar
               | {{ invoice.total }} {{ invoice.currency }}
-            td.paid-currency
+            td.paid-currency.ar
               | {{ invoice.balance }} {{ invoice.currency }}
-            td.out-currency
+            td.out-currency.ar
               | {{ invoice.total - invoice.balance }} {{ invoice.currency }}
             td
               span.label-status.partly

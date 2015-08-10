@@ -13,6 +13,9 @@ $border: grey;
 #invoice {
   @extend .borderise;
   padding: 0px;
+  span {
+    margin-left: 0px !important;
+  }
   #header {
     margin-bottom: 50px;
   }
@@ -248,13 +251,20 @@ table.payments-info {
 }
 
 .fa-caret-down {
-  vertical-align: bottom;
+  vertical-align: sub;
   &:before {
-    font-size: x-large;
-    vertical-align: sub;
-    margin-left: 5px;
+    font-size: large;
+    vertical-align: text-bottom;
+    margin-left: 10px;
   }
 }
+#invoice {
+  .fa-caret-down {
+    font-size: large;
+    vertical-align: middle;
+  }
+}
+
 .clear-class {
   outline: none !important;
   margin: 0 !important;
@@ -273,12 +283,23 @@ span.ng-isolate-scope {
   padding-bottom: 24px;
 }
 // Invoice filters
-#filter span {
-  margin: 0;
-  padding-left: 5px;
-  padding-right: 5px;
+#filter {
+  span {
+    margin: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    &#opacity-filter {
+      opacity: 0.7;
+    }
+    &:focus {
+      outline: none !important;
+    }
+    &.filter-margin {
+      margin-right: 40px;
+    }
+  }
 }
-
+#filter > div:nth-child(3) > div > div > span:nth-child(1)
 .invoice-filter-button {
   border: 0px;
   padding-bottom: 24px;
@@ -452,6 +473,32 @@ span.ng-isolate-scope {
 
 
 // Invoice action buttons
+body > div.md-open-menu-container {
+  > md-menu-content {
+    padding: 20px 0px;
+    > md-input-container {
+      width: 150px;
+      padding-bottom: 5px;
+      margin-left: 25px;
+      > label {
+        top: 5px;
+        padding-right: 2px;
+      }
+    }
+    > md-menu-item button {
+      padding: 0px 30px;
+    }
+    > md-menu-header {
+      height: 20px;
+      text-align: left;
+      font-weight: bold;
+      color: #2780B5;
+      margin: 10px 0px 5px 30px;
+    }
+  }
+}
+
+
 #invoice-actions {
   .md-button {
     display: inline-flex;
