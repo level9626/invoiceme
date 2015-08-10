@@ -43,7 +43,10 @@ module Api
     end
 
     def _search
-      current_user.clients.search(params[:q])
+      ( params[:q] && params[:q][:invoices_state_eq] ? \
+        current_user.clients.group('clients.id') : \
+        current_user.clients \
+      ).search(params[:q])
     end
 
     def client_params

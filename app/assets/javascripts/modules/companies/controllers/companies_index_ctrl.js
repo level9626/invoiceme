@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('CompaniesApp')
-  .controller('CompaniesIndexCtrl',
-  ['$scope',
+  .controller('CompaniesIndexCtrl',[
+   '$scope',
+   '$location',
    '$mdDialog',
    'Company',
    'Invoice',
-   function ($scope, $mdDialog, Company, Invoice) {
+   function ($scope, $location, $mdDialog, Company, Invoice) {
 
     _init();
 
@@ -44,9 +45,21 @@ angular.module('CompaniesApp')
     };
 
     function _init() {
-      Company.query(function (data) {
+      // filtered
+      Company.query($location.search(), function (data) {
         $scope.companies = data.companies;
       });
+
+      // All companies for filters
+      // $location.search() will contain Object {q[name_eq]: "HP"}
+      // or an empty Object {}
+      // If it is containing an empty object, it means, that we don't need
+      // to do a separate call, in order to get all companies of the user.
+      if(!_.isEmpty($location.search())){
+        Company.query(function (data) {
+          $scope.all_companies = data.companies;
+        });
+      }
 
       Invoice.states(function (states) {
         $scope.states = states

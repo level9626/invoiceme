@@ -1,0 +1,13 @@
+li.ml
+  md-menu
+    span ng-click="$mdOpenMenu()" 
+      | Invoice
+      i.fa.fa-caret-down
+    md-menu-content width="3" 
+      table.table.nav-boxes
+        tbody
+          tr ng-repeat="state in states"
+            td filter-button="invoices_state_eq" value="{{state}}"
+              input type='checkbox'
+            td filter-button="invoices_state_eq" value="{{state}}"
+              | {{state | invState}}

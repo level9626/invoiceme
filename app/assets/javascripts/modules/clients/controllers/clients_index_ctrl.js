@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('ClientsApp')
-  .controller('ClientsIndexCtrl',
-  ['$scope',
+  .controller('ClientsIndexCtrl',[
+   '$scope',
+   '$location',
    '$mdDialog',
    'Client',
    'Invoice',
-   function ($scope, $mdDialog, Client, Invoice) {
+   function ($scope, $location, $mdDialog, Client, Invoice) {
 
     _init();
 
@@ -44,9 +45,20 @@ angular.module('ClientsApp')
     };
 
     function _init() {
-      Client.query(function (data) {
+      Client.query($location.search(), function (data) {
         $scope.clients = data.clients;
       });
+
+      // All clients for filters
+      // $location.search() will contain Object {q[name_eq]: "HP"}
+      // or an empty Object {}
+      // If it is containing an empty object, it means, that we don't need
+      // to do a separate call, in order to get all clients of the user.
+      if(!_.isEmpty($location.search())){
+        Client.query(function (data) {
+          $scope.all_clients = data.clients;
+        });
+      }
 
       Invoice.states(function (states) {
         $scope.states = states

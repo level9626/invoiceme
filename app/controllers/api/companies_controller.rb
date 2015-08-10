@@ -39,7 +39,10 @@ module Api
     private
 
     def _search
-      current_user.companies.search(params[:q])
+      ( params[:q] && params[:q][:invoices_state_eq] ? \
+        current_user.companies.group('companies.id') : \
+        current_user.companies \
+      ).search(params[:q])
     end
 
     def _set_company
