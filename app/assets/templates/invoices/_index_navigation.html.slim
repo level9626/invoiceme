@@ -1,0 +1,45 @@
+/ Navigation
+
+span.invoice-filter-button.filter-margin
+  md-menu
+    span ng-click="$mdOpenMenu()"
+      | Client
+      i.fa.fa-caret-down
+    md-menu-content width="3"
+      md-menu-header Client
+      md-input-container
+        label
+          | Search
+          .fa.fa-search.pull-right
+        input type="text" ng-model="search.client.name"
+      md-menu-item ng-repeat="invoice in invoices | filter:search"
+        md-button
+          span filter-button="client_name_cont" value="{{ invoice.client.name }}"
+            | {{ invoice.client.name }}
+
+span.invoice-filter-button.filter-margin
+  md-menu
+    span ng-click="$mdOpenMenu()"
+      | Company
+      i.fa.fa-caret-down
+    md-menu-content width="3"
+      md-menu-header Company
+      md-menu-item ng-repeat="invoice in invoices"
+        md-button
+          span filter-button="company_name_cont" value="{{ invoice.company.name }}"
+            | {{ invoice.company.name }}
+
+span.invoice-filter-button
+  md-menu
+    span ng-click="$mdOpenMenu()"
+      | Period
+      i.fa.fa-caret-down
+    md-menu-content width="3"
+      md-menu-header Period
+      md-radio-group
+        span filter-button="invoice_date_gteq" filter-button2="invoice_date_lteq" value="week"
+          md-radio-button.md-primary value="a" Last week
+        span filter-button="invoice_date_gteq" filter-button2="invoice_date_lteq" value="month"
+          md-radio-button.md-primary value="b" Last month
+        span filter-button="invoice_date_gteq" filter-button2="invoice_date_lteq" value="year"
+          md-radio-button.md-primary value="c" Last year

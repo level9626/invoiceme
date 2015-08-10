@@ -2,13 +2,14 @@
 
 angular.module('InvoicesApp')
   .controller('InvoicesIndexCtrl',
-    ['$scope',
+  ['$scope',
+    '$mdDialog',
     '$location',
     'Invoice',
-    function ($scope, $location, Invoice) {
+    function ($scope, $mdDialog, $location, Invoice) {
 
-        Invoice.query($location.search(), function (data) {
-            $scope.invoices = data.invoices;
-        });
+      Invoice.query($location.search(), function (data) {
+        $scope.invoices = data.invoices;
+      });
 
     }]);
