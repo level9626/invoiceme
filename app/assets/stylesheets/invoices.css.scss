@@ -550,24 +550,15 @@ body > div.md-open-menu-container {
   width: 5px;
   height: 33px;
   > div > section {
+    background: -webkit-linear-gradient(left, #66A5E0, #0069cb);
+    background: -o-linear-gradient(left, #66A5E0, #0069cb);
+    background: -moz-linear-gradient(left, #66A5E0, #0069cb);
+    background: linear-gradient(left, #66A5E0, #0069cb);
     background-color: white;
     > button {
       border-radius: 0px;
       margin-bottom: 0px;
       padding-bottom: 0px;
-      background-color: #0069CB;
-      &:nth-child(1) {
-        opacity: 0.6;
-      }
-      &:nth-child(2) {
-        opacity: 0.7;
-      }
-      &:nth-child(3) {
-        opacity: 0.8;
-      }
-      &:nth-child(4) {
-        opacity: 0.9;
-      }
     }
   }
 }
