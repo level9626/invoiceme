@@ -307,20 +307,22 @@ span.ng-isolate-scope {
   background-color: transparent;
   &:focus {
     outline: none;
+    font-weight: bold;
     padding-bottom: 24px;
     border-radius: 0px !important;
     border-bottom: solid 2px #2780B5;
-    color: #2780B5;
+    color: #00a8ff;
   }
   &:hover {
     border-radius: 0px;
-    color: #2780B5;
+    color: #00a8ff;
   }
   &:active {
     box-shadow: none;
     outline: none !important;
   }
 }
+
 .fabSpeedDialdemoBasicUsage .text-capitalize {
   text-transform: capitalize; }
 .fabSpeedDialdemoBasicUsage .md-fab:hover, .fabSpeedDialdemoBasicUsage .md-fab.md-focused {
@@ -413,8 +415,9 @@ span.ng-isolate-scope {
   &:hover {
     color: #FF8E01;
   }
-  &:focus {
-    padding-bottom: 24px;
+  &.active {
+    font-weight: bold;
+    padding-bottom: 22px;
     color: #FF8E01;
     border-bottom: solid 2px #FF8E01;
   }
@@ -423,8 +426,9 @@ span.ng-isolate-scope {
   &:hover {
     color: #D32E31;
   }
-  &:focus {
-    padding-bottom: 24px;
+  &.active {
+    font-weight: bold;
+    padding-bottom: 22px;
     color: #D32E31;
     border-bottom: solid 2px #D32E31;
   }
@@ -433,8 +437,9 @@ span.ng-isolate-scope {
   &:hover {
     color: #999999;
   }
-  &:focus {
-    padding-bottom: 24px;
+  &.active {
+    font-weight: bold;
+    padding-bottom: 22px;
     color: #999999;
     border-bottom: solid 2px #999999;
   }
@@ -443,8 +448,9 @@ span.ng-isolate-scope {
   &:hover {
     color: #00BD21;
   }
-  &:focus {
-    padding-bottom: 24px;
+  &.active {
+    font-weight: bold;
+    padding-bottom: 22px;
     color: #00BD21;
     border-bottom: solid 2px #00BD21;
   }
@@ -453,8 +459,9 @@ span.ng-isolate-scope {
   &:hover {
     color: #8D0404;
   }
-  &:focus {
-    padding-bottom: 24px;
+  &.active {
+    font-weight: bold;
+    padding-bottom: 22px;
     color: #8D0404;
     border-bottom: solid 2px #8D0404;
   }
@@ -463,10 +470,43 @@ span.ng-isolate-scope {
   &:hover {
     color: #333333;
   }
-  &:focus {
-    padding-bottom: 24px;
+  &.active {
+    font-weight: bold;
+    padding-bottom: 22px;
     color: #333333;
     border-bottom: solid 2px #333333;
+  }
+}
+.currency-button {
+  &:hover {
+    color: #00a8ff;
+  }
+  &.active {
+    font-weight: bold;
+    padding-bottom: 22px;
+    color: #00a8ff;
+    border-bottom: solid 2px #00a8ff;
+  }
+}
+.all-button {
+  color: #797979;
+  &:hover {
+    color: #00a8ff;
+    text-decoration: none !important;
+  }
+//  &:focus {
+//    text-decoration: none;
+//    font-weight: bold;
+//    padding-bottom: 22px;
+//    color: #00a8ff;
+//    border-bottom: solid 2px #00a8ff;
+//  }
+  &.active {
+    text-decoration: none;
+    font-weight: bold;
+    padding-bottom: 22px;
+    color: #00a8ff;
+    border-bottom: solid 2px #00a8ff;
   }
 }
 
