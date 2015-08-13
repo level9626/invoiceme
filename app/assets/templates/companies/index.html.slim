@@ -24,7 +24,8 @@ section
   div.companies flex="100"
     section.company layout="row" layout-wrap="" ng-repeat="company in companies"
       div flex="10"
-        img class="md-avatar" src="{{company.logo}}"
+        md-button.md-fab.logo aria-label='company_logo'
+          img class="face" src="{{company.logo}}"
       div flex="90"
         section
           h2
