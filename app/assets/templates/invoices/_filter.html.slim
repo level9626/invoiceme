@@ -1,19 +1,21 @@
 #filter
   .col-md-4
     .btn-group
-      span.invoice-filter-button#opacity-filter All
-      span.invoice-filter-button.draft#opacity-filter.active filter-button="state_eq" value="draft" Draft
-      span.invoice-filter-button.unpaid#opacity-filter filter-button="state_eq" value="unpaid" Unpaid
-      span.invoice-filter-button.partly#opacity-filter filter-button="state_eq" value="partly_paid" Partly
-      span.invoice-filter-button.paid#opacity-filter filter-button="state_eq" value="paid" Paid
-      span.invoice-filter-button.overdue#opacity-filter filter-button="state_eq" value="overdue" Overdue
-      span.invoice-filter-button.bad-debt#opacity-filter filter-button="state_eq" value="bad_debt" Bad Debt
+      a.invoice-filter-button.all-button href="/invoices"
+        span filter-button="" value="all" All
+      span.invoice-filter-button.draft filter-button="state_eq" value="draft" Draft
+      span.invoice-filter-button.unpaid filter-button="state_eq" value="unpaid" Unpaid
+      span.invoice-filter-button.partly filter-button="state_eq" value="partly_paid" Partly
+      span.invoice-filter-button.paid filter-button="state_eq" value="paid" Paid
+      span.invoice-filter-button.overdue filter-button="state_eq" value="overdue" Overdue
+      span.invoice-filter-button.bad-debt filter-button="state_eq" value="bad_debt" Bad Debt
   .col-md-4
     .btn-group
-      span.invoice-filter-button#opacity-filter filter-button="currency_eq" value="USD" USD
-      span.invoice-filter-button#opacity-filter filter-button="currency_eq" value="EUR" EUR
-      span.invoice-filter-button#opacity-filter filter-button="currency_eq" value="UAH" UAH
-      span.invoice-filter-button#opacity-filter filter-button="currency_eq" value="RUB" RUB
+      span.invoice-filter-button.currency-button filter-button="currency_eq" value="USD" highlight="" USD
+      span.invoice-filter-button.currency-button filter-button="currency_eq" value="EUR" highlight="" EUR
+      span.invoice-filter-button.currency-button filter-button="currency_eq" value="UAH" highlight="" UAH
+      span.invoice-filter-button.currency-button filter-button="currency_eq" value="RUB" highlight="" RUB
   .col-md-4
     .btn-group
       div ng-include="'invoices/_index_navigation.html'"
+highlight

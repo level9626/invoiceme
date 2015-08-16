@@ -329,6 +329,14 @@ hr {
   margin-left: 5px;
 }
 
+.mr {
+  margin-right: 30px;
+}
+
+.mrl {
+  margin-right: 10px;
+}
+
 .no-padding {
   padding: 0 !important;
 }
@@ -407,6 +415,8 @@ ul.top-menu > li > .logout {
 
 #sidebar ul li {
   position: relative;
+  //height: 36px;
+  //min-height: 36px;
 }
 
 #sidebar .sub-menu > .sub li  {
@@ -500,7 +510,6 @@ ul.sidebar-menu li ul.sub li.active a {
 }
 
 ul.sidebar-menu li{
-  /*line-height: 20px !important;*/
   margin-bottom: 5px;
 }
 
@@ -516,6 +525,7 @@ ul.sidebar-menu li a{
   color: white;
   text-decoration: none;
   display: inline-block;
+  width: 100%;
   font-size: 15px;
   font-weight: bold;
   font-family: 'Roboto';
@@ -535,6 +545,7 @@ ul.sidebar-menu li a{
 
 .active-menu-link {
   background-color: #1e7cd8;
+
 }
 .active-menu-icon {
   opacity: 1 !important;
@@ -681,11 +692,13 @@ div.panel-body {
   .md-button {
     color: white;
     border-radius: 0;
-    display: -webkit-box;
+    text-align: left;
+    display: inline-block;
     padding: 9px 7px;
-    margin: 0;
+    margin: 0 0 -5px 0;
     &:hover {
       background-color: #1e7cd8;
+      width: 100%;
     }
   }
 }

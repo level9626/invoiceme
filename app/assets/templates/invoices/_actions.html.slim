@@ -1,32 +1,23 @@
 .pull-right#invoice-actions
-  md-button.md-icon-button aria-label="menu"
-    md-icon.more-icon md-svg-src="#{asset_path('icons/more_icon.svg')}"
+  /md-button.md-icon-button aria-label="menu"
+  /  md-icon.more-icon md-svg-src="#{asset_path('icons/more_icon.svg')}"
 
-  /a href="#" class="btn"
-  /  i.fa.fa-ellipsis-v
-  /a href="invoices/{{invoice.id}}" class="btn btn-primary btn-xs tab"
-  /  i.fa.fa-eye
-  /a.btn.btn-success.btn-xs data-toggle="modal" href="#paymentModal{{invoice.id}}"
-  /  | Receive payment
-  /
-  /.btn-group
-  /  button.btn.btn-default.btn-xs.tab.dropdown-toggle aria-expanded="false" data-toggle="dropdown" type="button"
-  /    i.fa.fa-chevron-down#invoices_actions_button
-  /  ul.dropdown-menu.pull-right role="menu"
-  /    li
-  /      a.btn data-toggle="modal" href="#commentsModal{{invoice.id}}"
-  /        | Notes
-  /        span.badge
-  /          | {{ invoice.comments.length }}
-  /    li
-  /      a href="#" class="btn btn-theme01"
-  /        | Invoice Mails
-  /    li
-  /      a href="#" class="btn btn-theme01" target='blank'
-  /        | Download PDF
-  /    li
-  /      a href="#" class="btn btn-theme01"
-  /        | Delete invoice
-/ == render 'journals'
-/ == render 'comment'
-/ == render 'payment'
+  .actions
+    md-fab-speed-dial md-direction="left" class="md-fling"
+      md-fab-trigger
+        md-button.md-icon-button aria-label="menu"
+          md-icon.more-icon md-svg-src="#{asset_path('icons/more_icon.svg')}"
+          md-icon.delete-icon md-svg-src="#{asset_path('icons/actions/delete.svg')}"
+
+      md-fab-actions
+        section layout="row"
+          md-button class="md-primary" aria-label="edit"
+            md-icon md-svg-src="#{asset_path('icons/actions/edit.svg')}"
+          md-button class="md-primary" aria-label="delete"
+            md-icon md-svg-src="#{asset_path('icons/actions/remove.svg')}"
+          md-button class="md-primary" aria-label="download"
+            md-icon md-svg-src="#{asset_path('icons/actions/download.svg')}"
+          md-button class="md-primary" aria-label="print"
+            md-icon md-svg-src="#{asset_path('icons/actions/print.svg')}"
+          md-button class="md-primary" aria-label="mail"
+            md-icon md-svg-src="#{asset_path('icons/actions/mail.svg')}"

@@ -9,8 +9,9 @@ section#container
               | Client
               i.fa.fa-caret-down
             md-menu-content width="3" 
-              md-menu-item ng-repeat="client in all_clients || clients" filter-button="name_eq" value="{{client.name}}"
+              md-menu-item ng-repeat="client in all_clients || clients"
                 md-button
-                  | {{client.name}}
+                  span filter-button="name_eq" value="{{client.name}}"
+                    | {{client.name}}
 
         div ng-include="'layouts/_invoice_states_filter.html'" include-replace="true"

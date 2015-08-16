@@ -1,7 +1,7 @@
 view-title Companies
 
 .add-button
-  md-button ng-click="newClient($event)" class="md-button md-fab md-mini add-icon"
+  md-button ng-click="newClient($event)" class="md-button md-fab md-mini add-icon" aria-label="add client"
     md-icon md-font-icon="fa-plus" class="fa add-plus"
 
 div ng-include="'clients/_index_navigation.html'"
@@ -32,7 +32,7 @@ section
             | {{state | invState}} ({{count}})
 
           .actions
-            md-fab-speed-dial md-direction="left" md-open="false" class="md-fling"
+            md-fab-speed-dial md-direction="left" class="md-fling"
               md-fab-trigger
                 md-button.md-icon-button aria-label="menu"
                   md-icon.more-icon md-svg-src="#{asset_path('icons/more_icon.svg')}"
