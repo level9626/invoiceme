@@ -8,6 +8,5 @@ li.ml
         tbody
           tr ng-repeat="state in states"
             td filter-button="invoices_state_eq" value="{{state}}"
-              input type='checkbox'
-            td filter-button="invoices_state_eq" value="{{state}}"
-              | {{state | invState}}
+              md-checkbox id="filter-checkbox-{{state}}" type='checkbox' aria-label="Checkbox {{state}}"
+                | {{state | invState}}
