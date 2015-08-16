@@ -62,7 +62,7 @@ module Api
 
     # Statistics and metrics
     def statistics
-      respond_with(Invoice.build_statistics(current_user))
+      respond_with(Invoice.profile_statistics(current_user.id))
     end
 
     # Returns valid for user invoice number for user

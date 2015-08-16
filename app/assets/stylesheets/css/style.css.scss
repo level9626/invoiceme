@@ -656,7 +656,7 @@ div.panel-body {
 .black-bg {
   background: #f6f6f6;
   height: 5em;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $grey-table-border-color;
   margin-left: 4em;
   padding: 0;
 }
@@ -695,6 +695,7 @@ div.panel-body {
   margin-top: -4px;
   margin-left: 3em;
 }
+
 .btn-circle {
   position: absolute;
   margin-left: auto;
@@ -725,7 +726,7 @@ a.logo {
   .page-name {
     pointer-events: none;
     cursor: default;
-    color: #353535;
+    color: $black;
     font-family: 'Roboto';
     font-size: 15px;
     font-weight: 300;

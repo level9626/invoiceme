@@ -31,3 +31,4 @@
 //= require_tree ./config
 //= require_tree ./directives
 //= require_tree ./filters
+//= require_selt

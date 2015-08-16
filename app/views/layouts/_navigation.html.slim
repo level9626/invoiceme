@@ -1,17 +1,25 @@
-section#container
-  header.header.black-bg
-    .row.center-block
-      .col-md-3
-        a.logo.page-title.text-uppercase href="/"
-          ng-bind-template="{{ viewTitle }}"
-      .col-md-9
-        .pull-right
-          .user-dropdown-menu.clickable
-            | {{ current_user.name }} User Name
-            dropdown-toggle data-toggle="dropdown" type="button"
-              .fa.fa-chevron-down
-            ul.dropdown-menu.extended
-              == render 'layouts/navigation_links'
-                button.btn-default.menu-button.dropdown-toggle
-                  .fa.fa-chevron-down
-                    ul.dropdown-menu.extended
+header#navbar
+  section#container
+    header.header.black-bg
+      .row.center-block
+        .col-md-3
+          a.logo.page-title.text-uppercase href="/"
+            ng-bind-template="{{ viewTitle }}"
+        .col-md-9
+          .pull-right
+            .user-dropdown-menu.clickable
+              = current_user.name || 'User Name'
+
+              dropdown-toggle data-toggle="dropdown" type="button"
+                .fa.fa-chevron-down
+              ul.dropdown-menu.extended
+                == render 'layouts/navigation_links'
+                  button.btn-default.menu-button.dropdown-toggle
+                    .fa.fa-chevron-down
+                      ul.dropdown-menu.extended
+
+  / layouts here, are coresponding to 'assets/templates/layouts'
+  div ng-controller='ProfileStatisticsCtrl' ng-include="'layouts/_statistics.html'"
+  .col-lg-12.add-button-row.centered
+    btn.btn-default.btn-circle#in-slide-down-trigger
+      i.fa.fa-chevron-down

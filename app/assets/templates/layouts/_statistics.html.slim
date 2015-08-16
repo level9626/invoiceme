@@ -1,0 +1,22 @@
+.col-lg-12#statistics in-slide-down='' hidden='true'
+  div layout="row"
+    div flex="25"
+      div#donut-cont donut-chart="" donut-data="statistics.percent_by_state" donut-colors="colors" donut-formatter='"currency"'
+        h5
+          | {{ statistics.invoices_count }} INVOICES
+    div flex="65"
+      table.table
+        thead
+          tr
+            td
+            td
+            td.text-right.border-right ₴ UAH
+            td.text-right.border-right $ USD
+            td.text-right € EUR
+        tbody
+          tr ng-repeat="(state, statistics) in statistics.states"
+            td
+              span.status_cycle class="{{state}}"
+              | {{ state }}
+            td.text-right ng-class="{'border-right': is_in_the_middle(statistics, $index), bold: is_currency(currency)}" ng-repeat="(currency, debt) in statistics"
+              | {{ debt }}

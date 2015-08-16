@@ -25,19 +25,27 @@
 class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
   include InvoiceMachine
   include Modules::WithCurrency
-  extend Modules::Statistics
+  extend Modules::ProfileStatistics
   CURRENCY = %w(EUR USD UAH RUB)
   STATE = state_machines[:state].states.map(&:name).map(&:to_s)
 
-  # Default query scope
-  default_scope { where.not(state: 'closed') }
-  scope :open,     -> { where.not(state: [:closed, :bad_debt]) }
-  scope :unpaid,   -> { where(state: 'open') }
-  scope :draft,    -> { where(state: 'new') }
-  scope :partly,   -> { where(state: 'partly_paid') }
-  scope :paid,     -> { where(state: 'closed') }
-  scope :overdue,  -> { where(state: 'overdue') }
-  scope :bad_dept, -> { where(state: 'bad_debt') }
+  ## Default query scope
+  # by default invoice query doesn't show closed invoices
+  default_scope { where.not(state: 'paid') }
+  scope :is_open, -> { where(state: 'open') }
+  scope :draft, -> { where(state: 'draft') }
+  scope :partly, -> { where(state: 'partly') }
+  scope :paid, -> { where(state: 'paid') }
+  scope :unpaid, -> { where(state: 'unpaid') }
+  scope :overdue, -> { where(state: 'overdue') }
+  scope :bad_debt, -> { where(state: 'bad_debt') }
+  scope :not_closed, -> { where.not(state: [:bad_debt, :paid]) }
+
+  # Available currencies
+  scope :eur, -> { where(currency: 'EUR') }
+  scope :usd, -> { where(currency: 'USD') }
+  scope :uah, -> { where(currency: 'UAH') }
+  scope :rub, -> { where(currency: 'RUB') }
 
   ## Relations
   belongs_to :company
@@ -77,9 +85,6 @@ class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
             uniqueness: { scope: [:user_id, :client_id, :company_id], \
                           message: 'should be unique' }
 
-  ## by default invoice query doesn't show closed invoices
-  default_scope { where.not(state: 'closed') }
-
   ## Instance methods
 
   # Generates unique invoice number for not persisted object
@@ -111,6 +116,11 @@ class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
     _with_currency(subtotal)
   end
 
+  # Total amount of debt
+  def debt
+    subtotal - _normed_balance
+  end
+
   # percent payed
   def percent_payed
     (_normed_balance).percent_of(subtotal)
@@ -131,6 +141,12 @@ class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
   end
 
   ## Class methods
+
+  def self.normed_balance
+    not_closed
+    .map { |invoice| invoice.send(:debt) }
+    .reduce(:+)
+  end
 
   private
 

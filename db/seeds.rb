@@ -42,3 +42,8 @@ User.all.each do |u|
   puts 'COPYING PRIMARY INVOICE TEMPLATES FOR ' << u.email
   u.send(:_import_primary_invoice_templates) if u.mail_templates.empty?
 end
+
+
+    Invoice.where(state: 'new').update_all(state: 'draft')
+    Invoice.where(state: 'partly_paid').update_all(state: 'partly')
+    Invoice.where(state: 'closed').update_all(state: 'paid')

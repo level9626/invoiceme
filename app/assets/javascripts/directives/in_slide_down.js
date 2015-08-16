@@ -9,7 +9,17 @@ angular.module('InvMe')
       restrict: 'A',
       link: function (scope, el) {
 
-        $('#in-slide-down-trigger').click( function () {
+        $('#main-content').on('click', '#in-slide-down-trigger', function () {
+          $(this).toggleClass('active');
+
+          if($(this).is('.active')){
+            $(this).find('.fa').addClass('fa-chevron-up');
+            $(this).find('.fa').removeClass('fa-chevron-down');
+          }else{
+            $(this).find('.fa').addClass('fa-chevron-down');
+            $(this).find('.fa').removeClass('fa-chevron-up');
+          }
+
           scope.hidden = !scope.hidden;
           scope.$apply();
         });

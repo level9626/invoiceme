@@ -1,1 +1,1 @@
-json.partial! 'api/shared/errors', errors: @invoice.errors
+json.partial! 'api/shared/errors', errors: @company.errors
