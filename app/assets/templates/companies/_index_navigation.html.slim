@@ -8,7 +8,7 @@ section#container
             span ng-click="$mdOpenMenu()" 
               | Company
               i.fa.fa-caret-down
-            md-menu-content width="3" 
+            md-menu-content width="3"
               md-menu-item ng-repeat="company in all_companies || companies"
                 md-button
                   span filter-button="name_eq" value="{{company.name}}"

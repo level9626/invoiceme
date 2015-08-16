@@ -35,6 +35,23 @@ img {
   right: 0px;
   left: 0px;
   margin-left: 56px;
+  md-menu {
+    display: inline-block;
+  }
+}
+
+.md-open-menu-container {
+  z-index: 1002;
+  a {
+    padding: 0;
+    button {
+      display: inline-block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border-radius: 0;
+    }
+  }
 }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY

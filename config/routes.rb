@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     end
 
     get 'profiles/percent_payed' => 'profiles#percent_payed'
+    get 'profiles/current' => 'profiles#current'
   end
 
   authenticated :user do
