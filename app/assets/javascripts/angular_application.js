@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery_ujs
 //= require raphael
 //= require morris
 //= require js/serialize_object
@@ -28,6 +29,9 @@
 //= require_tree ./modules/payments
 //= require_tree ./modules/profiles
 //= require_tree ./modules/static_pages
+//= require_tree ./modules/layouts
 //= require_tree ./config
 //= require_tree ./directives
 //= require_tree ./filters
+//= require_tree ./providers
+//= require_selt

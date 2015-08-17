@@ -52,9 +52,7 @@ class User < ActiveRecord::Base
   end
 
   def percent_payed
-    normed_balance = invoices.open
-                     .map { |invoice| invoice.send(:_normed_balance) }
-                     .reduce(:+)
+    normed_balance = invoices.normed_balance
 
     return 100 unless normed_balance
     (normed_balance).percent_of(invoices.sum(:subtotal))

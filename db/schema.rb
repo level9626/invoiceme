@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609103406) do
+ActiveRecord::Schema.define(version: 20150813184414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -162,22 +162,22 @@ ActiveRecord::Schema.define(version: 20150609103406) do
   end
 
   create_table "invoices", force: true do |t|
-    t.string   "invoice_number",                              null: false
-    t.datetime "invoice_date",                                null: false
-    t.integer  "user_id",                                     null: false
-    t.string   "currency",                                    null: false
-    t.text     "comment",                     default: "",    null: false
-    t.integer  "company_id",                                  null: false
-    t.integer  "client_id",                                   null: false
+    t.string   "invoice_number",                                null: false
+    t.datetime "invoice_date",                                  null: false
+    t.integer  "user_id",                                       null: false
+    t.string   "currency",                                      null: false
+    t.text     "comment",                     default: "",      null: false
+    t.integer  "company_id",                                    null: false
+    t.integer  "client_id",                                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "company_row_text",                            null: false
-    t.text     "client_row_text",                             null: false
-    t.float    "subtotal",                                    null: false
+    t.text     "company_row_text",                              null: false
+    t.text     "client_row_text",                               null: false
+    t.float    "subtotal",                                      null: false
     t.float    "vat_rate"
     t.float    "vat"
     t.float    "discount"
-    t.string   "state",            limit: 20, default: "new", null: false
+    t.string   "state",            limit: 20, default: "draft", null: false
     t.datetime "net"
   end
 

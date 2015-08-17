@@ -29,6 +29,31 @@ img {
   font-size: inherit;
 }
 
+#navbar {
+  position: fixed;
+  z-index: 21;
+  right: 0px;
+  left: 0px;
+  margin-left: 56px;
+  md-menu {
+    display: inline-block;
+  }
+}
+
+.md-open-menu-container {
+  z-index: 1002;
+  a {
+    padding: 0;
+    button {
+      display: inline-block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border-radius: 0;
+    }
+  }
+}
+
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
 // to make views framework-neutral
@@ -117,6 +142,9 @@ table.table.nav-boxes {
   td {
     border: none;
   }
+  label {
+    margin-left: 15px;
+  }
 }
 
 .thin-menu {
@@ -186,10 +214,20 @@ a.md-button.md-primary.md-fab,
   }
 }
 
-// buttons 
+// buttons
 .add-button {
   position: fixed;
   top: 65px;
   right: 20px;
   z-index: 1002;
+}
+
+
+// material modal window styles
+.md-dialog-backdrop {
+  z-index: 1003 !important;
+}
+
+.md-dialog-container {
+  z-index: 1004 !important;
 }

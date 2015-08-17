@@ -51,7 +51,7 @@ angular.module('InvMe')
         editor.on('change', function() {
           return controller.$setViewValue(editor.getValue());
         });
-        return scope.$watch(attrs.ngModel, function(newValue, oldValue) {
+        return scope.$watch(attrs.ngModel, function(newValue) {
           textarea.html(newValue);
           return editor.setValue(newValue);
         });

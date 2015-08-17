@@ -6,24 +6,25 @@ module InvoiceMachine
   # This is a small workaround to store state machine in separate file
   # Hack to add state_machine to parent class
   def self.included(klass) # rubocop:disable all
-    const_set :OPEN_STATUSES, [:open, :partly_paid, :overdue, :bad_debt]
+    const_set :OPEN_STATUSES, [:open, :partly, :overdue, :bad_debt]
 
-    klass.send :state_machine, initial: :new do
+    klass.send :state_machine, initial: :draft do
       # Defining main states
-      state :new, value: 'new'
+      state :draft, value: 'draft'
       state :open, value: 'open'
-      state :partly_paid, value: 'partly_paid'
-      state :closed, value: 'closed'
+      state :unpaid, value: 'unpaid'
+      state :partly, value: 'partly'
+      state :paid, value: 'paid'
       state :overdue, value: 'overdue'
       state :bad_debt, value: 'bad_debt'
 
       # Defining main transitions
       event :publish do
-        transition new: :open
+        transition draft: :open
       end
 
       event :partly_pay do
-        transition OPEN_STATUSES => :partly_paid
+        transition OPEN_STATUSES => :partly
       end
 
       event :overdue do
@@ -35,7 +36,7 @@ module InvoiceMachine
       end
 
       event :close do
-        transition OPEN_STATUSES => :closed
+        transition OPEN_STATUSES => :paid
       end
 
       # Generic transition callback *after* the transition is performed

@@ -12,7 +12,7 @@ angular.module('InvoicesApp')
           method: 'PUT',
           transformRequest: function(data){
             return Object.toFormData({invoice: data});
-          }, 
+          },
           headers: {
             'Content-Type': undefined
           }
@@ -37,15 +37,15 @@ angular.module('InvoicesApp')
           isArray: true,
           url: _baseUrl + 'states'
         },
-        save: { 
-          method: 'POST', 
+        save: {
+          method: 'POST',
           transformRequest: function(data){
             return Object.toFormData({invoice: data});
-          }, 
+          },
           headers: {
             'Content-Type': undefined
           }
-        } 
+        }
       });
 
     }

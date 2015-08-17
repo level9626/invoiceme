@@ -9,6 +9,7 @@ angular.module('CompaniesApp',      []);
 angular.module('ProfilesApp',       []);
 angular.module('EmailTemplatesApp', []);
 angular.module('StaticPagesApp',    []);
+angular.module('LayoutsApp',        []);
 
 angular.module('InvMe', [
   'ngSanitize',
@@ -27,5 +28,6 @@ angular.module('InvMe', [
   'CompaniesApp',
   'ProfilesApp',
   'EmailTemplatesApp',
-  'StaticPagesApp'
+  'StaticPagesApp',
+  'LayoutsApp'
 ]);

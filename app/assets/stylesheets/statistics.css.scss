@@ -1,0 +1,88 @@
+@import "colors";
+
+// statistics
+.stats-cont {
+  .stats {
+    i {
+      font-size: 1.2em;
+      margin-left: 4px;
+    }
+  }
+}
+
+#statistics {
+  background-color: $grey;
+  box-shadow: 0 1px 2px $shadow-grey;
+  -moz-box-shadow: 0 1px 2px $shadow-grey;
+  -webkit-box-shadow: 0 1px 2px $shadow-grey;
+  opacity: 0.999;
+  z-index: 1;
+  & > div {
+    padding-top: 25px;
+    padding-bottom: 15px;
+    table.table {
+      td {
+        border-top: none;
+        padding: 5px;
+        &.bold {
+          font-weight: bold;
+          color: $black;
+        }
+        &.border-right{
+          padding: 5px;
+          padding-right: 8%;
+          border-right: 1px solid $grey-table-border-color;
+        }
+      }
+    }
+  }
+  #donut-cont, #donut-cont svg {
+    width: 210px;
+    height: 210px;
+    position: relative;
+    margin-top: 20px;
+    text {
+      display: none;
+    }
+    h5 {
+      position: absolute;
+      top: 50%;
+      width: 210px;
+      text-align: center;
+      color: $black;
+      font-weight: bold;
+    }
+  }
+}
+
+#main-content span.status_cycle {
+  height: 10px;
+  width: 10px;
+  padding: 0;
+  margin: 0;
+  margin-right: 10px;
+  border: 0px solid;
+  border-radius: 10px;
+  display: inline-block;
+  &.draft {
+    background-color: #999;
+  }
+  &.open {
+    background-color: #999;
+  }
+  &.unpaid {
+    background-color: #d22f2f;
+  }
+  &.partly {
+    background-color: #ff8e00;
+  }
+  &.paid {
+    background-color: #00bd22;
+  }
+  &.overdue {
+    background-color: #8d0404;
+  }
+  &.bad_debt {
+    background-color: #333;
+  }
+}

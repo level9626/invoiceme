@@ -10,7 +10,7 @@ json.companies do
       json.partly company.invoices.partly.count
       json.paid company.invoices.paid.count
       json.overdue company.invoices.overdue.count
-      json.bad_dept company.invoices.bad_dept.count
+      json.bad_debt company.invoices.bad_debt.count
     end
   end
 end
