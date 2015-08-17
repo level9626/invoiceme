@@ -23,6 +23,8 @@ angular.module('InvMe', [
   'ngRoute',
   'ngResource',
   'ngMessages',
+  'angular-loading-bar',
+  'ngAnimate',
   'InvoicesApp',
   'PaymentsApp',
   'DashboardApp',

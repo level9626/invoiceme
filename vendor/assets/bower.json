@@ -15,6 +15,7 @@
     "underscore": "latest",
     "object-traverse": "latest",
     "object-to-formdata": "latest",
-    "angular-messages": "latest"
+    "angular-messages": "latest",
+    "angular-loading-bar": "latest"
   }
 }

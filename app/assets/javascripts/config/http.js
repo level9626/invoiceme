@@ -2,7 +2,9 @@
 
 angular.module('InvMe')
   .config([
-    '$httpProvider',
-    function ($httpProvider) {
-      $httpProvider.defaults.headers.common = 'application/json';
-    }]);
+  '$httpProvider',
+  'cfpLoadingBarProvider',
+  function ($httpProvider, cfpLoadingBarProvider) {
+    $httpProvider.defaults.headers.common = 'application/json';
+    cfpLoadingBarProvider.includeSpinner = false;
+  }]);

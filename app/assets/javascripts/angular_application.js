@@ -16,6 +16,7 @@
 //= require angular-sanitize
 //= require angular-file-model
 //= require angular-messages
+//= require angular-loading-bar
 //= require bootstrap-wysihtml5
 //= require underscore
 //= require object-traverse/object-traverse
