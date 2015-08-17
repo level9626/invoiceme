@@ -15,6 +15,7 @@
 //= require angular-aria
 //= require angular-sanitize
 //= require angular-file-model
+//= require angular-messages
 //= require bootstrap-wysihtml5
 //= require underscore
 //= require object-traverse/object-traverse
@@ -30,6 +31,7 @@
 //= require_tree ./modules/profiles
 //= require_tree ./modules/static_pages
 //= require_tree ./modules/layouts
+//= require_tree ./modules/users
 //= require_tree ./config
 //= require_tree ./directives
 //= require_tree ./filters

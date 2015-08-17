@@ -42,5 +42,9 @@ module InvoiceTracker
     config.assets.precompile += ['*.slim', '*/*.slim']
 
     config.assets.js_compressor = Uglifier.new(mangle: false)
+
+    config.to_prepare do
+      DeviseController.respond_to :html, :json
+    end
   end
 end

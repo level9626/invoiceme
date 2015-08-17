@@ -15,6 +15,9 @@ header#navbar ng-controller="NavigationCtrl"
                 md-menu-item
                   = link_to destroy_user_session_path, target: "_self", method: 'delete', class: 'navbar_icons' do
                     md-button Logout
+                md-menu-item
+                  a href="users/edit"
+                    md-button Edit Profile
 
             / .user-dropdown-menu.clickable
             /   | {{user.email}}

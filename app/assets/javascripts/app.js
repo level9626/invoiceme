@@ -10,6 +10,7 @@ angular.module('ProfilesApp',       []);
 angular.module('EmailTemplatesApp', []);
 angular.module('StaticPagesApp',    []);
 angular.module('LayoutsApp',        []);
+angular.module('UsersApp',          []);
 
 angular.module('InvMe', [
   'ngSanitize',
@@ -21,6 +22,7 @@ angular.module('InvMe', [
   'ui.bootstrap',
   'ngRoute',
   'ngResource',
+  'ngMessages',
   'InvoicesApp',
   'PaymentsApp',
   'DashboardApp',
@@ -29,5 +31,6 @@ angular.module('InvMe', [
   'ProfilesApp',
   'EmailTemplatesApp',
   'StaticPagesApp',
-  'LayoutsApp'
+  'LayoutsApp',
+  'UsersApp'
 ]);

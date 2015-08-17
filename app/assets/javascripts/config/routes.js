@@ -64,6 +64,11 @@ angular.module('InvMe')
         templateUrl: 'payments/edit.html',
         controller: 'PaymentEditCtrl'
       })
+      // users
+      .when('/users/edit', {
+        templateUrl: 'users/edit.html',
+        controller: 'UserEditCtrl'
+      })
       // static pages
       .when('/404', {
         templateUrl: 'static_pages/404.html',
