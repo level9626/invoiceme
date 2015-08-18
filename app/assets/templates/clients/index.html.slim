@@ -23,7 +23,9 @@ section
 
   div.clients flex="100"
     section.client layout="row" layout-wrap="" ng-repeat="client in clients"
-      div flex="100"
+      dif flex="10"
+        div#donut-cont donut-chart="" donut-data="client.statistics.percent_by_state" donut-colors="client.statistics.colors" donut-formatter='"currency"'
+      div flex="90"
         section
           h2.pl
             | {{ client.name }}

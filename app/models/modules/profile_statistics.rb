@@ -35,17 +35,22 @@ module Modules
     end
 
     def _percent_by_state
-      ids = self.pluck(:user_id).uniq.map{|s| "'#{s}'"}.join(', ')
+      ids = self.pluck(:id).map{|s| "'#{s}'"}.join(', ')
+      return _stub if ids.blank?
       ActiveRecord::Base.connection.execute(<<-SQL)
         SELECT
         state as label,
         round((COUNT(*) * 100.00 /
-                ( SELECT count(*) from invoices WHERE user_id IN (#{ids}) )), 2)
+                ( SELECT count(*) from invoices WHERE id IN (#{ids}) )), 2)
         as value
         FROM invoices
-        WHERE user_id IN (#{ids})
+        WHERE id IN (#{ids})
         GROUP BY state;
       SQL
+    end
+
+    def _stub
+      [{label: 'paid', value: '100'}]
     end
   end
 end

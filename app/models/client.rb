@@ -20,4 +20,7 @@ class Client < ActiveRecord::Base
   ## Validations
   validates :name, presence: true, length: { maximum: 150 }
   validates :address, presence: true, length: { maximum: 300 }
+
+  def invoice_statistics
+  end
 end

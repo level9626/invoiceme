@@ -14,6 +14,7 @@ angular.module('InvMe')
                       <h2 class="md-flex">{{notification.text}}</h2> \
                       <div flex=""></div> \
                       <md-button class="close md-icon-button" \
+                                 aria-label="remove message" \
                                  ng-click="remove_message($index)" \
                                  type="button"> \
                         <i class="fa fa-times"/> \

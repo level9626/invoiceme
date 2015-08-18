@@ -52,7 +52,7 @@ module Api
     end
 
     def _set_company
-      @company = current_user.companies.find(params[:id])
+      @company = current_user.companies.includes(:invoices).find(params[:id])
     end
 
     def company_params

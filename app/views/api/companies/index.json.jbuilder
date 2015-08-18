@@ -4,6 +4,7 @@ json.companies do
                            :created_at, :updated_at, :default, :email
     json.logo company.logo_url
 
+    # TODO refactoring to model instance method
     json.states do
       json.draft company.invoices.draft.count
       json.unpaid company.invoices.unpaid.count
