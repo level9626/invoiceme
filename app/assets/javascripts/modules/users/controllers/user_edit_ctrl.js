@@ -5,9 +5,21 @@ angular.module('UsersApp')
   '$scope',
   '$location',
   'Auth',
-  function ($scope, $location, Auth) {
+  'Company',
+  function ($scope, $location, Auth, Company) {
+
+    $scope.default_company = {};
+
     Auth.getCurrentUser().then( function (user) {
       $scope.user = Auth.currentUser();
+    });
+
+    Company.query($location.search(), function (data) {
+      _.each(data.companies, function(el){
+        if (el.default)
+          $scope.default_company.id = el.id;
+      });
+      $scope.companies = data.companies;
     });
 
     $scope.update_user = function () {
@@ -26,10 +38,24 @@ angular.module('UsersApp')
       }, function(err_obj) {
         $scope.$emit('notify', {
           type: 'warn',
-          text: 'Please fix errors, and try again !'
+          text: 'Please fix validation errors, and try again !'
         });
         // Show form-field specific errors
         $scope.errors = err_obj.data.errors;
       });
     };
+
+    $scope.update_default_company = function () {
+      Company.update_default({id: $scope.default_company.id}, function (company) {
+        $scope.$emit('notify', {
+          type: 'primary',
+          text: 'Default Company successfully updated.'
+        });
+      }, function (responce) {
+        $scope.$emit('notify', {
+          type: 'warn',
+          text: 'Please fix validation errors, and try again !'
+        });
+      });
+    }
   }]);

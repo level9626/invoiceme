@@ -26,6 +26,11 @@ angular.module('CompaniesApp')
           isArray: false,
           url: _basePath + 'default'
         },
+        update_default: {
+          method: 'PUT',
+          isArray: false,
+          url: _basePath + ':id' + '/update_default'
+        },
         save: { 
           method: 'POST', 
           transformRequest: function(data){

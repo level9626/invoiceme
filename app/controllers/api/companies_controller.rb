@@ -36,6 +36,12 @@ module Api
       end
     end
 
+    def update_default
+      @company = current_user.companies.find(params[:id])
+      @company.default!
+      respond_with(@company)
+    end
+
     private
 
     def _search

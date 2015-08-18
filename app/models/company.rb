@@ -35,6 +35,17 @@ class Company < ActiveRecord::Base
   before_save :change_default!, if: proc { |model| model.default }
   before_save { self.email = email.downcase }
 
+  ## Instance methods
+  def default!
+    return if default?
+
+    update_attribute(:default, true)
+  end
+
+  def default?
+    read_attribute(:default)
+  end
+
   ## Class methods
 
   # Scope wont work here. Scope has a default behaviour to return

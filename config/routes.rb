@@ -27,7 +27,10 @@ Rails.application.routes.draw do
     resources :clients, concerns: [:email_templates]
     resources :companies do
       collection do
-        get 'default'
+        get :default
+      end
+      member do
+        put :update_default
       end
     end
 
