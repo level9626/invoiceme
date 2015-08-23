@@ -70,13 +70,18 @@ module Api
       respond_with({invoice_number: current_user.invoices.new.invoice_number})
     end
 
+    # Returns count of invoices for a particular user
+    def invoice_count
+      respond_with({invoice_count: current_user.invoices.count})
+    end
+
     ## Private Scope
 
     private
 
     def _search
       current_user.invoices
-        .includes(:journals, :company, :client, :invoice_items, :payments)
+        .includes(:company, :client, :invoice_items, :payments)
         .search(params[:q])
     end
 

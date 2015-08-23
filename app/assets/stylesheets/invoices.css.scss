@@ -59,6 +59,52 @@ $border: grey;
   }
 }
 
+#invoices {
+  position: relative;
+  // Filters
+  .filters {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 2;
+    .top-menu ul.nav {
+      &:nth-of-type(1), &:nth-of-type(2) {
+        margin-right: 10px; 
+      }
+    }
+    &.currencies {
+      top: 0;
+      left: 42.1%;
+    }
+    button.md-tab-copy {
+      min-width: 0;
+      margin: 0;
+      border-radius: 0;
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+  // Tabs
+  .md-tab {
+    padding: 12px 10px;
+    &:nth-of-type(8) {
+      margin-left: 15px; 
+    }
+  }
+
+  table.invoices-table {
+    md-checkbox {
+      margin: 0;
+      padding: 0;
+      margin-left: 8px;
+    }
+  }
+}
+
 
 table.invoice-items, table.payments-info, table.payments{
   position: relative;
@@ -211,10 +257,6 @@ table.payments-info {
   }
 }
 
-.activities-table {
-  width: 70px;
-}
-
 .status-table {
   width: 1em;
 }
@@ -279,9 +321,6 @@ span.ng-isolate-scope {
     }
   }
 }
-.invoice-filter-button1 {
-  padding-bottom: 24px;
-}
 // Invoice filters
 #filter {
   span {
@@ -297,29 +336,6 @@ span.ng-isolate-scope {
     &.filter-margin {
       margin-right: 40px;
     }
-  }
-}
-#filter > div:nth-child(3) > div > div > span:nth-child(1)
-.invoice-filter-button {
-  border: 0px;
-  padding-bottom: 24px;
-  font-weight: bold;
-  background-color: transparent;
-  &:focus {
-    outline: none;
-    font-weight: bold;
-    padding-bottom: 24px;
-    border-radius: 0px !important;
-    border-bottom: solid 2px #2780B5;
-    color: #00a8ff;
-  }
-  &:hover {
-    border-radius: 0px;
-    color: #00a8ff;
-  }
-  &:active {
-    box-shadow: none;
-    outline: none !important;
   }
 }
 

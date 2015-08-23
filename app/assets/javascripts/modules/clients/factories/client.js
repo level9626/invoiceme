@@ -4,7 +4,7 @@ angular.module('ClientsApp')
   .factory('Client',
     ['$resource',
     function($resource) {
-      return $resource('/api/clients/:id', { id: '@id' }, {
+      return $resource('/api/clients/:id.json', { id: '@id' }, {
           update: {
             method: 'PUT'
           },

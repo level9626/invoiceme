@@ -37,4 +37,5 @@
 //= require_tree ./directives
 //= require_tree ./filters
 //= require_tree ./providers
+//= require_tree ./factories
 //= require_selt

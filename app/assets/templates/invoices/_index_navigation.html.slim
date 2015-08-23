@@ -1,7 +1,7 @@
 /Navigation
 
-.top-menu
-  ul.nav.pull-left.top-menu.mr
+.top-menu.device-hide-800
+  ul.nav.pull-left.top-menu.device-hide-1040
     li
       md-menu
         span ng-click="$mdOpenMenu()"
@@ -18,7 +18,7 @@
             md-button
               span filter-button="name_cont" value="{{ client.name }}"
                 | {{ invoice.client.name }}
-  ul.nav.pull-left.top-menu.mr
+  ul.nav.pull-left.top-menu.device-hide-960
     li
       md-menu
         span ng-click="$mdOpenMenu()"
@@ -30,7 +30,7 @@
             md-button
               span filter-button="company_name_cont" value="{{ invoice.company.name }}"
                 | {{ invoice.company.name }}
-  ul.nav.pull-left.top-menu
+  ul.nav.pull-left.top-menu.device-hide-870
     li
       md-menu
         span ng-click="$mdOpenMenu()"

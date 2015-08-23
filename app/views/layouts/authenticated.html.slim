@@ -9,13 +9,12 @@ html ng-app="InvMe"
     base href= "/"
   body
 
-    header
+    header  class="ng-cloak"
       == render 'layouts/profile_nav'
     section#main-content
       == render 'layouts/navigation'
-      section.wrapper.site-min-height
+      section.site-min-height class="ng-cloak"
         in-notice
-        .row
-          .col-lg-12 ng-view=""
+        div ng-view=""
 
   == javascript_include_tag 'angular_application'

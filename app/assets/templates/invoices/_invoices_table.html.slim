@@ -1,0 +1,86 @@
+md-content ng-show="data.invoices == undefined " class="md-padding"
+  h5.text-center
+    | Loading invoices...
+
+md-content ng-show="data.invoices &&  data.invoices.length == 0 && data.invoice_count != 0" class="md-padding"
+  h5.text-center
+    | No Invoices in the section.
+
+md-content ng-show="data.invoice_count === 0" class="md-padding"
+  .text-center
+    md-button class="md-raised md-primary" href="invoices/new" style="margin-left: 30px;"
+      | Create your first invoice here.
+
+| {{console.log($parent)}}
+| {{console.log($parent.$parent)}}
+
+md-content ng-show="data.invoices && data.invoices.length > 0" class="md-padding"
+  section.task-panel.tasks-widget.panel.panel-default#invoice
+    table.table.table-hover.invoices-table
+      thead.panel-heading
+        tr.table-head
+          th.activities-table style="width: 40px;"
+            md-checkbox class="md-primary" aria-label="primary invoice table checkbox"
+          th
+            span sort-button="invoice_number"
+              | #
+              i.fa.fa-caret-down
+          th
+            span sort-button="created_at"
+              | Date issued
+              i.fa.fa-caret-down
+          th
+            span sort-button="created_at"
+              | Date due
+              i.fa.fa-caret-down
+          th
+            span sort-button="company_name"
+              | Company
+              i.fa.fa-caret-down
+          th
+            span sort-button="client_name"
+              | Client
+              i.fa.fa-caret-down
+          th
+            span sort-button="subtotal"
+              | Total
+              i.fa.fa-caret-down
+          th
+            span sort-button="currency"
+              | Paid
+              i.fa.fa-caret-down
+          th
+            span sort-button="outstanding"
+              | Outstanding
+              i.fa.fa-caret-down
+          th.status-table
+            span sort-button="state"
+              | Status
+              i.fa.fa-caret-down
+          th.actions-table
+
+      tbody.panel-heading
+        tr ng-repeat="invoice in data.invoices"
+          td
+            md-checkbox aria-label="invoice table row checkbox"
+          td
+            | {{ invoice.invoice_number }}
+          td
+            | {{ invoice.invoice_date | date:'d MMM yyyy' }}
+          td
+            | {{ invoice.due_date | date:'d MMM yyyy' }}
+          td.total-currency
+            | {{ invoice.company.name }}
+          td.total-currency
+            | {{ invoice.client.name }}
+          td.total-currency.ar
+            | {{ invoice.total }} {{ invoice.currency }}
+          td.paid-currency.ar
+            | {{ invoice.balance }} {{ invoice.currency }}
+          td.out-currency.ar
+            | {{ invoice.total - invoice.balance }} {{ invoice.currency }}
+          td
+            span.label-status.partly
+              | {{ invoice.state }}
+          td.actions-table
+            div ng-include="'invoices/_actions.html'"
