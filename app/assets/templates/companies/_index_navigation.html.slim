@@ -1,17 +1,16 @@
 / Navigation
-section#container
-  header.profile-sub-menu.row
-    .top-menu
-      ul.nav.pull-left.top-menu
-        li
-          md-menu
-            span ng-click="$mdOpenMenu()"
-              | Company
-              i.fa.fa-caret-down
-            md-menu-content width="3"
-              md-menu-item ng-repeat="company in all_companies || companies"
-                md-button
-                  span filter-button="name_eq" value="{{company.name}}"
-                    | {{company.name}}
+md-content
+  header.profile-sub-menu layout="row"
+    ul.nav.top-menu
+      li
+        md-menu
+          span ng-click="$mdOpenMenu()"
+            | Company
+            i.fa.fa-caret-down
+          md-menu-content width="3"
+            md-menu-item ng-repeat="company in all_companies || companies"
+              md-button
+                span filter-button="name_eq" value="{{company.name}}"
+                  | {{company.name}}
 
-        div ng-include="'layouts/_invoice_states_filter.html'" include-replace="true"
+      div ng-include="'layouts/_invoice_states_filter.html'" include-replace="true"

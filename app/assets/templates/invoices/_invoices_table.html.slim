@@ -1,6 +1,4 @@
-md-content ng-show="data.invoices == undefined " class="md-padding"
-  h5.text-center
-    | Loading invoices...
+in-loading collection="data.invoices"
 
 md-content ng-show="data.invoices &&  data.invoices.length == 0 && data.invoice_count != 0" class="md-padding"
   h5.text-center

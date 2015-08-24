@@ -6,22 +6,23 @@ view-title Companies
 
 div ng-include="'companies/_index_navigation.html'"
 
-section
-  .row.mt
-    .col-md-6.col-md-offset-3
-      .white-panel.pn.donut-chart ng-if='!companies || companies.length <= 0'
+in-loading collection="companies"
+
+md-content class="md-padding" layout="column"
+  div flex="" layout="row" ng-if='companies && companies.length <= 0'
+    div flex="50" offset="25"
+      .white-panel.pn.donut-chart
         .white-header
           h5 Notice!
-        .row
-          .col-sm-12.col-sx-12
-            p You need to create a company in order to continue
-        hr
+        div layout="column"
+            p You need to create a client in order to continue
+        md-divider
         footer.clearfix
-          a href="companies/new" class='btn btn-primary btn-sm'
+          md-button href="#" class="md-primary" ng-click="newCompany($event)"
             .fa.fa-plus
             | Add New Company
 
-  div.companies flex="100"
+  div.companies flex="a" ng-if='companies && companies.length > 0'
     section.company layout="row" layout-wrap="" ng-repeat="company in companies"
       div flex="10"
         md-button.md-fab.logo aria-label='company_logo'

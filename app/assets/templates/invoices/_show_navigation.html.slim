@@ -1,39 +1,38 @@
 / Navigation
-section#container
-  header.profile-sub-menu.row
+md-content
+  header.profile-sub-menu layout="row"
     .pull-left.date
       img.inline src="#{asset_path('calendar.png')}"
       span
         | Invoice Date - 
         span.date
           | {{ invoice.invoice_date | date:'d MMM yyyy' }}
-    .top-menu
-      ul.nav.pull-right.top-menu
-        li
-          a.edit href='invoices/{{invoice.id}}/edit'
-            img.inline  src="#{asset_path('pen.png')}"
-            | Edit
-        li
-          a.delete href="#"
-            img.inline  src="#{asset_path('delete.png')}"
-            | Delete
-        li
-          a.download href="#"
-            img.inline  src="#{asset_path('download.png')}"
-            | Download PDF
-        li
-          a.mail href="#"
-            img.inline  src="#{asset_path('mail.png')}"
-            | Send Mail
-        li
-          a.btn.btn-theme2.btn-danger href='#'
-            | ACTIVITIES
-            span.badge
-              span
-                | 5
-        li
-          a.btn.btn-theme2.btn-primary href='#'
-            | RECEIVE PAYMENT
-            span.badge
-              span
-                | 5
+    ul.nav.top-menu.right
+      li
+        a.edit href='invoices/{{invoice.id}}/edit'
+          img.inline  src="#{asset_path('pen.png')}"
+          | Edit
+      li
+        a.delete href="#"
+          img.inline  src="#{asset_path('delete.png')}"
+          | Delete
+      li
+        a.download href="#"
+          img.inline  src="#{asset_path('download.png')}"
+          | Download PDF
+      li
+        a.mail href="#"
+          img.inline  src="#{asset_path('mail.png')}"
+          | Send Mail
+      li
+        a.btn.btn-theme2.btn-danger href='#'
+          | ACTIVITIES
+          span.badge
+            span
+              | 5
+      li
+        a.btn.btn-theme2.btn-primary href='#'
+          | RECEIVE PAYMENT
+          span.badge
+            span
+              | 5
