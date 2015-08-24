@@ -9,9 +9,6 @@ md-content ng-show="data.invoice_count === 0" class="md-padding"
     md-button class="md-raised md-primary" href="invoices/new" style="margin-left: 30px;"
       | Create your first invoice here.
 
-| {{console.log($parent)}}
-| {{console.log($parent.$parent)}}
-
 md-content ng-show="data.invoices && data.invoices.length > 0" class="md-padding"
   section.task-panel.tasks-widget.panel.panel-default#invoice
     table.table.table-hover.invoices-table

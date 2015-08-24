@@ -1,0 +1,44 @@
+in-loading collection="companies"
+
+md-content class="md-padding" layout="column"
+  div flex="" layout="row" ng-if='companies && companies.length <= 0'
+    div flex="50" offset="25"
+      .white-panel.pn.donut-chart
+        .white-header
+          h5 Notice!
+        div layout="column"
+            p You need to create a client in order to continue
+        md-divider
+        footer.clearfix
+          md-button href="#" class="md-primary" ng-click="newCompany($event)"
+            .fa.fa-plus
+            | Add New Company
+
+  div.companies flex="a" ng-if='companies && companies.length > 0'
+    section.company layout="row" layout-wrap="" ng-repeat="company in companies"
+      div flex="10"
+        md-button.md-fab.logo aria-label='company_logo'
+          img class="face" src="{{company.logo}}"
+      div flex="90"
+        section
+          h2
+            | {{ company.name }}
+        section.statuses
+          span.state ng-repeat="(state, count) in company.states" ng-hide="count == 0"
+            | {{state | invState}} ({{count}})
+
+          .actions
+            md-fab-speed-dial md-direction="left" class="md-fling"
+              md-fab-trigger
+                md-button.md-icon-button aria-label="menu"
+                  md-icon.more-icon md-svg-src="#{asset_path('icons/more_icon.svg')}"
+              md-fab-actions
+                a href="/invoices/new/company/{{company.id}}"
+                  md-button class="md-raised md-primary"
+                    | Add Invoice
+                a.delete href="#" ng-click="removeCompany(company.id)"
+                  img.inline  src="#{asset_path('delete.png')}"
+                  | Remove
+                a.edit href='#' ng-click="editCompany($event, company.id)"
+                  img.inline  src="#{asset_path('pen.png')}"
+                  | Edit

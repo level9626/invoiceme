@@ -5,3 +5,11 @@ md-tabs md-dynamic-height="" md-border-bottom=""
   md-tab label="Edit Default Company"
     md-content class="md-padding"
       div ng-include="'users/_default_company_edit_form.html'" include-replace=""
+  md-tab label="Companies"
+    md-content ng-controller="CompaniesIndexCtrl" layout="column"
+      div.text-right flex="" style="padding-top: 15px; padding-right: 8px;"
+        md-button ng-click="newCompany($event)" class="md-raised md-primary" aria-label="add new company"
+          .fa.fa-plus
+          | Add New Company
+      div flex=""
+        div ng-include="'companies/_index_table.html'" include-replace=""
