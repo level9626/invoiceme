@@ -584,12 +584,19 @@ body > div.md-open-menu-container {
 
 
 #invoice-actions {
-  .md-button {
+  trigger .md-button {
     display: inline-flex;
     width: 40px;
     height: 25px;
     margin: 0;
     padding: 0px !important;
+  }
+  actions {
+    background: -webkit-linear-gradient(left, #66A5E0, #0069cb);
+    background: -o-linear-gradient(left, #66A5E0, #0069cb);
+    background: -moz-linear-gradient(left, #66A5E0, #0069cb);
+    background: linear-gradient(left, #66A5E0, #0069cb);
+    background-color: white;
   }
 }
 
@@ -612,23 +619,6 @@ body > div.md-open-menu-container {
   background-color: rgba(193, 193, 193, 0.96);
   color: rgba(44, 65, 164, 0.96);
   transition: 0.3s;
-}
-
-#invoice-actions > div > md-fab-speed-dial > md-fab-actions {
-  width: 5px;
-  height: 33px;
-  > div > section {
-    background: -webkit-linear-gradient(left, #66A5E0, #0069cb);
-    background: -o-linear-gradient(left, #66A5E0, #0069cb);
-    background: -moz-linear-gradient(left, #66A5E0, #0069cb);
-    background: linear-gradient(left, #66A5E0, #0069cb);
-    background-color: white;
-    > button {
-      border-radius: 0px;
-      margin-bottom: 0px;
-      padding-bottom: 0px;
-    }
-  }
 }
 
 .md-sidenav-right.bar {
