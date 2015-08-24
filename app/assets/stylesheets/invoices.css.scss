@@ -591,22 +591,6 @@ body > div.md-open-menu-container {
     margin: 0;
     padding: 0px !important;
   }
-  .more-icon {
-    height: 20px;
-  }
-  .delete-icon {
-    display: none;
-    height: 13px;
-    transform: rotate(45deg);
-  }
-  &:hover {
-    .more-icon {
-      display: none;
-    }
-    .delete-icon {
-      display: block;
-    }
-  }
 }
 
 .groupX {
