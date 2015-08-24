@@ -42,6 +42,10 @@ module Api
       respond_with(@company)
     end
 
+    def companies_count
+      respond_with({companies_count: current_user.companies.count})
+    end
+
     private
 
     def _search

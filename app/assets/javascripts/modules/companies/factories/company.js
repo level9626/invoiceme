@@ -26,6 +26,11 @@ angular.module('CompaniesApp')
           isArray: false,
           url: _basePath + 'default.json'
         },
+        companies_count: {
+          method: 'GET',
+          isArray: false,
+          url: _basePath + 'companies_count.json'
+        },
         update_default: {
           method: 'PUT',
           isArray: false,

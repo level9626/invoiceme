@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :companies do
       collection do
         get :default
+        get :companies_count
       end
       member do
         put :update_default

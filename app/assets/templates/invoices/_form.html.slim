@@ -1,13 +1,14 @@
 form ng-submit='saveInvoice()' name="form" enctype="multipart/form-data" layout="row"
 
-  md-whiteframe class="md-whiteframe-z2" layout="column" layout-wrap="" flex="50"  offset="25" 
+  md-whiteframe class="md-whiteframe-z2" layout-wrap="" flex="50"  offset="25" 
 
-    div layout="row" flex="100"
+    div layout="row" flex=""
       #logo flex="50" layout-padding=""
       .text-right flex="50" layout-padding=""
         | INVOICE {{invoice.invoice_number}}
 
-    #invoice_number-invoice-date layout="row" flex="100"
+    #invoice_number-invoice-date layout="row" flex=""
+
       #invoice_number flex="50" layout-padding=""
         .form-group ng-class="{'has-error': errors['invoice_number'] && !form['invoice.invoice_number'].$valid }"
           label.control-label for="invoice_invoice_number" 
@@ -32,7 +33,8 @@ form ng-submit='saveInvoice()' name="form" enctype="multipart/form-data" layout=
 
 
     md-divider
-    #company-client layout="row" flex="100"
+    #company-client layout="row" flex=""
+
       div flex="50" layout-padding=""
         .form-group ng-class="{'has-error': errors['company_id'] && !form['invoice.company_id'].$valid }"
           label.control-label for="company_id"
@@ -51,20 +53,24 @@ form ng-submit='saveInvoice()' name="form" enctype="multipart/form-data" layout=
           span.help-block ng-hide="form['invoice.client_id'].$valid" ng-repeat="error in errors['client_id']"
             | {{error}}
 
-    div layout="row" flex="100"
+
+    div layout="row" flex=""
+
       div flex="50" layout-padding=""
         .form-group ng-class="{'has-error': errors['company_row_text'] && !form['invoice.company_row_text'].$valid }"
           textarea rich-text-editor='true' name="invoice.company_row_text" ng-model="invoice.company_row_text" required=""
           span.help-block ng-hide="form['invoice.company_row_text'].$valid" ng-repeat="error in errors['company_row_text']"
             | {{error}}
+
       div flex="50" layout-padding=""
         .form-group ng-class="{'has-error': errors['client_row_text'] && !form['invoice.client_row_text'].$valid }"
           textarea rich-text-editor='true' name="invoice.client_row_text" ng-model="invoice.client_row_text" required=""
           span.help-block ng-hide="form['invoice.client_row_text'].$valid" ng-repeat="error in errors['client_row_text']"
             | {{error}}
 
+
     md-divider
-    div layout="column" flex="100"
+    div layout="column" flex=""
       table#invoice_items.table  flex="" layout-padding=""
         thead
           tr
@@ -100,9 +106,11 @@ form ng-submit='saveInvoice()' name="form" enctype="multipart/form-data" layout=
 
       div flex="" layout-padding=""
         button.btn.btn-primary type="button" ng-click="append_invoice_item()" Add a Item
-      
+
+
     md-divider
-    div layout="row" flex="100"
+    div layout="row" flex=""
+
       div flex="50" layout-padding=""
         .form-group.invoice_comment ng-class="{'has-error': errors['comment'] && !form['invoice.comment'].$valid }"
           label.control-label for="invoice_comment"  Comment
@@ -118,6 +126,8 @@ form ng-submit='saveInvoice()' name="form" enctype="multipart/form-data" layout=
               | {{cur}}
           span.help-block ng-hide="form['invoice.currency'].$valid" ng-repeat="error in errors['currency']"
             | {{error}}
+
+
     md-divider
     div layout="row" flex=""
       div flex="50" offset="50" layout-padding=""
@@ -144,8 +154,9 @@ form ng-submit='saveInvoice()' name="form" enctype="multipart/form-data" layout=
                 strong DISCOUNT:
               td#discount
 
+
     md-divider
-    div layout="column" flex="100"
+    div layout="column" flex=""
       #attachments flex="" layout-padding=""
         label for="invoice_Attachments"  Attachments
         table.table
@@ -161,8 +172,9 @@ form ng-submit='saveInvoice()' name="form" enctype="multipart/form-data" layout=
         .links
           button.btn.btn-primary.btn-xs type="button" ng-click="append_invoice_attachment()" Add attachment
 
+
     md-divider
-    div layout="column" flex="100"
+    div layout="column" flex=""
       div flex="" layout-padding=""
         .form-actions
           input.btn.btn-default.btn-default.pull-right name="commit" type="submit" value="Save"

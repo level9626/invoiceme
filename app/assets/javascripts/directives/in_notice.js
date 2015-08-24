@@ -8,7 +8,7 @@ angular.module('InvMe')
     return {
       restrict: 'E',
       replace: true,
-      template: '<div class="row" ng-repeat="notification in notifications"> \
+      template: '<md-content ng-repeat="notification in notifications"> \
                   <md-toolbar class="md-{{notification.type}}"> \
                     <div class="md-toolbar-tools"> \
                       <h2 class="md-flex">{{notification.text}}</h2> \
@@ -21,7 +21,7 @@ angular.module('InvMe')
                       </md-button> \
                     </div> \
                   </md-toolbar> \
-                </div>',
+                </md-content>',
       link: function(scope) {
         scope.notifications = [];
         $rootScope.$on('notify', function (event, args) {

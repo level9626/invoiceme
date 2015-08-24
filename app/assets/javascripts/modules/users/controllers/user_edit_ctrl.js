@@ -2,26 +2,16 @@
 
 angular.module('UsersApp')
   .controller('UserEditCtrl',[
+  '$rootScope',
   '$scope',
   '$location',
   'Auth',
   'Company',
-  function ($scope, $location, Auth, Company) {
+  function ($rootScope, $scope, $location, Auth, Company) {
 
-    $scope.default_company = {};
+    _init();
 
-    Auth.getCurrentUser().then( function (user) {
-      $scope.user = Auth.currentUser();
-    });
-
-    Company.query($location.search(), function (data) {
-      _.each(data.companies, function(el){
-        if (el.default)
-          $scope.default_company.id = el.id;
-      });
-      $scope.companies = data.companies;
-    });
-
+    // Public Methods
     $scope.update_user = function () {
       Auth.updateProfile({
         email:                 $scope.user.email,
@@ -54,8 +44,29 @@ angular.module('UsersApp')
       }, function (responce) {
         $scope.$emit('notify', {
           type: 'warn',
-          text: 'Please fix validation errors, and try again !'
+          text: 'Please fix validation errors, and try again!'
         });
+      });
+    }
+
+    // Events
+    $rootScope.$on('companies.create', _init);
+    $rootScope.$on('companies.remove', _init);
+
+    // Private Scope
+    function _init () {
+      $scope.default_company = {};
+
+      Auth.getCurrentUser().then( function (user) {
+        $scope.user = Auth.currentUser();
+      });
+
+      Company.query($location.search(), function (data) {
+        _.each(data.companies, function(el){
+          if (el.default)
+            $scope.default_company.id = el.id;
+        });
+        $scope.companies = data.companies;
       });
     }
   }]);
