@@ -36,7 +36,7 @@ class Payment < ActiveRecord::Base
   scope :sum_amount, -> { where.not(id: nil).sum(:amount) }
 
   ## Callbacks
-  before_create :_update_invoice!
+  after_create :_update_invoice!
   before_update :_log_edition!
   before_destroy :_log_deletion!
 

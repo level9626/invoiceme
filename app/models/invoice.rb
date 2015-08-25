@@ -129,7 +129,7 @@ class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
   # Change state after peyment received.
   # rubocop:disable all
   def payment_received
-    publish if state? :new
+    publish if state? :draft
     return self.close if percent_payed >= 100
     partly_pay
   end

@@ -4,18 +4,21 @@ var PaymentNewCtrl = [
   '$scope',
   '$mdDialog',
   'Payment',
-  function ($scope, $mdDialog, Payment) {
-    $scope.company = {
-      name: '',
-      email: '',
-      address: ''
+  'invoice',
+  function ($scope, $mdDialog, Payment, invoice) {
+    $scope.invoice = invoice;
+    $scope.payment = {
+      invoice_id: invoice.id,
+      currency: invoice.currency,
+      amount: invoice.subtotal - parseInt(invoice.balance),
+      banking_overhead: ''
     };
 
     $scope.cancel = function() {
       $mdDialog.cancel();
     };
 
-    $scope.savePayment = function () {
+    $scope.save_payment = function () {
       Payment.save($scope.payment, function (payment) {
         $scope.$emit('notify', {
           type: 'primary',

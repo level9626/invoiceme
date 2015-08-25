@@ -25,14 +25,14 @@ md-content
           img.inline  src="#{asset_path('mail.png')}"
           | Send Mail
       li
-        a.btn.btn-theme2.btn-danger href='#' ng-click="journals($event)"
+        a.btn.btn-theme2.btn-danger ng-disabled="invoice.journals_count === 0" href='#' ng-click="journals($event)"
           | ACTIVITIES
           span.badge
             span
               | {{invoice.journals_count}}
       li
-        a.btn.btn-theme2.btn-primary href='#'
+        a.btn.btn-theme2.btn-primary href='#' ng-click="receive_payment($event)"
           | RECEIVE PAYMENT
           span.badge
             span
-              | 5
+              | {{invoice.payments.length}}

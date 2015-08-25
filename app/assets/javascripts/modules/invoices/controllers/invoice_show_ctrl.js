@@ -31,4 +31,15 @@ angular.module('InvoicesApp')
       });
     }
 
+    $scope.receive_payment = function (ev) {
+      $mdDialog.show({
+        controller: PaymentNewCtrl,
+        templateUrl: 'payments/new.html',
+        targetEvent: ev,
+        locals: {
+          invoice: $scope.invoice
+        }
+      });
+    }
+
   }]);
