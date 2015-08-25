@@ -185,23 +185,25 @@ a, a:hover, a:focus {
   border-width: 0px;
 }
 
-.btn.btn-theme2, a.btn.btn-theme2 {
+.top-menu > a {
   position: relative;
   padding: 0 15px 0 15px;
-  &.btn-danger {
+  &.activities-btn {
     &:hover, &:focus, &.active, &.open {
       color: #d9534f !important;
     }
     .badge > span {
+      background-color: white;
       color: #d9534f;
       border-color: #d9534f;
     }
   }
-  &.btn-primary {
+  &.payment-btn {
     &:hover, &:focus, &.active, &.open {
       color: #337ab7 !important;
     }
     .badge > span {
+      background-color: white;
       color: #337ab7;
       border-color: #337ab7;
     }

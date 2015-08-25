@@ -8,32 +8,22 @@ section#container
         span.date
           | {{ invoice.invoice_date | date:'d MMM yyyy' }}
     .top-menu
-      ul.nav.pull-right.top-menu
-        li
-          a.edit href='invoices/{{invoice.id}}/edit'
-            img.inline  src="#{asset_path('pen.png')}"
-            | Edit
-        li
-          a.delete href="#"
-            img.inline  src="#{asset_path('delete.png')}"
-            | Delete
-        li
-          a.download href="#"
-            img.inline  src="#{asset_path('download.png')}"
-            | Download PDF
-        li
-          a.mail href="#"
-            img.inline  src="#{asset_path('mail.png')}"
-            | Send Mail
-        li
-          a.btn.btn-theme2.btn-danger href='#'
-            | ACTIVITIES
-            span.badge
-              span
-                | 5
-        li
-          a.btn.btn-theme2.btn-primary href='#'
-            | RECEIVE PAYMENT
-            span.badge
-              span
-                | 5
+      section.nav.pull-right.top-menu layout='row'
+        md-button.edit href='invoices/{{invoice.id}}/edit' aria-label='edit'
+          img src="#{asset_path('pen.png')}" Edit
+        md-button.delete href="#" aria-label='delete'
+          img src="#{asset_path('delete.png')}" Delete
+        md-button.download href="" aria-label='download'
+          img src="#{asset_path('download.png')}" Download PDF
+        md-button.mail href="" aria-label='mail'
+          img src="#{asset_path('mail.png')}" Send Mail
+        md-button.activities-btn href="#" aria-label='activities'
+          | ACTIVITIES
+          span.badge
+            span
+              | 5
+        md-button.payment-btn href="#" aria-label='recieve payment'
+          | RECEIVE PAYMENT
+          span.badge
+            span
+              | 5
