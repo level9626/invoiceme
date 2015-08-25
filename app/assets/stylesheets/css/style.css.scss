@@ -185,7 +185,7 @@ a, a:hover, a:focus {
   border-width: 0px;
 }
 
-.top-menu > a {
+.top-menu > section > a {
   position: relative;
   padding: 0 15px 0 15px;
   &.activities-btn {
@@ -708,7 +708,7 @@ div.panel-body {
   float: left;
   display: inline;
   margin-top: -4px;
-  margin-left: 3em;
+  margin-left: 1em;
 }
 
 .btn-circle {

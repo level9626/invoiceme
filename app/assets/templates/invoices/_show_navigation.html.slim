@@ -7,8 +7,8 @@ md-content
         | Invoice Date - 
         span.date
           | {{ invoice.invoice_date | date:'d MMM yyyy' }}
-    .top-menu
-      section.nav.pull-right.top-menu layout='row'
+    .top-menu.right
+      section.nav layout='row'
         md-button.edit href='invoices/{{invoice.id}}/edit' aria-label='edit'
           img src="#{asset_path('pen.png')}" Edit
         md-button.delete href="#" aria-label='delete'
