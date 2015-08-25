@@ -25,11 +25,11 @@ md-content
           img.inline  src="#{asset_path('mail.png')}"
           | Send Mail
       li
-        a.btn.btn-theme2.btn-danger href='#'
+        a.btn.btn-theme2.btn-danger href='#' ng-click="journals($event)"
           | ACTIVITIES
           span.badge
             span
-              | 5
+              | {{invoice.journals_count}}
       li
         a.btn.btn-theme2.btn-primary href='#'
           | RECEIVE PAYMENT

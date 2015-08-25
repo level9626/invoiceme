@@ -33,6 +33,7 @@
 //= require_tree ./modules/static_pages
 //= require_tree ./modules/layouts
 //= require_tree ./modules/users
+//= require_tree ./modules/journals
 //= require_tree ./config
 //= require_tree ./directives
 //= require_tree ./filters

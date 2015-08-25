@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     resources :invoices, concerns: [:commentable, :attachable], \
                          except: [:edit] do
       resources :invoice_mails
+      resources :journals
       member do
         Invoice.state_machines[:state].events.map(&:name).each do |event|
           get event
