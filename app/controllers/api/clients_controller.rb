@@ -39,7 +39,7 @@ module Api
     private
 
     def _set_client
-      @client = current_user.clients.find(params[:id])
+      @client = current_user.clients.includes(:invoices).find(params[:id])
     end
 
     def _search

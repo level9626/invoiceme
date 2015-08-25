@@ -7,7 +7,7 @@ angular.module('CompaniesApp')
 
       var _basePath = '/api/companies/';
 
-      return $resource(_basePath + ':id', { id: '@id' }, {
+      return $resource(_basePath + ':id.json', { id: '@id' }, {
         update: {
           method: 'PUT',
           transformRequest: function(data){
@@ -24,7 +24,17 @@ angular.module('CompaniesApp')
         default: {
           method: 'GET',
           isArray: false,
-          url: _basePath + 'default'
+          url: _basePath + 'default.json'
+        },
+        companies_count: {
+          method: 'GET',
+          isArray: false,
+          url: _basePath + 'companies_count.json'
+        },
+        update_default: {
+          method: 'PUT',
+          isArray: false,
+          url: _basePath + ':id' + '/update_default.json'
         },
         save: { 
           method: 'POST', 

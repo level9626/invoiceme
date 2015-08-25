@@ -9,7 +9,7 @@ angular.module('ProfilesApp')
 
       return {
         percent_payed: function() {
-          return $http.get(_base + 'percent_payed');
+          return $http.get(_base + 'percent_payed.json');
         }
       }
 

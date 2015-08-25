@@ -27,13 +27,18 @@ Rails.application.routes.draw do
     resources :clients, concerns: [:email_templates]
     resources :companies do
       collection do
-        get 'default'
+        get :default
+        get :companies_count
+      end
+      member do
+        put :update_default
       end
     end
 
     resources :invoices, concerns: [:commentable, :attachable], \
                          except: [:edit] do
       resources :invoice_mails
+      resources :journals
       member do
         Invoice.state_machines[:state].events.map(&:name).each do |event|
           get event
@@ -43,6 +48,7 @@ Rails.application.routes.draw do
         get :statistics
         get :invoice_number
         get :states
+        get :invoice_count
       end
     end
 

@@ -47,6 +47,7 @@ angular.module('ClientsApp')
     function _init() {
       Client.query($location.search(), function (data) {
         $scope.clients = data.clients;
+        _get_colors ();
       });
 
       // All clients for filters
@@ -63,5 +64,27 @@ angular.module('ClientsApp')
       Invoice.states(function (states) {
         $scope.states = states
       })
+    }
+
+    // Private Scope
+    function _get_colors () {
+      var colors = {
+        draft: '#999',
+        open: '#999',
+        unpaid: '#d22f2f',
+        partly: '#ff8e00',
+        paid: '#00bd22',
+        overdue: '#8d0404',
+        bad_debt: '#333'
+      };
+
+      _.each($scope.clients, function(client) {
+        client.statistics['colors'] = [];
+        _.each(client.statistics.percent_by_state, function(el) {
+          client.statistics.colors.push(colors[el.label]);
+        });
+      });
+
+      console.log($scope.clients);
     }
   }]);

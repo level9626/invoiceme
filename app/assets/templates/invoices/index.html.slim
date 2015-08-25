@@ -3,92 +3,30 @@ view-title Invoices
 .add-button
   a md-button='' href="invoices/new" class="md-button md-fab md-mini add-icon pull-right" aria-label="add invoice"
     md-icon md-font-icon="fa-plus" class="fa add-plus"
-.row.filter-border.centered ng-include="'invoices/_filter.html'"
 
-.row.mt
-  /.col-md-8#tags.tags
-    .col-md-12.row
-      div ng-include="'invoices/_statistics.html'"
-    .col-md-12.row
-      div ng-include="'layouts/_tags.html'"
-  /.col-md-4.pull-right.filter
-    /div.btn-group role="group"
-      a href="#" class="btn btn-success btn-sm"
-        .fa.fa-download
-          | Download to CSV
-    div ng-include="'invoices/_filter.html'"
+div#invoices layout="column"
+  div.filters.currencies ng-include="'invoices/_currencies_filters.html'"
+  div.filters ng-include="'invoices/_index_navigation.html'"
 
-  .col-md-12
-    h5.text-center ng-if="!invoices"
-      | You don't have invoices yet.
+  md-tabs md-no-disconnect="" md-dynamic-height="" md-border-bottom=""
 
-    section.task-panel.tasks-widget.panel.panel-default#invoice ng-if="invoices"
-      table.table.table-hover data-toggle="table" data-click-to-select="true"
-        thead.panel-heading
-          tr.table-head
-            th.activities-table data-checkbox="true"
-            th
-              span sort-button="invoice_number"
-                | #
-                i.fa.fa-caret-down
-            th
-              span sort-button="created_at"
-                | Date issued
-                i.fa.fa-caret-down
-            th
-              span sort-button="created_at"
-                | Date due
-                i.fa.fa-caret-down
-            th
-              span sort-button="company_name"
-                | Company
-                i.fa.fa-caret-down
-            th
-              span sort-button="client_name"
-                | Client
-                i.fa.fa-caret-down
-            th
-              span sort-button="subtotal"
-                | Total
-                i.fa.fa-caret-down
-            th
-              span sort-button="currency"
-                | Paid
-                i.fa.fa-caret-down
-            th
-              span sort-button="outstanding"
-                | Outstanding
-                i.fa.fa-caret-down
-            th.status-table
-              span sort-button="state"
-                | Status
-                i.fa.fa-caret-down
-            th.actions-table
+    md-tab label="All" md-active="methods.selected('index')" md-on-select="methods.clear_filters()"
+      div ng-include="'invoices/_invoices_table.html'" include-replace="" ng-if="methods.selected('index')"
 
-        tbody.panel-heading
-          tr ng-repeat="invoice in invoices | orderBy:sortType:sortReverse"
-            td
-              /a.btn.btn-primary.btn-xs data-toggle="modal" href="#jurnalsModal{{invoice.id}}"
-              /  i.fa.fa-book
-            td
-              | {{ invoice.invoice_number }}
-            td
-              | {{ invoice.invoice_date | date:'d MMM yyyy' }}
-            td
-              | {{ invoice.due_date | date:'d MMM yyyy' }}
-            td.total-currency
-              | {{ invoice.company.name }}
-            td.total-currency
-              | {{ invoice.client.name }}
-            td.total-currency.ar
-              | {{ invoice.total }} {{ invoice.currency }}
-            td.paid-currency.ar
-              | {{ invoice.balance }} {{ invoice.currency }}
-            td.out-currency.ar
-              | {{ invoice.total - invoice.balance }} {{ invoice.currency }}
-            td
-              span.label-status.partly
-                | {{ invoice.state }}
-            td.actions-table
-              div ng-include="'invoices/_actions.html'"
-    / = will_paginate @invoices
+    md-tab label="Draft" md-active="methods.selected('state_eq', 'draft')" md-on-select="methods.filter('state_eq', 'draft')"
+      div ng-include="'invoices/_invoices_table.html'" include-replace="" ng-if="methods.selected('state_eq', 'draft')"
+
+    md-tab label="Unpaid" md-active="methods.selected('state_eq', 'unpaid')" md-on-select="methods.filter('state_eq', 'unpaid')"
+      div ng-include="'invoices/_invoices_table.html'" include-replace="" ng-if="methods.selected('state_eq', 'unpaid')"
+
+    md-tab label="Partly" md-active="methods.selected('state_eq', 'partly_paid')" md-on-select="methods.filter('state_eq', 'partly_paid')"
+      div ng-include="'invoices/_invoices_table.html'" include-replace="" ng-if="methods.selected('state_eq', 'partly_paid')"
+
+    md-tab label="Paid" md-active="methods.selected('state_eq', 'paid')" md-on-select="methods.filter('state_eq', 'paid')"
+      div ng-include="'invoices/_invoices_table.html'" include-replace="" ng-if="methods.selected('state_eq', 'paid')"
+
+    md-tab label="Overdue" md-active="methods.selected('state_eq', 'overdue')" md-on-select="methods.filter('state_eq', 'overdue')"
+      div ng-include="'invoices/_invoices_table.html'" include-replace="" ng-if="methods.selected('state_eq', 'overdue')"
+
+    md-tab label="Bad Debt" md-active="methods.selected('state_eq', 'bad_debt')" md-on-select="methods.filter('state_eq', 'bad_debt')"
+      div ng-include="'invoices/_invoices_table.html'" include-replace="" ng-if="methods.selected('state_eq', 'bad_debt')"

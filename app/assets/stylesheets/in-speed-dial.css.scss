@@ -1,0 +1,41 @@
+// css for custom dial directive
+
+in-speed-dial {
+  position: relative;
+  height: 42px;
+  display: block;
+  trigger {
+    height: 42px;
+    padding-top: 2px;
+    padding-right: 5px;
+    display: inline-block;
+    .md-button md-icon.rotate {
+      display: none;
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+  actions {
+    position: absolute;
+    display: none;
+    width: auto;
+    right: 53px;
+    top: 0;
+    bottom: 0;
+    .md-button {
+      display: inline-block;
+      height: auto;
+      border-radius: 0;
+      margin: 0;
+      &:hover {
+        background-color: rgba(193, 193, 193, 0.96) !important;
+      }
+    }
+  }
+}
+
+in-speed-dial, in-speed-dial trigger, in-speed-dial actions div {
+  height: 42px;
+}

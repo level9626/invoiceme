@@ -1,0 +1,16 @@
+.currencies
+  md-button.md-tab-copy ng-class="{active: methods.selected('currency_eq', 'USD')}" ng-click="methods.filter('currency_eq', 'USD')" aria-label="USD filter button"
+    | USD
+    .ink-bar
+
+  md-button.md-tab-copy ng-class="{active: methods.selected('currency_eq', 'EUR')}" ng-click="methods.filter('currency_eq', 'EUR')" aria-label="EUR filter button"
+    | EUR
+    .ink-bar
+
+  md-button.md-tab-copy ng-class="{active: methods.selected('currency_eq', 'UAH')}" ng-click="methods.filter('currency_eq', 'UAH')" aria-label="UAH filter button"
+    | UAH
+    .ink-bar
+
+  md-button.md-tab-copy ng-class="{active: methods.selected('currency_eq', 'RUB')}" ng-click="methods.filter('currency_eq', 'RUB')" aria-label="RUB filter button"
+    | RUB
+    .ink-bar

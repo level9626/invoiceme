@@ -1,4 +1,4 @@
-aside
+aside ng-controller="ProfileNavCtrl"
   #sidebar
     div.logo-rectangle.centered
       a.logo href="/"
@@ -11,7 +11,7 @@ aside
           md-button.md-primary active-link="" href="/"
             md-icon.nav-icon md-svg-src="#{asset_path('icons/dashboard_icon.svg')}"
             | DASHBOARD
-        li
+        li ng-if="companies_count > 1"
           md-button.md-primary active-link="" href="/companies"
             md-icon.nav-icon md-svg-src="#{asset_path('icons/companies_icon.svg')}"
             | COMPANIES

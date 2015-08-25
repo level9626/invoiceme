@@ -6,6 +6,10 @@
   .company, .client {
     height: 100px;
     border-bottom: 1px solid #ededed;
+    #donut-cont, #donut-cont svg {
+      height: 95px;
+      width: 95px;
+    }
     button.logo {
       margin: 16%;
       width: 6.6rem;

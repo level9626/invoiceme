@@ -1,6 +1,6 @@
 / Navigation
-section#container
-  header.profile-sub-menu.row
+md-content
+  header.profile-sub-menu layout="row"
     .pull-left.date
       img.inline src="#{asset_path('calendar.png')}"
       span
@@ -17,11 +17,11 @@ section#container
           img src="#{asset_path('download.png')}" Download PDF
         md-button.mail href="" aria-label='mail'
           img src="#{asset_path('mail.png')}" Send Mail
-        md-button.activities-btn href="#" aria-label='activities'
+        md-button.activities-btn href="#" ng-click="journals($event)" aria-label='activities'
           | ACTIVITIES
           span.badge
             span
-              | 5
+              | {{invoice.journals_count}}
         md-button.payment-btn href="#" aria-label='recieve payment'
           | RECEIVE PAYMENT
           span.badge

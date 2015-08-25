@@ -4,7 +4,7 @@ angular.module('PaymentsApp')
   .factory('Payment',
   ['$resource',
   function($resource) {
-    return $resource('/api/payments/:id', { id: '@id' }, {
+    return $resource('/api/payments/:id.json', { id: '@id' }, {
       update: {
         method: 'PUT'
       },

@@ -40,8 +40,14 @@ angular.module('CompaniesApp')
     };
 
     $scope.removeCompany = function (id) {
-      Company.remove({id: id});
-      _init();
+      Company.remove({id: id}, function () {
+        $scope.$emit('notify', {
+          type: 'primary',
+          text: 'Company successfully removed.'
+        });
+        $scope.$emit('companies.remove', true);
+        _init();
+      });
     };
 
     function _init() {

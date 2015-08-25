@@ -1,9 +1,11 @@
 view-title Dashboard
-.row.mt
-  .col-md-4.col-sm-4.mb
+
+md-content class="md-padding" layout="row" layout-wrap=""
+
+  div flex='33' class="md-padding"
     div ng-include="'companies/_company.html'"
 
-  .col-sm-4.mb
+  div flex='33' class="md-padding"
     .white-panel.pn.donut-chart
       .white-header
         h5 Recent Invoices
@@ -37,7 +39,7 @@ view-title Dashboard
         /   .fa.fa-plus
         /     | Add New Invoice
 
-  .col-md-4.col-sm-4.mb
+  div flex='33' class="md-padding"
     .white-panel.pn.donut-chart
       .white-header
         h5 Invoice Balance

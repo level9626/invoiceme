@@ -13,9 +13,6 @@ $border: grey;
 #invoice {
   @extend .borderise;
   padding: 0px;
-  span {
-    margin-left: 0px !important;
-  }
   #header {
     margin-bottom: 50px;
   }
@@ -56,6 +53,83 @@ $border: grey;
     background-color: whitesmoke;
     border-bottom: 2px solid #dddddd;
     height: 40px;
+  }
+}
+
+@media (max-width: 1240px){
+  #invoices .filters.currencies {
+    left: 45.2% !important;
+  }
+}
+
+@media (max-width: 1150px){
+  #invoices .filters.currencies {
+    left: 55.2% !important;
+  }
+}
+
+@media (max-width: 960px){
+  #invoices .filters.currencies {
+    left: 65.2% !important;
+  }
+}
+
+@media (max-width: 870px){
+  #invoices .filters.currencies {
+    left: auto !Important;
+    right: 10px !important;
+  }
+}
+
+#invoices {
+  position: relative;
+  // Filters
+  .filters {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 2;
+    .top-menu ul.nav {
+      &:nth-of-type(1), &:nth-of-type(2) {
+        margin-right: 10px; 
+      }
+    }
+    &.currencies {
+      top: 0;
+      left: 42.2%;
+    }
+    button.md-tab-copy {
+      min-width: 0;
+      margin: 0;
+      border-radius: 0;
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+  // Tabs
+  .md-tab {
+    padding: 12px 10px;
+    &:nth-of-type(8) {
+      margin-left: 15px; 
+    }
+  }
+
+  table.invoices-table {
+    md-checkbox {
+      margin: 0;
+      padding: 0;
+      margin-left: 8px;
+    }
+    span {
+      margin-left: 0px;
+    }
+    .sort-button.active {
+      color: #3f51b5;
+    }
   }
 }
 
@@ -211,10 +285,6 @@ table.payments-info {
   }
 }
 
-.activities-table {
-  width: 70px;
-}
-
 .status-table {
   width: 1em;
 }
@@ -279,9 +349,6 @@ span.ng-isolate-scope {
     }
   }
 }
-.invoice-filter-button1 {
-  padding-bottom: 24px;
-}
 // Invoice filters
 #filter {
   span {
@@ -297,29 +364,6 @@ span.ng-isolate-scope {
     &.filter-margin {
       margin-right: 40px;
     }
-  }
-}
-#filter > div:nth-child(3) > div > div > span:nth-child(1)
-.invoice-filter-button {
-  border: 0px;
-  padding-bottom: 24px;
-  font-weight: bold;
-  background-color: transparent;
-  &:focus {
-    outline: none;
-    font-weight: bold;
-    padding-bottom: 24px;
-    border-radius: 0px !important;
-    border-bottom: solid 2px #2780B5;
-    color: #00a8ff;
-  }
-  &:hover {
-    border-radius: 0px;
-    color: #00a8ff;
-  }
-  &:active {
-    box-shadow: none;
-    outline: none !important;
   }
 }
 
@@ -540,28 +584,19 @@ body > div.md-open-menu-container {
 
 
 #invoice-actions {
-  .md-button {
+  trigger .md-button {
     display: inline-flex;
     width: 40px;
     height: 25px;
     margin: 0;
     padding: 0px !important;
   }
-  .more-icon {
-    height: 20px;
-  }
-  .delete-icon {
-    display: none;
-    height: 13px;
-    transform: rotate(45deg);
-  }
-  &:hover {
-    .more-icon {
-      display: none;
-    }
-    .delete-icon {
-      display: block;
-    }
+  actions {
+    background: -webkit-linear-gradient(left, #66A5E0, #0069cb);
+    background: -o-linear-gradient(left, #66A5E0, #0069cb);
+    background: -moz-linear-gradient(left, #66A5E0, #0069cb);
+    background: linear-gradient(left, #66A5E0, #0069cb);
+    background-color: white;
   }
 }
 
@@ -584,23 +619,6 @@ body > div.md-open-menu-container {
   background-color: rgba(193, 193, 193, 0.96);
   color: rgba(44, 65, 164, 0.96);
   transition: 0.3s;
-}
-
-#invoice-actions > div > md-fab-speed-dial > md-fab-actions {
-  width: 5px;
-  height: 33px;
-  > div > section {
-    background: -webkit-linear-gradient(left, #66A5E0, #0069cb);
-    background: -o-linear-gradient(left, #66A5E0, #0069cb);
-    background: -moz-linear-gradient(left, #66A5E0, #0069cb);
-    background: linear-gradient(left, #66A5E0, #0069cb);
-    background-color: white;
-    > button {
-      border-radius: 0px;
-      margin-bottom: 0px;
-      padding-bottom: 0px;
-    }
-  }
 }
 
 .md-sidenav-right.bar {
@@ -711,9 +729,19 @@ body > div.alert {
   padding-left: 15px;
   background-color: white;
   border-bottom: 1px solid #dddddd;
-  .top-menu img {
-    display: inline;
-    margin-bottom: 4px;
+  height: 65px;
+  .top-menu {
+    position: absolute;
+    &.right {
+      right: 0;
+    }
+    &.left {
+      left: 0;
+    }
+    img {
+      display: inline;
+      margin-bottom: 4px;
+    }
   }
   .date {
     img {

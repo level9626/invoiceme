@@ -6,24 +6,27 @@ view-title Companies
 
 div ng-include="'clients/_index_navigation.html'"
 
-section
-  .row.mt
-    .col-md-6.col-md-offset-3
-      .white-panel.pn.donut-chart ng-if='!clients || clients.length <= 0'
+in-loading collection="clients"
+
+md-content class="md-padding" layout="column"
+  div flex="" layout="row" ng-if='clients && clients.length <= 0'
+    div flex="50" offset="25"
+      .white-panel.pn.donut-chart
         .white-header
           h5 Notice!
-        .row
-          .col-sm-12.col-sx-12
+        div layout="column"
             p You need to create a client in order to continue
-        hr
+        md-divider
         footer.clearfix
-          a href="#" class='btn btn-primary btn-sm' ng-click="newClient($event)"
+          md-button href="#" class="md-primary" ng-click="newClient($event)"
             .fa.fa-plus
             | Add New Client
 
-  div.clients flex="100"
+  div.clients flex="" ng-if='clients && clients.length > 0'
     section.client layout="row" layout-wrap="" ng-repeat="client in clients"
-      div flex="100"
+      dif flex="10"
+        div#donut-cont donut-chart="" donut-data="client.statistics.percent_by_state" donut-colors="client.statistics.colors" donut-formatter='"currency"'
+      div flex="90"
         section
           h2.pl
             | {{ client.name }}

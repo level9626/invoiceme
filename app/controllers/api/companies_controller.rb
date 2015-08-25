@@ -36,6 +36,16 @@ module Api
       end
     end
 
+    def update_default
+      @company = current_user.companies.find(params[:id])
+      @company.default!
+      respond_with(@company)
+    end
+
+    def companies_count
+      respond_with({companies_count: current_user.companies.count})
+    end
+
     private
 
     def _search
@@ -46,7 +56,7 @@ module Api
     end
 
     def _set_company
-      @company = current_user.companies.find(params[:id])
+      @company = current_user.companies.includes(:invoices).find(params[:id])
     end
 
     def company_params

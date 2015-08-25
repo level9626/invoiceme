@@ -1,0 +1,10 @@
+form style="padding-top: 32px; margin-bottom: 10px;" autocomplete="off" name="defaultCompanyEditForm" layout="row" layout-wrap="" ng-submit="update_default_company()"
+  md-whiteframe class="md-whiteframe-z2" layout="row" layout-padding="" layout-wrap="" offset="33" flex="33"
+    h1.md-headline.text-center flex="100" Edit Default Company
+    md-input-container flex="100"
+      md-radio-group ng-model="default_company.id"
+        md-radio-button ng-repeat="company in companies" value="{{company.id}}"
+          | {{company.name}}
+
+    md-input-container style="padding-top: 32px;" flex="100"
+      md-button class="md-raised md-primary" Save Changes

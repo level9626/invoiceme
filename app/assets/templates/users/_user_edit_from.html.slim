@@ -1,0 +1,37 @@
+form style="padding-top: 32px; margin-bottom: 10px;" autocomplete="off" name="userEditForm" layout="row" layout-wrap="" ng-submit="update_user()"
+  md-whiteframe class="md-whiteframe-z2" layout="row" layout-padding="" layout-wrap="" offset="33" flex="33"
+    h1.md-headline.text-center flex="100" Edit Login Info
+    md-input-container flex="100"
+      label Email
+      input ng-model="user.email" required='true' name="email" type="email" /
+      div ng-messages="userEditForm.email.$error" ng-messages-multiple="true" ng-if="userEditFrom.$submitted || errors.email"
+        div ng-message="required" Email is required
+        div.in-error ng-repeat='error in errors.email'
+          | {{error}}
+
+    md-input-container flex="100"
+      label Current Password
+      input ng-model="user.current_password" name="current_password" type="password" /
+      div ng-messages="userEditForm.current_password.$error" ng-messages-multiple="true" ng-if="userEditFrom.$submitted || errors.current_password"
+        div.in-error ng-repeat='error in errors.current_password'
+          | {{error}}
+
+    p.md-caption.text-center style="padding-top: 32px;" flex="100"
+      | Leave this fields blank if you don't want to change password
+
+    md-input-container flex="100"
+      label New Password
+      input ng-model="user.password" name="password" type="password" /
+      div ng-messages="userEditForm.password.$error" ng-messages-multiple="true" ng-if="userEditFrom.$submitted || errors.password"
+        div.in-error ng-repeat='error in errors.password'
+          | {{error}}
+
+    md-input-container flex="100" 
+      label New Password Confirmation
+      input ng-model="user.password_confirmation" name="password_confirmation" type="password" /
+      div ng-messages="userEditForm.password_confirmation.$error" ng-messages-multiple="true" ng-if="userEditFrom.$submitted || errors.password_confirmation"
+        div.in-error ng-repeat='error in errors.password_confirmation'
+          | {{error}}
+
+    md-input-container style="padding-top: 32px;" flex="100"
+      md-button class="md-raised md-primary" Save Changes

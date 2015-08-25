@@ -3,14 +3,14 @@
   /  md-icon.more-icon md-svg-src="#{asset_path('icons/more_icon.svg')}"
 
   .actions
-    md-fab-speed-dial md-direction="left" class="md-fling"
-      md-fab-trigger
+    in-speed-dial
+      trigger
         md-button.md-icon-button aria-label="menu"
-          md-icon.more-icon md-svg-src="#{asset_path('icons/more_icon.svg')}"
-          md-icon.delete-icon md-svg-src="#{asset_path('icons/actions/delete.svg')}"
+          md-icon md-svg-src="#{asset_path('icons/more_icon.svg')}"
+          md-icon.rotate md-svg-src="#{asset_path('icons/actions/delete.svg')}"
 
-      md-fab-actions
-        section layout="row"
+      actions
+        div layout="row"
           md-button class="md-primary" aria-label="edit" href="/invoices/{{invoice.id}}"
             md-icon md-svg-src="#{asset_path('icons/actions/edit.svg')}"
           md-button class="md-primary" aria-label="delete"

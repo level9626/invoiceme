@@ -7,7 +7,7 @@ angular.module('InvoicesApp')
 
       var _baseUrl = '/api/invoices/'
 
-      return $resource(_baseUrl + ':id', { id: '@id' }, {
+      return $resource(_baseUrl + ':id.json', { id: '@id' }, {
         update: {
           method: 'PUT',
           transformRequest: function(data){
@@ -25,17 +25,22 @@ angular.module('InvoicesApp')
         invoice_number: {
           method: 'GET',
           isArray: false,
-          url: _baseUrl + 'invoice_number'
+          url: _baseUrl + 'invoice_number.json'
         },
         statistics: {
           method: 'GET',
           isArray: false,
-          url: _baseUrl + 'statistics'
+          url: _baseUrl + 'statistics.json'
+        },
+        invoice_count: {
+          method: 'GET',
+          isArray: false,
+          url: _baseUrl + 'invoice_count.json'
         },
         states: {
           method: 'GET',
           isArray: true,
-          url: _baseUrl + 'states'
+          url: _baseUrl + 'states.json'
         },
         save: {
           method: 'POST',
