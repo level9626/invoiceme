@@ -185,44 +185,6 @@ a, a:hover, a:focus {
   border-width: 0px;
 }
 
-.btn.btn-theme2, a.btn.btn-theme2 {
-  position: relative;
-  padding: 0 15px 0 15px;
-  &.btn-danger {
-    &:hover, &:focus, &.active, &.open {
-      color: #d9534f !important;
-    }
-    .badge > span {
-      color: #d9534f;
-      border-color: #d9534f;
-    }
-  }
-  &.btn-primary {
-    &:hover, &:focus, &.active, &.open {
-      color: #337ab7 !important;
-    }
-    .badge > span {
-      color: #337ab7;
-      border-color: #337ab7;
-    }
-  }
-  .badge {
-    display: inline-flex;
-    padding: 0 !important;
-    margin: 0 !important;
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    border: 1px solid white;
-    & > span {
-      padding: 4px 7px;
-      margin: 0 !important;
-      border: 1px solid white;
-      border-radius: 10px;
-    }
-  }
-}
-
 .btn.btn-theme, a.btn.btn-theme {
   @extend .btn.btn-theme2;
   background-color: $blue-lightest;
@@ -706,7 +668,7 @@ div.panel-body {
   float: left;
   display: inline;
   margin-top: -4px;
-  margin-left: 3em;
+  margin-left: 1em;
 }
 
 .btn-circle {

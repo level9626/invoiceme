@@ -102,7 +102,7 @@ form ng-submit='saveInvoice()' name="form" enctype="multipart/form-data" layout=
               b.currency_value
                 | {{invoice.currency}}
             td
-              button.btn.btn-danger. type="button" ng-click="remove_invoice_item($index)" ng-disabled="!invoice.invoice_items || invoice.invoice_items.length <= 1" Remove
+              button.btn.btn-danger type="button" ng-click="remove_invoice_item($index)" ng-disabled="!invoice.invoice_items || invoice.invoice_items.length <= 1" Remove
 
       div flex="" layout-padding=""
         button.btn.btn-primary type="button" ng-click="append_invoice_item()" Add a Item
