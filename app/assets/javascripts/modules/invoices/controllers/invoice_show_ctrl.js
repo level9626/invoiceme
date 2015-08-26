@@ -8,17 +8,7 @@ angular.module('InvoicesApp')
   'Invoice',
   function ($scope, $routeParams, $mdDialog, Invoice) {
 
-    Invoice.get({id: $routeParams['id']}, function (invoice) {
-      $scope.invoice = invoice;
-      var percent_payed = Math.round(invoice.percent_payed)
-      $scope.invoicePaymentStats = [{
-        label: 'Payed',
-        value: percent_payed
-      },{
-        label: 'Unpayed',
-        value: 100 - percent_payed
-      }];
-    });
+    _init();
 
     $scope.journals = function (ev) {
       $mdDialog.show({
@@ -29,7 +19,7 @@ angular.module('InvoicesApp')
           invoice_id: $scope.invoice.id
         }
       });
-    }
+    };
 
     $scope.receive_payment = function (ev) {
       $mdDialog.show({
@@ -39,6 +29,23 @@ angular.module('InvoicesApp')
         locals: {
           invoice: $scope.invoice
         }
+      }).then(function(answer) {
+        _init();
+      });
+    };
+
+    // Private Scope
+    function _init() {
+      Invoice.get({id: $routeParams['id']}, function (invoice) {
+        $scope.invoice = invoice;
+        var percent_payed = Math.round(invoice.percent_payed)
+        $scope.invoicePaymentStats = [{
+          label: 'Payed',
+          value: percent_payed
+        },{
+          label: 'Unpayed',
+          value: 100 - percent_payed
+        }];
       });
     }
 

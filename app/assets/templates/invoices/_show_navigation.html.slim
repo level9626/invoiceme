@@ -22,7 +22,7 @@ md-content
           span.badge
             span
               | {{invoice.journals_count}}
-        md-button.payment-btn ng-click="receive_payment($event)" aria-label='recieve payment'
+        md-button.payment-btn ng-disabled="invoice.state === 'paid'" ng-click="receive_payment($event)" aria-label='recieve payment'
           | RECEIVE PAYMENT
           span.badge
             span

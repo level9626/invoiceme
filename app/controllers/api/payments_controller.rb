@@ -23,8 +23,7 @@ module Api
 
     def create
       @payment = Payment.new(payment_params)
-      @payment.save
-      redirect_to :back
+      try_respond_with(@payment)
     end
 
     def update
