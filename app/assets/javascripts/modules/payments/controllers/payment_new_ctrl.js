@@ -7,10 +7,13 @@ var PaymentNewCtrl = [
   'invoice',
   function ($scope, $mdDialog, Payment, invoice) {
     $scope.invoice = invoice;
+    console.log(invoice.subtotal - parseInt(invoice.balance));
+    console.log(invoice.subtotal);
+    console.log(parseInt(invoice.balance));
     $scope.payment = {
       invoice_id: invoice.id,
       currency: invoice.currency,
-      amount: invoice.subtotal - parseInt(invoice.balance),
+      amount: invoice.subtotal - ( parseInt(invoice.balance) || 0 ),
       banking_overhead: ''
     };
 
