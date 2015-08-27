@@ -7,9 +7,6 @@ var PaymentNewCtrl = [
   'invoice',
   function ($scope, $mdDialog, Payment, invoice) {
     $scope.invoice = invoice;
-    console.log(invoice.subtotal - parseInt(invoice.balance));
-    console.log(invoice.subtotal);
-    console.log(parseInt(invoice.balance));
     $scope.payment = {
       invoice_id: invoice.id,
       currency: invoice.currency,
@@ -23,10 +20,14 @@ var PaymentNewCtrl = [
 
     $scope.save_payment = function () {
       Payment.save($scope.payment, function (payment) {
+        // Show site overall message
         $scope.$emit('notify', {
           type: 'primary',
           text: 'Payment successfully created.'
         });
+        // send message to modules that need to do
+        // data reload after this action
+        $scope.$emit('payment.created', true);
         $mdDialog.hide();
       }, function (responce) {
         $scope.$emit('notify', {

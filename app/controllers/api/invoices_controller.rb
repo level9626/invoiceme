@@ -14,7 +14,7 @@ module Api
     ## Crud methods
     def index
       @search = _search
-      @invoices = @search.result.paginate(per_page: 10, page: params[:page])
+      @invoices = @search.result.paginate(per_page: 20, page: params[:page])
     end
 
     def show
