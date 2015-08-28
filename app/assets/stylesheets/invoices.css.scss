@@ -320,6 +320,15 @@ table.payments-info {
   }
 }
 
+.fa-sort {
+  vertical-align: middle;
+  &:before {
+    font-size: large;
+    vertical-align: text-bottom;
+    margin-left: 10px;
+  }
+}
+
 .fa-caret-down {
   vertical-align: sub;
   &:before {
@@ -328,10 +337,24 @@ table.payments-info {
     margin-left: 10px;
   }
 }
+
+.fa-caret-up {
+  vertical-align: sub;
+  &:before {
+    font-size: large;
+    vertical-align: text-bottom;
+    margin-left: 10px;
+  }
+}
+
 #invoice {
   .fa-caret-down {
     font-size: large;
     vertical-align: middle;
+  }
+  .fa-caret-up {
+    font-size: large;
+    vertical-align: initial;
   }
 }
 
