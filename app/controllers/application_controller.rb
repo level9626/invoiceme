@@ -28,10 +28,21 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
 
+  # We Only need locals for errors.
+  # It in impossible to pass, as locals, and instance variable
+  # So places where we need send back json/show partials, system
+  # will rely, on the developer, to declare instance variable
+  # prior to executing try_respond_with method.
   def try_respond_with(obj)
     name = obj.class.to_s.underscore
-    tmplt = "api/#{name.pluralize}/" + (obj.save ? 'show.json' : 'errors.json')
-    status = obj.errors.any? ? 422 : 200
-    render template: tmplt, status: status, locales: { "@#{name}" => obj }
+    params =  if obj.save
+                { template: "api/#{name.pluralize}/show.json",
+                  status:   200 }
+              else
+                { template: 'api/shared/errors.json',
+                  status:   422,
+                  locals:  { errors: obj.errors } }
+              end
+    render params
   end
 end

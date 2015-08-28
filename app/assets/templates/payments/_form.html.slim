@@ -1,54 +1,40 @@
-form ng-submit='savePyment()'
+md-toolbar
+  .md-toolbar-tools
+    h2.text-uppercase
+      | {{invoice.invoice_number}}
+      span Payment
+    span flex=''
+    md-button.close.md-icon-button ng-click="cancel()" type="button"
+      md-icon md-svg-src="#{asset_path('icons/close_purp.svg')}" aria-label="Close dialog"
 
-  .form-inputs
-    .row
-      .col-md-4
-        b.inline-label Invoice:
+md-dialog-content layout="column"
 
-      .col-md-4
-        b.inline-label Currency:
+  div flex="" layout="row"
+    div flex="30"
+      b.inline-label Invoice:
+      | {{ invoice.invoice_number }}
+    div flex="30"
+      b.inline-label Currency:
+      | {{ payment.currency }}
+    div.text-right flex="40"
+      b.inline-label Client:
+      | {{ invoice.client.name }}
 
-      .col-md-4
-        b.inline-label Client name:
+  md-input-container flex=""
+    label Amount
+    input ng-model="payment.amount" required='true' name="amount" type="number" /
+    div ng-messages="paymentForm.amount.$error" ng-messages-multiple="true" ng-if="paymentForm.$submitted || payment.amount"
+      div ng-message="required" Amount is required
+      div.in-error ng-repeat='error in errors.amount'
+        | {{error}}
 
-  / hr
-  /   .row.amount-field
-  /     .col-md-2
-  /       = f.label 'Amount'
-  /     .col-md-8
-  /       = f.input :amount,
-  /                 input_html: { value: f.object.amount || @invoice.unpayed },
-  /                 label: false
-  /     .col-md-2.right-inner-addon
-  /       i= @invoice.currency
-  /   .row.banking-overhead-field
-  /     .col-md-12
-  /       .form-inline
-  /         .form-group
-  /           | Banking overhead
-  /         .form-group
-  /           = f.input :banking_overhead, input_html: { class: 'span3' }, label: false
-  /         .form-group
-  /           i= @invoice.currency
+  md-input-container.md-caption flex=""
+    label Banking Overhead
+    input ng-model="payment.banking_overhead" name="banking_overhead" type="number" /
+    div ng-messages="paymentForm.banking_overhead.$error" ng-messages-multiple="true" ng-if="paymentForm.$submitted || payment.banking_overhead"
+      div.in-error ng-repeat='error in errors.banking_overhead'
+        | {{error}}
 
-  / hr
-  /   .row
-  /     .col-md-12
-  /       #comments
-  /         = f.label 'Comments'
-  /         = f.simple_fields_for :comments do |comment|
-  /           = render 'payments/comment_fields', :f => comment
-  /         .links
-  /           = link_to_add_association 'Add comment', f, :comments, \
-  /                                            class: 'btn btn-primary btn-xs add_attachment'
-
-
-
-  / hr
-  / .row
-  /   .form-inline
-  /     = f.button :submit, 'Save', class: 'btn btn-primary save-button-payment'
-
-  /     .pull-right
-  /       = link_to 'Inspect Invoice', invoice_url(@invoice.id), method: :get, \
-  /                       class: 'btn btn-default inspect-button-payment'
+div class="md-actions" layout="row"
+  md-button class="md-raised md-primary" type="submit" Save
+  md-button class="" Inspect Invoice

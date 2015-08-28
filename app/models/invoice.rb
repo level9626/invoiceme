@@ -31,7 +31,7 @@ class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
 
   ## Default query scope
   # by default invoice query doesn't show closed invoices
-  default_scope { where.not(state: 'paid') }
+  # default_scope { where.not(state: 'paid') }
   scope :is_open, -> { where(state: 'open') }
   scope :draft, -> { where(state: 'draft') }
   scope :partly, -> { where(state: 'partly') }
@@ -129,7 +129,7 @@ class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
   # Change state after peyment received.
   # rubocop:disable all
   def payment_received
-    publish if state? :new
+    publish if state? :draft
     return self.close if percent_payed >= 100
     partly_pay
   end

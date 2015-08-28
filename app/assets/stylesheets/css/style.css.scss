@@ -185,46 +185,6 @@ a, a:hover, a:focus {
   border-width: 0px;
 }
 
-.top-menu > section > a {
-  position: relative;
-  padding: 0 15px 0 15px;
-  &.activities-btn {
-    &:hover, &:focus, &.active, &.open {
-      color: #d9534f !important;
-    }
-    .badge > span {
-      background-color: white;
-      color: #d9534f;
-      border-color: #d9534f;
-    }
-  }
-  &.payment-btn {
-    &:hover, &:focus, &.active, &.open {
-      color: #337ab7 !important;
-    }
-    .badge > span {
-      background-color: white;
-      color: #337ab7;
-      border-color: #337ab7;
-    }
-  }
-  .badge {
-    display: inline-flex;
-    padding: 0 !important;
-    margin: 0 !important;
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    border: 1px solid white;
-    & > span {
-      padding: 4px 7px;
-      margin: 0 !important;
-      border: 1px solid white;
-      border-radius: 10px;
-    }
-  }
-}
-
 .btn.btn-theme, a.btn.btn-theme {
   @extend .btn.btn-theme2;
   background-color: $blue-lightest;

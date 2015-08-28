@@ -61,7 +61,9 @@
 }
 
 // Form/Modal styles
-.company-modal, .client-modal {
+.in-modal {
+  min-width: 500px;
+  max-width: 647px;
   md-toolbar {
     background-color: #F8F8F8;
     border-bottom: 2px solid #E1E1E1;

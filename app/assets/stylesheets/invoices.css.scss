@@ -777,7 +777,9 @@ body > div.alert {
       }
     }
   }
-  .top-menu > section > a {
+
+  .top-menu > section > a,
+  .top-menu > section > .md-button {
     text-transform: inherit;
     color: #666666;
     font-size: 16px;
@@ -805,35 +807,67 @@ body > div.alert {
       color: #999;
     }
 
-    &.activities-btn {
+    &.payment-btn, &.activities-btn {
+      position: relative;
       line-height: 26px;
       min-height: 26px;
       padding: 0 15px 0 10px;
       margin-top: 5px;
       overflow: visible;
       color: white;
-      background-color: #d9534f;
-      border: 1px solid #ac2925;
+      border: 1px solid;
       &:hover, &:focus, &.active, &.open {
-        color: #d9534f;
         background-color: #EEEEEE;
-        border: 1px solid #ac2925;
+      }
+      &[disabled] {
+        opacity: 0.6;
       }
     }
 
+    &.activities-btn {
+      background-color: #d9534f;
+      border-color: #ac2925;
+      &:hover, &:focus, &.active, &.open {
+        color: #d9534f;
+        border-color: #ac2925;
+      }
+      .badge > span {
+        color: #d9534f;
+        border-color: #d9534f;
+      }
+    }
     &.payment-btn {
-      line-height: 28px;
-      min-height: 28px;
-      padding: 0 15px 0 10px;
-      margin-top: 5px;
-      overflow: visible;
-      color: white;
       background-color: #337ab7;
-      border: 1px solid #204d74;
+      border-color: #204d74;
       &:hover, &:focus, &.active, &.open {
         color: #337ab7;
-        background-color: #EEEEEE;
-        border: 1px solid #204d74;
+        border-color: #204d74;
+      }
+      .badge > span {
+        color: #337ab7;
+        border-color: #337ab7;
+      }
+    }
+
+    .badge {
+      border-radius: 15px;
+      display: inline-flex;
+      padding: 0 !important;
+      margin: 0 !important;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      border: 1px solid white;
+      background-color: white;
+      & > span {
+        min-width: 22px;
+        min-height: 22px;
+        max-width: 22px;
+        max-height: 22px;
+        padding: 4px 4px;
+        margin: 0 !important;
+        border: 1px solid white;
+        border-radius: 15px;
       }
     }
 

@@ -13,17 +13,17 @@ md-content
           img src="#{asset_path('pen.png')}" Edit
         md-button.delete href="#" aria-label='delete'
           img src="#{asset_path('delete.png')}" Delete
-        md-button.download href="" aria-label='download'
+        md-button.download href="api/invoices/{{invoice.id}}.pdf" aria-label='download' target="_blank"
           img src="#{asset_path('download.png')}" Download PDF
         md-button.mail href="" aria-label='mail'
           img src="#{asset_path('mail.png')}" Send Mail
-        md-button.activities-btn href="#" ng-click="journals($event)" aria-label='activities'
+        md-button.activities-btn ng-disabled="invoice.journals_count === 0" ng-click="journals($event)" aria-label='activities'
           | ACTIVITIES
           span.badge
             span
               | {{invoice.journals_count}}
-        md-button.payment-btn href="#" aria-label='recieve payment'
+        md-button.payment-btn ng-disabled="invoice.state === 'paid'" ng-click="receive_payment($event)" aria-label='recieve payment'
           | RECEIVE PAYMENT
           span.badge
             span
-              | 5
+              | {{invoice.payments.length}}

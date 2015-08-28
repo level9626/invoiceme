@@ -19,18 +19,6 @@ header#navbar ng-controller="NavigationCtrl" class="ng-cloak"
                   a href="users/edit"
                     md-button Edit Profile
 
-            / .user-dropdown-menu.clickable
-            /   | {{user.email}}
-            /
-            /   dropdown-toggle data-toggle="dropdown" type="button"
-            /     .fa.fa-chevron-down
-            /   ul.dropdown-menu.extended
-            /     == render 'layouts/navigation_links'
-            /       button.btn-default.menu-button.dropdown-toggle
-            /         .fa.fa-chevron-down
-            /           ul.dropdown-menu.extended
-
-  / layouts here, are coresponding to 'assets/templates/layouts'
   div ng-controller='ProfileStatisticsCtrl' ng-include="'layouts/_statistics.html'"
   .col-lg-12.add-button-row.centered
     btn.btn-default.btn-circle#in-slide-down-trigger

@@ -14,7 +14,7 @@ module Api
     ## Crud methods
     def index
       @search = _search
-      @invoices = @search.result.paginate(per_page: 10, page: params[:page])
+      @invoices = @search.result.paginate(per_page: 20, page: params[:page])
     end
 
     def show
@@ -22,7 +22,7 @@ module Api
         format.json { render template: 'api/invoices/show.json'}
         format.pdf do
           render pdf: 'file',
-                 template: 'invoices/_show_content.html.slim',
+                 template: 'invoices/_show_content.html',
                  zoom: 0.9,
                  layout: 'pdf_layout'
         end

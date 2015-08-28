@@ -19,8 +19,8 @@ div#invoices layout="column"
     md-tab label="Unpaid" md-active="methods.selected('state_eq', 'unpaid')" md-on-select="methods.filter('state_eq', 'unpaid')"
       div ng-include="'invoices/_invoices_table.html'" include-replace="" ng-if="methods.selected('state_eq', 'unpaid')"
 
-    md-tab label="Partly" md-active="methods.selected('state_eq', 'partly_paid')" md-on-select="methods.filter('state_eq', 'partly_paid')"
-      div ng-include="'invoices/_invoices_table.html'" include-replace="" ng-if="methods.selected('state_eq', 'partly_paid')"
+    md-tab label="Partly" md-active="methods.selected('state_eq', 'partly')" md-on-select="methods.filter('state_eq', 'partly')"
+      div ng-include="'invoices/_invoices_table.html'" include-replace="" ng-if="methods.selected('state_eq', 'partly')"
 
     md-tab label="Paid" md-active="methods.selected('state_eq', 'paid')" md-on-select="methods.filter('state_eq', 'paid')"
       div ng-include="'invoices/_invoices_table.html'" include-replace="" ng-if="methods.selected('state_eq', 'paid')"
