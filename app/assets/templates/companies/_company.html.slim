@@ -1,19 +1,20 @@
-.white-panel.pn.donut-chart
-  .white-header
+md-whiteframe.md-whiteframe-z2.donut-chart layout='column' layout-align=''
+  md-toolbar.white-header layout-align='center center'
     h5
       | {{ company.name }}
-  .row
-    .col-sm-6.col-xs-6.goleft
-      p
-        i.fa.fa-database 70%
-    .col-sm-12.col-sx-12
-      img src="{{company.logo}}"
-    .col-sm-12.col-sx-12
-      div ng-bind-html="company.address"
-  hr
-  footer.clearfix
-    .btn-group.pull-left role="group"
-      a href="companies/{{company.id}}" class='btn btn-default' Show
-      a href="companies/{{company.id}}/edit" class='btn btn-default' Edit
-    button.btn.btn-danger.pull-right ng-click='destoryCompany(company.id)' Destroy
+  md-content layout-padding=''
+    section layout="column"
+      .col-sm-6.col-xs-6.goleft
+        p
+          i.fa.fa-database 70%
+      .col-sm-12.col-sx-12
+        img src="{{company.logo}}"
+      .col-sm-12.col-sx-12
+        div.centered ng-bind-html="company.address"
+    hr
+    footer.clearfix
+      .btn-group.pull-left role="group"
+        a href="companies/{{company.id}}" class='btn btn-default' Show
+        a href="companies/{{company.id}}/edit" class='btn btn-default' Edit
+      button.btn.btn-danger.pull-right ng-click='destoryCompany(company.id)' Destroy
 

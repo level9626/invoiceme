@@ -6,32 +6,33 @@ md-content class="md-padding" layout="row" layout-wrap=""
     div ng-include="'companies/_company.html'"
 
   div flex='33' class="md-padding"
-    .white-panel.pn.donut-chart
-      .white-header
+    md-whiteframe.md-whiteframe-z2.donut-chart layout='column' layout-align=''
+      md-toolbar.white-header layout-align='center center'
         h5 Recent Invoices
-      .row
-        .col-md-12
-          p ng-hide='invoices'
-            | You don't have opened invoices.
-          
-          table.table.invoice-icons
-            thead.centered
-              tr
-                th №
-                th Created
-                th Actions
-            tbody
-              tr ng-repeat="invoice in invoices"
-                td
-                  | {{ invoice.invoice_number }}
-                td
-                  | {{ invoice.created_at | date:'medium' }}
-                td
-                  a.btn.btn-success.btn-xs data-toggle="modal" href="#paymentModal{{invoice.id}}"
-                    .fa.fa-dollar
-                  / = link_to @invoice, :method => :get, class: "btn btn-primary btn-xs dashboard-eye"
-                  /   .fa.fa-eye
-            / == render 'payment', :'@invoice' => invoice
+      md-content layout-padding=''
+        section layout="column"
+          .col-md-12
+            p ng-hide='invoices'
+              | You don't have opened invoices.
+
+            table.table.invoice-icons
+              thead.centered
+                tr
+                  th №
+                  th Created
+                  th Actions
+              tbody
+                tr ng-repeat="invoice in invoices"
+                  td
+                    | {{ invoice.invoice_number }}
+                  td
+                    | {{ invoice.created_at | date:'medium' }}
+                  td
+                    a.btn.btn-success.btn-xs data-toggle="modal" href="#paymentModal{{invoice.id}}"
+                      .fa.fa-dollar
+                    / = link_to @invoice, :method => :get, class: "btn btn-primary btn-xs dashboard-eye"
+                    /   .fa.fa-eye
+              / == render 'payment', :'@invoice' => invoice
       footer.clearfix
         hr
         / = button_to new_invoice_path, method: :get, \
@@ -40,10 +41,11 @@ md-content class="md-padding" layout="row" layout-wrap=""
         /     | Add New Invoice
 
   div flex='33' class="md-padding"
-    .white-panel.pn.donut-chart
-      .white-header
+    md-whiteframe.md-whiteframe-z2.donut-chart layout='column' layout-align=''
+      md-toolbar.white-header layout-align='center center'
         h5 Invoice Balance
-      .row
-        .col-md-12
-          div donut-chart="" donut-data="userPaymentStats" donut-colors="['rgb(0, 188, 68)', 'rgb(214, 44, 52)']" donut-formatter='"currency"'
+      md-content layout-padding=''
+        section layout="column"
+          .col-md-12
+            div donut-chart="" donut-data="userPaymentStats" donut-colors="['rgb(0, 188, 68)', 'rgb(214, 44, 52)']" donut-formatter='"currency"'
       br

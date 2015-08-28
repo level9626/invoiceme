@@ -1408,23 +1408,23 @@ PANELS CONFIGURATIONS
   height: auto;
 }
 
-.white-panel p {
+md-whiteframe p {
   margin-top: 5px;
   font-weight: 700;
   margin-left: 15px;
 }
-.white-panel .white-header {
+.md-whiteframe .white-header {
   background: #f4f4f4;
   padding: 3px;
   margin-bottom: 15px;
   color: #c6c6c6;
 }
-.white-panel .small {
+md-whiteframe .small {
   font-size: 10px;
   color: #ccd1d9;
 }
 
-.white-panel i {
+md-whiteframe i {
   color: $blue-lightest;
   padding-right: 4px;
   font-size: 14px;
