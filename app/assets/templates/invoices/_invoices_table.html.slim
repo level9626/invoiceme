@@ -19,41 +19,31 @@ md-content ng-show="data.invoices && data.invoices.length > 0" class="md-padding
           th
             span sort-button="invoice_number"
               | #
-              i.fa.fa-sort
           th
             span sort-button="created_at"
               | Date issued
-              i.fa.fa-sort
           th
             span sort-button="created_at"
               | Date due
-              i.fa.fa-sort
           th
             span sort-button="company_name"
               | Company
-              i.fa.fa-sort
           th
             span sort-button="client_name"
               | Client
-              i.fa.fa-sort
           th
             span sort-button="subtotal"
               | Total
-              i.fa.fa-sort
           th
             span sort-button="currency"
               | Paid
-              i.fa.fa-sort
           th
             span sort-button="outstanding"
               | Outstanding
-              i.fa.fa-sort
           th.status-table
             span sort-button="state"
               | Status
-              i.fa.fa-sort
           th.actions-table
-
       tbody.panel-heading
         tr ng-repeat="invoice in data.invoices"
           td

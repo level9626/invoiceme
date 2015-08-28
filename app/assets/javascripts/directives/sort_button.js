@@ -12,6 +12,9 @@ angular.module('InvMe')
                        ng-class="{active: active(), up: up(), down: down()}" \
                        ng-click="sort()"> \
                    <ng-transclude></ng-transclude> \
+                   <i class="fa fa-sort"></i> \
+                   <i class="fa fa-caret-down"></i> \
+                   <i class="fa fa-caret-up"></i> \
                  </span>',
       scope: {
         sortButton: '@'
@@ -30,13 +33,11 @@ angular.module('InvMe')
         };
 
         scope.up = function () {
-          if (_polarity() == ' desc')
-            $('span.active').children().find('i').removeClass('fa fa-sort').addClass('fa fa-caret-up');
+          return _polarity() == ' desc';
         };
 
         scope.down = function () {
-          if (_polarity() == ' asc')
-            $('span.active').children().find('i').removeClass('fa fa-sort').addClass('fa fa-caret-down');
+          return _polarity() == ' asc';
         };
 
         function _polarity () {
