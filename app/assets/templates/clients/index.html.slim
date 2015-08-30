@@ -1,15 +1,17 @@
 view-title Clients
 
 .add-button
-  md-button ng-click="newClient($event)" class="md-button md-fab md-mini add-icon" aria-label="add client"
+  md-button ng-click="methods.new_client($event)" class="md-button md-fab md-mini add-icon" aria-label="add client"
     md-icon md-font-icon="fa-plus" class="fa add-plus"
 
 div ng-include="'clients/_index_navigation.html'"
 
-in-loading collection="clients"
+in-loading collection="data.clients"
 
 md-content class="md-padding" layout="column"
-  div flex="" layout="row" ng-if='clients && clients.length <= 0'
+  in-paginate in-pagination="data.pagination" light="true"
+
+  div flex="" layout="row" ng-if='data.clients && data.clients.length <= 0'
     div flex="50" offset="25"
       .white-panel.pn.donut-chart
         .white-header
@@ -18,12 +20,12 @@ md-content class="md-padding" layout="column"
             p You need to create a client in order to continue
         md-divider
         footer.clearfix
-          md-button href="#" class="md-primary" ng-click="newClient($event)"
+          md-button href="#" class="md-primary" ng-click="methods.new_client($event)"
             .fa.fa-plus
             | Add New Client
 
-  div.clients flex="" ng-if='clients && clients.length > 0'
-    section.client layout="row" layout-wrap="" ng-repeat="client in clients"
+  div.clients flex="" ng-if='data.clients && data.clients.length > 0'
+    section.client layout="row" layout-wrap="" ng-repeat="client in data.clients"
       dif flex="10"
         div#donut-cont donut-chart="" donut-data="client.statistics.percent_by_state" donut-colors="client.statistics.colors" donut-formatter='"currency"'
       div flex="90"
@@ -43,9 +45,9 @@ md-content class="md-padding" layout="column"
                 a href="/invoices/new/client/{{client.id}}"
                   md-button class="md-raised md-primary"
                     | Add Invoice
-                a.delete href="#" ng-click="removeClient(client.id)"
+                a.delete href="#" ng-click="methods.remove_client(client.id)"
                   img.inline  src="#{asset_path('delete.png')}"
                   | Remove
-                a.edit href='#' ng-click="editClient($event, client.id)"
+                a.edit href='#' ng-click="methods.edit_client($event, client.id)"
                   img.inline  src="#{asset_path('pen.png')}"
                   | Edit

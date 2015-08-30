@@ -29,9 +29,8 @@ class Invoice < ActiveRecord::Base # rubocop:disable ClassLength
   CURRENCY = %w(EUR USD UAH RUB)
   STATE = state_machines[:state].states.map(&:name).map(&:to_s)
 
-  ## Default query scope
-  # by default invoice query doesn't show closed invoices
-  # default_scope { where.not(state: 'paid') }
+  ## Scope
+  default_scope { order('created_at DESC') }
   scope :is_open, -> { where(state: 'open') }
   scope :draft, -> { where(state: 'draft') }
   scope :partly, -> { where(state: 'partly') }

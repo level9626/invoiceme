@@ -2,21 +2,19 @@
 
 angular.module('CompaniesApp')
   .controller('CompaniesIndexCtrl',[
-   '$scope',
-   '$location',
-   '$mdDialog',
-   'Company',
-   'Invoice',
-   function ($scope, $location, $mdDialog, Company, Invoice) {
+  '$scope',
+  '$location',
+  '$mdDialog',
+  'Company',
+  'Invoice',
+  function ($scope, $location, $mdDialog, Company, Invoice) {
+
+    $scope.data = {};
+    $scope.methods = {};
 
     _init();
 
-    $scope.destoryCompany = function (company_id) {
-      Company.remove({id: company_id});
-      _init();
-    };
-
-    $scope.newCompany = function (ev) {
+    $scope.methods.new_company = function (ev) {
       $mdDialog.show({
         controller: CompanyNewCtrl,
         templateUrl: 'companies/new.html',
@@ -26,7 +24,7 @@ angular.module('CompaniesApp')
       });
     };
 
-    $scope.editCompany = function (ev, id) {
+    $scope.methods.edit_company = function (ev, id) {
       $mdDialog.show({
         controller: CompanyEditCtrl,
         templateUrl: 'companies/edit.html',
@@ -39,7 +37,7 @@ angular.module('CompaniesApp')
       });
     };
 
-    $scope.removeCompany = function (id) {
+    $scope.methods.remove_company = function (id) {
       Company.remove({id: id}, function () {
         $scope.$emit('notify', {
           type: 'primary',
@@ -53,7 +51,8 @@ angular.module('CompaniesApp')
     function _init() {
       // filtered
       Company.query($location.search(), function (data) {
-        $scope.companies = data.companies;
+        $scope.data.companies = data.companies;
+        $scope.data.pagination = data.pagination
       });
 
       // All companies for filters
@@ -63,12 +62,12 @@ angular.module('CompaniesApp')
       // to do a separate call, in order to get all companies of the user.
       if(!_.isEmpty($location.search())){
         Company.query(function (data) {
-          $scope.all_companies = data.companies;
+          $scope.data.all_companies = data.companies;
         });
       }
 
       Invoice.states(function (states) {
-        $scope.states = states
+        $scope.data.states = states
       })
     }
   }]);

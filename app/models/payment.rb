@@ -33,6 +33,7 @@ class Payment < ActiveRecord::Base
                                allow_blank: true
 
   ## Scopes
+  default_scope { order('created_at DESC') }
   scope :sum_amount, -> { where.not(id: nil).sum(:amount) }
 
   ## Callbacks

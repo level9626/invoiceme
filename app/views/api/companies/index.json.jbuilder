@@ -15,3 +15,5 @@ json.companies do
     end
   end
 end
+
+json.partial! 'api/shared/pagination', collection: @companies

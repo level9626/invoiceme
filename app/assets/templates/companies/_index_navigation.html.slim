@@ -8,7 +8,7 @@ md-content
             | Company
             i.fa.fa-caret-down
           md-menu-content width="3"
-            md-menu-item ng-repeat="company in all_companies || companies"
+            md-menu-item ng-repeat="company in data.all_companies || data.companies"
               md-button
                 span filter-button="name_eq" value="{{company.name}}"
                   | {{company.name}}

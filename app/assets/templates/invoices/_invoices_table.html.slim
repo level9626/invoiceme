@@ -10,6 +10,7 @@ md-content ng-show="data.invoice_count === 0" class="md-padding"
       | Create your first invoice here.
 
 md-content ng-show="data.invoices && data.invoices.length > 0" class="md-padding"
+  in-paginate in-pagination="data.pagination" light="true"
   section.task-panel.tasks-widget.panel.panel-default#invoice
     table.table.table-hover.invoices-table
       thead.panel-heading
@@ -69,3 +70,5 @@ md-content ng-show="data.invoices && data.invoices.length > 0" class="md-padding
               | {{ invoice.state }}
           td.actions-table
             div ng-include="'invoices/_actions.html'"
+
+  in-paginate in-pagination="data.pagination" align="center center"

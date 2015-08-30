@@ -10,7 +10,7 @@ md-tabs md-dynamic-height="" md-border-bottom=""
   md-tab label="Companies"
     md-content ng-controller="CompaniesIndexCtrl" layout="column"
       div.text-right flex="" style="padding-top: 15px; padding-right: 8px;"
-        md-button ng-click="newCompany($event)" class="md-raised md-primary" aria-label="add new company" ng-if='companies && companies.length > 0'
+        md-button ng-click="methods.new_company($event)" class="md-raised md-primary" aria-label="add new company" ng-if='companies && companies.length > 0'
           .fa.fa-plus
           | Add New Company
       div flex=""

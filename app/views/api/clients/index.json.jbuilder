@@ -13,3 +13,5 @@ json.clients do
     end
   end
 end
+
+json.partial! 'api/shared/pagination', collection: @clients

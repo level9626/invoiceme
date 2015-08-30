@@ -10,3 +10,5 @@ json.invoices do
     json.total invoice.subtotal
   end
 end
+
+json.partial! 'api/shared/pagination', collection: @invoices

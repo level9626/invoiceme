@@ -1,0 +1,20 @@
+#in-pagination button,
+#in-pagination button.md-button,
+#in-pagination a.md-button,
+#in-pagination .md-button {
+  margin-right: 0;
+  &.active{
+    background-color: #F8F8F8;
+  }
+  &.light {
+    border: 1px solid #dddddd;
+  }
+  &.page-info {
+    border: none;
+  }
+  &.stub {
+    padding-right: 0;
+    margin-left: 0;
+    min-width: 40px;
+  }
+}

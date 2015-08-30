@@ -20,6 +20,7 @@ class InvoiceItem < ActiveRecord::Base
   validates :rate, :hours_or_tasks, :amount, numericality: true
 
   ## Scopes
+  default_scope { order('created_at DESC') }
   scope :sum_amount, -> { where.not(id: nil).sum(:amount) }
 
   ## Callbacks

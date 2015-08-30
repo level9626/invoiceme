@@ -15,6 +15,9 @@ class Attachment < ActiveRecord::Base
 
   mount_uploader :file, AttachmentUploader
 
+  ## Scopes
+  default_scope { order('created_at DESC') }
+
   ## Validations
   validates :file, presence: true
 end

@@ -13,7 +13,17 @@ angular.module('PaymentsApp')
 
     $scope.savePayment = function () {
       Payment.update($scope.payment, function (payment) {
-        $location.path('/companies/'+payment.id);
+        $scope.$emit('notify', {
+          type: 'primary',
+          text: 'Payment successfully updated.'
+        });
+        $location.path('/payments');
+      }, function (responce) {
+        $scope.$emit('notify', {
+          type: 'warn',
+          text: 'Please fix validation errors, and try again!'
+        });
+        $scope.errors = responce.data.errors;
       });
     };
 

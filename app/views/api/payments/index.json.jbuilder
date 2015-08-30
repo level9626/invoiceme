@@ -6,3 +6,5 @@ json.payments do
     json.company payment.company
   end
 end
+
+json.partial! 'api/shared/pagination', collection: @payments

@@ -2,21 +2,19 @@
 
 angular.module('ClientsApp')
   .controller('ClientsIndexCtrl',[
-   '$scope',
-   '$location',
-   '$mdDialog',
-   'Client',
-   'Invoice',
-   function ($scope, $location, $mdDialog, Client, Invoice) {
+  '$scope',
+  '$location',
+  '$mdDialog',
+  'Client',
+  'Invoice',
+  function ($scope, $location, $mdDialog, Client, Invoice) {
+
+    $scope.data = {};
+    $scope.methods = {};
 
     _init();
 
-    $scope.destoryClient = function (client_id) {
-      Client.remove({id: client_id});
-      _init();
-    };
-
-    $scope.newClient = function (ev) {
+    $scope.methods.new_client = function (ev) {
       $mdDialog.show({
         controller: ClientNewCtrl,
         templateUrl: 'clients/new.html',
@@ -26,7 +24,7 @@ angular.module('ClientsApp')
       });
     };
 
-    $scope.editClient = function (ev, id) {
+    $scope.methods.edit_client = function (ev, id) {
       $mdDialog.show({
         controller: ClientEditCtrl,
         templateUrl: 'clients/edit.html',
@@ -39,14 +37,21 @@ angular.module('ClientsApp')
       });
     };
 
-    $scope.removeClient = function (id) {
-      Client.remove({id: id});
+    $scope.methods.remove_client = function (id) {
+      Client.remove({id: id}, function () {
+        $scope.$emit('notify', {
+          type: 'primary',
+          text: 'Client successfully removed.'
+        });
+      });
       _init();
     };
 
     function _init() {
+
       Client.query($location.search(), function (data) {
-        $scope.clients = data.clients;
+        $scope.data.clients = data.clients;
+        $scope.data.pagination = data.pagination
         _get_colors ();
       });
 
@@ -57,12 +62,12 @@ angular.module('ClientsApp')
       // to do a separate call, in order to get all clients of the user.
       if(!_.isEmpty($location.search())){
         Client.query(function (data) {
-          $scope.all_clients = data.clients;
+          $scope.data.all_clients = data.clients;
         });
       }
 
       Invoice.states(function (states) {
-        $scope.states = states
+        $scope.data.states = states
       })
     }
 
@@ -78,13 +83,11 @@ angular.module('ClientsApp')
         bad_debt: '#333'
       };
 
-      _.each($scope.clients, function(client) {
+      _.each($scope.data.clients, function(client) {
         client.statistics['colors'] = [];
         _.each(client.statistics.percent_by_state, function(el) {
           client.statistics.colors.push(colors[el.label]);
         });
       });
-
-      console.log($scope.clients);
     }
   }]);

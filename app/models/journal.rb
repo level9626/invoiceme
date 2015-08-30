@@ -19,6 +19,9 @@ class Journal < ActiveRecord::Base
   validates :journalable_id, :journalable_type, :event, presence: true
   validates :description, length: { maximum: 255 }
 
+  ## Scopes
+  default_scope { order('created_at DESC') }
+
   ## Class Methods
 
   # log object transition

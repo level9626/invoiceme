@@ -24,7 +24,7 @@ angular.module('InvMe')
         scope.palarity = true;
 
         scope.sort = function () {
-          Search.search({s: scope.sortButton + _getPol()});
+          Search.search_q({s: scope.sortButton + _getPol()});
           scope.palarity = !scope.palarity;
         };
 

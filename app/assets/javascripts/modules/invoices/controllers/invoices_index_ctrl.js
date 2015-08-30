@@ -13,6 +13,7 @@ angular.module('InvoicesApp')
 
     Invoice.query(Search.q_params(), function (data) {
       $scope.data.invoices = data.invoices;
+      $scope.data.pagination = data.pagination;
     });
 
     Invoice.invoice_count( function (data) {
@@ -30,7 +31,7 @@ angular.module('InvoicesApp')
       $(document).scrollTop(0);
       var params = {};
       params[filter_param] = filter_value;
-      Search.search(params);
+      Search.search_q(params);
     };
 
     $scope.methods.selected = function (filter_param, filter_value) {

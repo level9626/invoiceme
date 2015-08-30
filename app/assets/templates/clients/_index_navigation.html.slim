@@ -8,7 +8,7 @@ md-content
             | Client
             i.fa.fa-caret-down
           md-menu-content width="3" 
-            md-menu-item ng-repeat="client in all_clients || clients"
+            md-menu-item ng-repeat="client in data.all_clients || data.clients"
               md-button
                 span filter-button="name_eq" value="{{client.name}}"
                   | {{client.name}}

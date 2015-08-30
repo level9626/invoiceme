@@ -31,6 +31,9 @@ class Company < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
+  ## Scopes
+  default_scope { order('created_at DESC') }
+
   ## Callbacks
   before_save :change_default!, if: proc { |model| model.default }
   before_save { self.email = email.downcase }

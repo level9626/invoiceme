@@ -75,8 +75,16 @@ angular.module('InvoicesApp')
     $scope.saveInvoice = function () {
       $scope.errors = null;
       Invoice.save($scope.invoice, function (invoice) {
+        $scope.$emit('notify', {
+          type: 'primary',
+          text: 'Invoice successfully created.'
+        });
         $location.path('/invoices/'+invoice.id)
       }, function (responce) {
+        $scope.$emit('notify', {
+          type: 'warn',
+          text: 'Please fix validation errors, and try again!'
+        });
         $scope.errors = responce.data.errors;
       });
     };

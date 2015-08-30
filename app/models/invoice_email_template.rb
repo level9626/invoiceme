@@ -37,6 +37,7 @@ class InvoiceEmailTemplate < ActiveRecord::Base
                                  message: 'name should be unique' }
 
   ## Scopes
+  default_scope { order('created_at DESC') }
   scope :by_role, lambda { |role|
     # owner is actually referencing users table
     joins(%(

@@ -6,7 +6,7 @@ li.ml
     md-menu-content width="3" 
       table.table.nav-boxes
         tbody
-          tr ng-repeat="state in states"
+          tr ng-repeat="state in data.states"
             td filter-button="invoices_state_eq" value="{{state}}"
               md-checkbox id="filter-checkbox-{{state}}" type='checkbox' aria-label="Checkbox {{state}}"
                 | {{state | invState}}

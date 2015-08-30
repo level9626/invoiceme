@@ -13,8 +13,15 @@ angular.module('InvMe')
       return _.extend($location.search(), obj2);
     }
 
+    function _merge (obj) {
+      return _.extend($location.search(), obj);
+    }
+
     return {
       search: function (params) {
+        $location.search($.param(_merge(params)));
+      },
+      search_q: function (params) {
         $location.search($.param(_merge_for_q(params)));
       },
       clear: function () {

@@ -57,7 +57,7 @@ module Api
     end
 
     def states
-      respond_with(Invoice.select('distinct state').all.map(&:state))
+      respond_with(Invoice.unscoped.select('distinct state').all.map(&:state))
     end
 
     # Statistics and metrics

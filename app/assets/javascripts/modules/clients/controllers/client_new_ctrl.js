@@ -17,8 +17,16 @@ var ClientNewCtrl =[
 
     $scope.saveClient = function () {
       Client.save($scope.client, function (client) {
+        $scope.$emit('notify', {
+          type: 'primary',
+          text: 'Client successfully created.'
+        });
         $mdDialog.hide();
       }, function (responce) {
+        $scope.$emit('notify', {
+          type: 'warn',
+          text: 'Please fix validation errors, and try again!'
+        });
         $scope.errors = responce.data.errors;
       });
     };

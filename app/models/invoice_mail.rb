@@ -32,4 +32,7 @@ class InvoiceMail < ActiveRecord::Base
   validates :to, presence: true
   validates :subject, length: { in: 1..255 }
   validates :body, length: { in: 1..4000 }
+
+  ## Scopes
+  default_scope { order('created_at DESC') }
 end

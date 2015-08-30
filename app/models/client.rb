@@ -21,6 +21,9 @@ class Client < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 150 }
   validates :address, presence: true, length: { maximum: 300 }
 
+  ## Scopes
+  default_scope { order('created_at DESC') }
+
   def invoice_statistics
   end
 end
