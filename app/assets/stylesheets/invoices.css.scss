@@ -56,6 +56,12 @@ $border: grey;
   }
 }
 
+@media (max-width: 1920px){
+  #invoices .filters.currencies {
+    left: 50.5% !important;
+  }
+}
+
 @media (max-width: 1240px){
   #invoices .filters.currencies {
     left: 45.2% !important;
@@ -353,6 +359,15 @@ table.payments-info {
     outline: none;
     text-decoration: none;
     color: #777777;
+  }
+}
+
+.fa-caret-down {
+  vertical-align: middle;
+  &:before {
+    font-size: large;
+    vertical-align: text-bottom;
+    margin-left: 5px;
   }
 }
 
