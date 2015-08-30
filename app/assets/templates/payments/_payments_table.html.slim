@@ -1,0 +1,56 @@
+in-loading collection="data.payments"
+
+md-content ng-show="data.payments &&  data.payments.length == 0 && data.payments_count != 0" class="md-padding"
+  h5.text-center
+    | No Payments in the section.
+
+md-content ng-show="data.payments_count === 0" class="md-padding" layout-align="center center"
+  | You didn't received no payments yet
+
+md-content ng-show="data.payments && data.payments.length > 0" class="md-padding"
+  in-paginate in-pagination="data.pagination" light="true"
+  section.task-panel.tasks-widget.panel.panel-default#invoice
+    table.table.table-hover.invoices-table
+      thead.panel-heading
+        tr.table-head
+          th.activities-table style="width: 40px;"
+            md-checkbox class="md-primary" aria-label="primary invoice table checkbox"
+          th
+            span sort-button="invoice_invoice_number"
+              | #
+          th
+            span sort-button="created_at"
+              | Date created
+          th
+            span sort-button="client_name"
+              | From
+          th
+            span sort-button="company_name"
+              | To
+          th
+            span sort-button="invoice_currency"
+              | Currency
+          th
+            span sort-button="amount"
+              | Amount
+          th.actions-table
+      tbody.panel-heading
+        tr ng-repeat="payment in data.payments"
+          td
+            md-checkbox aria-label="payment table row checkbox"
+          td
+            | {{ payment.invoice.invoice_number }}
+          td
+            | {{ payment.created_at | date:'d MMM yyyy' }}
+          td
+            | {{ payment.client.name }}
+          td
+            | {{ payment.company.name }}
+          td.total-currency
+            | {{ payment.invoice.currency }}
+          td
+            | {{ payment.amount }}
+          td.actions-table
+            div ng-include="'payments/_actions.html'"
+
+  in-paginate in-pagination="data.pagination" align="center center"

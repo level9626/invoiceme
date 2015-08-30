@@ -1,13 +1,22 @@
 'use strict';
 
 angular.module('PaymentsApp')
-  .controller('PaymentsIndexCtrl',
-  ['$scope',
-   'Payment',
-   function ($scope, Payment) {
+  .controller('PaymentsIndexCtrl',[
+  '$scope',
+  'Search',
+  'Payment',
+  function ($scope, Search, Payment) {
 
-    Payment.query(function (data) {
-      $scope.payments = data.payments;
+    $scope.data = {};
+    $scope.methods = {};
+
+    Payment.query(Search.q_params(), function (data) {
+      $scope.data.payments   = data.payments;
+      $scope.data.pagination = data.pagination;
+    });
+
+    Payment.count(function (data) {
+      $scope.data.payments_count = data.count;
     });
 
   }]);

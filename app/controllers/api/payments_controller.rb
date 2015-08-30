@@ -7,7 +7,7 @@ module Api
 
     def index
       @search = _search
-      @payments = @search.result.paginate(per_page: 10, page: params[:page])
+      @payments = @search.result.paginate(per_page: 20, page: params[:page])
       respond_to do |format|
         format.json { render template: 'api/payments/index.json' }
         format.csv { send_data @payments.to_csv }
@@ -34,6 +34,10 @@ module Api
     def destroy
       @payment.destroy
       respond_with(@payment)
+    end
+
+    def count
+      respond_with({invoice_count: current_user.payments.count})
     end
 
     private

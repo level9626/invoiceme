@@ -22,8 +22,12 @@ Rails.application.routes.draw do
   resources :users, only: [], concerns: [:email_templates]
 
   namespace :api do
-    resources :payments, concerns: [:commentable, :attachable]
-    resources :payments
+    resources :payments, concerns: [:commentable, :attachable] do
+      collection do
+        get :count
+      end
+    end
+
     resources :clients, concerns: [:email_templates]
     resources :companies do
       collection do

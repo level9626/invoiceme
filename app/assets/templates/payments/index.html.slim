@@ -1,43 +1,19 @@
-view-title Payments
-.row.mt
-  .col-md-8#tags.tags
-    .col-md-12.row
-      /div ng-include="'shared/tags'"
-  .col-md-4.pull-right.filter
-    div.btn-group role="group"
-      a href="#" class="btn btn-success btn-sm"
-        .fa.fa-download
-          | Download to CSV
-    div ng-include="'payments/_filter.html'"
+view-title payments
 
-  .col-md-12
-    h5.text-center ng-if="!payments || payments.length <= 0"
-      h5.text-center You don't have payments yet.
+div#invoices layout="column" in-filter-tabs=""
+  md-tabs md-no-disconnect="" md-dynamic-height="" md-border-bottom=""
 
-    section.task-panel.tasks-widget ng-if="payments"
-      .panel-body
-        .task-content
-          table.table
-            thead
-              tr
-                th Invoice
-                th Amount
-                th Client
-                th Company
-                th Currency
-                th
+    md-tab label="All" md-active="methods.selected('index')" md-on-select="methods.clear_filters('q[currency_eq]')"
+      div ng-include="'payments/_payments_table.html'" include-replace="" ng-if="methods.selected('index')"
 
-            tbody
-              tr ng-repeat="payment in payments"
-                td
-                  | {{ payment.invoice.invoice_number }}
-                td
-                  | {{ payment.amount }}
-                td
-                  | {{ payment.client.name }}
-                td
-                  | {{ payment.company.name }}
-                td
-                  | {{ payment.invoice.currency }}
-                td
-                  div ng-include="'payments/_actions.html'"
+    md-tab label="USD" md-active="methods.selected('currency_eq', 'USD')" md-on-select="methods.filter('currency_eq', 'USD')"
+      div ng-include="'payments/_payments_table.html'" include-replace="" ng-if="methods.selected('currency_eq', 'USD')"
+
+    md-tab label="EUR" md-active="methods.selected('currency_eq', 'EUR')" md-on-select="methods.filter('currency_eq', 'EUR')"
+      div ng-include="'payments/_payments_table.html'" include-replace="" ng-if="methods.selected('currency_eq', 'EUR')"
+
+    md-tab label="UAH" md-active="methods.selected('currency_eq', 'UAH')" md-on-select="methods.filter('currency_eq', 'UAH')"
+      div ng-include="'payments/_payments_table.html'" include-replace="" ng-if="methods.selected('currency_eq', 'UAH')"
+
+    md-tab label="RUB" md-active="methods.selected('currency_eq', 'RUB')" md-on-select="methods.filter('currency_eq', 'RUB')"
+      div ng-include="'payments/_payments_table.html'" include-replace="" ng-if="methods.selected('currency_eq', 'RUB')"

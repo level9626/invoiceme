@@ -1,7 +1,17 @@
-.pull-right
-  a href="payments/{{payment.id}}" class="btn btn-success btn-xs tab"
-    i.fa.fa-eye
-  a href="#" class="btn btn-info btn-xs tab"
-    i.fa.fa-pencil-square-o
-  a  href="#" class="btn btn-danger btn-xs tab"
-    i.fa.fa-trash-o
+.pull-right#invoice-actions
+  /md-button.md-icon-button aria-label="menu"
+  /  md-icon.more-icon md-svg-src="#{asset_path('icons/more_icon.svg')}"
+
+  .actions
+    in-speed-dial
+      trigger
+        md-button.md-icon-button aria-label="menu"
+          md-icon md-svg-src="#{asset_path('icons/more_icon.svg')}"
+          md-icon.rotate md-svg-src="#{asset_path('icons/actions/delete.svg')}"
+
+      actions
+        div layout="row"
+          md-button class="md-primary" aria-label="edit" href="/invoices/{{payment.invoice.id}}"
+            md-icon md-svg-src="#{asset_path('icons/actions/edit.svg')}"
+          md-button class="md-primary" aria-label="download" href="api/invoices/{{payment.invoice.id}}.pdf" target="_blank"
+            md-icon md-svg-src="#{asset_path('icons/actions/download.svg')}"

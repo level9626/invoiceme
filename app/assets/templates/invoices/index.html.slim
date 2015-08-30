@@ -4,13 +4,13 @@ view-title Invoices
   a md-button='' href="invoices/new" class="md-button md-fab md-mini add-icon pull-right" aria-label="add invoice"
     md-icon md-font-icon="fa-plus" class="fa add-plus"
 
-div#invoices layout="column"
+div#invoices layout="column" in-filter-tabs=""
   div.filters.currencies ng-include="'invoices/_currencies_filters.html'"
   div.filters ng-include="'invoices/_index_navigation.html'"
 
   md-tabs md-no-disconnect="" md-dynamic-height="" md-border-bottom=""
 
-    md-tab label="All" md-active="methods.selected('index')" md-on-select="methods.clear_filters()"
+    md-tab label="All" md-active="methods.selected('index')" md-on-select="methods.clear_filters('q[state_eq]')"
       div ng-include="'invoices/_invoices_table.html'" include-replace="" ng-if="methods.selected('index')"
 
     md-tab label="Draft" md-active="methods.selected('state_eq', 'draft')" md-on-select="methods.filter('state_eq', 'draft')"

@@ -20,32 +20,4 @@ angular.module('InvoicesApp')
       $scope.data.invoice_count = data.invoice_count;
     });
 
-    $scope.methods.clear_filters = function () {
-      if (_table_filter_keys().length == 0)
-        return;
-
-      Search.clear_param('q[state_eq]');
-    };
-
-    $scope.methods.filter = function (filter_param, filter_value) {
-      $(document).scrollTop(0);
-      var params = {};
-      params[filter_param] = filter_value;
-      Search.search_q(params);
-    };
-
-    $scope.methods.selected = function (filter_param, filter_value) {
-      if (filter_param == 'index' && _table_filter_keys().length == 0)
-        return true;
-
-      return Search.q_params()['q[' + filter_param + ']'] == filter_value;
-    };
-
-    // Private scope
-    function _table_filter_keys () {
-      return _.filter(Search.q_keys(), function (el) {
-        return el.match(/q\[state_eq\]/);
-      });
-    }
-
   }]);
