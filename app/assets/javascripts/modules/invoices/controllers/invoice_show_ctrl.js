@@ -12,8 +12,8 @@ angular.module('InvoicesApp')
 
     $scope.journals = function (ev) {
       $mdDialog.show({
-        controller: JournalsIndexCtrl,
-        templateUrl: 'journals/index.html',
+        controller: JournalsLatestCtrl,
+        templateUrl: 'journals/latest.html',
         targetEvent: ev,
         locals: {
           invoice_id: $scope.invoice.id

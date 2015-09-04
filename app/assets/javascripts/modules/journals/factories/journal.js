@@ -8,7 +8,7 @@ angular.module('JournalsApp')
 
     return $resource(url, { id: '@id', invoice_id: '@invoice_id' }, {
       update: {
-        method: 'PUT',
+        method: 'PUT'
       },
       query: {
         method: 'GET',

@@ -64,6 +64,11 @@ angular.module('InvMe')
         templateUrl: 'payments/edit.html',
         controller: 'PaymentEditCtrl'
       })
+      // Journals Recourse
+      .when('/journals/:invoice_id', {
+        templateUrl: 'journals/index.html',
+        controller: 'JournalIndexCtrl'
+      })
       // users
       .when('/users/edit', {
         templateUrl: 'users/edit.html',

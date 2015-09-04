@@ -1,0 +1,27 @@
+md-dialog.in-modal aria-label="Invoice Activities"
+  md-toolbar
+    .md-toolbar-tools
+      h2.text-uppercase Invoice Activities
+      span flex=''
+      md-button.close.md-icon-button ng-click="close()" type="button"
+        md-icon md-svg-src="#{asset_path('icons/close_purp.svg')}" aria-label="Close dialog"
+  md-dialog-content
+    table.table
+      thead
+        tr
+          th Date
+          th Event
+          th Description
+      tbody
+        tr ng-repeat="journal in journals"
+          td
+            | {{journal.created_at | date:'d MMM yyyy'}}
+          td
+            | {{journal.event}}
+          td
+            | {{journal.description}}
+
+  div class="md-actions journal-list" layout="row"
+    md-button.edit-btn href='journals/{{invoice.id}}' aria-label='edit' ng-click="close()"
+      | Show more
+    md-button ng-click="close()" class="md-raised" Ok
